@@ -1,0 +1,27 @@
+<!-- <ul> -->
+<!--     $for(pages)$ -->
+<!--     <li> -->
+<!--         <i class="fas fa-book-reader"></i> -->
+<!--         <a href="$url$">$title$</a> -->
+<!--     </li> -->
+<!--     $endfor$ -->
+<!-- </ul> -->
+
+<table class="document-list">
+  <thead>
+    <tr>
+      <th> </th>
+      <th> Course Pages </th>
+      <th> Summary </th>
+    </tr>
+  </thead>
+  <tbody>
+  $for(pages)$
+  <tr>
+    <td>  <i class="fas fa-book-reader"></i> </td>
+    <td> <a href="$url$">$title$</a> </td>
+    <td> $abstract$ </td>
+  </tr>
+  $endfor$
+  </tbody>
+</table>
