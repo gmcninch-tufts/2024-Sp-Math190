@@ -34,9 +34,6 @@ main = hakyllWith config $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "course-notebooks/**" $ do
-        route   idRoute
-        compile copyFileCompiler
 
     match (fromList ["about.md"]) $ do
         route   $ setExtension "html"
@@ -49,7 +46,7 @@ main = hakyllWith config $ do
         route   idRoute
         compile compressCssCompiler
 
-    match "pages/*md" $ do
+    match "course-pages/*md" $ do
         route $ setExtension "html"
         compile $ mathJaxAddedCompiler
             >>= loadAndApplyTemplate "templates/page.html"    postCtx
@@ -67,7 +64,7 @@ main = hakyllWith config $ do
     create ["archive.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
+            posts <- recentFirst =<< loadAll "course-posts/*"
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Prof Archives"            `mappend`
@@ -112,10 +109,10 @@ postCtx =
 
 config :: Configuration
 config = defaultConfiguration
-  { destinationDirectory = "/home/george/Classes/2024-Sp-Math087/docs"
-  , providerDirectory    = "/home/george/Classes/2024-Sp-Math087"
-  , storeDirectory       = "/home/george/Classes/2024-Sp-Math087/_cache"
-  , tmpDirectory         = "/home/george/Classes/2024-Sp-Math087/_cache/tmp"  
+  { destinationDirectory = "/home/george/Classes/2024-Sp-Math190/docs"
+  , providerDirectory    = "/home/george/Classes/2024-Sp-Math190"
+  , storeDirectory       = "/home/george/Classes/2024-Sp-Math190/_cache"
+  , tmpDirectory         = "/home/george/Classes/2024-Sp-Math190/_cache/tmp"  
   , previewPort          = 9090
-  , deployCommand        = "bash /home/george/Classes/2024-Sp-Math087/deploy.sh"
+  , deployCommand        = "bash /home/george/Classes/2024-Sp-Math190/deploy.sh"
   }

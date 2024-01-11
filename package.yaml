@@ -1,6 +1,6 @@
-name:                math87-site
+name:                math190-site
 version:             0.1.0.0
-github:              "gmcninch-tufts/2024-Sp-Math087"
+github:              "gmcninch-tufts/2024-Sp-Math190"
 license:             BSD3
 author:              "George McNinch"
 maintainer:          "george.mcninch@tufts.edu"
@@ -25,7 +25,7 @@ dependencies:
 - pandoc
 
 executables:
-  math87-site:
+  math190-site:
     main:                site.hs
     ghc-options:
     - -threaded
