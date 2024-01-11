@@ -205,3 +205,15 @@ footer nav {
 .document-list td {
     border-bottom: 0.1rem solid navy;
 }
+
+div.sourceCode {
+    background-color: Lavender;
+    padding: 10px;    
+}
+
+
+div.csl-entry {
+        padding-left: 1.5em;
+        text-indent:-1.5em;
+	margin-bottom: 6px;
+    }

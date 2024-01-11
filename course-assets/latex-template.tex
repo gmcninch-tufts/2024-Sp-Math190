@@ -1,0 +1,98 @@
+\documentclass{article}
+   
+\usepackage{graphicx, color}
+\usepackage{palatino, mathpazo}
+\usepackage{enumerate, mathtools}
+\usepackage{hyperref}
+\usepackage[margin=2cm]{geometry}
+\usepackage{minted}
+\usemintedstyle{tango}
+\usepackage[svgnames]{xcolor}
+%
+% Edit me!!
+%
+\newcommand{\myname}{MyName}
+\newcommand{\assignment}{Homework \(n\)}
+%
+%
+\newcounter{problem}
+\newenvironment{problem}{
+\refstepcounter{problem}
+\noindent
+{\color{NavyBlue}\textbf{Problem \theproblem.}}
+
+\noindent
+\hspace{.02\textwidth}
+\begin{minipage}[t]{.98\textwidth}}
+{\end{minipage}
+\vspace{5mm}}
+
+
+%% ----------------------------------------------------
+%% topline is a bit like a function of 3 "variables", 
+%% referred to as #1, #2, and #3
+%% ----------------------------------------------------
+\newcommand{\topline}[3]{
+\noindent
+{
+\color{NavyBlue}
+\begin{minipage}[t]{.35\textwidth}
+#1
+\end{minipage}
+\begin{minipage}[t]{.35\textwidth}
+#2
+\end{minipage}
+\begin{minipage}[t]{.30\textwidth}
+#3
+\end{minipage}
+\hrule
+}
+}
+
+%% ------------------------------------------------------
+%% end of topmatter
+%%-------------------------------------------------------
+
+\begin{document}
+
+\topline{Math 087 - Fall 2020}{Assignment 0}{\myname}
+
+\vspace{2cm}
+
+\begin{problem}
+Here is the first homework problem solution.
+\[\int_{-\infty}^\infty e^{-x^2}dx = \sqrt{\pi}.\]
+\end{problem}
+
+\begin{problem}
+Here is the second homework problem solution.
+It has some parts:
+\begin{enumerate}[(a)]
+\item One aspect of this problem.
+  
+  Some further discussion.
+
+  Still more...
+\item Another aspect
+\end{enumerate}
+And it has a 
+\href{http://www.tufts.edu}{URL reference (Tufts)}.
+%% ----------------------------------------------------     
+%% the command \href and the behavior of
+%% \begin{enumerate}[(a)] ...
+%% depend on some of the packages we loaded in the
+%% topmatter.
+%% ----------------------------------------------------   
+\end{problem}
+
+\begin{problem}
+  Here we include some computer code.
+
+  \begin{minted}[bgcolor=Lavender]{Python}
+    def square(x): 
+    return x*x
+    
+    map(square,[1,2,3])
+  \end{minted}
+\end{problem}
+\end{document}

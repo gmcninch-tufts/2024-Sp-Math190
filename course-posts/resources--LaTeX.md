@@ -57,13 +57,18 @@ homework assignment).
 ## Template
 
 
-Here is a very basic template for homework assignments that you can
-start with -- this template makes some stylistic choices that you are
-of course welcome to change! You may begin experimenting with this as
+[Here is a link for a very basic
+template](/course-assets/latex-template.tex) for homework assignments
+that you can start with. I've also include the contents of this template in this post -- see below.
+
+This template makes some stylistic choices that you are of course
+welcome to change! You may begin experimenting with this as
 follows. First, create a project in overleaf. Next, delete the
 template that is provided for the new project, and paste this into the
 editor. Now, when you click "recompile", overleaf should render the
 output.
+
+
 
 ----
 
@@ -126,7 +131,7 @@ output.
 
 \begin{document}
 
-\topline{Math 190 - Spring 2024}{Assignment 0}{\myname}
+\topline{Math 087 - Fall 2020}{Assignment 0}{\myname}
 
 \vspace{2cm}
 

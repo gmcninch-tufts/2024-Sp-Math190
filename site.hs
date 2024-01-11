@@ -5,6 +5,7 @@ import           Hakyll
 import           Text.Pandoc
 --------------------------------------------------------------------------------
 
+--------------------------------------------------------------------------------  
 
 mathjaxExtensions :: Extensions
 mathjaxExtensions = extensionsFromList 
@@ -13,18 +14,30 @@ mathjaxExtensions = extensionsFromList
                     ,Ext_latex_macros
                     ,Ext_inline_code_attributes 
                     ]
+                    
 readMathjaxOptions :: ReaderOptions 
 readMathjaxOptions = defaultHakyllReaderOptions
                 {
                     readerExtensions = (readerExtensions defaultHakyllReaderOptions) <> mathjaxExtensions
                 }
+                
 writeMathjaxOptions :: WriterOptions
 writeMathjaxOptions = defaultHakyllWriterOptions 
                 {
                     writerHTMLMathMethod = MathJax ""
                 }
-mathJaxAddedCompiler :: Compiler (Item String)
-mathJaxAddedCompiler = pandocCompilerWith readMathjaxOptions writeMathjaxOptions
+                
+myCompiler :: Compiler (Item String)
+myCompiler = do
+  csl <- load "bib/chicago-author-date.csl"
+  bib <- load "bib/teaching.bib"
+  getResourceBody >>=
+    readPandocBiblio readMathjaxOptions csl bib >>=
+    return . (writePandocWith writeMathjaxOptions)
+
+
+-- myCompiler :: Compiler (Item String)
+-- myCompiler = pandocCompilerWith readMathjaxOptions writeMathjaxOptions
 
 
 
@@ -34,6 +47,8 @@ main = hakyllWith config $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "bib/chicago-author-date.csl" $ compile cslCompiler
+    match "bib/teaching.bib"    $ compile biblioCompiler
 
     match (fromList ["about.md"]) $ do
         route   $ setExtension "html"
@@ -48,7 +63,7 @@ main = hakyllWith config $ do
 
     match "course-pages/*md" $ do
         route $ setExtension "html"
-        compile $ mathJaxAddedCompiler
+        compile $ myCompiler
             >>= loadAndApplyTemplate "templates/page.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
@@ -56,7 +71,7 @@ main = hakyllWith config $ do
 
     match "course-posts/*" $ do
         route $ setExtension "html"
-        compile $ mathJaxAddedCompiler
+        compile $ myCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
@@ -93,7 +108,6 @@ main = hakyllWith config $ do
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateBodyCompiler
-
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
