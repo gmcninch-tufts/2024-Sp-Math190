@@ -5,20 +5,20 @@ title: Math190 - Topics in Algebra - AY2023-2024 spring
 # **Assignments**
   
 
-  | Date  | DOW | Desc       | Seq | Week | Details |
-  |-------|-----|------------|-----|------|---------|
-  | 01/22 | Mon | Assignment | 1   | 2    |         |
-  | 01/29 | Mon | Assignment | 2   | 3    |         |
-  | 02/05 | Mon | Assignment | 3   | 4    |         |
-  | 02/12 | Mon | Assignment | 4   | 5    |         |
-  | 02/19 | Mon | Assignment | 5   | 6    |         |
-  | 02/26 | Mon | Assignment | 6   | 7    |         |
-  | 03/04 | Mon | Assignment | 7   | 8    |         |
-  | 03/11 | Mon | Assignment | 8   | 9    |         |
-  | 03/18 | Mon | Assignment | 9   | 10   |         |
-  | 03/25 | Mon | Assignment | 10  | 11   |         |
-  | 04/01 | Mon | Assignment | 11  | 12   |         |
-  | 04/08 | Mon | Assignment | 12  | 13   |         |
-  | 04/15 | Mon | Assignment | 13  | 14   |         |
-  | 04/22 | Mon | Assignment | 14  | 15   |         |
-  | 04/29 | Mon | Assignment | 15  | 16   |         |
+  | Date  | DOW | Desc       | Seq | Week | Details                                |
+  |-------|-----|------------|-----|------|----------------------------------------|
+  | 01/19 | Fri | Assignment | 1   | 1    | no assignment collected                |
+  | 01/26 | Fri | Assignment | 2   | 2    | PSet 01 - RT                           |
+  | 02/02 | Fri | Assignment | 3   | 3    | PSet 02 - RT                           |
+  | 02/09 | Fri | Assignment | 4   | 4    | PSet 03 - RT                           |
+  | 02/16 | Fri | Assignment | 5   | 5    | PSet 04 - RT (Gap)                     |
+  | 02/23 | Fri | Assignment | 6   | 6    | PSet 05 - ECC                          |
+  | 03/01 | Fri | Assignment | 7   | 7    | PSet 06 - ECC                          |
+  | 03/08 | Fri | Assignment | 8   | 8    | PSet 07 - ECC                          |
+  | 03/15 | Fri | Assignment | 9   | 9    | PSet 08 - ECC                          |
+  | 03/22 | Fri | Assignment | 10  | 10   | no assignment collected (spring break) |
+  | 03/29 | Fri | Assignment | 11  | 11   | PSet 08 - FM                           |
+  | 04/05 | Fri | Assignment | 12  | 12   | PSet 09 - FM                           |
+  | 04/12 | Fri | Assignment | 13  | 13   | PSet 10 - FM                           |
+  | 04/19 | Fri | Assignment | 14  | 14   | no assignment collected                |
+  | 04/26 | Fri | Assignment | 15  | 15   | PSet 11 - FM                           |

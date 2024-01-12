@@ -1,1 +1,18 @@
-[] : List Text
+  [ "no assignment collected"
+  , "PSet 01 - RT"
+  , "PSet 02 - RT"
+  , "PSet 03 - RT"
+  , "PSet 04 - RT (Gap)"
+  , "PSet 05 - ECC"
+  , "PSet 06 - ECC"
+  , "PSet 07 - ECC"
+  , "PSet 08 - ECC"
+  , "no assignment collected (spring break)"
+  , "PSet 08 - FM"
+  , "PSet 09 - FM"
+  , "PSet 10 - FM"
+  , "no assignment collected"
+  , "PSet 11 - FM"
+  , "no assignment collected"
+  ]
+: List Text

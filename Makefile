@@ -26,7 +26,7 @@ logistics_pdf=$(logistics:.md=.pdf)
 pacing_md = $(wildcard pacing/*.md)
 
 
-all: notes pacing logistics
+all: logistics
 
 notes: $(notes_pdf) $(notes_slides)
 pacing: $(pacing_md) $(pacing)
