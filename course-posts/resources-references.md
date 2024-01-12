@@ -1,5 +1,6 @@
 ---
-title: References that I'll use for the course
+title: |
+  Resources: References for the course
 author: George McNinch
 date: 2024-01-07
 abstract: |

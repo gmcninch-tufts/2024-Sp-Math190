@@ -1,5 +1,6 @@
 ---
-title: Resources for the course video-project
+title: |
+  Resources:  video-project
 author: George McNinch
 date: 2024-01-12
 ---

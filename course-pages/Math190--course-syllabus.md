@@ -35,12 +35,13 @@ Here are details on these course components:
 
 - *weekly problem sets*, 
 
-  Problem sets will be collected weekly on *Fridays*. [Here is the
-  planned collection
+  Problem sets will be collected weekly on *Fridays*. [Here is the planned collection
   schedule](/course-pages/Math190--Assignments--AY2023-2024spring.html).
 
   The problems will be posted on the course website, and your
-  solutions will be submitted to [Gradescope].
+  solutions will be submitted to [Gradescope] -- see [these remarks
+  concerning use of
+  gradescope](/course-posts/resources--gradescope.html)
 
 - *engagement*
 
@@ -83,4 +84,6 @@ Table: **Grading**
 
 -------
 
-Your score in the course will determine your *letter grade* by the usual formula.
+Your *letter grade* is then determined from this score using [the
+scheme described at this
+link](https://math.tufts.edu/resources/grading-schemes).
