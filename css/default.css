@@ -7,7 +7,8 @@ body {
     font-family: Roboto, Lato,  sans;
     font-size: 1.6rem;
     color: #000;
-    background-color: #eeeedd;
+    /* background-color: #eeeedd; */
+    background-color: #D8D8D8;
 }
 
 header {

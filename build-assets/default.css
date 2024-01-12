@@ -1,0 +1,51 @@
+html {
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+body { /* margin-left: 50px; */
+       width: 90%;
+       margin: 5%;
+       color: black;
+     }
+
+
+a { color: red;
+  }
+
+.title, .author, .date { text-align: center; }
+
+table th + th { border-left:2px solid black;}
+th { border-bottom: 2px solid black;
+     border-collapse: collapse; }
+
+table td + td { border-left:1px solid black;}
+
+td { border-bottom:1px solid black;
+     border-collapse: collapse; }
+
+.title-slide h1 { text-align: center;
+		  font-family: Palatino;
+		  border-bottom: 1px solid black;}
+
+.image-container {
+    text-align: center;
+}
+
+.solution {
+    padding: 5px 5px 5px 5px;
+    color: darkred;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;}
+
+.comment {
+    padding: 5px 5px 5px 5px;
+    color: darkred;
+    margin-top: 10px;
+    margin-bottom: 10px;}
+
+.identity {
+    padding: 1cm 1cm 1cm 1cm;
+    border: 1px solid black;
+	  }

@@ -1,0 +1,35 @@
+author: George McNinch
+title: Math 190 - Topics in Algebra - Spring 2024
+bibliography:
+- /home/george/Prof-Math/assets/math-bibliography.bib
+- /home/george/Prof-Math/assets/teaching.bib
+csl: build-assets/chicago-author-date.csl
+xnos-cleveref: True
+header-includes: |
+  \setmainfont{FreeSerif}
+  \usepackage{hyperref}
+  \usepackage{mathrsfs}
+  \usepackage{amsmath}
+  \usepackage{mathtools}
+  \usepackage{amscd}
+  \usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+theoremnos-names:
+- id: thm
+  name: Theorem
+- id: prop
+  name: Proposition
+- id: lem
+  name: Lemma
+- id: defn
+  name: Definition
+- id: ex
+  name: Example
+- id: rem
+  name: Remark
+- id: cor
+  name: Corollary
+- id: prob
+  name: Problem
+eqnos-number-by-section: True
+theoremnos-number-by-section: True
+theoremnos-shared-counter: True

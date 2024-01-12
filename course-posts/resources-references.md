@@ -1,7 +1,9 @@
 ---
-title: Course References
+title: References that I'll use for the course
 author: George McNinch
 date: 2024-01-07
+abstract: |
+  A bibliography for the *references* I plan to use in the course.
 ---
 
 # References for *Representations of finite groups*
@@ -21,7 +23,9 @@ date: 2024-01-07
 
 # References for *Error correcting codes*
 
-  - [@huffmanFundamentalsErrorCorrectingCodes2003] is available electronically at *Tisch Library*
+  - [@huffmanFundamentalsErrorCorrectingCodes2003] is available
+    electronically at [*Tisch
+    Library*](https://tischlibrary.tufts.edu/)
 
   - [@ballCourseAlgebraicErrorCorrecting2020]
 

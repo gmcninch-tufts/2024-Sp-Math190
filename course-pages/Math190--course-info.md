@@ -2,8 +2,10 @@
 title: Math190 - Course Info
 ---
 
-- [Assignment schedule](Math190--Assignments--AY2023-2024spring.html)
+- [Course syllabus](/course-pages/Math190--course-syllabus.html) or as a [PDF](/course-pages/Math190--course-syllabus.pdf)
 
-- [Lecture schedule](Math190--Lectures--AY2023-2024spring.html)
+- [Assignment schedule](/course-pages/Math190--Assignments--AY2023-2024spring.html) or as a [PDF](/course-pages/Math190--Assignments--AY2023-2024spring.pdf)
 
-- [Combined schedule](Math190--AY2023-2024spring.html)
+- [Lecture schedule](/course-pages/Math190--Lectures--AY2023-2024spring.html) or as a [PDF](/course-pages/Math190--Lectures--AY2023-2024spring.pdf)
+
+- [Combined schedule](/course-pages/Math190--AY2023-2024spring.html) or as a [PDF](/course-pages/Math190--AY2023-2024spring.pdf)
