@@ -61,10 +61,6 @@ main = hakyllWith config $ do
         route   idRoute
         compile compressCssCompiler
 
-    match "course-pages/*pdf" $ do
-      route idRoute
-      compile copyFileCompiler
-
     match "course-pages/*md" $ do
         route $ setExtension "html"
         compile $ myCompiler
@@ -86,7 +82,7 @@ main = hakyllWith config $ do
             posts <- recentFirst =<< loadAll "course-posts/*"
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Prof Archives"            `mappend`
+                    constField "title" "Post archives"            `mappend`
                     defaultContext
 
             makeItem ""

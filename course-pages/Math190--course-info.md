@@ -4,13 +4,22 @@ title: Math190 - Course Info
 
 # Scheduling information
 
-- [Course syllabus](/course-pages/Math190--course-syllabus.html) or as a [PDF](/course-pages/Math190--course-syllabus.pdf)
+- [Course syllabus](/course-pages/Math190--course-syllabus.html) (or
+  as a [PDF](/course-assets/pages-pdf/Math190--course-syllabus.pdf))
 
-- [Assignment schedule](/course-pages/Math190--Assignments--AY2023-2024spring.html) or as a [PDF](/course-pages/Math190--Assignments--AY2023-2024spring.pdf)
+- [Assignment
+  schedule](/course-pages/Math190--Assignments--AY2023-2024spring.html)
+  (or as a
+  [PDF](/course-asset/pages-pdf/Math190--Assignments--AY2023-2024spring.pdf))
 
-- [Lecture schedule](/course-pages/Math190--Lectures--AY2023-2024spring.html) or as a [PDF](/course-pages/Math190--Lectures--AY2023-2024spring.pdf)
+- [Lecture
+  schedule](/course-pages/Math190--Lectures--AY2023-2024spring.html)
+  (or as a
+  [PDF](/course-assets/pages-pdf/Math190--Lectures--AY2023-2024spring.pdf))
 
-- [Combined schedule](/course-pages/Math190--AY2023-2024spring.html) or as a [PDF](/course-pages/Math190--AY2023-2024spring.pdf)
+- [Combined schedule](/course-pages/Math190--AY2023-2024spring.html)
+  (or as a
+  [PDF](/course-assets/paged-pdf/Math190--AY2023-2024spring.pdf))
 
 
 # Resources
@@ -19,4 +28,11 @@ title: Math190 - Course Info
  
  - [LaTeX](/course-posts/resources--LaTeX.html)
  
- - [expectation & rubrics](/course-posts/resources--expectations-and-rubrics.html)
+ - [expectation &
+   rubrics](/course-posts/resources--expectations-and-rubrics.html)
+   (or as a
+   [PDF](/course-assets/posts-pdf/resources--expectations-and-rubrics.pdf))
+   
+ - [video project](/course-posts/resources-videos.html)
+   (or as a 
+   [PDF](/course-assets/posts-pdf/resources-videos.pdf))

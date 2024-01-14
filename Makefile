@@ -6,28 +6,28 @@ BEAMER_META=--metadata-file=build-assets/beamer-metadata.yaml
 PD=pandoc --standalone --from markdown -V linkcolor:red --citeproc
 CMD=/home/george/.local/bin/course report
 
-VPATH = .:representation-theory:coding
+VPATH = .:course-pages:course-posts
 
 CSS_DEFAULT="build-assets/default.css"
 
+posts=$(notdir $(wildcard course-posts/*.md))
+pages=$(notdir $(wildcard course-pages/*.md))
 
-posts=$(wildcard course-posts/*.md)
-pages=$(wildcard course-pages/*.md)
-problems=$(wildcard problem-sets/*.md)
+pages_pdf=$(addprefix course-assets/pages-pdf/,$(pages:.md=.pdf))
 
-pages_pdf=$(pages:.md=.pdf)
-problems_pdf=$(problems:.md=.pdf)
+posts_pdf=$(addprefix course-assets/posts-pdf/,$(posts:.md=.pdf))
 
 
-all: pages problems
+all: pages posts
 
 pages: $(pages_pdf)
-problems: $(problems_pdf)
+posts: $(posts_pdf)
 
 %-slides.html: %.md
 	$(PD) $(META) $< build-assets/biblio.md --css=$(CSS_DEFAULT) -V slideous-url=$(SLIDEOUS) -t slidy --mathjax=$(MJ)  -o $@
 
-%.pdf: %.md
+
+course-assets/pages-pdf/%.pdf course-assets/posts-pdf/%.pdf: %.md
 	$(PD) $(META) $< build-assets/biblio.md --pdf-engine=xelatex --resource-path=$(RP) -t latex -o $@
 
 .PHONY: echoes
@@ -35,8 +35,8 @@ problems: $(problems_pdf)
 echoes:
 	@echo $(pages)
 	@echo $(pages_pdf)
-#	@echo $(notes2)
-#	@echo $(PDF)
+	@echo $(posts)
+	@echo $(posts_pdf)
 
 
 .PHONY: clean

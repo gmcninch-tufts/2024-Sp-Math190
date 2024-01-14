@@ -87,3 +87,9 @@ Table: **Grading**
 Your *letter grade* is then determined from this score using [the
 scheme described at this
 link](https://math.tufts.edu/resources/grading-schemes).
+
+
+# Student Resources
+
+  For a list of *student resources*, please see the *syllabus* section
+  of the `Canvas` site for the course.

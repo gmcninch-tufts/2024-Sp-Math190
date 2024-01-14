@@ -15,4 +15,4 @@ date    : 2023-10-23
   - formalization of mathematics
   
   In fact, you can see the (proposed) [schedule of lectures
-  here](course-pages/Math190--Lectures--AY2023-2024spring.html)
+  here](/course-pages/Math190--Lectures--AY2023-2024spring.html)
