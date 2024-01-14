@@ -1,4 +1,4 @@
--- Time-stamp: <2024-01-13 Sat 08:46 EST - george@valhalla>
+-- Time-stamp: <2024-01-14 Sun 11:49 EST - george@valhalla>
 let Dow = < Mon | Tue | Wed | Thu | Fri | Sat | Sun >
 
 let concat = https://prelude.dhall-lang.org/List/concat
@@ -84,7 +84,7 @@ in  [ { courseAY = "AY2023-2024"
       , sections = [ "01" ]
       , chair = "George McNinch"
       , instructors = [] : List Text
-      , tas = [ "" ]
+      , tas = [ "Xiao Tan" ]
       , courseDescription = "Topics in Algebra"
       , target =
         { dir = "course-pages", base = "Math190", org = "/home/george/org/" }

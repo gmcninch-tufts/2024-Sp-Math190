@@ -10,19 +10,16 @@ abstract: Course Syllabus
 
 - **Professor: **[George McNinch](http://gmcninch.math.tufts.edu)
   <<george.mcninch@tufts.edu>>
-- **Teaching Assistant: ** Xiao Tan
+- **Teaching Assistant: ** Xiao Tan <<xiao.tan@tufts.edu>>
 
 - **Course online resources**: 
 
   - [canvas page](http://canvas.tufts.edu)
   - URL: [https://gmcninch-tufts.github.io/2024-Sp-Math190/](https://gmcninch-tufts.github.io/2024-Sp-Math190/)
 
-The class meets on Mondays and Wednesdays.
-
-
-- There is no required textbook for the course. I've [indicate
-  here](resources-references.md) some references that I'll use and
-  that you can consult.
+- There is no required textbook for the course. [Here are some
+  references](/course-posts/resources-references.html) that I'll use
+  and that you can consult.
 
 
 # Course Grading & Expectations   {#grading-and-expect}
@@ -35,7 +32,8 @@ Here are details on these course components:
 
 - *weekly problem sets*, 
 
-  Problem sets will be collected weekly on *Fridays*. [Here is the planned collection
+  Since the class meets on Mondays and Wednesdays, problem sets will
+  be collected weekly on *Fridays*. [Here is the planned collection
   schedule](/course-pages/Math190--Assignments--AY2023-2024spring.html).
 
   The problems will be posted on the course website, and your
