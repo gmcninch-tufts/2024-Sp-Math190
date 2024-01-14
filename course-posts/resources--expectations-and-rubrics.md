@@ -30,17 +30,8 @@ date: 2024-01-01
   
   - explanation and exposition
 
-    Have assumptions and hypotheses been explained? This includes
-    mathematical hypotheses, as well as modeling choices and
-    assumptions.
+    Have hypotheses been carefully explained? 
 
-  - computer code
-  
-    You are free to adapt and use computer code distributed in the
-    course.
-	
-	Inclusion of any code used in your solutions is
-    encouraged. 
 
 # Video project
 
