@@ -61,6 +61,10 @@ main = hakyllWith config $ do
         route   idRoute
         compile compressCssCompiler
 
+    match "course-pages/*pdf" $ do
+      route idRoute
+      compile copyFileCompiler
+
     match "course-pages/*md" $ do
         route $ setExtension "html"
         compile $ myCompiler

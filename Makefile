@@ -10,30 +10,19 @@ VPATH = .:representation-theory:coding
 
 CSS_DEFAULT="build-assets/default.css"
 
-TOPIC_DIRS=course-posts
-LOGISTIC_DIRS=course-pages
 
-lectures=$(wildcard *md,$(foreach fd, $(TOPIC_DIRS), $(fd)/*.md))
+posts=$(wildcard course-posts/*.md)
+pages=$(wildcard course-pages/*.md)
+problems=$(wildcard problem-sets/*.md)
 
-notes_pdf=$(lectures:.md=.pdf)
-#notes_html=$(notes:.md=.html)
-notes_slides=$(lectures:.md=-slides.html)
-
-logistics=$(wildcard *md,$(foreach fd, $(LOGISTIC_DIRS), $(fd)/*.md))
-logistics_pdf=$(logistics:.md=.pdf)
-#logistics_html=$(logistics:.md=.html)
-
-pacing_md = $(wildcard pacing/*.md)
+pages_pdf=$(pages:.md=.pdf)
+problems_pdf=$(problems:.md=.pdf)
 
 
-all: logistics
+all: pages problems
 
-notes: $(notes_pdf) $(notes_slides)
-pacing: $(pacing_md) $(pacing)
-logistics: $(logistics_pdf) $(pacing_md)
-
-# %.html: %.md
-# 	$(PD) $(META) $< build-assets/biblio.md --css=$(CSS_DEFAULT) --mathjax=$(MJ) --to html  -o $@
+pages: $(pages_pdf)
+problems: $(problems_pdf)
 
 %-slides.html: %.md
 	$(PD) $(META) $< build-assets/biblio.md --css=$(CSS_DEFAULT) -V slideous-url=$(SLIDEOUS) -t slidy --mathjax=$(MJ)  -o $@
@@ -41,15 +30,11 @@ logistics: $(logistics_pdf) $(pacing_md)
 %.pdf: %.md
 	$(PD) $(META) $< build-assets/biblio.md --pdf-engine=xelatex --resource-path=$(RP) -t latex -o $@
 
-%.md: Math135-AY2023-spring.dhall topics/notes.dhall topics/assignments.dhall
-	$(CMD) $<	
-
-
 .PHONY: echoes
 
 echoes:
-	@echo $(notes)
-	@echo $(notes_pdf)
+	@echo $(pages)
+	@echo $(pages_pdf)
 #	@echo $(notes2)
 #	@echo $(PDF)
 

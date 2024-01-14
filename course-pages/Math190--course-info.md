@@ -19,6 +19,4 @@ title: Math190 - Course Info
  
  - [LaTeX](/course-posts/resources--LaTeX.html)
  
- - [python & jupyter](/course-posts/resources--python-and-jupyter.html)
- 
  - [expectation & rubrics](/course-posts/resources--expectations-and-rubrics.html)
