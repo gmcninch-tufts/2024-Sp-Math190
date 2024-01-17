@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - Week01 -- Groups and linear algebra
+</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>Week01 -- Groups and linear algebra
+</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-01-17
+        
+    </section>
+    <section>
+        <p>The first homework assignment can be found here</p>
+<ul>
+<li><a href="../course-assignments/PS01--rep-theory.html"><strong>[problem set 1]</strong></a> <a href="../course-assignments/PS01--rep-theory.pdf">[pdf]</a></li>
+</ul>
+<p>In the first lecture, we discussed some examples of groups and some
+basics of linear algebra.</p>
+<h1 id="groups">Groups</h1>
+<ul>
+<li><p>the elements of the <em>cylic group</em> <span class="math inline">\(\mathbb{Z}/n\mathbb{Z}\)</span> are the
+equivalence classes of integers under the relation “<span class="math inline">\(\equiv \pmod{n}\)</span>”</p>
+<p>this group is <em>additive</em></p></li>
+<li><p>we observed that the mapping <span class="math inline">\(\phi:2\mathbb{R} \to \mathbf{S}^1\)</span>
+given by <span class="math inline">\(\phi(t) = e^{2\pi i t}\)</span> is a <em>group homomorphism</em>
+since <span class="math inline">\(\phi(t + s) = \phi(t) \phi(s)\)</span> for all <span class="math inline">\(t,s \in \mathbb{R}\)</span>.</p>
+<p>we observed that <span class="math inline">\(\ker \phi = \mathbb{Z}\)</span>, and that - by the <strong>First
+Isomorphism Theorem</strong> - <span class="math inline">\(\phi\)</span> induces an isomorphism
+<span class="math display">\[\overline{\phi}: \mathbb{R}/\mathbb{Z} \to \mathbf{S}^1.\]</span></p></li>
+<li><p>for a non-zero natural number the symmetric group <span class="math inline">\(S_n\)</span> is the
+collection of all bijections <span class="math inline">\(I_n \to I_n\)</span> where <span class="math inline">\(I_n = \{1,2,\cdots,n\}\)</span>.</p>
+<p>We may sometimes use <em>cycle notation</em> for elements of <span class="math inline">\(S_n\)</span>.</p>
+<p>The subgroup <span class="math display">\[H=\langle (1234), (14)(23) \rangle\]</span> has order
+<span class="math inline">\(8\)</span> and is sometimes called the <em>dihedral group</em> <span class="math inline">\(D_4\)</span> or <span class="math inline">\(D_8\)</span> –
+it has order 8.</p></li>
+<li><p>Let <span class="math inline">\(F\)</span> be a field.</p>
+<p>Recall that typically examples are: <span class="math inline">\(F = \mathbb{R},\mathbb{C},\mathbb{Q},\mathbb{Z}/p\mathbb{Z}\)</span> for a prime
+number <span class="math inline">\(p\)</span>.</p>
+<p>The set
+<span class="math display">\[\operatorname{GL}_n(F) = \{\text{all invertible $n \times n$  matrices with entries in $F$}\}\]</span>
+forms a group under matrix multiplication.</p>
+<p>The determinant function yields a group homomorphism
+<span class="math display">\[\det:\operatorname{GL}_n(F) \to F^\times\]</span> (here <span class="math inline">\(F^\times\)</span> means
+<span class="math inline">\(F \setminus \{0\}\)</span>, which is a commutative group under
+multiplication in the field <span class="math inline">\(F\)</span>).</p></li>
+</ul>
+<h1 id="linear-algebra">Linear Algebra</h1>
+<p>Let <span class="math inline">\(F\)</span> be a field. An <span class="math inline">\(F\)</span>-vector space <span class="math inline">\(V\)</span> is an additive abelian
+group together with an operation of <em>scalar multiplication</em> – this
+amounts to a function <span class="math display">\[F \times V \to V\]</span> – satisfying certain
+axioms.</p>
+<p>If <span class="math inline">\(V,W\)</span> are <span class="math inline">\(F\)</span>-vector spaces, a linear mapping <span class="math inline">\(T:V \to W\)</span> is a
+function which satisfies <span class="math display">\[T(\alpha v + w) = \alpha T(v) + T(w).\]</span></p>
+<p>Let’s suppose that <span class="math inline">\(V\)</span> is <em>finite dimensional</em> and that <span class="math inline">\(\phi:V \to V\)</span>.</p>
+<p>We write <span class="math inline">\(\phi^2 = \phi \circ \phi\)</span> and more generally
+<span class="math inline">\(\phi^n = \phi \circ \phi^{n-1}\)</span>.</p>
+<h2 id="trace-det-char-poly">trace, det, char poly</h2>
+<p>The <em>trace</em> of a matrix <span class="math inline">\(M=[M_{ij}]\)</span> is the sum of the diagonal
+entries: <span class="math display">\[\operatorname{tr}(M) = \sum_{i=1}^n M_{ii}.\]</span></p>
+<p>I’m assuming you recall the definition of the <em>determinant</em> <span class="math inline">\(\det M\)</span>.</p>
+<p>The characteristic polynomial <span class="math inline">\(\operatorname{cp}_M(X) \in F[X]\)</span> of <span class="math inline">\(M\)</span>
+is defined to be <span class="math display">\[\operatorname{cp}_M(X) = \det(M - X \cdot
+\mathbf{I}_n).\]</span></p>
+<p>For a linear transformation <span class="math inline">\(\phi\)</span> we define</p>
+<ul>
+<li><p><span class="math inline">\(\operatorname{tr}(\phi) = \operatorname{tr}([\phi]_{\mathcal{B}})\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{det}(\phi) = \operatorname{det}([\phi]_{\mathcal{B}})\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{cp}_\phi(X) = \operatorname{cp}_{[\phi]_{\mathcal{B}}}(X)\)</span></p></li>
+</ul>
+<dl>
+<dt><strong>Proposition</strong></dt>
+<dd>
+<span class="math inline">\(\operatorname{tr}(\phi)\)</span>, <span class="math inline">\(\operatorname{det}(\phi)\)</span>, and
+<span class="math inline">\(\operatorname{p}_\phi(X)\)</span> are independent of the choice <span class="math inline">\(\mathcal{B}\)</span> of basis for <span class="math inline">\(V\)</span>.
+</dd>
+</dl>
+<p>The main point here is that if <span class="math inline">\(\mathcal{B}\)</span> and <span class="math inline">\(\mathcal{B}'\)</span> are
+two basis for <span class="math inline">\(V\)</span>, there is an invertible matrix (“change of basis
+matrix”) <span class="math inline">\(P\)</span> for which <span class="math display">\[[\phi]_{\mathcal{B}} = P
+[\phi]_{\mathcal{B}'} P^{-1}.\]</span></p>
+<h2 id="evaluation-of-polynomials-at-linear-transformations">Evaluation of polynomials at linear transformations</h2>
+<p>Suppose that <span class="math inline">\(f = f(X) \in F[X]\)</span> is a polynomial; thus
+<span class="math display">\[f = \sum_{i=0}^N a_i X^i\]</span>
+for some coefficients <span class="math inline">\(a_i \in F\)</span>.</p>
+<p>We may <em>evaluate</em> the polynomial <span class="math inline">\(f\)</span> at the linear endmorphism <span class="math inline">\(\phi\)</span>:</p>
+<p><span class="math display">\[f(\phi) = \sum_{i=0}^N a_i \phi^i.\]</span></p>
+<dl>
+<dt><strong>Proposition</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(\phi:V \to V\)</span> be a linear transformation, and let <span class="math display">\[I = \{f
+\in F[X] \mid f(\phi) = 0\}.\]</span>
+Then <span class="math inline">\(I\)</span> is an <em>ideal</em> in the polynomial ring <span class="math inline">\(F[X]\)</span>. In particular,
+there is a unique monic polynomial <span class="math inline">\(m_\phi(X) \in F[x]\)</span> for which
+<span class="math inline">\(I = m_\phi(X) F[X]\)</span>.</p>
+<p>In particular, if <span class="math inline">\(f \in F[X]\)</span> and <span class="math inline">\(f(\phi)=0\)</span>, then <span class="math inline">\(m_\phi \vert f\)</span>.</p>
+</dd>
+<dt><strong>Theorem (Cayley-Hamilton)</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(\phi:V \to V\)</span> be a linear transformation, and let
+<span class="math inline">\(\operatorname{cp}(X) = \operatorname{cp}_\phi(X) \in F[X]\)</span> be the characteristic polynomial.</p>
+<p>Then <span class="math inline">\(\operatorname{cp}(\phi) = 0\)</span>.</p>
+</dd>
+</dl>
+<p>Recall that the <em>eigenvalues</em> of <span class="math inline">\(\phi\)</span> are precisely the roots of the
+characteristic polynomial. The Cayley-Hamilton Theorem implies that
+any root of the minimal polynomial is an eigenvalue. In fact, we have
+the converse as well:</p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+If <span class="math inline">\(\lambda \in F\)</span> is an eigenvalue of <span class="math inline">\(\phi\)</span> – i.e. a root of
+the characteristic polynomial – then <span class="math inline">\(\lambda\)</span> is a root of the
+minimal polynomial.
+</dd>
+<dt><strong>Theorem:</strong></dt>
+<dd>
+<span class="math inline">\(\phi\)</span> is <em>diagonalizable</em> – i.e. <span class="math inline">\(V\)</span> has a basis of eigenvectors
+for <span class="math inline">\(\phi\)</span> – if and only the minimal polynomial has no multiple
+roots.
+</dd>
+<dt><strong>Remark:</strong></dt>
+<dd>
+This theorem should be proved in Math215-216 here at Tufts using
+the <em>Fundamental Theorem for modules over a PID</em>. We don’t need
+the full force of this result in our class.
+</dd>
+</dl>
+<h2 id="example">Example</h2>
+<p>Suppose that <span class="math inline">\(\phi:V \to V\)</span> satisfies <span class="math inline">\(\phi^N = \operatorname{id}_V\)</span>
+for some positive natural number <span class="math inline">\(N\)</span>.</p>
+<p>We suppose that <span class="math inline">\(F\)</span> is <em>algebraically closed</em> and of <em>characteristic zero</em>.</p>
+<p>Notice that the polynomial <span class="math inline">\(f(X) = X^N -1 \in F[X]\)</span> has distinct roots.</p>
+<p>(If <span class="math inline">\(F = \mathbb{C}\)</span>, these roots are exactly
+<span class="math display">\[\{\exp(2\pi k i/n) \mid 0 \le k &lt; N\}.\]</span>
+)</p>
+<p>Since the minimal polynomial of <span class="math inline">\(\phi\)</span> divides <span class="math inline">\(f\)</span>, we see that the
+minimal polynomial has distinct roots and hence <span class="math inline">\(\phi\)</span> is
+diagonalizable by the <strong>Theorem</strong> quoted above.</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>
