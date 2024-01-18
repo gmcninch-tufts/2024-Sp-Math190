@@ -39,20 +39,20 @@ complex numbers.
    $\zeta = e^{2\pi i/n}$).
 	  
    c. Let $v_1 = \displaystyle \sum_{i=1}^n \zeta^i e_i$. Show that
-      $v_1$ is a $\zeta$-eigenvector for $\phi$.
+      $v_1$ is a $\zeta$-eigenvector for $T$.
 
    d. More generally, let $0 \le j < n$ and let
       $$v_j = \sum_{i=1}^n \zeta^{ij} e_i.$$
-	  Show that $v_j$ is a $\zeta^j$-eigenvector for $\phi$.
+	  Show that $v_j$ is a $\zeta^j$-eigenvector for $T$.
 
    e. Conclude that $v_0,v_1,\cdots,v_{n-1}$ is a basis of $V$
-      consisting of *eigenvectors* for $\phi$, so that $\phi$ is
+      consisting of *eigenvectors* for $T$, so that $T$ is
       *diagonalizable*.
 	  
 	  **Hint:** You need to use the **fact** that eigenvectors for distinct eigenvalues
 	  are *linearly independent*.
 
-      What is the *matrix* of $\phi$ in this basis?
+      What is the *matrix* of $T$ in this basis?
 
 3. Let $G = \mathbb{Z}/3\mathbb{Z}$ be the additive group of order
    $3$, and let $\zeta$ be a primitive $3$rd root of unity in $F$.
