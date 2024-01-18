@@ -33,7 +33,7 @@ myCompiler = do
   bib <- load "bib/teaching.bib"
   getResourceBody >>=
     readPandocBiblio readMathjaxOptions csl bib >>=
-    return . (writePandocWith writeMathjaxOptions)
+    pure . (writePandocWith writeMathjaxOptions)
 
 
 -- myCompiler :: Compiler (Item String)
