@@ -56,6 +56,17 @@ main = hakyllWith config $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
+    match "course-contents/*md" $ do
+        route $ setExtension "html"
+        compile $ myCompiler
+          >>= loadAndApplyTemplate "templates/content.html"    postCtx
+          >>= loadAndApplyTemplate "templates/default.html" postCtx
+          >>= relativizeUrls
+
+    match "course-contents/*pdf" $ do
+      route idRoute
+      compile copyFileCompiler
+
 
     match "css/*" $ do
         route   idRoute
