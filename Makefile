@@ -17,7 +17,7 @@ pages_pdf=$(addprefix course-assets/pages-pdf/,$(pages:.md=.pdf))
 
 posts_pdf=$(addprefix course-assets/posts-pdf/,$(posts:.md=.pdf))
 
-problems=$(wildcard course-assignments/*.md)
+problems=$(wildcard course-contents/*.md)
 problems_pdf=$(problems:.md=.pdf)
 
 
