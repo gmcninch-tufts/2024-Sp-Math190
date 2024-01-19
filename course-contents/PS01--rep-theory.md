@@ -39,11 +39,11 @@ complex numbers.
    $\zeta = e^{2\pi i/n}$).
 	  
    c. Let $v_1 = \displaystyle \sum_{i=1}^n \zeta^i e_i$. Show that
-      $v_1$ is a $\zeta$-eigenvector for $T$.
+      $v_1$ ~~is a $\zeta$-eigenvector~~ is a $\zeta^{-1}$-eigenvector for $T$.
 
-   d. More generally, let $0 \le j < n$ and let
-      $$v_j = \sum_{i=1}^n \zeta^{ij} e_i.$$
-	  Show that $v_j$ is a $\zeta^j$-eigenvector for $T$.
+   d. More generally, let $0 \le j < n$ and let $$v_j = \sum_{i=1}^n
+      \zeta^{ij} e_i.$$ Show that $v_j$ ~~is a $\zeta^j$-eigenvector~~
+      is a $\zeta^{-j}$-eigenvector for $T$.
 
    e. Conclude that $v_0,v_1,\cdots,v_{n-1}$ is a basis of $V$
       consisting of *eigenvectors* for $T$, so that $T$ is
@@ -69,7 +69,7 @@ complex numbers.
    0 & 0 & \zeta^2
    \end{bmatrix}$$
    and consider the representation
-   $\rho_2:G \to \operatorname{GL}_2(F)$ given by
+   $\rho_2:G \to \operatorname{GL}_3(F)$ given by
    the matrix $$\rho_2(1 + 3\mathbb{Z}) = M_2 = \begin{bmatrix}
    0 & 0 & 1\\ 
    1 & 0 & 0 \\
@@ -78,11 +78,11 @@ complex numbers.
 
    Show that the *representations* $\rho_1$ and $\rho_2$ are
    *equivalent* (alternative terminology: are *isomorphic*).  In other
-   words, find a linear bijection $\Phi:F^2 \to F^2$ with the property
+   words, find a linear bijection $\Phi:F^3 \to F^3$ with the property
    that $$\Phi(\rho_2(g)v) = \rho_1(g)\Phi(v)$$ for every $g \in G$
-   and $v \in F^2$.
+   and $v \in F^3$.
 
-   **Hint:** First find a basis of $F^2$ consisting of eigenvectors
+   **Hint:** First find a basis of $F^3$ consisting of eigenvectors
    for the matrix $M_2$.
 
 4. Let $V$ be a $n$ dimensional $F$-vector space for $n \in

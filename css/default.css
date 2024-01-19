@@ -218,3 +218,8 @@ div.csl-entry {
         text-indent:-1.5em;
 	margin-bottom: 6px;
     }
+
+del {
+    color: red;
+}
+    

@@ -71,10 +71,10 @@ e_1 &amp; i =n
 <span class="math inline">\(\zeta = e^{2\pi i/n}\)</span>).</p>
 <ol start="3" type="a">
 <li><p>Let <span class="math inline">\(v_1 = \displaystyle \sum_{i=1}^n \zeta^i e_i\)</span>. Show that
-<span class="math inline">\(v_1\)</span> is a <span class="math inline">\(\zeta\)</span>-eigenvector for <span class="math inline">\(T\)</span>.</p></li>
-<li><p>More generally, let <span class="math inline">\(0 \le j &lt; n\)</span> and let
-<span class="math display">\[v_j = \sum_{i=1}^n \zeta^{ij} e_i.\]</span>
-Show that <span class="math inline">\(v_j\)</span> is a <span class="math inline">\(\zeta^j\)</span>-eigenvector for <span class="math inline">\(T\)</span>.</p></li>
+<span class="math inline">\(v_1\)</span> <del>is a <span class="math inline">\(\zeta\)</span>-eigenvector</del> is a <span class="math inline">\(\zeta^{-1}\)</span>-eigenvector for <span class="math inline">\(T\)</span>.</p></li>
+<li><p>More generally, let <span class="math inline">\(0 \le j &lt; n\)</span> and let <span class="math display">\[v_j = \sum_{i=1}^n
+\zeta^{ij} e_i.\]</span> Show that <span class="math inline">\(v_j\)</span> <del>is a <span class="math inline">\(\zeta^j\)</span>-eigenvector</del>
+is a <span class="math inline">\(\zeta^{-j}\)</span>-eigenvector for <span class="math inline">\(T\)</span>.</p></li>
 <li><p>Conclude that <span class="math inline">\(v_0,v_1,\cdots,v_{n-1}\)</span> is a basis of <span class="math inline">\(V\)</span>
 consisting of <em>eigenvectors</em> for <span class="math inline">\(T\)</span>, so that <span class="math inline">\(T\)</span> is
 <em>diagonalizable</em>.</p>
@@ -94,7 +94,7 @@ given by the matrix <span class="math display">\[\rho_1(1 + 3\mathbb{Z}) = M_1 =
 0 &amp; 0 &amp; \zeta^2
 \end{bmatrix}\]</span>
 and consider the representation
-<span class="math inline">\(\rho_2:G \to \operatorname{GL}_2(F)\)</span> given by
+<span class="math inline">\(\rho_2:G \to \operatorname{GL}_3(F)\)</span> given by
 the matrix <span class="math display">\[\rho_2(1 + 3\mathbb{Z}) = M_2 = \begin{bmatrix}
 0 &amp; 0 &amp; 1\\ 
 1 &amp; 0 &amp; 0 \\
@@ -102,10 +102,10 @@ the matrix <span class="math display">\[\rho_2(1 + 3\mathbb{Z}) = M_2 = \begin{b
 \end{bmatrix}.\]</span></p>
 <p>Show that the <em>representations</em> <span class="math inline">\(\rho_1\)</span> and <span class="math inline">\(\rho_2\)</span> are
 <em>equivalent</em> (alternative terminology: are <em>isomorphic</em>). In other
-words, find a linear bijection <span class="math inline">\(\Phi:F^2 \to F^2\)</span> with the property
+words, find a linear bijection <span class="math inline">\(\Phi:F^3 \to F^3\)</span> with the property
 that <span class="math display">\[\Phi(\rho_2(g)v) = \rho_1(g)\Phi(v)\]</span> for every <span class="math inline">\(g \in G\)</span>
-and <span class="math inline">\(v \in F^2\)</span>.</p>
-<p><strong>Hint:</strong> First find a basis of <span class="math inline">\(F^2\)</span> consisting of eigenvectors
+and <span class="math inline">\(v \in F^3\)</span>.</p>
+<p><strong>Hint:</strong> First find a basis of <span class="math inline">\(F^3\)</span> consisting of eigenvectors
 for the matrix <span class="math inline">\(M_2\)</span>.</p></li>
 <li><p>Let <span class="math inline">\(V\)</span> be a <span class="math inline">\(n\)</span> dimensional <span class="math inline">\(F\)</span>-vector space for <span class="math inline">\(n \in \mathbb{N}\)</span>.</p>
 <p>Let <span class="math inline">\(\operatorname{GL}(V)\)</span> denote the group <span class="math display">\[\operatorname{GL}(V)
