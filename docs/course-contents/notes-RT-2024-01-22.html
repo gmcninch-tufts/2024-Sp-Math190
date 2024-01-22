@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - Notes on Representations</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>Notes on Representations</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-01-22
+        
+    </section>
+    <section>
+        <p>Let <span class="math inline">\(G\)</span> be a finite group, let <span class="math inline">\(F\)</span> be a field (algebraically closed, char. 0).</p>
+<p>A representation of <span class="math inline">\(G\)</span> is a vector space <span class="math inline">\(V\)</span> together with a group
+homomorphism <span class="math display">\[\rho:G \to \operatorname{GL}(V).\]</span></p>
+<p>If we choose a basis <span class="math inline">\(\mathcal{B}\)</span> of <span class="math inline">\(V\)</span>, we obtain from <span class="math inline">\(\rho\)</span> an
+assignment <span class="math inline">\(g \mapsto [\rho(g)]_\mathcal{B}\)</span> which is a group
+homomorphism <span class="math inline">\(G \to \operatorname{GL}_n(F)\)</span>.</p>
+<h2 id="first-example">First example</h2>
+<p>Consider the finite cyclic group <span class="math inline">\(G = \mathbb{Z}/n\mathbb{Z}\)</span> for a
+natural number <span class="math inline">\(n &gt; 0\)</span>.</p>
+<p>Suppose that <span class="math inline">\(M\)</span> is an <span class="math inline">\(m \times m\)</span> matrix for which <span class="math inline">\(M^n = \mathbf{I}\)</span>.
+Using <span class="math inline">\(M\)</span>, we get a representation
+<span class="math display">\[\rho_M:\mathbb{Z}/n\mathbb{Z} \to \operatorname{GL}_m(F)\]</span>
+by the rule
+<span class="math display">\[\rho_M(i + n \mathbb{Z}) = M^i.\]</span></p>
+<p>One might consider the question: If <span class="math inline">\(M\)</span> and <span class="math inline">\(M'\)</span> are two <span class="math inline">\(m \times m\)</span>
+matrices for which <span class="math inline">\(M^n = (M')^n = \mathbf{I}\)</span>, when are the
+representations <span class="math inline">\(\rho_M\)</span> and <span class="math inline">\(\rho_{M'}\)</span> “the same”??</p>
+<p>Consider the following <span class="math inline">\(3\times 3\)</span> matrices, each of which satisfies
+<span class="math inline">\(M^3 = \mathbf{I}\)</span>:</p>
+<p><span class="math display">\[\begin{equation*}
+\begin{pmatrix}
+0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 
+\end{pmatrix},
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; \zeta &amp; 0 \\
+0 &amp; 0 &amp; \zeta^2
+\end{pmatrix},
+\begin{pmatrix}
+0 &amp; 0 &amp; -2 \\
+3/2 &amp; 0 &amp; 0 \\
+0 &amp; -1/3 &amp; 0 
+\end{pmatrix}.
+\end{equation*}\]</span>
+where <span class="math inline">\(\zeta\)</span> is a root of <span class="math inline">\(\dfrac{T^3-1}{T-1} = T^2 + T + 1\)</span>. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>In fact, all three of these matrices have eigenvalues
+<span class="math inline">\(1,\zeta,\zeta^2\)</span> each with multiplicity 1.</p>
+<h2 id="example-two-commuting-matrices">Example: two commuting matrices</h2>
+<p>Suppose that <span class="math inline">\(M,N\)</span> are <span class="math inline">\(m \times m\)</span> matrices for which <span class="math inline">\(M^n = \mathbf{I}\)</span>, <span class="math inline">\(N^k = \mathbf{I}\)</span> and <span class="math inline">\(MN = NM\)</span>.</p>
+<p>We get a representation
+<span class="math display">\[\rho:\mathbb{Z}/n\mathbb{Z} \times \mathbb{Z}/k\mathbb{Z} \to \operatorname{GL}_m(F)\]</span>
+by the rule
+<span class="math display">\[\rho(i+n\mathbb{Z},j+k\mathbb{Z}) = M^iN^j.\]</span></p>
+<dl>
+<dt><em>Remark</em></dt>
+<dd>
+<p>Let <span class="math inline">\(\mu\)</span> be an eigenvalue of the matrix <span class="math inline">\(M\)</span>, and let <span class="math inline">\(V_\mu \subset F^m\)</span> be the corresponding <em>eigenspace</em>.</p>
+<p>Since <span class="math inline">\(M\)</span> and <span class="math inline">\(N\)</span> commute, a homework exercise shows that <span class="math inline">\(V_\mu\)</span>
+is <em>invariant</em> under the action of <span class="math inline">\(N\)</span>.</p>
+<p>Then <span class="math display">\[N_{\mid V_\mu}:V_\mu \to V_\mu\]</span> is a linear transformation
+satisfying <span class="math inline">\((N_{\mid V_\mu})^k = \operatorname{id}\)</span>.</p>
+<p>In particular, we may choose a basis of <span class="math inline">\(V_\mu\)</span> of eigenvectors for <span class="math inline">\(N_{\mid V_\mu}\)</span></p>
+<p>In this way, we see that <span class="math inline">\(V = F^m\)</span> has a basis consisting of
+vectors which are simultaneously eigenvectors for <span class="math inline">\(N\)</span> and for <span class="math inline">\(M\)</span>.</p>
+</dd>
+</dl>
+<h2 id="construction-of-representations-from-group-actions">Construction of representations from group actions</h2>
+<p>Suppose that the (finite) group <span class="math inline">\(G\)</span> acts on the (finite) set
+<span class="math inline">\(\Omega\)</span>. We are going to use this action to define a representation
+of <span class="math inline">\(G\)</span>.</p>
+<p>We consider the vector space <span class="math inline">\(F[\Omega]\)</span> of all <span class="math inline">\(F\)</span>-valued functions
+on <span class="math inline">\(\Omega\)</span>.</p>
+<p>For <span class="math inline">\(g \in G\)</span>, we consider the linear transformation
+<span class="math display">\[\rho(g):F[\Omega] \to F[\Omega]\]</span>
+defined for <span class="math inline">\(f \in F[\Omega]\)</span> by the rule
+<span class="math display">\[\rho(g)(f)(\omega) = f(g^{-1}\omega).\]</span></p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+<p>(a). <span class="math inline">\(\rho(g)\)</span> is an <span class="math inline">\(F\)</span>-linear map.</p>
+<p>(b). <span class="math inline">\(\rho(gh) = \rho(g)\rho(h)\)</span> for <span class="math inline">\(g,h \in G\)</span>.</p>
+<p>(c). <span class="math inline">\(\rho(g):F[\Omega] \to F[\Omega]\)</span> is <em>invertible</em>.</p>
+</dd>
+<dt><strong>Proof of (b):</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(f \in F[\Omega]\)</span>. For <span class="math inline">\(\tau \in \Omega\)</span> we have
+<span class="math display">\[\rho(gh)f(\tau) = f((gh)^{-1}\tau) =
+f(h^{-1}g^{-1}\tau) =
+\rho(h)f(g^{-1}\tau) =
+\rho(g)\rho(h)f(\tau).\]</span></p>
+<p>Since this holds for all <span class="math inline">\(\tau\)</span>, conclude that
+<span class="math display">\[\rho(gh)f = \rho(g)\rho(h)f.\]</span></p>
+<p>Since this holds for all <span class="math inline">\(f\)</span>, conclude that <span class="math inline">\(\rho(gh) = \rho(g)\rho(h)\)</span> as required.</p>
+</dd>
+</dl>
+<p>The Proposition shows that
+<span class="math display">\[\rho:G \to \operatorname{GL}(F[\Omega])\]</span>
+is a representation of <span class="math inline">\(G\)</span>.</p>
+<p>Here is an alternate perspective on <span class="math inline">\(F[\Omega]\)</span> and the action of <span class="math inline">\(G\)</span>.</p>
+<p>For <span class="math inline">\(\omega \in \Omega\)</span>, consider the <em>Dirac</em> function
+<span class="math inline">\(\delta_\omega \in F[\Omega]\)</span> defined by
+<span class="math display">\[\delta_\omega(\tau) = \left\{ \begin{matrix}
+1 &amp; \omega = \tau \\
+0 &amp; \text{else}
+\end{matrix} \right.\]</span></p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+The collection <span class="math inline">\(\delta_\omega\)</span> forms a <em>basis</em> for the <span class="math inline">\(F\)</span>-vector
+space <span class="math inline">\(F[\Omega]\)</span>.
+</dd>
+<dt><strong>Sketch:</strong></dt>
+<dd>
+<p>For <span class="math inline">\(f \in F[\Omega]\)</span>, we have
+<span class="math display">\[f = \sum_{\omega \in \Omega} f(\omega) \delta_\omega.\]</span>
+This shows that the <span class="math inline">\(\delta_\omega\)</span> <em>span</em> <span class="math inline">\(F[\Omega]\)</span>.</p>
+<p>Now, suppose <span class="math inline">\(0 = \sum_{\omega \in \Omega} a_\omega \delta_\omega\)</span>
+for <span class="math inline">\(a_\omega \in F\)</span> for each <span class="math inline">\(\omega \in \Omega\)</span>.</p>
+<p>To prove linear independence, we must argue that <span class="math inline">\(a_\omega = 0\)</span> for every <span class="math inline">\(\omega\)</span>.</p>
+<p>Set <span class="math inline">\(f = \sum_{\omega \in \Omega} a_\omega \delta_\omega\)</span>. For
+<span class="math inline">\(\tau \in \Omega\)</span>, the function <span class="math inline">\(f\)</span> satisfies <span class="math display">\[f(\tau) =
+\sum_{\omega \in \Omega} a_\omega \delta_\omega(\tau) = a_\tau.\]</span></p>
+<p>Since <span class="math inline">\(f = 0\)</span> - i.e. “<span class="math inline">\(f\)</span> is the function which is takes value
+zero at every argument” – we conclude that <span class="math inline">\(a_\tau = 0\)</span> for each
+<span class="math inline">\(\tau\)</span>. This proves linear independence.</p>
+</dd>
+</dl>
+<p>Let’s consider the action of <span class="math inline">\(G\)</span> on these basis vectors.</p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+For <span class="math inline">\(g \in G\)</span> and <span class="math inline">\(\omega \in \Omega\)</span>, we have
+<span class="math display">\[\rho(g)\delta_\omega = \delta_{g \omega}.\]</span>
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>For <span class="math inline">\(\tau \in \Omega\)</span> we have
+<span class="math display">\[\rho(g) \delta_\omega(\tau) = \delta_\omega(g^{-1}\tau)
+= \left\{ \begin{matrix}
+1 &amp; \omega = g^{-1}\tau \\
+0 &amp; \text{else}
+\end{matrix} \right.
+= \left\{ \begin{matrix}
+1 &amp; g\omega = \tau \\
+0 &amp; \text{else}
+\end{matrix} \right.\]</span></p>
+<p>This shows that <span class="math inline">\(\rho(g)\delta_\omega(\tau) = \delta_{g\omega}(\tau)\)</span>; since this holds for all <span class="math inline">\(\tau\)</span> we
+conclude <span class="math inline">\(\rho(g)\delta_\omega = \delta_{g\omega}\)</span> as required.</p>
+</dd>
+<dt><strong>Remark:</strong></dt>
+<dd>
+<p>Viewing <span class="math inline">\(F[\Omega]\)</span> as the vector space with basis <span class="math inline">\(\delta_\omega\)</span>
+gives us a perhaps simpler proof that <span class="math inline">\(\rho(gh) = \rho(g)\rho(h)\)</span>.</p>
+<p>Indeed, for <span class="math inline">\(\omega \in \Omega\)</span> we have <span class="math display">\[\rho(gh)\delta_\omega =
+\delta_{gh \omega} = \rho(g)\delta_{h\omega} =
+\rho(g)(\rho(h)\delta_\omega) =
+\rho(g)\rho(h)\delta_\omega.\]</span></p>
+</dd>
+</dl>
+<h2 id="homomorphisms">Homomorphisms</h2>
+<p>Let <span class="math inline">\((\rho,V)\)</span> and <span class="math inline">\((\psi,W)\)</span> be representations of <span class="math inline">\(G\)</span>. a linear
+mapping <span class="math inline">\(\Phi:V \to W\)</span> is a <em>homomorphism of <span class="math inline">\(G\)</span>-representations</em>
+provided that for every <span class="math inline">\(v \in V\)</span> and for every <span class="math inline">\(g \in G\)</span> we have
+<span class="math display">\[\Phi(\rho(g)v) = \psi(g) \Phi(v).\]</span></p>
+<p>The <span class="math inline">\(G\)</span>-representations <span class="math inline">\((\rho,V)\)</span> and <span class="math inline">\((\psi,W)\)</span> are isomorphic is
+there is a homomorphism of <span class="math inline">\(G\)</span>-representations which is <em>invertible</em>.</p>
+<h3 id="example">Example</h3>
+<p>For any <span class="math inline">\(G\)</span> one has the so-called <em>trivial representation</em> <span class="math inline">\(\mathbb{1}.\)</span>
+This representation has vector space <span class="math inline">\(V = F\)</span> (it is 1 dimensional!) and the mapping
+<span class="math display">\[G \to \operatorname{GL}(V) = \operatorname{GL}_1(F) = F^\times\]</span>
+is just the trivial homomorphism <span class="math inline">\(g \mapsto 1\)</span>.</p>
+<p>One often writes <span class="math inline">\(\mathbb{1}\)</span> for the <em>underlying vector space</em> <span class="math inline">\(F\)</span>.</p>
+<p>Let <span class="math inline">\(G\)</span> act on the (finite) set <span class="math inline">\(\Omega\)</span>. Then there is a homomorphism
+of <span class="math inline">\(G\)</span>-representations <span class="math display">\[\mathbb{1} \to F[\Omega].\]</span>
+Viewing <span class="math inline">\(\mathbb{1} = F\)</span>, the scalar <span class="math inline">\(c\)</span> is mapped
+to the <em>constant function with value <span class="math inline">\(c\)</span>.</em></p>
+<p>Put another way, the scalar <span class="math inline">\(c\)</span> is mapped to the vector
+<span class="math display">\[c \sum_{\omega \in \Omega} \delta_\omega.\]</span></p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>If <span class="math inline">\(F = \mathbb{C}\)</span> then we can take <span class="math inline">\(\zeta = e^{2\pi i/3}\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>
