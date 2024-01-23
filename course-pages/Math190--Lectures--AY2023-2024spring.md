@@ -8,10 +8,10 @@ title: Math190 - Topics in Algebra - AY2023-2024 spring
   | Date  | DOW | Desc    | Seq | Week | Details                                                        |
   |-------|-----|---------|-----|------|----------------------------------------------------------------|
   | 01/17 | Wed | Lecture | 1   | 1    | RT 1: groups & homomorphisms; linear algebra                   |
-  | 01/22 | Mon | Lecture | 2   | 2    | RT 2: representations; irreducibility                          |
-  | 01/24 | Wed | Lecture | 3   | 2    | RT 3: the regular repr; complete reducibility                  |
+  | 01/22 | Mon | Lecture | 2   | 2    | RT 2: representations; sub-reps; homomorphisms                 |
+  | 01/24 | Wed | Lecture | 3   | 2    | RT 3: direct sums; complete reducibility                       |
   | 01/24 | Wed | Tufts   |     | 2    | **Academic Date:** *Last day to add a course*                  |
-  | 01/29 | Mon | Lecture | 4   | 3    | RT 4: Classifying representations                              |
+  | 01/29 | Mon | Lecture | 4   | 3    | RT 4: Schurs Lemma; irreducible reps                           |
   | 01/31 | Wed | Lecture | 5   | 3    | RT 5: conjugacy classes; characters                            |
   | 02/05 | Mon | Lecture | 6   | 4    | RT 6: Fourier transform; FFT                                   |
   | 02/07 | Wed | Lecture | 7   | 4    | RT 7: symmetric gps & probability                              |

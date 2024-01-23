@@ -12,14 +12,14 @@ title: Math190 - Topics in Algebra - AY2023-2024 spring
   | 01/19 | Fri | Meeting    | Office hours 0  | 1    | **13:30-14:30 JCC 559                                          |
   | 01/19 | Fri | Assignment |                 | 1    | no assignment collected                                        |
   | 01/22 | Mon | Meeting    | Office hours 0  | 2    | **13:30-14:30 JCC 559                                          |
-  | 01/22 | Mon | Lecture    | 2               | 2    | RT 2: representations; irreducibility                          |
-  | 01/24 | Wed | Lecture    | 3               | 2    | RT 3: the regular repr; complete reducibility                  |
+  | 01/22 | Mon | Lecture    | 2               | 2    | RT 2: representations; sub-reps; homomorphisms                 |
+  | 01/24 | Wed | Lecture    | 3               | 2    | RT 3: direct sums; complete reducibility                       |
   | 01/24 | Wed | Tufts      |                 | 2    | **Academic Date:** *Last day to add a course*                  |
   | 01/25 | Thu | Meeting    | Office hours 1  | 2    | **13:00-14:00 Zoom                                             |
   | 01/26 | Fri | Meeting    | Office hours 1  | 2    | **13:30-14:30 JCC 559                                          |
   | 01/26 | Fri | Assignment |                 | 2    | PSet 01 - RT                                                   |
   | 01/29 | Mon | Meeting    | Office hours 1  | 3    | **13:30-14:30 JCC 559                                          |
-  | 01/29 | Mon | Lecture    | 4               | 3    | RT 4: Classifying representations                              |
+  | 01/29 | Mon | Lecture    | 4               | 3    | RT 4: Schurs Lemma; irreducible reps                           |
   | 01/31 | Wed | Lecture    | 5               | 3    | RT 5: conjugacy classes; characters                            |
   | 02/01 | Thu | Meeting    | Office hours 2  | 3    | **13:00-14:00 Zoom                                             |
   | 02/02 | Fri | Meeting    | Office hours 2  | 3    | **13:30-14:30 JCC 559                                          |
