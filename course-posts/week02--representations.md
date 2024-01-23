@@ -14,3 +14,7 @@ Here are notes for Monday's lecture:
 
 - [[Notes for 2024-01-22]](/course-contents/notes-RT-2024-01-22.html) [[pdf]](/course-contents/notes-RT-2024-01-22.pdf)
 
+
+Here are notes for Wednesday's lecture
+
+- [[Notes for 2024-01-22]](/course-contents/notes-RT-2024-01-24.html) [[pdf]](/course-contents/notes-RT-2024-01-24.pdf)
