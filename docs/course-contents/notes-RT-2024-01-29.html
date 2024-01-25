@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - Schur's Lemma and irreducible representations</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>Schur's Lemma and irreducible representations</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-01-29
+        
+    </section>
+    <section>
+        <p><strong>[in progress]</strong></p>
+<p>Let <span class="math inline">\(G\)</span> be a finite group and <span class="math inline">\(F\)</span> an algebraically closed field of
+characteristic 0.</p>
+<h1 id="irreducible-representations">Irreducible Representations</h1>
+<p>A representation <span class="math inline">\((\rho,V)\)</span> of <span class="math inline">\(G\)</span> is <em>irreducible</em> (sometimes one
+says <em>simple</em>) provided that <span class="math inline">\(V \ne 0\)</span> and for any invariant subspace
+<span class="math inline">\(W\)</span> of <span class="math inline">\(V\)</span>, either <span class="math inline">\(W = 0\)</span> or <span class="math inline">\(W = V\)</span>.</p>
+<dl>
+<dt><strong>Theorem:</strong></dt>
+<dd>
+Let <span class="math inline">\((\rho,V)\)</span> be a finite dimensional representation of <span class="math inline">\(G\)</span>.
+Then <span class="math inline">\(V\)</span> is isomorphic to a direct sum of irreducible
+representations:
+<span class="math display">\[V = L_1 \oplus L_2 \oplus \cdots \oplus L_r.\]</span>
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>First of all, we <em>claim</em> that <span class="math inline">\(V\)</span> has an invariant subspace which
+is irreducible as a representation for <span class="math inline">\(G\)</span>.</p>
+<p>Indeed, we proceed by induction on the dimension <span class="math inline">\(\dim V\)</span>. If
+<span class="math inline">\(\dim V = 1\)</span>, then <span class="math inline">\(V\)</span> is irreducible since the only <em>linear</em>
+subspaces of <span class="math inline">\(V\)</span> are <span class="math inline">\(0\)</span> and <span class="math inline">\(V\)</span>.</p>
+<p>Now suppose that <span class="math inline">\(\dim V &gt; 1\)</span>. If <span class="math inline">\(V\)</span> is irreducible, we are
+done. Otherwise, <span class="math inline">\(V\)</span> has a non-0 invariant subspace <span class="math inline">\(W\)</span> with
+<span class="math inline">\(\dim W &lt; \dim V\)</span>. By the inductive hypotheses, <span class="math inline">\(W\)</span> has an
+invariant subspace which is irreducible as <span class="math inline">\(G\)</span>-representation.
+This completes the proof of the <em>claim</em>.</p>
+<p>We now prove the Theorem again by induction on <span class="math inline">\(\dim V\)</span>. If <span class="math inline">\(\dim V =1\)</span>,
+again <span class="math inline">\(V\)</span> is already irreducible and the proof is complete. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Now, suppose that <span class="math inline">\(\dim V &gt; 1\)</span>. Choose an irreducible invariant
+subspace <span class="math inline">\(L_1 \subseteq V\)</span> and use complete reducibility to write
+<span class="math inline">\(V = L_1 \oplus V'\)</span> for an invariant subspace <span class="math inline">\(V'\)</span>.</p>
+<p>If <span class="math inline">\(V' = 0\)</span>, then <span class="math inline">\(V = L_1\)</span> is a direct sum of irreducible
+representations. Otherwise, <span class="math inline">\(\dim V' = \dim V - \dim L_1 &lt; \dim  V\)</span> and so by the induction hypothesis <span class="math inline">\(V'\)</span> is the direct sum <span class="math inline">\(V'  = L_2 \oplus \cdots \oplus L_r\)</span> for certain irreducible representations
+<span class="math inline">\(L_j\)</span>.</p>
+<p>Now notice that
+<span class="math display">\[V = L_1 \oplus V' = L_1 \oplus L_2 \oplus \cdots \oplus L_r\]</span>
+as required.</p>
+</dd>
+<dt><strong>Example:</strong></dt>
+<dd>
+<p>Suppose that <span class="math inline">\(G\)</span> is the cyclic group <span class="math inline">\(\mathbb{Z}/m\mathbb{Z}\)</span>.</p>
+<p>If <span class="math inline">\(\zeta\)</span> is an <span class="math inline">\(m\)</span>-th root of unity in <span class="math inline">\(F^\times\)</span>, then
+<span class="math display">\[\rho_\zeta:G \to \operatorname{GL}_1(F) = F^\times\]</span> defined by
+<span class="math inline">\(\rho_\zeta(i + m \mathbb{Z}) = \zeta^i\)</span> determines an
+irreducible representation of <span class="math inline">\(G\)</span>.</p>
+<p>Every irreducible representation of <span class="math inline">\(G\)</span> is isomorphic to
+<span class="math inline">\(\rho_\zeta\)</span> for some root <span class="math inline">\(\zeta\)</span> of <span class="math inline">\(T^m - 1 \in F[T]\)</span>.</p>
+</dd>
+</dl>
+<p>For <span class="math inline">\(G\)</span>-representations <span class="math inline">\(V\)</span> and <span class="math inline">\(W\)</span>, write
+<span class="math display">\[\operatorname{Hom}_G(V,W)\]</span> for the space of all <span class="math inline">\(G\)</span>-homomorphisms
+<span class="math inline">\(\Phi:V \to W\)</span>. If <span class="math inline">\(V = W\)</span>, write <span class="math display">\[\operatorname{End}_G(V) =
+\operatorname{Hom}_G(V,V)\]</span>
+for the space of <span class="math inline">\(G\)</span>-endomorphisms.</p>
+<p>Notice that <span class="math inline">\(\operatorname{End}_G(V)\)</span> is a <em>ring</em> (in fact, an
+<span class="math inline">\(F\)</span>-algebra) under composition of endomorphisms.</p>
+<dl>
+<dt><strong>Theorem:</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(L,L'\)</span> be irreducible representations for <span class="math inline">\(G\)</span>.</p>
+<ol type="a">
+<li><p>We have <span class="math inline">\(\operatorname{End}_G(L) = F\)</span>.</p></li>
+<li><p><span class="math inline">\(\dim_F \operatorname{Hom}_G(L,L') = \left \{ \begin{matrix} 1 &amp; \text{if} \quad L \simeq L' \\ 0 &amp; \text{else} \end{matrix} \right.\)</span></p></li>
+</ol>
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>(a). This is essentially the content of <em>Schur’s Lemma</em>. We claim
+first that <span class="math inline">\(\operatorname{End}_G(L)\)</span> is a <em>division algebra</em>.</p>
+<p>For this, it suffices to argue that any non-zero element
+<span class="math inline">\(\phi\)</span> of <span class="math inline">\(\operatorname{End}_G(L)\)</span> has an inverse.</p>
+<p>Since <span class="math inline">\(L\)</span> is irreducible and since the kernel of <span class="math inline">\(\phi\)</span> is
+non-zero, <span class="math inline">\(\ker \phi= 0\)</span>. Since <span class="math inline">\(V\)</span> is finite dimensional, it
+follows that <span class="math inline">\(\phi\)</span> is bijective and therefore invertible.</p>
+<p>To see that <span class="math inline">\(\operatorname{End}_G(L) = F\)</span>, it remains to observe
+that when <span class="math inline">\(F\)</span> is <em>algebraically closed</em>, and finite dimensional
+division algebra <span class="math inline">\(D\)</span> with <span class="math inline">\(F \subset Z(D)\)</span> satisfies <span class="math inline">\(D = F\)</span>.</p>
+<p>Now (b) follows at once from (a).</p>
+</dd>
+</dl>
+<h1 id="permutation-representations-and-homomorphisms">Permutation representations and homomorphisms</h1>
+<p>Let <span class="math inline">\(G\)</span> act <em>transitively</em> on the set <span class="math inline">\(\Omega\)</span>, fix <span class="math inline">\(\omega \in \Omega\)</span> and let <span class="math inline">\(H = \operatorname{Stab}_G(\omega)\)</span> be the <em>stabilizer
+of <span class="math inline">\(x\)</span></em>. Since the action of <span class="math inline">\(G\)</span> is <em>transitive</em>, <span class="math inline">\(\Omega = G.\omega\)</span>
+is the <span class="math inline">\(G\)</span>-orbit of <span class="math inline">\(\omega\)</span>, and <span class="math inline">\(\Omega\)</span> may be identified with
+<span class="math inline">\(G/H\)</span>.</p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(V\)</span> be a <span class="math inline">\(G\)</span>-representation and let <span class="math inline">\(x \in V\)</span> be a non-zero vector such that
+<span class="math inline">\(hx = x\)</span> for all <span class="math inline">\(h \in H\)</span>.</p>
+<ol type="a">
+<li><p>There is a unique homomorphism of <span class="math inline">\(G\)</span>-representations
+<span class="math display">\[\Phi:F[\Omega] \to V\]</span> with the property that
+<span class="math inline">\(\Phi(\delta_\omega) = x\)</span>.</p></li>
+<li><p>If the <span class="math inline">\(G\)</span>-representation <span class="math inline">\(V\)</span> is <em>irreducible</em>, then <span class="math inline">\(V\)</span> is
+isomorphic to a direct summand of <span class="math inline">\(F[\Omega]\)</span>.</p></li>
+</ol>
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>(a). Every element <span class="math inline">\(\tau\)</span> of <span class="math inline">\(\Omega\)</span> may be written in the form
+<span class="math inline">\(\tau = g\omega\)</span> for some <span class="math inline">\(g \in G\)</span>. Define <span class="math inline">\(\Phi\)</span> by the rule
+<span class="math display">\[\Phi(\delta_{g\omega}) = gx\]</span> for all <span class="math inline">\(g \in G\)</span>.</p>
+<p>Notice that <span class="math inline">\(\delta_{g \omega} = \delta_{g'\omega} \iff g^{-1}g' \implies gx = g'x\)</span>, so <span class="math inline">\(\Phi\)</span> is a well-defined linear mapping.</p>
+<p>Let’s check that <span class="math inline">\(\Phi\)</span> is a <span class="math inline">\(G\)</span>-homomorphism. Let <span class="math inline">\(\gamma \in G\)</span>. We
+must argue that <span class="math inline">\(\Phi(\gamma v) = \gamma\Phi(v)\)</span>, and it suffices to prove
+this identity when <span class="math inline">\(v = \delta_{g \omega}\)</span> is a basis vector in
+<span class="math inline">\(F[\Omega]\)</span>.</p>
+<p>Now,
+<span class="math display">\[\Phi(\gamma \delta_{g \omega}) = \Phi(\delta_{\gamma g\omega}) = \gamma g.
+= \gamma (g.x) = \gamma \Phi(\delta_{g \omega});\]</span>
+this shows that <span class="math inline">\(\Phi\)</span> is indeed a <span class="math inline">\(G\)</span>-homomorphism.</p>
+<p>Finally, suppose that <span class="math inline">\(\Psi:F[\Omega] \to V\)</span> is any
+<span class="math inline">\(G\)</span>-homomorphism with <span class="math inline">\(\Psi(\delta_\omega) = x\)</span>. Then for <span class="math inline">\(g \in G\)</span>, <span class="math display">\[g x = g \Psi(\delta_\omega) = \Psi(g \delta_\omega) =
+\Psi(\delta_{g\omega}).\]</span> which shows that <span class="math inline">\(\Psi\)</span> is given by
+precisely the same formula as <span class="math inline">\(\Phi\)</span>; this proves the uniqueness.</p>
+<p>(b). The homomorphism constructed in (a) is nonzero since <span class="math inline">\(x\)</span> is
+contained in its image. Since <span class="math inline">\(V\)</span> is irreducible, this
+homomorphism is <em>surjective</em>. Let <span class="math inline">\(K \subset F[\Omega]\)</span> be the
+<em>kernel</em> of this homomorphism. By complete reducibity, there is a
+subrepresentation <span class="math inline">\(W\)</span> of <span class="math inline">\(F[\Omega]\)</span> such that <span class="math inline">\(F[\Omega] = K \oplus W\)</span>.</p>
+<p>On the one hand, <span class="math inline">\(F[\Omega]/K = (W \oplus K)/K \simeq W\)</span>, and on
+the other hand, the homomorphism <span class="math inline">\(F[\Omega] \to V\)</span> induces an
+isomorphism <span class="math inline">\(F[\Omega]/K \simeq V\)</span>. Thus <span class="math inline">\(W \simeq V\)</span>, so indeed
+the irreducible representation <span class="math inline">\(W\)</span> is a direct summand of
+<span class="math inline">\(F[\Omega]\)</span>.</p>
+</dd>
+</dl>
+<p><strong>Remark:</strong> Let <span class="math inline">\(\Phi:F[\Omega] \to V\)</span> be the mapping of the proposition,
+so <span class="math inline">\(x \in V\)</span> is fixed by <span class="math inline">\(V\)</span>. If <span class="math inline">\(f \in F[\Omega]\)</span>, then
+<span class="math display">\[\Phi(f) = \sum_{g \in G} f(g)gx.\]</span></p>
+<h1 id="the-regular-representation">The Regular Representation</h1>
+<p>Note that the group <span class="math inline">\(G\)</span> acts on the set <span class="math inline">\(\Omega = G\)</span> by left
+multiplication. The resulting <em>permutation representation</em> <span class="math inline">\(F[\Omega] = F[G]\)</span> is called the <em>regular representation</em>.</p>
+<p>Note that the action of <span class="math inline">\(G\)</span> on itself is <em>transitive</em>, and the
+stabilizer <span class="math inline">\(H\)</span> of an element (say, <span class="math inline">\(1 \in G\)</span>) is the <em>trivial
+subgroup</em>.</p>
+<dl>
+<dt><strong>Theorem:</strong></dt>
+<dd>
+Every irreducible representation is isomorphic to a
+subrepresentation of the regular representation <span class="math inline">\(F[G]\)</span>.
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+The Theorem follows at once from the Proposition in the previous
+section.
+</dd>
+<dt><strong>Corollary:</strong></dt>
+<dd>
+Up to isomorphism, <span class="math inline">\(G\)</span> has only finitely many irreducible
+representations.
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>Write the regular representation as a direct sum
+<span class="math display">\[F[\Omega] = L_1 \oplus L_2 \oplus \cdots \oplus L_r\]</span>
+of irreducible representations <span class="math inline">\(L_i\)</span>.</p>
+<p>For each <span class="math inline">\(i\)</span>, let <span class="math inline">\(\pi_i:F[\Omega] \to L_i\)</span> be the <em>projection</em>
+onto <span class="math inline">\(L_i\)</span> for this direct sum decomposition, and notice that
+<span class="math display">\[\operatorname{id}_V = \sum_{i=1}^r \pi_i.\]</span></p>
+<p>If <span class="math inline">\(L \subset F[\Omega]\)</span> is an irreducible invariant subspace, it
+follows that for some <span class="math inline">\(i\)</span>, <span class="math inline">\(\pi_i(L) \ne 0\)</span>. Since <span class="math inline">\(L\)</span> and <span class="math inline">\(L_i\)</span>
+are irreducible, <span class="math inline">\(\pi_i\)</span> induces an isomorphism <span class="math inline">\(L_i  \xrightarrow{\sim} L\)</span>.</p>
+</dd>
+</dl>
+<h1 id="characters-and-class-functions">Characters and class functions</h1>
+<p><strong>We are now going to assume <span class="math inline">\(F = \mathbb{C}\)</span></strong></p>
+<p>Let <span class="math inline">\(V\)</span> be a representation of <span class="math inline">\(G\)</span> and consider the <span class="math inline">\(\mathbb{C}\)</span>-valued
+function <span class="math display">\[\chi = \chi_V:G \to \mathbb{C}\]</span> defined by the rule <span class="math display">\[\chi(g) =
+\operatorname{tr}(g:V \to V)\]</span> where <span class="math inline">\(\operatorname{tr}(g)\)</span> denotes
+the <em>trace</em> of the linear endomorphism of <span class="math inline">\(V\)</span> determined by <span class="math inline">\(g\)</span>.</p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+The character <span class="math inline">\(\chi\)</span> of a representation of <span class="math inline">\(G\)</span> is constant on
+the <em>conjugacy classes</em> of the group <span class="math inline">\(G\)</span>.
+</dd>
+</dl>
+<p>Recall that a conjugacy class <span class="math inline">\(C \subseteq G\)</span> is an equivalence class
+for the relation <span class="math display">\[g \sim h \iff g = xhx^{-1} \quad \text{for some $x \in G$.}\]</span>
+Thus, a conjugacy class has the form
+<span class="math display">\[C = \{xyx^{-1} \mid x \in G\}\]</span>
+for some <span class="math inline">\(y \in G\)</span>.</p>
+<dl>
+<dt><strong>Proof of Proposition:</strong></dt>
+<dd>
+<p>If <span class="math inline">\(g \sim h\)</span> we must show that <span class="math inline">\(\chi(g) = \chi(h)\)</span>. But
+we have <span class="math inline">\(g = xhx^{-1}\)</span> so that
+<span class="math inline">\(\rho(g) = \rho(x) \rho(h) \rho(x)^{-1}\)</span>.</p>
+<p>Now the result follows since for any <span class="math inline">\(m \times m\)</span> matrices
+<span class="math inline">\(M,P\)</span> with <span class="math inline">\(P\)</span> invertible we have
+<span class="math display">\[\operatorname{tr}(PMP^{-1}) = \operatorname{tr}(M).\]</span></p>
+</dd>
+</dl>
+<p>Let us write <span class="math inline">\(\operatorname{Cl}(G)\)</span> for the space of
+<span class="math inline">\(\mathbb{C}\)</span>-valued <em>class functions</em> on <span class="math inline">\(G\)</span>.</p>
+<p>Thus for any representation <span class="math inline">\(V\)</span> of <span class="math inline">\(G\)</span>, we have <span class="math inline">\(\chi = \chi_V \in \operatorname{Cl}(G)\)</span>.</p>
+<p>We introduce a <em>hermitian inner product</em>
+<span class="math inline">\(\langle \cdot , \cdot \rangle\)</span> on <span class="math inline">\(\operatorname{Cl}(G)\)</span> by the rule
+<span class="math display">\[\langle\phi,\psi\rangle = \dfrac{1}{|G|} \sum_{x \in G} \phi(x) \overline{\psi(x)}.\]</span></p>
+<p>Thus <span class="math display">\[\langle \cdot,\cdot\rangle:\operatorname{Cl}(G) \times
+\operatorname{Cl}(G) \to \mathbb{C}\]</span> is linear in the first variable
+and conjugate linear in the second variable.</p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+<ol type="a">
+<li><span class="math inline">\(\dim \operatorname{Cl}(G)\)</span> is equal to the number of conjugacy classes in <span class="math inline">\(G\)</span>.</li>
+<li>The hermitian inner product <span class="math inline">\(\langle \cdot,\cdot\rangle\)</span> is <em>positive definite</em> on
+<span class="math inline">\(\operatorname{Cl}(G)\)</span>.</li>
+</ol>
+</dd>
+<dt><strong>Sketch:</strong></dt>
+<dd>
+<p>For a conjugacy class <span class="math inline">\(C\)</span>, let <span class="math inline">\(\theta_C\)</span> denote the
+<em>characteristic function</em> of <span class="math inline">\(C\)</span>; thus <span class="math inline">\(\theta_C \in  \operatorname{Cl}(G)\)</span> and it is clear that the functions
+<span class="math inline">\(\{\theta_C\}\)</span> form a basis for <span class="math inline">\(\operatorname{Cl}(G)\)</span>. This
+proves (a).</p>
+<p>For (b), consider two conjugacy classes <span class="math inline">\(C,C'\)</span> and compute:
+<span class="math display">\[\langle \theta_C,\theta_{C'} \rangle = \dfrac{1}{|G|} \sum_{x
+ \in G} \theta_C(g) \overline{\theta_{C'}(g)} = \delta_{C,C'}
+ \dfrac{|C|}{|G|}\]</span> where <span class="math inline">\(\delta_{C,C'}\)</span> denotes the “Kronecker
+delta”. Since <span class="math inline">\(\dfrac{|C|}{|G|}\)</span> is a positive real number, this
+suffices to confirm that the inner product is positive definite.</p>
+</dd>
+</dl>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>When <span class="math inline">\(V = 0\)</span> the result is still true, since <span class="math inline">\(V\)</span> is the
+“direct sum” of an empty collection of irreducible representations.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>
