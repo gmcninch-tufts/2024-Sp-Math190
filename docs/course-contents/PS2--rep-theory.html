@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - ProblemSet 2 -- Representations and characters
+</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>ProblemSet 2 -- Representations and characters
+</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-01-29
+        
+            by George McNinch
+        
+    </section>
+    <section>
+        <p>In these exercises, all vector spaces are assumed to be finite
+dimensional over the field <span class="math inline">\(F = \mathbb{C}\)</span>.</p>
+<ol type="1">
+<li><p>In this problem, we identify the character <span class="math inline">\(\chi_\Omega\)</span> of the
+<em>permutation representation</em> <span class="math inline">\((\rho,F[\Omega])\)</span> of a group <span class="math inline">\(G\)</span>.</p>
+<ol type="a">
+<li><p>Let <span class="math inline">\(V\)</span> be a vector space and let <span class="math inline">\(\Phi:V \to V\)</span> a linear mapping
+If <span class="math inline">\(\mathcal{B}\)</span> is a basis for <span class="math inline">\(V\)</span>, recall that the <em>trace</em> of <span class="math inline">\(\Phi\)</span>
+is defined by
+<span class="math display">\[\operatorname{tr}(\Phi) = \operatorname{tr}([\Phi]_\mathcal{B}).\]</span></p></li>
+<li><p>Recall that the <em>dual</em> of <span class="math inline">\(V\)</span> is the vector space <span class="math inline">\(V^\vee = \operatorname{Hom}_F(V,F)\)</span> of <em>linear functionals</em> on <span class="math inline">\(V\)</span>.</p>
+<p>If <span class="math inline">\(b_1,\dots,b_n\)</span> is a basis for <span class="math inline">\(V\)</span>, let <span class="math inline">\({b_j}^\vee:V \to F\)</span> be
+defined by <span class="math inline">\({b_j}^\vee(b_i) = \delta_{i,j}\)</span>. Show that
+<span class="math inline">\({b_1}^\vee,\dots,{b_n}^\vee\)</span> is a basis for <span class="math inline">\(V^\vee\)</span>; it is known as
+the <em>dual basis</em> to <span class="math inline">\(b_1,\dots,b_n\)</span>.</p></li>
+<li><p>Prove that the trace of the linear mapping <span class="math inline">\(\Phi:V \to V\)</span> is
+given by the expression <span class="math display">\[\operatorname{tr}(\Phi) = \sum_{i=1}^n
+{b_i}^\vee(\Phi(b_i)).\]</span></p></li>
+<li><p>Suppose that the finite group <span class="math inline">\(G\)</span> acts on the finite set
+<span class="math inline">\(\Omega\)</span>, and consider the corresponding permutation
+representation <span class="math inline">\((\rho,F[\Omega])\)</span> of <span class="math inline">\(G\)</span>. Recall that
+<span class="math inline">\(F[\Omega]\)</span> is the vector space of all <span class="math inline">\(F\)</span>-values functions on
+<span class="math inline">\(\Omega\)</span>, and that for <span class="math inline">\(f \in F[\Omega]\)</span> and <span class="math inline">\(g \in G\)</span>, we have
+<span class="math display">\[\rho(g)f(\omega) = f(g^{-1}\omega).\]</span>
+In particular, we saw in the lecture that
+<span class="math display">\[\rho(g)\delta_\omega) = \delta_{g\omega},\]</span>
+where <span class="math inline">\(\delta_\omega\)</span> denotes the <em>Dirac function</em> at <span class="math inline">\(\omega \in \Omega\)</span>.</p>
+<p>Show that <span class="math display">\[\operatorname{tr}(\rho(g)) = #\{\omega \in \Omega
+\mid g\omega = \omega\};\]</span> i.e. the trace of <span class="math inline">\(\rho(g)\)</span> is the
+number of fixed points of the action of <span class="math inline">\(g\)</span> on <span class="math inline">\(\Omega\)</span>.</p></li>
+</ol></li>
+</ol>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>

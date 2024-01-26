@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Math190-Tufts University - Characters of irreducible representations</title>
+        <title>Math190-Tufts University - notes-RT-2024-01-31</title>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 	</script>	
         <link rel="stylesheet" href="../css/default.css" />
@@ -30,7 +30,7 @@
         </header>
 
         <main role="main">
-            <h1>Characters of irreducible representations</h1>
+            <h1>notes-RT-2024-01-31</h1>
             <article>
     <section class="header">
         Posted on 2024-01-31
@@ -39,25 +39,53 @@
     <section>
         <p>Let <span class="math inline">\(G\)</span> a finite group; we consider finite dimensional representations
 of <span class="math inline">\(G\)</span> on <span class="math inline">\(\mathbb{C}\)</span>-vector spaces.</p>
-<h1 id="the-regular-representation-again.">The regular representation, again.</h1>
-<p>We write <span class="math inline">\(\mathbb{C}[G]\)</span> for the space of functions on <span class="math inline">\(G\)</span>, viewed as
-a permutation representation of <span class="math inline">\(G\)</span> (and we suppress the notation for
-the homomorphism <span class="math inline">\(G \to \operatorname{GL}(\mathbb{C}[G])\)</span>).</p>
-<p>For functions <span class="math inline">\(f_1,f_2 \in \mathbb{C}[G]\)</span>, we define their
-<em>convolution</em> by the formula <span class="math display">\[(f_1 \star f_2)(x) = \sum_{yz = x}
-f_1(y)f_2(z).\]</span></p>
-<p>For the basis elements <span class="math inline">\(\delta_g \in \mathbb{C}[G]\)</span> (i.e. the <em>Dirac functions</em>),
-we have
-<span class="math display">\[\delta_g \star \delta_h = \delta_{gh}.\]</span></p>
+<h1 id="previews">Previews!</h1>
+<p>Let <span class="math inline">\(L_1,\cdots,L_m\)</span> be the complete list of irreducible
+representations for the finite group <span class="math inline">\(G\)</span>, and let <span class="math inline">\(\chi_i\)</span> be the
+<em>character</em> of <span class="math inline">\(L_i\)</span>.</p>
+<p>Next week, we are going to prove the following:</p>
 <dl>
-<dt><strong>Proposition:</strong></dt>
+<dt><strong>Theorem:</strong></dt>
 <dd>
 <ol type="a">
-<li><p>For <span class="math inline">\(f \in \mathbb{C}[G]\)</span>, the action of an element <span class="math inline">\(g \in G\)</span>
-on <span class="math inline">\(f\)</span> satisfies <span class="math display">\[g.f = \delta_g \star f.\]</span></p></li>
-<li><p>Let <span class="math inline">\(W \subseteq \mathbb{C}[G]\)</span> be an invariant subspace. For
-any <span class="math inline">\(f \in \mathbb{C}[G]\)</span>, we have <span class="math display">\[f \star f' \in W \quad
-\forall f' \in W.\]</span></p></li>
+<li><p>The number <span class="math inline">\(m\)</span> of irreducible representations of <span class="math inline">\(G\)</span> is equal
+to the number of <em>conjugacy classes</em> in <span class="math inline">\(G\)</span>.</p></li>
+<li><p><span class="math inline">\(\chi_1,\cdots,\chi_m\)</span> are an <em>orthonormal basis</em> for the
+space <span class="math inline">\(\operatorname{Cl}(G)\)</span> of <span class="math inline">\(\mathbb{C}\)</span>-value class
+functions on <span class="math inline">\(G\)</span>.</p></li>
+<li><p>For any <span class="math inline">\(G\)</span>-representation <span class="math inline">\(V\)</span>, let <span class="math inline">\(\chi\)</span> be the character of <span class="math inline">\(V\)</span>.</p></li>
+</ol>
+</dd>
+</dl>
+<p>Enumerate the conjugacy classes of <span class="math inline">\(G\)</span>, say <span class="math inline">\(C_1,\cdots,C_m\)</span> and choose a
+representative <span class="math inline">\(g_i \in C_i\)</span> for each <span class="math inline">\(i\)</span>.</p>
+<p>Consider the <span class="math inline">\(m \times m\)</span> matrix whose rows are indexed by the
+irreducible characters <span class="math inline">\(\chi_1,\cdots,\chi_m\)</span> and whose columns are
+indexed by the conjugacy class representatives <span class="math inline">\(g_1,\dots,g_m\)</span>, and
+whose entry in the <span class="math inline">\(i\)</span>-th row and <span class="math inline">\(j\)</span>-th column is given by
+<span class="math inline">\(\chi_i(g_j)\)</span>. Write <span class="math inline">\(c_i = |C_i|\)</span> for the number of elements in the
+<span class="math inline">\(i\)</span>th conjugacy class.</p>
+<p>This matrix is known as the <em>character table of the group <span class="math inline">\(G\)</span>.</em></p>
+<p><span class="math display">\[\begin{array}{l|lll}
+&amp; g_1 &amp; g_2 &amp; \cdots &amp; g_m \\
+&amp; c_1 &amp; c_2 &amp; \cdots &amp; c_m \\
+\hline 
+\chi_1 &amp; \chi_1(g_1) &amp; \chi_1(g_2) &amp; \cdots &amp; \chi_1(g_m) \\
+\chi_2 &amp; \chi_2(g_1) &amp; \chi_2(g_2) &amp; \cdots &amp; \chi_2(g_m) \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\chi_m &amp; \chi_m(g_1) &amp; \chi_m(g_2) &amp; \cdots &amp; \chi_m(g_m)
+\end{array}\]</span></p>
+<dl>
+<dt><strong>Remark:</strong></dt>
+<dd>
+<ol type="a">
+<li><p>The fact that the <span class="math inline">\(\chi_i\)</span> form an orthonormal basis for the
+space <span class="math inline">\(\operatorname{Cl}(G)\)</span> is equivalent to the statement
+that the above matrix is <em>unitary</em>, in the sense that for <span class="math inline">\(1 \le i,j \le m\)</span> we have</p>
+<p><span class="math display">\[\sum_{k=1}^m c_k \chi_i(g_k) \overline{\chi_j(g_k)} = \delta_{i,j}.\]</span></p></li>
+<li><p>Since the transpose of unitary matrix is also unitary, we find
+for <span class="math inline">\(1 \le i,j \le m\)</span> that</p>
+<p><span class="math display">\[\sum_{k=1}^m c_i \chi_k(g_i) \overline{\chi_k(g_j)} = \delta_{i,j}.\]</span></p></li>
 </ol>
 </dd>
 </dl>
