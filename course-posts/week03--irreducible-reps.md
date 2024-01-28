@@ -15,6 +15,6 @@ Here are notes for Monday's lecture on *Schur's Lemma & irreducibility*:
 - [[Notes for 2024-01-29]](/course-contents/notes-RT-2024-01-29.html) [[pdf]](/course-contents/notes-RT-2024-01-29.pdf)
 
 
-Here are notes for Wednesday's lecture *Introducing the character table of a finite roup* *(currently incomplete)*:
+Here are notes for Wednesday's lecture *Introducing the character table of a finite group* *(currently incomplete)*:
 
 - [[Notes for 2024-01-31]](/course-contents/notes-RT-2024-01-31.html) [[pdf]](/course-contents/notes-RT-2024-01-31.pdf)

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Math190-Tufts University - notes-RT-2024-01-31</title>
+        <title>Math190-Tufts University - Introducing the character table of a finite group</title>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 	</script>	
         <link rel="stylesheet" href="../css/default.css" />
@@ -30,7 +30,7 @@
         </header>
 
         <main role="main">
-            <h1>notes-RT-2024-01-31</h1>
+            <h1>Introducing the character table of a finite group</h1>
             <article>
     <section class="header">
         Posted on 2024-01-31
@@ -43,7 +43,18 @@ of <span class="math inline">\(G\)</span> on <span class="math inline">\(\mathbb
 <p>Let <span class="math inline">\(L_1,\cdots,L_m\)</span> be a complete set of non-isomorphic irreducible
 representations for the finite group <span class="math inline">\(G\)</span>, and let <span class="math inline">\(\chi_i\)</span> be the
 <em>character</em> of <span class="math inline">\(L_i\)</span>.</p>
-<p>Next week, we are going to prove the following:</p>
+<p>Recall that <em>any</em> <span class="math inline">\(G\)</span>-representation <span class="math inline">\(V\)</span> can be written as a direct sum of
+irreducible subrepresentations:
+<span class="math display">\[G = \bigoplus_{j=1}^N S_j\]</span>
+where each <span class="math inline">\(S_j\)</span> is an irreducible representation.
+For each <span class="math inline">\(1 \le i \le m\)</span>, we say that the <em>multiplicity of <span class="math inline">\(L_i\)</span> in <span class="math inline">\(V\)</span></em>
+– written <span class="math inline">\([V:L_i]\)</span> – is the natural number given by
+<span class="math display">\[[V:L_i] = \#\{j \mid S_j \simeq L_i\}\]</span></p>
+<p>Thus we have
+<span class="math display">\[V \simeq \bigoplus_{i=1}^m L_i^{\oplus [V:L_i]}\]</span>
+where the notation <span class="math inline">\(W^{\oplus d}\)</span> means
+<span class="math display">\[W^{\oplus d} = W \oplus W \oplus \cdots \oplus W \quad \text{($d$ copies)}.\]</span></p>
+<p>Next week, we are going to sketch a proof of the following facts</p>
 <dl>
 <dt><strong>Theorem:</strong></dt>
 <dd>
@@ -53,20 +64,42 @@ to the number of <em>conjugacy classes</em> in <span class="math inline">\(G\)</
 <li><p><span class="math inline">\(\chi_1,\cdots,\chi_m\)</span> are an <em>orthonormal basis</em> for the
 space <span class="math inline">\(\operatorname{Cl}(G)\)</span> of <span class="math inline">\(\mathbb{C}\)</span>-value class
 functions on <span class="math inline">\(G\)</span>.</p></li>
-<li><p>For any <span class="math inline">\(G\)</span>-representation <span class="math inline">\(V\)</span>, let <span class="math inline">\(\chi\)</span> be the character of <span class="math inline">\(V\)</span>.</p></li>
+<li><p>For any <span class="math inline">\(G\)</span>-representation <span class="math inline">\(V\)</span>, let <span class="math inline">\(\chi\)</span> be the character of <span class="math inline">\(V\)</span>.
+Then the multiplicity <span class="math inline">\([V:L_i]\)</span> is given by
+<span class="math display">\[[V:L_i] = \langle \chi,\chi_i\rangle.\]</span></p>
+<p>In particular, write <span class="math inline">\(k_i = [V:L_i]\)</span>; then
+<span class="math display">\[\chi = k_1 \chi_1 + k_2 \chi_2 + \cdots + k_m \chi_m.\]</span></p></li>
+<li><p>The multiplicity with which <span class="math inline">\(L_i\)</span> appears in the <em>regular representation</em>
+<span class="math inline">\(F[G]\)</span> is given by
+<span class="math display">\[[F[G]:L_i] = \dim_F L_i.\]</span></p>
+<p>In particular, if <span class="math inline">\(d_i = \dim_F L_i\)</span>, then
+<span class="math display">\[|G| = \sum_{i=1}^m d_i^2.\]</span></p></li>
 </ol>
 </dd>
 </dl>
+<h1 id="the-hermitian-inner-product-on-class-functions-again">The Hermitian inner product on class functions, again</h1>
 <p>Enumerate the conjugacy classes of <span class="math inline">\(G\)</span>, say <span class="math inline">\(C_1,\cdots,C_m\)</span> and choose a
 representative <span class="math inline">\(g_i \in C_i\)</span> for each <span class="math inline">\(i\)</span>.</p>
-<p>Consider the <span class="math inline">\(m \times m\)</span> matrix whose rows are indexed by the
+<p>Write <span class="math inline">\(c_i = |C_G(g_i)|\)</span> for the number of elements in
+the centralizer of <span class="math inline">\(g_i\)</span>, and notice that <span class="math display">\[|\operatorname{Cl}(g_i)| =
+|G|/|C_G(g_i)| = |G|/c_i.\]</span></p>
+<p>Recall that for two class functions <span class="math inline">\(f_1,f_2 \in \operatorname{Cl}(G)\)</span> we have defined
+<span class="math display">\[\langle f_1,f_2 \rangle = \dfrac{1}{|G|} \sum_{g \in G} f_1(g) \overline{f_2(g)}.\]</span></p>
+<dl>
+<dt><strong>Lemma:</strong></dt>
+<dd>
+We have
+<span class="math display">\[\langle f_1,f_2 \rangle = \dfrac{1}{c_i} \sum_{i = 1}^m f_1(g) \overline{f_2(g)}.\]</span>
+</dd>
+</dl>
+<h1 id="the-character-table.">The character table.</h1>
+<p>The matrix is known as the <em>character table of the group <span class="math inline">\(G\)</span>.</em>
+Consider the <span class="math inline">\(m \times m\)</span> matrix whose rows are indexed by the
 irreducible characters <span class="math inline">\(\chi_1,\cdots,\chi_m\)</span> and whose columns are
 indexed by the conjugacy class representatives <span class="math inline">\(g_1,\dots,g_m\)</span>, and
 whose entry in the <span class="math inline">\(i\)</span>-th row and <span class="math inline">\(j\)</span>-th column is given by
-<span class="math inline">\(\chi_i(g_j)\)</span>. Write <span class="math inline">\(c_i = |C_i|\)</span> for the number of elements in the
-<span class="math inline">\(i\)</span>th conjugacy class.</p>
-<p>This matrix is known as the <em>character table of the group <span class="math inline">\(G\)</span>.</em></p>
-<p><span class="math display">\[\begin{array}{l|llll}
+<span class="math inline">\(\chi_i(g_j)\)</span>.
+<span class="math display">\[\begin{array}{l|llll}
 &amp; g_1 &amp; g_2 &amp; \cdots &amp; g_m \\
 &amp; c_1 &amp; c_2 &amp; \cdots &amp; c_m \\
 \hline 
