@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - ProblemSet 1 -- Linear algebra and representations **Solutions**
+</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>ProblemSet 1 -- Linear algebra and representations **Solutions**
+</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-01-29
+        
+            by George McNinch
+        
+    </section>
+    <section>
+        <p><span class="math inline">\(F\)</span> denotes an <em>algebraically closed field of characteristic 0</em>. If
+you like, you can suppose that <span class="math inline">\(F = \mathbf{C}\)</span> is the field of
+complex numbers.</p>
+<ol type="1">
+<li><p>Let <span class="math inline">\(V\)</span> be a finite dimensional vector space over the field <span class="math inline">\(F\)</span>.
+Suppose that <span class="math inline">\(\phi,\psi:V \to V\)</span> are linear maps. Let <span class="math inline">\(\lambda \in F\)</span> be an eigenvalue of <span class="math inline">\(\phi\)</span> and write <span class="math inline">\(W\)</span> for the
+<span class="math inline">\(\lambda\)</span>-eigenspace of <span class="math inline">\(\phi\)</span>; i.e. <span class="math display">\[W = \{v \in V \mid \phi(v)
+= \lambda v \}.\]</span> If <span class="math inline">\(\phi \psi = \psi \phi\)</span> show that <span class="math inline">\(W\)</span> is
+<em>invariant</em> under <span class="math inline">\(\psi\)</span> – i.e. show that <span class="math inline">\(\psi(W) \subseteq W\)</span>.</p>
+<div class="solution">
+<p><strong>Solution:</strong><br />
+Let <span class="math inline">\(w \in W\)</span>. We must show that <span class="math inline">\(x=\psi(w) \in W\)</span>. To do this, we
+must establish that <span class="math inline">\(x=\psi(w)\)</span> is a <span class="math inline">\(\lambda\)</span>-eigenvector for
+<span class="math inline">\(\phi\)</span>.</p>
+<p>We have
+<span class="math display">\[\begin{align*}
+\phi(x) 
+&amp;= \phi(\psi(x)) &amp; \\ 
+&amp;=  \psi(\phi(w)) &amp; \text{since $\phi \circ \psi = \psi \circ \phi$} \\
+&amp;=  \psi(\lambda w) &amp; \text{since $w$ is a $\lambda$-eigenvector} \\
+&amp;= \lambda \psi(w) &amp; \text{since $\psi$ is linear} \\
+&amp;= \lambda x
+\end{align*}\]</span>
+This completes the proof.</p>
+</div></li>
+<li><p>Let <span class="math inline">\(n \in \mathbf{N}\)</span> be a non-zero natural number, and let <span class="math inline">\(V\)</span> be
+an <span class="math inline">\(n\)</span> dimensional <span class="math inline">\(F\)</span>-vector space with a given basis
+<span class="math inline">\(e_1,e_2,\cdots,e_n\)</span>.</p>
+<p>Consider the linear transformation <span class="math inline">\(T:V \to V\)</span> given by the rule
+<span class="math display">\[Te_i = e_{i+1 \pmod n}.\]</span>
+In other words
+<span class="math display">\[Te_i = \left \{
+\begin{matrix}
+e_{i+1} &amp; i &lt; n \\
+e_1 &amp; i =n
+\end{matrix}
+\right ..\]</span></p>
+<ol type="a">
+<li><p>Show that <span class="math inline">\(T\)</span> is <em>invertible</em> and that <span class="math inline">\(T^n = \operatorname{id}_V\)</span>.</p>
+<div class="solution">
+<p>To check that <span class="math inline">\(T^n = \operatorname{id}_V\)</span>, we check that
+<span class="math inline">\(T^n(e_i) = e_i\)</span> for <span class="math inline">\(1 \le i \le n\)</span>.</p>
+<p>From the definition, it follows by induction on the natural number <span class="math inline">\(m\)</span> that
+<span class="math display">\[T^m(e_i) = e_{i+m \pmod n}.\]</span>
+Thus <span class="math inline">\(T^n(e_i) = e_{i+n\pmod n} = e_i\)</span>. Since this holds for every <span class="math inline">\(i\)</span>, conclude
+<span class="math inline">\(T^n = \operatorname{id}_V\)</span>.</p>
+<p>Now <span class="math inline">\(T\)</span> is invertible since its inverse is given by <span class="math inline">\(T^{n-1}\)</span>.</p>
+</div></li>
+<li><p>Consider the vector <span class="math inline">\(v_0 = \displaystyle \sum_{i=1}^n e_i\)</span>. Show that
+<span class="math inline">\(v_0\)</span> is a <span class="math inline">\(1\)</span>-eigenvector for <span class="math inline">\(T\)</span>.</p>
+<div class="solution">
+<p>We compute
+<span class="math display">\[\begin{align*}
+T(v_0) &amp;= T\left(\sum_{i=1}^n e_i\right) = \sum_{i=1}^n T(e_i) \\
+&amp;= \sum_{i=1}^n e_{i+1 \pmod n} \\
+&amp;= \sum_{j=2}^{n+1} e_{j \pmod n} &amp; \text{(let $j = i+1$)} \\
+&amp;= \sum_{j=1}^{n} e_{j \pmod n}  = v_0 \\
+\end{align*}\]</span>
+Thus <span class="math inline">\(T(v_0) = v_0\)</span> so indeed <span class="math inline">\(v_0\)</span> is a <span class="math inline">\(1\)</span>-eigenvector.</p>
+</div></li>
+</ol>
+<p>Let <span class="math inline">\(\zeta \in F\)</span> be a primitive <span class="math inline">\(n\)</span>-th root of unity. (e.g. if you assume <span class="math inline">\(F = \mathbf{C}\)</span>, you may as well take
+<span class="math inline">\(\zeta = e^{2\pi i/n}\)</span>).</p>
+<ol start="3" type="a">
+<li><p>Let <span class="math inline">\(v_1 = \displaystyle \sum_{i=1}^n \zeta^i e_i\)</span>. Show that
+<span class="math inline">\(v_1\)</span> <del>is a <span class="math inline">\(\zeta\)</span>-eigenvector</del> is a <span class="math inline">\(\zeta^{-1}\)</span>-eigenvector for <span class="math inline">\(T\)</span>.</p>
+<div class="solution">
+<p>We compute
+<span class="math display">\[\begin{align*}
+T(v_1) &amp;= T\left(\sum_{i=1}^n \zeta^i e_i\right) \\
+&amp; = \sum_{i=1}^n \zeta^iT(e_i) \\
+&amp;= \sum_{i=1}^n \zeta^i e_{i+1 \pmod n} \\
+&amp;= \sum_{j=2}^{n+1} \zeta^{j-1} e_{j \pmod n} &amp; \text{(let $j = i+1$)} \\
+&amp;= \zeta^{-1} \sum_{j=2}^{n+1} \zeta^{j} e_{j \pmod n} \\	  
+&amp;= \zeta^{-1} \sum_{j=1}^{n} \zeta^j e_{j \pmod n} &amp; \text{(since $\zeta^j = \zeta^{j \pmod n}$ $\forall j$)}\\
+&amp; = \zeta^{-1} v_1 \\
+\end{align*}\]</span>
+Thus <span class="math inline">\(T(v_1) = \zeta^{-1} v_1\)</span> so indeed <span class="math inline">\(v_0\)</span> is a <span class="math inline">\(\zeta^{-1}\)</span>-eigenvector.</p>
+</div></li>
+<li><p>More generally, let <span class="math inline">\(0 \le j &lt; n\)</span> and let <span class="math display">\[v_j = \sum_{i=1}^n
+\zeta^{ij} e_i.\]</span> Show that <span class="math inline">\(v_j\)</span> <del>is a <span class="math inline">\(\zeta^j\)</span>-eigenvector</del>
+is a <span class="math inline">\(\zeta^{-j}\)</span>-eigenvector for <span class="math inline">\(T\)</span>.</p>
+<div class="solution">
+<p>The calcuation in the solution to part (c) is valid
+for <em>any</em> <span class="math inline">\(n\)</span>-th root of unity unity <span class="math inline">\(\zeta\)</span>. Applying this
+calculation for <span class="math inline">\(\zeta^j\)</span> shows that <span class="math inline">\(v_j\)</span> is a
+<span class="math inline">\(\zeta^{-j}\)</span>-eigenvector for <span class="math inline">\(T\)</span> as required.</p>
+</div></li>
+<li><p>Conclude that <span class="math inline">\(v_0,v_1,\cdots,v_{n-1}\)</span> is a basis of <span class="math inline">\(V\)</span>
+consisting of <em>eigenvectors</em> for <span class="math inline">\(T\)</span>, so that <span class="math inline">\(T\)</span> is
+<em>diagonalizable</em>.</p>
+<p><strong>Hint:</strong> You need to use the <strong>fact</strong> that eigenvectors for distinct eigenvalues
+are <em>linearly independent</em>.</p>
+<p>What is the <em>matrix</em> of <span class="math inline">\(T\)</span> in this basis?</p>
+<div class="solution">
+<p>Since eigenvectors for distinct eigenvalues are linearly independent,
+conclude that the vectors <span class="math inline">\(\mathcal{B}=\{v_0,v_1,\cdots,v_{n-1}\}\)</span> are linearly independent.
+Since there <span class="math inline">\(n\)</span> vectors in <span class="math inline">\(\mathcal{B}\)</span> and since <span class="math inline">\(\dim V = n\)</span>, conclude
+that <span class="math inline">\(\mathcal{B}\)</span> is a <em>basis</em> for <span class="math inline">\(V\)</span>.</p>
+<p>The matrix of <span class="math inline">\(T\)</span> in the basis <span class="math inline">\(\mathcal{B}\)</span> is given by
+<span class="math display">\[[T]_{\mathcal{B}} =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; \zeta^{-1} &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 0 &amp; \zeta^{-2} &amp; \cdots &amp; 0 \\	  
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; \zeta^{-n+1}
+\end{bmatrix}
+\]</span></p>
+<p>(This form explains why an <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(M\)</span> is
+<em>diagonalizable</em> iff <span class="math inline">\(F^n\)</span> has a basis of eigenvectors for <span class="math inline">\(M\)</span>).</p>
+</div></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(G = \mathbb{Z}/3\mathbb{Z}\)</span> be the additive group of order
+<span class="math inline">\(3\)</span>, and let <span class="math inline">\(\zeta\)</span> be a primitive <span class="math inline">\(3\)</span>rd root of unity in <span class="math inline">\(F\)</span>.</p>
+<p>To define a representation <span class="math inline">\(\rho:G \to \operatorname{GL}_n(F)\)</span>, it
+is enough to find a matrix <span class="math inline">\(M \in \operatorname{GL}_n(F)\)</span> with <span class="math inline">\(M^3 = 1\)</span>; in turn, <span class="math inline">\(M\)</span> determines a representation <span class="math inline">\(\rho\)</span> by the rule
+<span class="math inline">\(\rho(i + 3\mathbb{Z}) = M^i\)</span>.</p>
+<p>Consider the <em>representation</em> <span class="math inline">\(\rho_1 : G \to \operatorname{GL}_3(F)\)</span>
+given by the matrix <span class="math display">\[\rho_1(1 + 3\mathbb{Z}) = M_1 = \begin{bmatrix}
+1 &amp; 0 &amp; 0\\
+0 &amp; \zeta &amp; 0 \\
+0 &amp; 0 &amp; \zeta^2
+\end{bmatrix}\]</span>
+and consider the representation
+<span class="math inline">\(\rho_2:G \to \operatorname{GL}_3(F)\)</span> given by
+the matrix <span class="math display">\[\rho_2(1 + 3\mathbb{Z}) = M_2 = \begin{bmatrix}
+0 &amp; 0 &amp; 1\\ 
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 
+\end{bmatrix}.\]</span></p>
+<p>Show that the <em>representations</em> <span class="math inline">\(\rho_1\)</span> and <span class="math inline">\(\rho_2\)</span> are
+<em>equivalent</em> (alternative terminology: are <em>isomorphic</em>). In other
+words, find a linear bijection <span class="math inline">\(\Phi:F^3 \to F^3\)</span> with the property
+that <span class="math display">\[\Phi(\rho_2(g)v) = \rho_1(g)\Phi(v)\]</span> for every <span class="math inline">\(g \in G\)</span>
+and <span class="math inline">\(v \in F^3\)</span>.</p>
+<p><strong>Hint:</strong> First find a basis of <span class="math inline">\(F^3\)</span> consisting of eigenvectors
+for the matrix <span class="math inline">\(M_2\)</span>.</p>
+<div class="solution">
+<p>The matrix <span class="math inline">\(M_1\)</span> is <em>diagonal</em>, which is to say that the <em>standard basis vectors</em>
+<span class="math inline">\(e_1 = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, e_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, e_3 = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}\)</span>
+are <em>eigenvectors</em> for <span class="math inline">\(M_1\)</span> with respective eigenvalues <span class="math inline">\(1,\zeta,\zeta^2\)</span>.</p>
+<p>By the work in problem 2, we see that
+<span class="math display">\[v_1 = e_1 + e_2 + e_3, \quad v_2 = e_1 + \zeta e_2 + \zeta^2 e_3,
+\quad v_3 = e_1 + \zeta^2 e_2 + \zeta e_3\]</span>
+are eigenvectors for <span class="math inline">\(M_2\)</span> with respective eigenvalues
+<span class="math inline">\(1,\zeta^2,\zeta\)</span>.</p>
+<p>Now let <span class="math inline">\(\Phi:F^3 \to F^3\)</span> be the linear transformation
+for which <span class="math display">\[\Phi(e_1) = v_1,  \quad \Phi(e_2) =v_3, \quad \Phi(e_3) = v_2\]</span>.</p>
+<p>We claim that <span class="math inline">\(\Phi\)</span> defines an isomorphism of <span class="math inline">\(G\)</span>-representations
+<span class="math display">\[(\rho_1,F^3) \xrightarrow{\sim} (\rho_2,F^3).\]</span></p>
+<p>We must check that <span class="math inline">\(\Phi(\rho_1(g)v) = \rho_2(g)\Phi(v)\)</span> for all <span class="math inline">\(g \in G\)</span> and all <span class="math inline">\(v \in F^3\)</span>.</p>
+<p>Since <span class="math inline">\(G\)</span> is <em>cyclic</em> it suffices to check that <span class="math display">\[(\clubsuit) \quad
+\Phi(M_1 v) = M_2 \Phi(v)
+\quad \forall v \in F^3\]</span>.</p>
+<p>(<em>Indeed</em>, <span class="math inline">\((\clubsuit)\)</span> amounts to “checking on a generator”. If
+<span class="math inline">\((\clubsuit)\)</span> holds then for every natural number <span class="math inline">\(i\)</span> a
+straightforward induction argument shows for every <span class="math inline">\(v \in F^3\)</span> that
+<span class="math display">\[\begin{align*} \Phi(\rho_1(i + 3\mathbb{Z})v) &amp;=
+\Phi(\rho_1(1+3\mathbb{Z})^i v) \\ &amp;= \Phi( {M_1}^i v) \\ &amp;=
+{M_2}^i \Phi(v) \\ &amp;= \rho_2(1 + 3\mathbb{Z})^i\Phi(v) \\ &amp;=
+\rho_2(i+3\mathbb{Z})\Phi(v) \end{align*}\]</span> )</p>
+<p>In turn, it suffices to verify the <span class="math inline">\((\clubsuit)\)</span> holds for the basis vectors <span class="math inline">\(e_1,e_2,e_3\)</span>
+for <span class="math inline">\(V = F^3\)</span>.</p>
+<p>Since <span class="math inline">\(e_1\)</span> and <span class="math inline">\(v_1\)</span> are <span class="math inline">\(1\)</span>-eigenvectors for <span class="math inline">\(M_1\)</span> resp. <span class="math inline">\(M_2\)</span>, we have
+<span class="math display">\[\Phi(M_1 e_1)= \Phi(e_1) = v_1 = M_2 v_1.\]</span></p>
+<p>Since <span class="math inline">\(e_2\)</span> and <span class="math inline">\(v_3\)</span> are <span class="math inline">\(\zeta\)</span>-eigenvectors for <span class="math inline">\(M_1\)</span> resp. <span class="math inline">\(M_2\)</span>, we have
+<span class="math display">\[\Phi(M_1 e_2)= \Phi(\zeta e_2) = \zeta\Phi(e_2) = \zeta v_3 = M_2 v_3.\]</span></p>
+<p>Since <span class="math inline">\(e_3\)</span> and <span class="math inline">\(v_2\)</span> are <span class="math inline">\(\zeta^2\)</span>-eigenvectors for <span class="math inline">\(M_1\)</span> resp. <span class="math inline">\(M_2\)</span>, we have
+<span class="math display">\[\Phi(M_1e_3)= \Phi(\zeta^2 e_3) = \zeta^2\Phi(e_3) =  \zeta^2 v_2 = M_2v_2.\]</span>
+Thus <span class="math inline">\((\clubsuit)\)</span> holds and the proof is complete.</p>
+<hr />
+<p>Alternatively, note that the matrix of <span class="math inline">\(\Phi\)</span> in the standard basis is given by
+<span class="math display">\[[\Phi] = \begin{bmatrix}
+1  &amp; 1 &amp; 1 \\
+1 &amp; \zeta^2 &amp; \zeta \\
+1 &amp; \zeta &amp; \zeta^2
+\end{bmatrix}\]</span></p>
+<p>Now, to prove that <span class="math inline">\(\Phi \circ \rho_1(g) = \rho_2(g) \circ \Phi\)</span>, it suffices to check that
+<span class="math inline">\(M_2[\Phi] = [\Phi] M_1\)</span> i.e. that
+<span class="math display">\[\begin{bmatrix}
+0 &amp; 0 &amp; 1\\ 
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 
+\end{bmatrix} \cdot \begin{bmatrix}
+1  &amp; 1 &amp; 1 \\
+1 &amp; \zeta^2 &amp; \zeta \\
+1 &amp; \zeta &amp; \zeta^2
+\end{bmatrix}
+=
+\begin{bmatrix}
+1  &amp; 1 &amp; 1 \\
+1 &amp; \zeta^2 &amp; \zeta \\
+1 &amp; \zeta &amp; \zeta^2
+\end{bmatrix}
+\cdot 
+\begin{bmatrix}
+1 &amp; 0 &amp; 0\\
+0 &amp; \zeta &amp; 0 \\
+0 &amp; 0 &amp; \zeta^2
+\end{bmatrix}
+\]</span></p>
+<p>IN fact, both products yield the matrix
+<span class="math display">\[\begin{bmatrix}
+1 &amp; \zeta &amp; \zeta^2 \\
+1 &amp; 1 &amp; 1 \\
+1 &amp; \zeta^2 &amp; \zeta
+\end{bmatrix}
+\]</span></p>
+</div></li>
+<li><p>Let <span class="math inline">\(V\)</span> be a <span class="math inline">\(n\)</span> dimensional <span class="math inline">\(F\)</span>-vector space for <span class="math inline">\(n \in \mathbb{N}\)</span>.</p>
+<p>Let <span class="math inline">\(\operatorname{GL}(V)\)</span> denote the group <span class="math display">\[\operatorname{GL}(V)
+= \{ \text{all invertible $F$-linear transformations $\phi:V \to
+V$}\}\]</span>
+where the group operation is <em>composition</em> of linear transformations.</p>
+<p>Recall that <span class="math inline">\(\operatorname{GL}_n(F)\)</span> denotes the group
+of all invertible <span class="math inline">\(n \times n\)</span> matrices.</p>
+<p>If <span class="math inline">\(\mathcal{B} = \{b_1,b_2,\cdots,b_n\}\)</span> is a choice of basis, show
+that the assignment <span class="math inline">\(\phi \mapsto [\phi]_{\mathcal{B}}\)</span>
+determines an isomorphism
+<span class="math display">\[\operatorname{GL}(V) \xrightarrow{\sim} \operatorname{GL}_n(F).\]</span></p>
+<p>Here <span class="math inline">\([\phi]_{\mathcal{B}} = [M_{ij}]\)</span> denotes the <em>matrix</em> of <span class="math inline">\(\phi\)</span>
+in the basis <span class="math inline">\(\mathcal{B}\)</span> defined by equations</p>
+<p><span class="math display">\[\phi(b_i) = \sum_{k=1}^n M_{ki} b_k.\]</span></p>
+<div class="solution">
+<p>Lets write <span class="math inline">\(\Phi\)</span> for the mapping
+<span class="math display">\[\Phi:\operatorname{GL}(V) \to \operatorname{GL}_n(F)\]</span> defined above.</p>
+<p>An important property – proved in <em>Linear Algebra</em> – is that for
+<span class="math inline">\(\phi,\psi:V \to V\)</span> we have <span class="math display">\[(\heartsuit) \quad [\phi \circ
+\psi]_{\mathcal{B}} = [\phi]_{\mathcal{B}} \cdot
+[\psi]_{\mathcal{B}}.\]</span> In words: “once you choose a basis,
+composition of linear transformations corresponds to multiplication
+of the corresponding matrices”.</p>
+<p>Now, since the matrix of the endomorphism <span class="math inline">\(\phi:V \to V\)</span> is equal
+to the identity matrix <span class="math inline">\(\mathbf{I}_n\)</span> if and only if <span class="math inline">\(\phi =\operatorname{id}_V\)</span>, <span class="math inline">\((\heartsuit)\)</span> shows at once that a linear
+transformation <span class="math inline">\(\phi:V \to V\)</span> is invertible if and only if
+<span class="math inline">\([\phi]_{\mathcal{B}}\)</span> is an invertible matrix.</p>
+<p>This confirms that <span class="math inline">\(\Phi\)</span> is indeed a group homomorphism.</p>
+<p>To show that <span class="math inline">\(\Phi\)</span> is an <em>isomorphism</em>, we exhibit its inverse.
+Namely, we defined a group homomorphism
+<span class="math display">\[\Psi:\operatorname{GL}_n(F) \to \operatorname{GL}(V)\]</span>
+and check that <span class="math inline">\(\Psi\)</span> is the inverse to <span class="math inline">\(\Phi\)</span>.</p>
+<p>TO define <span class="math inline">\(\Psi\)</span>, we introduce the linear isomorphism
+<span class="math inline">\(\beta:F^n \to V\)</span> defined by the rule
+<span class="math display">\[\beta \begin{bmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix} 
+=\sum_{i=1}^n a_i b_i.\]</span></p>
+<p>For an invertible matrix <span class="math inline">\(M\)</span>, we define
+<span class="math display">\[\Psi(M):V \to V\]</span>
+by the rule
+<span class="math display">\[\Psi(M)(v) = \beta M \cdot \beta^{-1} v\]</span></p>
+<p>If <span class="math inline">\(M_1,M_2 \in\operatorname{GL}_n(F)\)</span> then for every <span class="math inline">\(v \in V\)</span> we have
+<span class="math display">\[\begin{align*}
+\Psi(M_1M_2)v &amp;= \beta M_1 M_2 \cdot \beta^{-1} v \\
+&amp;= \beta M_1 \beta^{-1} \beta M_2 \cdot \beta^{-1} v \\
+&amp;= \Psi(M_1)\Psi(M_2)v
+\end{align*}\]</span>
+This confirms that <span class="math inline">\(\Psi\)</span> is a <em>group homomorphism</em>.</p>
+<p>It remains to observe that for <span class="math inline">\(M \in \operatorname{GL}_n(F)\)</span> we
+have <span class="math display">\[\Phi \circ \Psi (M) = M,\]</span> which amounts to the fact that
+<span class="math inline">\(M\)</span> is the matrix of <span class="math inline">\(\Psi(M)\)</span>, and we must observe for <span class="math inline">\(g \in \operatorname{GL}(V)\)</span> that <span class="math display">\[\Psi \circ \Phi (g) = g\]</span> which
+amounts to the observation that the transformation <span class="math inline">\(g:V \to V\)</span> is
+determined by its effect on the basis
+vectors <span class="math inline">\(b_i\)</span> and hence by the matrix <span class="math inline">\(\Phi(g)\)</span>.</p>
+</div></li>
+</ol>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>

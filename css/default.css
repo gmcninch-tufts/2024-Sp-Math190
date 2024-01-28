@@ -222,4 +222,10 @@ div.csl-entry {
 del {
     color: red;
 }
+
+div.solution {
+    background-color: lightblue;
+    padding: 5px;
+    margin: 5px;
+}
     
