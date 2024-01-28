@@ -40,6 +40,18 @@
         <p><strong>[in progress]</strong></p>
 <p>Let <span class="math inline">\(G\)</span> be a finite group and <span class="math inline">\(F\)</span> an algebraically closed field of
 characteristic 0.</p>
+<h1 id="some-notational-conventions">Some notational convention(s)</h1>
+<p>We will sometimes just write <span class="math inline">\(V\)</span> for a representation <span class="math inline">\((\rho,V)\)</span> of a
+group <span class="math inline">\(G\)</span>, leaving implicit the mapping
+<span class="math display">\[G \to \operatorname{GL}(V).\]</span></p>
+<p>One exception is when <span class="math inline">\((\rho,V)\)</span> is a representation for which <span class="math inline">\(\dim V = 1\)</span>. In this case, we denote this representation by the notation
+<span class="math inline">\(\rho\)</span>. For example, for any group <span class="math inline">\(G\)</span> one has the <em>trivial
+representation</em> <span class="math inline">\(\mathbb{1}\)</span>: the vector space is simply the 1-dimensional space
+<span class="math inline">\(F\)</span>, and the mapping <span class="math display">\[\unicode{x1D7D9}:G \to \operatorname{GL}(V) =
+\operatorname{GL}_1(F) = F^\times\]</span> is given by <span class="math inline">\(g \mapsto 1\)</span> for each
+<span class="math inline">\(g \in G\)</span>.</p>
+<p>Thus for example <span class="math inline">\(\unicode{x1D7D9}\oplus \unicode{x1D7D9}\)</span> is a two-dimensional
+<span class="math inline">\(G\)</span>-representation.</p>
 <h1 id="irreducible-representations">Irreducible Representations</h1>
 <p>A representation <span class="math inline">\((\rho,V)\)</span> of <span class="math inline">\(G\)</span> is <em>irreducible</em> (sometimes one
 says <em>simple</em>) provided that <span class="math inline">\(V \ne 0\)</span> and for any invariant subspace
@@ -113,7 +125,7 @@ first that <span class="math inline">\(\operatorname{End}_G(L)\)</span> is a <em
 non-zero, <span class="math inline">\(\ker \phi= 0\)</span>. Since <span class="math inline">\(V\)</span> is finite dimensional, it
 follows that <span class="math inline">\(\phi\)</span> is bijective and therefore invertible.</p>
 <p>To see that <span class="math inline">\(\operatorname{End}_G(L) = F\)</span>, it remains to observe
-that when <span class="math inline">\(F\)</span> is <em>algebraically closed</em>, and finite dimensional
+that when <span class="math inline">\(F\)</span> is <em>algebraically closed</em>, any finite dimensional
 division algebra <span class="math inline">\(D\)</span> with <span class="math inline">\(F \subset Z(D)\)</span> satisfies <span class="math inline">\(D = F\)</span>.</p>
 <p>Now (b) follows at once from (a).</p>
 </dd>
@@ -210,6 +222,10 @@ are irreducible, <span class="math inline">\(\pi_i\)</span> induces an isomorphi
 function <span class="math display">\[\chi = \chi_V:G \to \mathbb{C}\]</span> defined by the rule <span class="math display">\[\chi(g) =
 \operatorname{tr}(g:V \to V)\]</span> where <span class="math inline">\(\operatorname{tr}(g)\)</span> denotes
 the <em>trace</em> of the linear endomorphism of <span class="math inline">\(V\)</span> determined by <span class="math inline">\(g\)</span>.</p>
+<blockquote>
+<p>If <span class="math inline">\(\rho:G\to\operatorname{GL}(V)\)</span> denotes the homomorphism
+determining the representation, <span class="math inline">\(\chi_V(g) = \operatorname{tr}(\rho(g))\)</span>.</p>
+</blockquote>
 <dl>
 <dt><strong>Proposition:</strong></dt>
 <dd>
