@@ -1,3 +1,5 @@
 /.stack-work/**
 /_cache/**
 /docs/assets/curriculum-vita.pdf
+course-assets/pages-pdf/*
+course-assets/posts-pdf/*

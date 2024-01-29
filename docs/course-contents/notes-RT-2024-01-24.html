@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - (Representation Theory) Invariant subspaces & complete reducibility</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>(Representation Theory) Invariant subspaces & complete reducibility</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-01-22
+        
+    </section>
+    <section>
+        <h1 id="invariant-subspaces">Invariant subspaces</h1>
+<p>Let <span class="math inline">\((\rho,V)\)</span> be a <em>representation</em> of the group <span class="math inline">\(G\)</span> on the
+<span class="math inline">\(F\)</span>-vector space <span class="math inline">\(V\)</span>.</p>
+<p>If <span class="math inline">\(W\)</span> is a <em>subspace</em> of <span class="math inline">\(F\)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, one says that <span class="math inline">\(W\)</span> is a <em>sub-representation</em>, or that <span class="math inline">\(W\)</span> is an <em>invariant subspace</em>,
+provided that
+<span class="math display">\[\rho(g)W \subseteq W \quad \forall g \in G.\]</span></p>
+<p>If <span class="math inline">\(W\)</span> is a sub-representation, then <span class="math inline">\(W\)</span> “<em>is</em>” itself a
+representation of <span class="math inline">\(G\)</span> in a natural way, since <span class="math inline">\(\rho\)</span> determines a
+group homomorphism <span class="math display">\[g \mapsto \rho(g)_{\mid W}:G \to
+\operatorname{GL}(W).\]</span></p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+If <span class="math inline">\((\rho,V)\)</span> and <span class="math inline">\((\psi,W)\)</span> are <span class="math inline">\(G\)</span>-representations and if
+<span class="math inline">\(\Phi:V \to W\)</span> is a homomorphism of <span class="math inline">\(G\)</span>-representations then
+<span class="math inline">\(\ker \Phi\)</span> is a subrepresentation of <span class="math inline">\(V\)</span> and <span class="math inline">\(\Phi(V)\)</span> is a
+subrepresentation of <span class="math inline">\(W\)</span>.
+</dd>
+</dl>
+<h1 id="recollections-on-vector-subspaces-and-direct-sums">Recollections on vector subspaces and direct sums</h1>
+<p>Let <span class="math inline">\(W_1\)</span> and <span class="math inline">\(W_2\)</span> be <span class="math inline">\(F\)</span>-vector subspaces of the vector space
+<span class="math inline">\(V\)</span>. We can form the <em>direct sum</em> <span class="math inline">\(W_1 \oplus W_2\)</span>.</p>
+<p>And the defining property of the direct sum tells us that we get a linear mapping
+<span class="math display">\[\phi:W_1 \oplus W_2 \to V\]</span>
+by the rule <span class="math inline">\(\phi(w_1,w_2) = w_1 + w_2\)</span>.</p>
+<p>Suppose the following hold:</p>
+<ul>
+<li><span class="math inline">\(W_1 + W_2 = V\)</span> – i.e. <span class="math inline">\(\phi\)</span> is surjective, and</li>
+<li><span class="math inline">\(\ker \phi = 0\)</span> – i.e. <span class="math inline">\(W_1 \cap W_2 = \{0\}\)</span>.</li>
+</ul>
+<p>Under these conditions, <span class="math inline">\(\phi\)</span> determines an isomorphism <span class="math inline">\(W_1 \oplus W_2 \simeq V\)</span>, and one says that <span class="math inline">\(V\)</span> is the <em>internal direct sum</em> of
+the subspaces <span class="math inline">\(W_1\)</span> and <span class="math inline">\(W_2\)</span>.</p>
+<dl>
+<dt><strong>Remark:</strong></dt>
+<dd>
+<p>More generally, if <span class="math inline">\(W_1,W_2,\cdots,W_n\)</span> are subspaces of <span class="math inline">\(V\)</span>,
+suppose that</p>
+<ul>
+<li><span class="math inline">\(V = \sum_{i=1}^n W_i\)</span>, and</li>
+<li>for each <span class="math inline">\(i\)</span> we have <span class="math inline">\(W_i \cap \left(\sum_{j\ne i} W_j\right) = 0.\)</span></li>
+</ul>
+<p>Then <span class="math inline">\(V\)</span> is the <em>internal direct sum</em> <span class="math inline">\(V = W_1 \oplus W_2 \oplus \cdots \oplus W_n\)</span>.</p>
+</dd>
+<dt><strong>Example:</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(\phi:V \to V\)</span> be a linear mapping with <span class="math inline">\(\dim V &lt; \infty\)</span>, and
+suppose that <span class="math inline">\(\phi\)</span> is <em>diagonalizable</em> i.e. that <span class="math inline">\(V\)</span> has a basis
+consisting of <em>eigenvectors</em> for <span class="math inline">\(\phi\)</span>.</p>
+<p>Let <span class="math inline">\(\lambda_1, \cdots, \lambda_k \in F\)</span> be the <em>distinct eigenvalues</em> of <span class="math inline">\(\phi\)</span>,
+and let
+<span class="math display">\[V_i = \{x \in V \mid \phi(x) = \lambda_i x\}\]</span>
+be the <span class="math inline">\(\lambda_i\)</span>-eigenspace.</p>
+<p>Then <span class="math display">\[V = V_1 \oplus V_2 \oplus \cdots \oplus V_n\]</span>
+i.e. <span class="math inline">\(V\)</span> is the internal direct sum of the eigenspaces for <span class="math inline">\(\phi\)</span>.</p>
+</dd>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+Let <span class="math inline">\(W\)</span> be a subspace of <span class="math inline">\(V\)</span> where <span class="math inline">\(\dim V &lt; \infty\)</span>. Then there is a subspace
+<span class="math inline">\(W'\)</span> of <span class="math inline">\(V\)</span> for which <span class="math inline">\(V\)</span> is the internal direct sum of <span class="math inline">\(W\)</span> and <span class="math inline">\(W'\)</span>.
+</dd>
+<dt><strong>Remark</strong></dt>
+<dd>
+The analogue of the property described by the Proposition fails
+for abelian groups in general. Consider <span class="math inline">\(A = \mathbb{Z}/4\mathbb{Z}\)</span>. For the subgroup
+<span class="math inline">\(B = 2\mathbb{Z}/4\mathbb{Z}\)</span> (of order 2), there is no subgroup <span class="math inline">\(B'\)</span> for which
+<span class="math inline">\(A = B \oplus B'\)</span>.
+</dd>
+<dt><strong>Sketch of proof of Proposition:</strong></dt>
+<dd>
+<p>Choose a basis <span class="math inline">\(\beta_1,\dots,\beta_\ell\)</span> for the <span class="math inline">\(F\)</span>-vector space
+<span class="math inline">\(V/W\)</span>. Now <em>choose</em> vectors <span class="math inline">\(b_1,\cdots,b_\ell \in V\)</span> so that <span class="math display">\[\beta_i = b_i + W \in V/W.\]</span></p>
+<p>Let <span class="math inline">\(W'\)</span> be the <em>span</em> of <span class="math inline">\(b_1,\cdots,b_\ell\)</span>; i.e
+<span class="math display">\[W' = \sum_{i=1}^\ell Fb_i.\]</span></p>
+<p>We are going to show that <span class="math inline">\(V\)</span> is the internal direct sum of <span class="math inline">\(W\)</span> and <span class="math inline">\(W'\)</span>.</p>
+<p>For <span class="math inline">\(v \in V\)</span>, viewing <span class="math inline">\(v+W\)</span> as an element of <span class="math inline">\(V/W\)</span> we may write
+<span class="math display">\[v+W = a_1 \beta_1 + \cdots + a_\ell \beta_\ell\]</span>
+for scalars <span class="math inline">\(a_i \in F\)</span>.</p>
+<p>Let <span class="math inline">\(w' = \sum_{i=1}^\ell a_i b_i \in W'\)</span>. It is clear that
+<span class="math inline">\(w=v - w' \in W\)</span>. Since <span class="math inline">\(v = w + w'\)</span> we have showed that <span class="math inline">\(W + W' = V\)</span>.</p>
+<p>Finally the linear independence of the <span class="math inline">\(\beta_i\)</span> shows the only element
+of <span class="math inline">\(W'\)</span> contained in <span class="math inline">\(W\)</span> is <span class="math inline">\(0\)</span>; thus <span class="math inline">\(W \cap W' = \{0\}\)</span> so that
+<span class="math inline">\(V = W \oplus W'\)</span>.</p>
+</dd>
+</dl>
+<p>With notation as in the statement of the Proposition, one says that the subspace <span class="math inline">\(W'\)</span>
+is a <em>complement</em> to the subspace <span class="math inline">\(W\)</span>.</p>
+<h1 id="complements-and-projections">Complements and projections</h1>
+<p>Given a subspace <span class="math inline">\(W \subset V\)</span> and a complement <span class="math inline">\(W'\)</span>, so that <span class="math inline">\(V = W \oplus W'\)</span>, we
+get a <em>projection operator</em>
+<span class="math display">\[\pi:V = W \oplus W' \to V = W \oplus W' \quad \text{via} \quad \pi(x,y) = (x,0)\]</span></p>
+<p>The mapping <span class="math inline">\(\pi\)</span> satisfies the following properties:</p>
+<p>P1. <span class="math inline">\(\pi^2 = \pi\)</span>, and</p>
+<p>P2. <span class="math inline">\(\pi(V) = W\)</span>.</p>
+<p>We say that a linear mapping <span class="math inline">\(\pi:V \to V\)</span> is a <em>projection onto <span class="math inline">\(W\)</span></em> provided
+that conditions P1 and P2 hold.</p>
+<dl>
+<dt><strong>Lemma:</strong></dt>
+<dd>
+Suppose that <span class="math inline">\(\pi:V \to V\)</span> is a linear mapping.
+Then <span class="math inline">\(\pi\)</span> is projection onto <span class="math inline">\(W\)</span> if and only if <span class="math inline">\(\pi(W) = W\)</span> and the restriction of <span class="math inline">\(\pi\)</span> to <span class="math inline">\(W\)</span> is the identity mapping
+<span class="math inline">\(\operatorname{id}_W\)</span>.
+</dd>
+<dt><strong>Proof of Lemma:</strong></dt>
+<dd>
+<p>For a linear map <span class="math inline">\(\pi:V \to V\)</span> for which <span class="math inline">\(\pi(V) = W\)</span>, we must
+show that <span class="math inline">\(\pi^2 = \pi\)</span> if and only if <span class="math inline">\(\pi_{\mid W} = \operatorname{id}_W\)</span>.</p>
+<p><span class="math inline">\((\Rightarrow)\)</span>: Suppose that <span class="math inline">\(w \in W\)</span>. Since <span class="math inline">\(\pi(V) = W\)</span>, we
+may write <span class="math inline">\(w = \pi(v)\)</span> for some <span class="math inline">\(v \in V\)</span>. Then <span class="math inline">\(\pi^2 = \pi\)</span>
+shows that <span class="math inline">\(\pi^2(v) = \pi(v) \implies \pi(\pi(v)) = \pi(v)\)</span> so
+that <span class="math inline">\(\pi(w) = w\)</span>.</p>
+<p><span class="math inline">\((\Leftarrow)\)</span>: Suppose that <span class="math inline">\(v \in V\)</span>. We have <span class="math inline">\(\pi(v) \in W\)</span>,
+and since <span class="math inline">\(\pi_{\mid W}\)</span> is the identity, we find <span class="math inline">\(\pi^2(\pi(v)) = \pi(v)\)</span>. Since this holds for every <span class="math inline">\(v\)</span>, we have <span class="math inline">\(\pi^2 = \pi\)</span> as
+required.</p>
+</dd>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+<p>There is a bijection between the following:</p>
+<ul>
+<li><p><em>complements</em> <span class="math inline">\(W'\)</span> to <span class="math inline">\(W\)</span> in <span class="math inline">\(V\)</span></p></li>
+<li><p>projections <span class="math inline">\(\pi:V \to V\)</span> onto <span class="math inline">\(W\)</span></p></li>
+</ul>
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>We’ve already described how to build a projection <span class="math inline">\(\pi\)</span> from a complement <span class="math inline">\(W'\)</span>.</p>
+<p>Given a projection <span class="math inline">\(\pi\)</span>, take <span class="math inline">\(W' = \ker \pi\)</span>. We must argue that
+<span class="math inline">\(W'\)</span> is a complement to <span class="math inline">\(W\)</span> in <span class="math inline">\(V\)</span>.</p>
+<p>Suppose <span class="math inline">\(x \in W \cap W'\)</span>. Since <span class="math inline">\(x \in W\)</span>, the Lemma shows that
+<span class="math inline">\(x = \pi(x)\)</span>. But on the other hand since <span class="math inline">\(x \in W' = \ker \pi\)</span>
+we find that <span class="math inline">\(x = \pi(x) = 0\)</span>. This proves that <span class="math inline">\(W \cap W' = \{0\}\)</span>.</p>
+<p>Finally we must show that <span class="math inline">\(V = W + W'\)</span>. Let <span class="math inline">\(v \in V\)</span>. Then <span class="math inline">\(w = \pi(v) \in W\)</span> by P2. Now, <span class="math display">\[v = \pi(v) + (v - \pi(v)) = w + (v - \pi(v))\]</span> and it
+just remains to see that <span class="math inline">\(v - \pi(v) \in W'\)</span>. But by P1,
+<span class="math display">\[\pi(v-\pi(v)) = \pi(v) - \pi^2(v) = \pi(v) - \pi(v) = 0.\]</span></p>
+</dd>
+</dl>
+<h1 id="complete-reducibility-of-g-representations.">Complete reducibility of <span class="math inline">\(G\)</span> representations.</h1>
+<p>Let <span class="math inline">\(G\)</span> be a finite group and <span class="math inline">\((\rho,V)\)</span> a representation of <span class="math inline">\(G\)</span>.</p>
+<dl>
+<dt><strong>Definition:</strong></dt>
+<dd>
+We say that <span class="math inline">\((\rho,V)\)</span> is <em>completely reducible</em> if for every
+subrepresentation <span class="math inline">\(W \subseteq V\)</span>, there is a subrepresentation
+<span class="math inline">\(W' \subseteq V\)</span> such that <span class="math inline">\(V\)</span> is the internal direct sum of <span class="math inline">\(W\)</span>
+and <span class="math inline">\(W'\)</span> as vector spaces.
+</dd>
+<dt><strong>Theorem:</strong></dt>
+<dd>
+Let <span class="math inline">\(F\)</span> be a field of char. 0 and let <span class="math inline">\(G\)</span> be a finite group. Then
+every representation of <span class="math inline">\(G\)</span> on a finite dimensional <span class="math inline">\(F\)</span>-vector
+space is completely reducible.
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>Let <span class="math inline">\((\rho,V)\)</span> be a (finite dimensional) representation of <span class="math inline">\(G\)</span> and
+let <span class="math inline">\(W \subset V\)</span> be a <em>subrepresentation</em>.</p>
+<p>We <em>choose</em> a vector space complement, which by the Proposition
+above amounts to the choice of a projection operator <span class="math inline">\(\pi:V \to V\)</span>
+onto the subspace <span class="math inline">\(W\)</span>.</p>
+<p>We form a new linear mapping <span class="math display">\[\widetilde \pi:V \to V\]</span> by the
+rule <span class="math display">\[\widetilde \pi = \dfrac{1}{|G|}\sum_{g \in G} \rho(g) \circ
+\pi \circ \rho(g)^{-1}.\]</span></p>
+<p>We are going to prove:</p>
+<ol type="i">
+<li><p><span class="math inline">\(\widetilde \pi\)</span> is a homomorphism of <span class="math inline">\(G\)</span>-representations, and</p></li>
+<li><p><span class="math inline">\(\widetilde \pi\)</span> is a <em>projection</em>.</p></li>
+</ol>
+<p>Together (i) and (ii) imply the Theorem. Indeed, if (ii) holds,
+one knows that <span class="math inline">\(W' = \ker \widetilde \pi\)</span> is a <em>complement to <span class="math inline">\(W\)</span></em>. Since
+<span class="math inline">\(\widetilde \pi\)</span> is a homomorphism of <span class="math inline">\(G\)</span>-representations, one knows
+that its kernel <span class="math inline">\(W'\)</span> is a subrepresentation.</p>
+<p>To prove (i), let <span class="math inline">\(h \in G\)</span> and <span class="math inline">\(v \in V\)</span> and observe</p>
+<p><span class="math display">\[\begin{align*}
+\widetilde \pi(\rho(h) v) &amp;= \dfrac{1}{|G|} \sum_{g \in G} 
+\rho(g) \circ
+\pi \circ \rho(g)^{-1} (\rho(h) v) \\	
+&amp;= \dfrac{1}{|G|} \sum_{g \in G} 
+\rho(g) \circ
+\pi \circ \rho(g^{-1}h) (v) \\
+&amp;= \dfrac{1}{|G|} \sum_{x \in G} 
+\rho(hx) \circ \pi \circ \pi(x^{-1})(v) \\
+&amp;= \dfrac{1}{|G|} \rho(h) \sum_{x \in G} \rho(x) \circ \pi \circ \rho(x)^{-1} (v) \\
+&amp;= \rho(h) \widetilde \pi(v)
+\end{align*}\]</span></p>
+<p>Thus <span class="math inline">\(\widetilde \pi\)</span> is indeed a homomorphism of <span class="math inline">\(G\)</span>-representations.</p>
+<p>To prove (ii), we observe that for each <span class="math inline">\(g \in G\)</span>, the mapping
+<span class="math inline">\(\rho(g) \circ \pi \circ \rho(g)^{-1}\)</span> is also a projection onto
+<span class="math inline">\(W\)</span>. Indeed, since <span class="math inline">\(W\)</span> is a subrepresentation, <span class="math inline">\(\rho(g)W = W\)</span>, so
+that <span class="math inline">\(\rho(g) \circ \pi \circ \rho(g)^{-1}(V) \subseteq W\)</span>. On the
+other hand, since <span class="math inline">\(\pi_{\mid W}\)</span> is the identity mapping, <span class="math inline">\(\rho(g) \circ \pi \circ \rho(g)^{-1}(w) = w\)</span> for any <span class="math inline">\(w\in W\)</span> so the Lemma
+above shows that <span class="math inline">\(\rho(g) \circ \pi \circ \rho(g){-1}\)</span> is a
+projection onto <span class="math inline">\(W\)</span>.</p>
+<p>Now it is clear that <span class="math inline">\(\sum_{g \in G} \rho(g) \circ \pi \circ \rho(g^{-1})\)</span> maps <span class="math inline">\(V\)</span> to <span class="math inline">\(W\)</span>. Since each mapping <span class="math inline">\(\rho(g) \circ \pi \circ \rho(g^{-1})\)</span> is the identity on <span class="math inline">\(W\)</span>, it follows that
+<span class="math display">\[\widetilde \pi = \dfrac{1}{|G|} \sum_{g \in G} \rho(g) \circ \pi
+\circ \rho(g^{-1})\]</span> is the identity mapping on <span class="math inline">\(W\)</span>, so
+<span class="math inline">\(\widetilde \pi\)</span> is a projection by the Lemma above.</p>
+<p>This completes the proof of the Theorem.</p>
+</dd>
+</dl>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The term “subspace” means “vector subspace”. One might also say “<span class="math inline">\(F\)</span>-subspace” to emphasize
+the scalars.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>

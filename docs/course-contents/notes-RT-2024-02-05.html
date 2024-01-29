@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - Characters of irreducible representations</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>Characters of irreducible representations</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-02-05
+        
+    </section>
+    <section>
+        <h1 id="the-regular-representation-again.">The regular representation, again.</h1>
+<p>We write <span class="math inline">\(\mathbb{C}[G]\)</span> for the space of functions on <span class="math inline">\(G\)</span>, viewed as
+a permutation representation of <span class="math inline">\(G\)</span> (and we suppress the notation for
+the homomorphism <span class="math inline">\(G \to \operatorname{GL}(\mathbb{C}[G])\)</span>).</p>
+<p>For functions <span class="math inline">\(f_1,f_2 \in \mathbb{C}[G]\)</span>, we define their
+<em>convolution</em> by the formula <span class="math display">\[(f_1 \star f_2)(x) = \sum_{yz = x}
+f_1(y)f_2(z).\]</span></p>
+<p>For the basis elements <span class="math inline">\(\delta_g \in \mathbb{C}[G]\)</span> (i.e. the <em>Dirac functions</em>),
+we have
+<span class="math display">\[\delta_g \star \delta_h = \delta_{gh}.\]</span></p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+<ol type="a">
+<li><p>For <span class="math inline">\(f \in \mathbb{C}[G]\)</span>, the action of an element <span class="math inline">\(g \in G\)</span>
+on <span class="math inline">\(f\)</span> satisfies <span class="math display">\[g.f = \delta_g \star f.\]</span></p></li>
+<li><p>Let <span class="math inline">\(W \subseteq \mathbb{C}[G]\)</span> be an invariant subspace. For
+any <span class="math inline">\(f \in \mathbb{C}[G]\)</span>, we have <span class="math display">\[f \star f' \in W \quad
+\forall f' \in W.\]</span></p></li>
+</ol>
+</dd>
+</dl>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>
