@@ -50,28 +50,52 @@ dimensional over the field <span class="math inline">\(F = \mathbb{C}\)</span>.<
 <li><p>Let <span class="math inline">\(V\)</span> be a vector space and let <span class="math inline">\(\Phi:V \to V\)</span> a linear mapping
 If <span class="math inline">\(\mathcal{B}\)</span> is a basis for <span class="math inline">\(V\)</span>, recall that the <em>trace</em> of <span class="math inline">\(\Phi\)</span>
 is defined by
-<span class="math display">\[\operatorname{tr}(\Phi) = \operatorname{tr}([\Phi]_\mathcal{B}).\]</span></p></li>
+<span class="math display">\[\operatorname{tr}(\Phi) = \operatorname{tr}([\Phi]_\mathcal{B}).\]</span></p>
+<p>Explain why this definition is independent of the choice of
+basis <span class="math inline">\(\mathcal{B}\)</span> of <span class="math inline">\(V\)</span>.</p></li>
 <li><p>Recall that the <em>dual</em> of <span class="math inline">\(V\)</span> is the vector space <span class="math inline">\(V^\vee = \operatorname{Hom}_F(V,F)\)</span> of <em>linear functionals</em> on <span class="math inline">\(V\)</span>.</p>
-<p>If <span class="math inline">\(b_1,\dots,b_n\)</span> is a basis for <span class="math inline">\(V\)</span>, let <span class="math inline">\({b_j}^\vee:V \to F\)</span> be
-defined by <span class="math inline">\({b_j}^\vee(b_i) = \delta_{i,j}\)</span>. Show that
-<span class="math inline">\({b_1}^\vee,\dots,{b_n}^\vee\)</span> is a basis for <span class="math inline">\(V^\vee\)</span>; it is known as
-the <em>dual basis</em> to <span class="math inline">\(b_1,\dots,b_n\)</span>.</p></li>
+<p>If <span class="math inline">\(b_1,\dots,b_n\)</span> is a basis for <span class="math inline">\(V\)</span>, let <span class="math inline">\({b_j}^\vee:V \to F\)</span>
+be defined by <span class="math inline">\({b_j}^\vee(b_i) = \delta_{i,j}\)</span>, so that
+<span class="math inline">\({b_j}^\vee \in V^\vee\)</span>. Show that <span class="math inline">\({b_1}^\vee,\dots,{b_n}^\vee\)</span>
+is a basis for <span class="math inline">\(V^\vee\)</span>; it is known as the <em>dual basis</em> to
+<span class="math inline">\(b_1,\dots,b_n\)</span>.</p></li>
 <li><p>Prove that the trace of the linear mapping <span class="math inline">\(\Phi:V \to V\)</span> is
 given by the expression <span class="math display">\[\operatorname{tr}(\Phi) = \sum_{i=1}^n
-{b_i}^\vee(\Phi(b_i)).\]</span></p></li>
+{b_i}^\vee(\Phi(b_i))\]</span> for any choice of basis
+<span class="math inline">\(\mathcal{B}=\{b_1,b_2,\cdots,b_n\}\)</span>.</p></li>
 <li><p>Suppose that the finite group <span class="math inline">\(G\)</span> acts on the finite set
 <span class="math inline">\(\Omega\)</span>, and consider the corresponding permutation
 representation <span class="math inline">\((\rho,F[\Omega])\)</span> of <span class="math inline">\(G\)</span>. Recall that
 <span class="math inline">\(F[\Omega]\)</span> is the vector space of all <span class="math inline">\(F\)</span>-values functions on
 <span class="math inline">\(\Omega\)</span>, and that for <span class="math inline">\(f \in F[\Omega]\)</span> and <span class="math inline">\(g \in G\)</span>, we have
-<span class="math display">\[\rho(g)f(\omega) = f(g^{-1}\omega).\]</span>
-In particular, we saw in the lecture that
-<span class="math display">\[\rho(g)\delta_\omega) = \delta_{g\omega},\]</span>
+<span class="math display">\[\rho(g)f(\omega) = f(g^{-1}\omega).\]</span> In particular, we saw in
+the lecture that <span class="math display">\[\rho(g)\delta_\omega = \delta_{g\omega}\]</span>
 where <span class="math inline">\(\delta_\omega\)</span> denotes the <em>Dirac function</em> at <span class="math inline">\(\omega \in \Omega\)</span>.</p>
-<p>Show that <span class="math display">\[\operatorname{tr}(\rho(g)) = #\{\omega \in \Omega
-\mid g\omega = \omega\};\]</span> i.e. the trace of <span class="math inline">\(\rho(g)\)</span> is the
-number of fixed points of the action of <span class="math inline">\(g\)</span> on <span class="math inline">\(\Omega\)</span>.</p></li>
+<p>Show that <span class="math display">\[\operatorname{tr}(\rho(g)) = \#\{\omega \in \Omega
+\mid g\omega = \omega\}.\]</span> Thus the character <span class="math inline">\(\chi_\Omega\)</span> of
+the representation <span class="math inline">\((\rho,F[\Omega])\)</span> is given by
+<span class="math display">\[\chi_\Omega(g) = \text{the number of fixed points of the
+action of $g$ on $\Omega$.}\]</span></p></li>
 </ol></li>
+<li><p>Let <span class="math inline">\(G\)</span> be a finite group and let <span class="math inline">\(V\)</span> be a <span class="math inline">\(G\)</span> representation.</p>
+<ol type="a">
+<li><p>Let <span class="math inline">\(L\)</span> be an irreducible representation of <span class="math inline">\(G\)</span>, and write
+<span class="math inline">\(\mathscr{S}\)</span> for the set of all subrepresentations <span class="math inline">\(W\)</span> of <span class="math inline">\(V\)</span>
+for which there is an isomorphism <span class="math inline">\(W \simeq L\)</span> of
+<span class="math inline">\(G\)</span>-representations.</p>
+<p>Write <span class="math display">\[V_{(L)} = \sum_{W \in \mathscr{S}} W.\]</span> Prove that the
+<span class="math inline">\(V_{(L)}\)</span> is a subrepresentation of <span class="math inline">\(V\)</span>, and that the quotient
+<span class="math inline">\(G\)</span>-representation <span class="math inline">\(V/V_{(L)}\)</span> has no subrepresentations
+isomorphic to <span class="math inline">\(L\)</span>.</p></li>
+<li><p>Write <span class="math inline">\(L_1,L_2,\cdots,L_r\)</span> for the collection of all irreducible
+representations of <span class="math inline">\(G\)</span>.</p>
+<p>Prove that <span class="math inline">\(V\)</span> is isomorphic to the direct sum
+<span class="math display">\[V_{(L_1)} \oplus V_{(L_2)} \oplus \cdots \oplus V_{(L_r)}.\]</span></p></li>
+</ol>
+<p><strong>Remark:</strong> The subrepresentation <span class="math inline">\(V_{(L)}\)</span> is known as the
+<em>isotypic component of <span class="math inline">\(V\)</span> of type <span class="math inline">\(L\)</span></em>.</p></li>
+<li><p>Let <span class="math inline">\(N &gt;0\)</span> be a natural number, and let <span class="math inline">\(\zeta \in F^\times\)</span> be a
+primitive <span class="math inline">\(N\)</span>-th root of unity (if you like, you can take <span class="math inline">\(\zeta = e^{2\pi i/N}\)</span>).</p></li>
 </ol>
     </section>
 </article>
