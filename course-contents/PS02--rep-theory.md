@@ -5,8 +5,7 @@ author: George McNinch
 date: 2024-01-29
 ---
 
-
-\newcommand{\trivial}{\unicode{x1D7D9}}
+\newcommand{\trivial}{\mathbf{1}}
 
 
 In these exercises, $G$ always denotes a finite group and all vector

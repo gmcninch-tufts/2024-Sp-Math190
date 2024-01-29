@@ -80,7 +80,7 @@ complex numbers.
    $\zeta = e^{2\pi i/n}$).
 	  
    c. Let $v_1 = \displaystyle \sum_{i=1}^n \zeta^i e_i$. Show that
-      $v_1$ ~~is a $\zeta$-eigenvector~~ is a $\zeta^{-1}$-eigenvector for $T$.
+      $v_1$  is a $\zeta^{-1}$-eigenvector for $T$.
 
       ::: {.solution}
 	  We compute
@@ -97,7 +97,7 @@ complex numbers.
 	  :::
 
    d. More generally, let $0 \le j < n$ and let $$v_j = \sum_{i=1}^n
-      \zeta^{ij} e_i.$$ Show that $v_j$ ~~is a $\zeta^j$-eigenvector~~
+      \zeta^{ij} e_i.$$ Show that $v_j$ 
       is a $\zeta^{-j}$-eigenvector for $T$.
 	  
 	  ::: {.solution} 
@@ -325,7 +325,7 @@ complex numbers.
    It remains to observe that for $M \in \operatorname{GL}_n(F)$ we
    have $$\Phi \circ \Psi (M) = M,$$ which amounts to the fact that
    $M$ is the matrix of $\Psi(M)$, and we must observe for $g \in
-   \operatorname{GL}(V)$ that $$\Psi \circ \Phi (g) = g$$ which
+   \operatorname{GL}(V)$ hat $$\Psi \circ \Phi (g) = g$$ which
    amounts to the observation that the transformation $g:V \to V$ is
    determined by its effect on the basis
    vectors $b_i$ and hence by the matrix $\Phi(g)$.  
