@@ -25,6 +25,8 @@ class about characters of representations of $G$.
 	  $$\operatorname{tr}(\Phi) = \operatorname{tr}([\Phi]_{\mathcal{B}}).$$
 	  
 
+      **apologies -- this is just explanatory; it isn't actually a question**
+
    b. Recall that the *dual* of $V$ is the vector space $V^\vee =
       \operatorname{Hom}_F(V,F)$ of *linear functionals* on $V$.
 	  
