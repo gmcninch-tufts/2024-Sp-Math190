@@ -37,26 +37,272 @@
         
     </section>
     <section>
-        <h1 id="the-regular-representation-again.">The regular representation, again.</h1>
+        <h1 id="convolution">Convolution</h1>
 <p>We write <span class="math inline">\(\mathbb{C}[G]\)</span> for the space of functions on <span class="math inline">\(G\)</span>, viewed as
 a permutation representation of <span class="math inline">\(G\)</span> (and we suppress the notation for
 the homomorphism <span class="math inline">\(G \to \operatorname{GL}(\mathbb{C}[G])\)</span>).</p>
 <p>For functions <span class="math inline">\(f_1,f_2 \in \mathbb{C}[G]\)</span>, we define their
 <em>convolution</em> by the formula <span class="math display">\[(f_1 \star f_2)(x) = \sum_{yz = x}
 f_1(y)f_2(z).\]</span></p>
-<p>For the basis elements <span class="math inline">\(\delta_g \in \mathbb{C}[G]\)</span> (i.e. the <em>Dirac functions</em>),
-we have
-<span class="math display">\[\delta_g \star \delta_h = \delta_{gh}.\]</span></p>
+<p>If <span class="math inline">\(V\)</span> is a <span class="math inline">\(G\)</span>-representation and <span class="math inline">\(f \in \mathbb{C}[G]\)</span>, we define
+<span class="math display">\[f \star v = \sum_{g \in G} f(g) gv\]</span>
+for <span class="math inline">\(v \in V\)</span>.</p>
 <dl>
-<dt><strong>Proposition:</strong></dt>
+<dt><strong>Remark:</strong></dt>
 <dd>
-<ol type="a">
-<li><p>For <span class="math inline">\(f \in \mathbb{C}[G]\)</span>, the action of an element <span class="math inline">\(g \in G\)</span>
-on <span class="math inline">\(f\)</span> satisfies <span class="math display">\[g.f = \delta_g \star f.\]</span></p></li>
+<ol type="1">
+<li><p>For the basis elements <span class="math inline">\(\delta_g \in \mathbb{C}[G]\)</span> (i.e. the
+<em>Dirac functions</em>), we have <span class="math display">\[\delta_g \star \delta_h =
+\delta_{gh}.\]</span></p></li>
+<li><p>The action of <span class="math inline">\(G\)</span> on <span class="math inline">\(\mathbb{C}[G]\)</span> can be described by <span class="math display">\[g f =
+\delta_g \star f\]</span> for <span class="math inline">\(g \in G\)</span> and <span class="math inline">\(f \in \mathbb{C}[G]\)</span>.</p></li>
+<li><p>Viewing <span class="math inline">\(\mathbb{C}[G]\)</span> as a <span class="math inline">\(G\)</span>-representation, the two
+notions of <span class="math inline">\(\star\)</span> just introduced actually coincide:</p>
+<p><span class="math display">\[f_1 \star f_2 = \sum_{g \in G} f_1(g) \delta_g \star f_2.\]</span></p></li>
+<li><p>The product <span class="math inline">\(\star\)</span> makes <span class="math inline">\(\mathbb{C}[G]\)</span> into a <em>ring</em> (in
+fact, a <span class="math inline">\(\mathbb{C}\)</span>-algebra) and <span class="math inline">\(V\)</span> into a
+<span class="math inline">\(\mathbb{C}[G]\)</span>-module. Mostly we won’t use this fact - at
+least explicitly - in these notes.</p></li>
 <li><p>Let <span class="math inline">\(W \subseteq \mathbb{C}[G]\)</span> be an invariant subspace. For
 any <span class="math inline">\(f \in \mathbb{C}[G]\)</span>, we have <span class="math display">\[f \star f' \in W \quad
 \forall f' \in W.\]</span></p></li>
+<li><p>The element <span class="math inline">\(\delta_1\)</span> acts as the identity for the <span class="math inline">\(\star\)</span>
+operation. Namely, for <span class="math inline">\(f \in \mathbb{C}\)</span> <span class="math display">\[f \star \delta_1 =
+\delta_1 \star f.\]</span> This follows easily from the fact that
+<span class="math inline">\(\delta_1 \star \delta_g = \delta_g \star \delta_1 = \delta_g\)</span>
+for all <span class="math inline">\(g \in G\)</span>.</p></li>
 </ol>
+</dd>
+</dl>
+<h1 id="isotypic-decomposition">Isotypic decomposition</h1>
+<p>Let <span class="math inline">\(V\)</span> be a <span class="math inline">\(G\)</span>-representation and let <span class="math inline">\(L\)</span> be an irreducible
+<span class="math inline">\(G\)</span>-representation.</p>
+<p>Consider the set <span class="math inline">\(\mathcal{S}\)</span> of all invariant subspaces <span class="math inline">\(S \subseteq V\)</span> for which <span class="math inline">\(S \simeq L\)</span> as <span class="math inline">\(G\)</span>-representation.</p>
+<p>Set <span class="math display">\[W = \sum_{S \in \mathcal{S}} S;\]</span>
+then <span class="math inline">\(W\)</span> is an invariant subspace of <span class="math inline">\(V\)</span>.</p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+<p><span class="math inline">\(W\)</span> is <em>isotypic</em> in the sense that any irreducible invariant
+subspace of <span class="math inline">\(W\)</span> is isomorphic (as <span class="math inline">\(G\)</span>-representation) to <span class="math inline">\(L\)</span>.</p>
+<p>Moreover, <span class="math inline">\([V/W:L] = 0\)</span>.</p>
+</dd>
+</dl>
+<p><em>You will prove this in homework</em>.</p>
+<p>We write <span class="math inline">\(V_{(L)}\)</span> for the invariant subspace <span class="math inline">\(W\)</span>.</p>
+<p>You will also prove:</p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+If <span class="math inline">\(L_1,L_2,\cdots,L_r\)</span> is a complete set of non-isomorphic
+irreducible representations of <span class="math inline">\(G\)</span>, then <span class="math display">\[V = V_{(L_1)} \oplus
+V_{(L_2)} \oplus \cdots \oplus V_{(L_r)}.\]</span>
+</dd>
+</dl>
+<h1 id="results-about-the-characters-of-the-irreducible-representations">Results about the characters of the irreducible representations</h1>
+<h2 id="investigation-of-certain-idempotent-elements-in-mathbbcg.">Investigation of certain idempotent elements in <span class="math inline">\(\mathbb{C}[G]\)</span>.</h2>
+<p>Let <span class="math inline">\(L\)</span> be an irreducible representation of <span class="math inline">\(G\)</span> and let <span class="math inline">\(W_1 = \mathbb{C}[G]_{(L)}\)</span>.</p>
+<p>Use completely reduciblity to write <span class="math display">\[\mathbb{C}[G] = W_1 \oplus W_2\]</span>
+for some invariant subspace <span class="math inline">\(W_2 \subset \mathbb{C}[G]\)</span>.</p>
+<p>Note that <span class="math inline">\([W_2:L] = 0\)</span> by construction.</p>
+<p>We now write
+<span class="math display">\[\delta_1 = e_1 + e_2 \quad \text{for $e_1 \in W_1$ and $e_2 \in W_2$}.\]</span></p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+<p>For <span class="math inline">\(w_1 \in W_1\)</span> and <span class="math inline">\(w_2 \in W_2\)</span> we have</p>
+<p><span class="math display">\[e_1 \star w_1 = w_1,\quad  e_1 \star w_2 = 0,\]</span>
+<span class="math display">\[e_2 \star w_1 = 0, \quad \text{and} \quad e_2 \star w_2 = w_2.\]</span></p>
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>Fix <span class="math inline">\(w_2 \in W_2\)</span>. We define a mapping
+<span class="math inline">\(\phi:W_1 \to W_2\)</span> by the rule
+<span class="math inline">\(\phi(w_1) = w_1 \star w_2.\)</span></p>
+<p>We note that <span class="math inline">\(\phi\)</span> is a homomorphism of <span class="math inline">\(G\)</span>-representations.
+Indeed, recall the action of <span class="math inline">\(g \in G\)</span> on <span class="math inline">\(\mathbb{C}[G]\)</span> is the
+same as that of <span class="math inline">\(\delta_g \star\)</span>. Now</p>
+<p><span class="math display">\[\phi(\delta_g \star w_1) = (\delta_g \star w_1) \star w_2 =
+ \delta_g \star (w_1 \star w_2) = \delta_g \star \phi(w_2).\]</span></p>
+<p>Since <span class="math inline">\(W_1\)</span> is <span class="math inline">\(L\)</span>-isotypic and since <span class="math inline">\([W_2:L] = 0\)</span>, the mapping
+<span class="math inline">\(\phi\)</span> must be 0.</p>
+<p>Now conclude that <span class="math display">\[0 = w_1 \star w_2 \quad \forall w_1 \in W_1, w_2 \in W_2.\]</span></p>
+<p>A similar argument shows that <span class="math display">\[0 = w_2 \star w_1 \quad \forall
+ w_1 \in W_1, w_2 \in W_2.\]</span> (For <span class="math inline">\(w_1 \in W_1\)</span>, one define a
+homomorphism <span class="math inline">\(\psi:W_2 \to W_1\)</span> by the rule <span class="math inline">\(\psi(w_2) = w_2  \star w_1\)</span> As before, one argues that <span class="math inline">\(\psi = 0\)</span>…)</p>
+<p>Now notice for <span class="math inline">\(w_1 \in W_1\)</span> that <span class="math display">\[w_1 = \delta_1 \star w_1 =
+ (e_1 + e_2)\star w_1 = e_1 \star w_1 + e_2 \star w_1 = e_1 \star
+ w_1\]</span>
+since <span class="math inline">\(e_2 \in W_2 \implies e_2 \star w_1 = 0\)</span> by the preceding results.
+This proves that <span class="math inline">\(e_1 \star w_1 = w_1\)</span> for all <span class="math inline">\(w_1 \in W_1\)</span></p>
+<p>Similarly, for <span class="math inline">\(w_2 \in W_2\)</span> we have <span class="math display">\[w_2 = \delta_1 \star w_2 =
+ (e_1 + e_2)\star w_2 = e_1 \star w_2 + e_2 \star w_2 = e_2 \star
+ w_2\]</span>
+since <span class="math inline">\(w_2 \in W_2 \implies e_1 \star w_2 = 0\)</span> by the preceding results.</p>
+<p>This completes the proof.</p>
+</dd>
+</dl>
+<p>As an immediate consequence, we get:</p>
+<dl>
+<dt><strong>Corollary:</strong></dt>
+<dd>
+<ul>
+<li><span class="math inline">\(e_1 \star e_1 = e_1\)</span></li>
+<li><span class="math inline">\(e_2 \star e_2 = e_2\)</span></li>
+<li><span class="math inline">\(e_1 \star e_2 = e_2 \star e_1 = 0\)</span>.</li>
+</ul>
+</dd>
+</dl>
+<p>We can actually find a <em>formula</em> expressing <span class="math inline">\(e_1\)</span> in the basis
+<span class="math inline">\(\{\delta_g\}\)</span> for <span class="math inline">\(\mathbb{C}[G]\)</span>:</p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+Let <span class="math inline">\(W_1 = \mathbb{C}[G]_{(L)}\)</span> and suppose that <span class="math inline">\(\mathbb{C}[G] =  W_1 \oplus W_2\)</span> for an invariant subspace <span class="math inline">\(W_2\)</span> as before. Write
+<span class="math inline">\(\delta_1 = e_1 + e_2\)</span> with <span class="math inline">\(e_i \in W_i\)</span>. and let <span class="math inline">\(\chi\)</span> be the
+<em>character</em> of <span class="math inline">\(W_1\)</span>. We have <span class="math display">\[e_1 = \dfrac{1}{|G|} \sum_{g \in G}
+ \chi(g^{-1}) \delta_g.\]</span>
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>Fix <span class="math inline">\(x \in G\)</span> and define
+<span class="math display">\[\Phi:\mathbb{C}[G] \to \mathbb{C}[G]\]</span>
+by the rule
+<span class="math display">\[\Phi(f) = \delta_{x^{-1}} \star e_1 \star f.\]</span></p>
+<p>We are going to compute the <em>trace</em> of <span class="math inline">\(\Phi\)</span> in two different ways.</p>
+<p>First, Note that since <span class="math inline">\(e_1 \star w_1 = w_1\)</span> for each <span class="math inline">\(w_1 \in  W_1\)</span>, we see that <span class="math inline">\(\Phi_{\mid W_1}\)</span> is given <span class="math display">\[w \mapsto
+ \delta_{x^{-1}} \star w\]</span>. Thus <span class="math inline">\(\operatorname{tr}(\Phi_{\mid  W_1})\)</span> is given by <span class="math inline">\(\chi(x^{-1})\)</span>.</p>
+<p>Since <span class="math inline">\(e_1 \star W_2 =0\)</span>, we conclude that <span class="math inline">\(\Phi_{\mid W_2}) = 0\)</span>
+so that <span class="math display">\[\operatorname{tr}(\Phi) = \operatorname{tr}(\Phi_{\mid
+ W_1}) \oplus \operatorname{tr}(\Phi_{\mid W_2}) =
+ \operatorname{tr}(\Phi_{\mid W_1}) = \chi(x^{-1}),\]</span></p>
+<p>On the other hand, let us express <span class="math inline">\(e_1\)</span> in the basis <span class="math inline">\(\{\delta_g\}\)</span> of <span class="math inline">\(\mathbb{C}[G]\)</span>:
+<span class="math display">\[e_1  = \sum_{g \in G} \lambda_g \delta_g \quad (\lambda_g \in \mathbb{C}).\]</span></p>
+<p>Let us examine the mapping <span class="math display">\[\theta_{x^-1g}:\mathbb{C}[G] \to \mathbb{C}[G]\]</span>
+given by <span class="math display">\[w \mapsto \delta_{x^-1 g} \star w.\]</span> Recall that
+<span class="math inline">\(\mathbb{C}[G]\)</span> is the permutation representation corresponding
+to the action of <span class="math inline">\(G\)</span> on itself by left multiplication. We have
+seen that the trace of the action of an element of <span class="math inline">\(G\)</span> is the
+number of fixed points for that action. We conclude that the trace of
+<span class="math inline">\(\theta_{x^{-1}g}\)</span> is <span class="math inline">\(|G|\)</span> if <span class="math inline">\(x = g\)</span> and otherwise is 0.</p>
+<p>Now, the mapping <span class="math inline">\(\Phi\)</span> is given by
+<span class="math display">\[\Phi(w) = \delta_{x^{-1}} \star \left( \sum_{g \in G} \lambda_g \delta_g \right) \star w
+  = \sum_{g \in G} \lambda_g \delta_{x^{-1} g} \star w
+  = \sum_{g \in G} \lambda_g \theta_{x^{-1} g}(w).\]</span></p>
+<p>Since the trace is a linear operator, we conclude that
+<span class="math display">\[\operatorname{tr}(\Phi)  = \sum_{g \in G} \lambda_g \operatorname{tr}(\theta_{x^{-1}g})
+ = \lambda_x |G|.\]</span></p>
+<p>Now comparing our two computations of <span class="math inline">\(\operatorname{tr}(\Phi)\)</span> we get the formula
+<span class="math display">\[\lambda_x |G| = \chi(x^{-1})\]</span>
+i.e. <span class="math inline">\(\lambda_x = \chi(x^{-1})/|G|.\)</span></p>
+<p>But then <span class="math display">\[e_1 = \sum_{g \in G} \lambda_g \delta_g =
+ \dfrac{1}{|G|} \sum_{ g\in G} \chi(g^{-1}) \delta_g\]</span> as
+required. This completes the proof.</p>
+</dd>
+<dt><strong>Remark:</strong></dt>
+<dd>
+Since <span class="math inline">\(G\)</span> is a finite group, the eigenvalues of the operation of
+<span class="math inline">\(g \in G\)</span> on any <span class="math inline">\(G\)</span>-representation are roots of unity
+<span class="math inline">\(\zeta\)</span>. Notice that <span class="math inline">\(\overline{\zeta} = \zeta^{-1}\)</span> for any root
+of unity. In particular, if <span class="math inline">\(\chi\)</span> is the character of a
+representation of <span class="math inline">\(G\)</span>, we have <span class="math inline">\(\chi(g^{-1}) =  \overline{\chi(g)}.\)</span>
+</dd>
+<dt><strong>Corollary:</strong></dt>
+<dd>
+Let <span class="math inline">\(\chi\)</span> be the character of <span class="math inline">\(W_1 = \mathbb{C}[G]_{(L)}.\)</span>
+Then
+<span class="math display">\[\langle \chi,\chi \rangle = \chi(1).\]</span>
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>Note that the Proposition allows us to calculate:
+<span class="math display">\[e_1 \star e_1 = \dfrac{1}{|G|} \sum_{x,g \in G} \chi(g^{-1})\chi(x^{-1}) \delta_{gx}.\]</span></p>
+<p>The coefficient of <span class="math inline">\(\delta_1\)</span> in this expression is precisely
+<span class="math display">\[\dfrac{1}{|G|^2} \sum_{g \in G} \chi(g^{-1}) \chi(g) = 
+ \dfrac{1}{|G|^2} \sum_{g \in G} \chi(g) \overline{\chi(g)} = 
+ \dfrac{1}{|G|} \langle \chi, \chi \rangle.\]</span></p>
+<p>On the other hand, <span class="math inline">\(e_1 = e_1 \star e_1\)</span> and the coefficient of
+<span class="math inline">\(\delta_1\)</span> in the expression for <span class="math inline">\(e_1\)</span> is <span class="math inline">\(\chi(1^{-1}) = \chi(1)\)</span>.</p>
+<p>Thus we see that <span class="math inline">\(\chi(1) = \langle \chi,\chi \rangle\)</span> as
+required.</p>
+</dd>
+</dl>
+<p>We have so far elided the <em>multiplicities</em> <span class="math inline">\([\mathbb{C}[G]:L]\)</span> for
+irreducible representations <span class="math inline">\(L\)</span>. We are going to state the result here
+(and maybe prove it later).</p>
+<dl>
+<dt><strong>Theorem:</strong></dt>
+<dd>
+For an irreducible representation <span class="math inline">\(L\)</span> of <span class="math inline">\(G\)</span>, the multiplicity
+<span class="math inline">\([\mathbb{C}[G]:L]\)</span> is given by
+<span class="math display">\[[\mathbb{C}[G]:L] = \dim_\mathbb{C} L.\]</span>
+</dd>
+<dt><strong>Remark:</strong></dt>
+<dd>
+<p>If <span class="math inline">\(\chi,\psi\)</span> are the characters of representations of <span class="math inline">\(G\)</span>, then
+<span class="math inline">\(\langle \chi,\psi \rangle = \langle \psi,\chi \rangle.\)</span></p>
+<p>Indeed,
+<span class="math display">\[\begin{align*}
+ \langle \chi,\psi \rangle = \dfrac{1}{|G|} \sum_{g \in G}
+ \chi(g) \overline{\psi(g)}
+ &amp;= \dfrac{1}{|G|} \sum_{g \in G}
+ \chi(g) \psi(g^{-1}) \\
+ &amp;= \dfrac{1}{|G|} \sum_{x \in G}
+ \chi(x^{-1}) \psi(x) \\
+ &amp;= \langle \psi,\chi \rangle.
+ \end{align*}\]</span></p>
+</dd>
+</dl>
+<p>Now we are able to prove that main Theorem which shows that the
+characters of the irreducible representations form an <em>orthonormal
+set</em>.</p>
+<dl>
+<dt><strong>Theorem:</strong></dt>
+<dd>
+Let <span class="math inline">\(U,V\)</span> be irreducible representations of <span class="math inline">\(G\)</span> with characters
+<span class="math inline">\(\chi,\psi\)</span> respectively. Then
+<span class="math display">\[\langle \chi,\chi \rangle = 1 \quad \text{and} \quad
+ \langle \chi,\psi \rangle = 0.\]</span>
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(W = \mathbb{C}[G]_{(U)}\)</span> be the <span class="math inline">\(U\)</span>-isotypic part of
+<span class="math inline">\(\mathbb{C}[G]\)</span> and let <span class="math inline">\(\chi_W\)</span> be the character of <span class="math inline">\(W\)</span>.</p>
+<p>The preceding Theorem tells us that
+<span class="math inline">\(\chi_W = m\chi\)</span> where <span class="math inline">\(m = \dim U\)</span>.</p>
+<p>Now, the preceding Corollary tells us that
+<span class="math display">\[\langle \chi_W,\chi_W \rangle = \chi_W(1).\]</span></p>
+<p>Note that <span class="math display">\[\langle \chi_W,\chi_W \rangle = \langle m \chi, m
+ \chi \rangle = m^2 \langle \chi,\chi \rangle.\]</span></p>
+<p>On the other hand,
+<span class="math display">\[\chi_W(1) = m\chi(1) = m^2.\]</span></p>
+<p>Thus we find <span class="math inline">\(m^2 \langle \chi,\chi \rangle = m^2\)</span>; since <span class="math inline">\(m \ne 0\)</span>,
+conclude <span class="math inline">\(\langle \chi,\chi \rangle = 1\)</span> as required.</p>
+<p>Now let <span class="math inline">\(Y = \mathbb{C}[G]_{(U)} + \mathbb{C}[G]_{(V)}\)</span> be the
+sum of the isotypic components.</p>
+<p>Note that <span class="math inline">\(\chi_Y = m \chi + n \psi\)</span> where <span class="math inline">\(m = \dim U\)</span> and <span class="math inline">\(n = \dim V\)</span>.
+Now we have
+<span class="math display">\[\chi_Y(1) = \langle \chi_Y, \chi_Y \rangle.\]</span></p>
+<p>On the one hand,
+<span class="math display">\[\chi_Y(1) =m \chi(1) + n \psi(1) = m^2 + n^2.\]</span></p>
+<p>And on the other hand, the preceding corollary shows that
+<span class="math display">\[\begin{align*}
+ \langle \chi_Y,\chi_Y \rangle &amp;= \langle m \chi + n \psi,
+ m\chi + n \psi \rangle \\ &amp;= m^2 \langle \chi,\chi \rangle + n^2
+ \langle \psi,\psi \rangle + 2mn \langle \chi,\psi \rangle \\
+ &amp;= m^2 + n^2 + 2mn \langle \chi,\psi \rangle.
+ \end{align*}\]</span></p>
+<p>Thus we find
+<span class="math display">\[m^2 + n^2 = m^2 + n^2 + 2mn \langle \chi,\psi \rangle\]</span>
+so that indeed <span class="math inline">\(\langle \chi,\psi \rangle = 0\)</span>. This completes the proof.</p>
+</dd>
+<dt><strong>Remark:</strong></dt>
+<dd>
+In order to complete the proof that the irreducible characters
+form an orthonormal <em>basis</em> for the space of class functions on
+<span class="math inline">\(G\)</span>, we still need to prove that the number of distinct
+irreducible representations is equal to the number of conjugacy
+classes in <span class="math inline">\(G\)</span>.
 </dd>
 </dl>
     </section>
