@@ -5,9 +5,9 @@ author: George McNinch
 date: 2024-02-05
 ---
 
-The next problem set   will appear here:
+Here is the next problem set:
 
-- [[problem set 02]] [[pdf]] due 2024-02-16
+- [[problem set 03]](/course-contents/PS03--rep-theory.html) [[pdf]](/course-contents/PS03--rep-theory.pdf) due 2024-02-16
 
 
 Here are notes for Monday's lecture on *Characters of irreducible representations*:

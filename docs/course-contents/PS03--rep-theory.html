@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - ProblemSet 3 -- representation theory
+</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>ProblemSet 3 -- representation theory
+</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-02-16
+        
+            by George McNinch
+        
+    </section>
+    <section>
+        <p><strong>Work any 3 of the following 4 problems.</strong></p>
+<p>In these exercises, <span class="math inline">\(G\)</span> always denotes a finite group. Unless
+indicated otherwise, all vector spaces are assumed to be finite
+dimensional over the field <span class="math inline">\(F = \mathbb{C}\)</span>. The representation
+space <span class="math inline">\(V\)</span> of a representation of <span class="math inline">\(G\)</span> is always assumed to be finite
+dimensional over <span class="math inline">\(\mathbb{C}\)</span>.</p>
+<ol type="1">
+<li><p>Let <span class="math inline">\(\phi:G \to F^\times\)</span> be a group homomorphism; since <span class="math inline">\(F^\times = \operatorname{GL}_1(F)\)</span>, we can think of <span class="math inline">\(\phi\)</span> as a
+1-dimensional representation <span class="math inline">\((\phi,F)\)</span> of <span class="math inline">\(G\)</span>.</p>
+<p>If <span class="math inline">\(V\)</span> is any representation of <span class="math inline">\(G\)</span>, we can form a <em>new</em>
+representation <span class="math inline">\(\phi \otimes V\)</span>. The underlying vector space for
+this representation is just <span class="math inline">\(V\)</span>, and the “new” action of an element
+<span class="math inline">\(g \in G\)</span> on a vector <span class="math inline">\(v\)</span> is given by the rule <span class="math display">\[g \star v =
+\phi(g) gv.\]</span></p>
+<ol type="a">
+<li><p>Prove that if <span class="math inline">\(V\)</span> is irreducible, then <span class="math inline">\(\phi \otimes V\)</span> is also irreducible.</p></li>
+<li><p>Prove that if <span class="math inline">\(\chi\)</span> denotes the <em>character</em> of <span class="math inline">\(V\)</span>, then the
+character of <span class="math inline">\(\phi \otimes V\)</span> is given by <span class="math inline">\(\phi \cdot \chi\)</span>; in
+other words, the trace of the action of <span class="math inline">\(g \in G\)</span> on <span class="math inline">\(\phi \otimes V\)</span> is given by <span class="math display">\[\chi_{\phi \otimes V}(g) =
+\operatorname{tr}( v\mapsto g \star v) = \phi(g) \chi(g).\]</span></p></li>
+<li><p>Recall that in class we saw that <span class="math inline">\(S_3\)</span> has an irreducible representation <span class="math inline">\(V_2\)</span> of dimension 2
+whose character <span class="math inline">\(\psi_2\)</span> is given by</p>
+<p><span class="math display">\[\begin{array}{l|lll}
+g &amp; 1 &amp; (12) &amp; (123) \\
+\hline
+\psi_2 &amp; 2 &amp; 0 &amp; -1
+\end{array}\]</span></p>
+<p>Observe that <span class="math inline">\(\operatorname{sgn} \psi = \psi\)</span> and conclude that
+<span class="math inline">\(V_2 \simeq \operatorname{sgn} \otimes V_2\)</span>, where
+<span class="math inline">\(\operatorname{sgn}:S_n \to \{\pm 1\} \subset \mathbb{C}^\times\)</span>
+is the <em>sign homomorphism.</em></p>
+<p>On the other hand, <span class="math inline">\(S_4\)</span> has an irreducible representation <span class="math inline">\(V_3\)</span> of dimension 3
+whose character <span class="math inline">\(\psi_3\)</span> is given by</p>
+<p><span class="math display">\[\begin{array}{l|lllll}
+g &amp; 1 &amp; (12) &amp; (123) &amp; (1234) &amp;  (12)(34) \\
+\hline
+\psi_3 &amp; 3 &amp;  1 &amp; 0 &amp; -1 &amp; -1 
+\end{array}\]</span></p>
+<p>(I’m not asking you to confirm that <span class="math inline">\(\psi_3\)</span> is irreducible, though it would be
+straightforward to check that <span class="math inline">\(\langle \psi_3,\psi_3 \rangle = 1\)</span>).</p>
+<p>Prove that <span class="math inline">\(V_3 \not \simeq \operatorname{sgn} \otimes V_3\)</span> as
+<span class="math inline">\(S_4\)</span>-representations.</p>
+<p>(In particular, <span class="math inline">\(S_4\)</span> has <em>at least two</em>
+irreducible representations of dimension 3.)</p></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(V\)</span> be a representation of <span class="math inline">\(G\)</span>.</p>
+<p>For an irreducible representation <span class="math inline">\(L\)</span>,
+consider the set <span class="math display">\[\mathcal{S}=\{ S \subseteq V \mid S \simeq L\}\]</span> of all invariant
+subspaces that are isomorphic to <span class="math inline">\(L\)</span> as <span class="math inline">\(G\)</span>-representations.</p>
+<p>Put <span class="math display">\[V_{(L)} = \sum_{S \in \mathcal{S}} S.\]</span></p>
+<ol type="a">
+<li><p>Prove that <span class="math inline">\(V_{(L)}\)</span> is an invariant subspace, and show that
+<span class="math inline">\(V_{(L)}\)</span> is isomorphic to a direct sum
+<span class="math display">\[V_{(L)} \simeq L \oplus \cdots \oplus L\]</span>
+as <span class="math inline">\(G\)</span>-representations.</p></li>
+<li><p>Prove that the <em>quotient representation</em> <span class="math inline">\(V/V_{(L)}\)</span> has no
+invariant subspaces isomorphic to <span class="math inline">\(L\)</span> as <span class="math inline">\(G\)</span>-representations.</p></li>
+<li><p>If <span class="math inline">\(L_1,L_2,\cdots,L_m\)</span> is a complete set of non-isomorphic
+irreducible representations for <span class="math inline">\(G\)</span>, prove that <span class="math inline">\(V\)</span> is the
+internal direct sum <span class="math display">\[V = \bigoplus_{i=1}^m V_{(L_i)}.\]</span></p></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(\chi\)</span> be the character of a representation <span class="math inline">\(V\)</span> of <span class="math inline">\(G\)</span>. For <span class="math inline">\(g\in G\)</span> prove
+that <span class="math inline">\(\overline{\chi(g)} = \chi(g^{-1})\)</span>.</p>
+<p>Is it true for any arbitrary class function <span class="math inline">\(f:G \to \mathbb{C}\)</span>
+that <span class="math inline">\(\overline{f(g)} = f(g^{-1})\)</span> for every <span class="math inline">\(g\)</span>? (Give a proof or
+a counterexample…)</p></li>
+<li><p>For a prime number <span class="math inline">\(p\)</span>, let <span class="math inline">\(k=\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}\)</span> be the field with <span class="math inline">\(p\)</span> elements. Let <span class="math inline">\(V\)</span> be
+an <span class="math inline">\(n\)</span>-dimensional vector space over <span class="math inline">\(\mathbb{F}_p\)</span> for some
+natural number <span class="math inline">\(n\)</span>, and let <span class="math display">\[\langle \cdot,\cdot \rangle: V \times
+V \to k\]</span> be a non-degenerate bilinear form on <span class="math inline">\(V\)</span>.</p>
+<p>(<em>A common example would be to take <span class="math inline">\(V = \mathbb{F}_{p^n}\)</span> the
+field of order <span class="math inline">\(p^n\)</span>, and <span class="math inline">\(\langle \alpha,\beta\rangle = \operatorname{tr}_{\mathbb{F}_{p^n}/\mathbb{F}_p}(\alpha \beta)\)</span> the trace pairing</em>).</p>
+<p>Let us fix a non-trivial group homomorphism <span class="math inline">\(\psi:k \to \mathbb{C}^\times\)</span> (recall that <span class="math inline">\(k = \mathbb{Z}/p\mathbb{Z}\)</span> is an
+additive group, while <span class="math inline">\(\mathbb{C}^\times\)</span> is multiplicative). Thus
+<span class="math display">\[\psi(\alpha + \beta) = \psi(\alpha)\psi(\beta) \quad \text{for all} \quad
+\alpha,\beta \in k.\]</span> If you want an explicit choice, set <span class="math inline">\(\psi(j + p\mathbb{Z}) = \exp(j \cdot 2 \pi i/p) = \exp(2 \pi i /p)^j.\)</span></p>
+<p>For a vector <span class="math inline">\(v \in V\)</span>, consider the mapping
+<span class="math inline">\(\Psi_v:V \to \mathbb{C}^\times\)</span> given by the
+rule
+<span class="math display">\[\Psi_v(w) = \psi( \langle w,v \rangle ).\]</span></p>
+<ol type="a">
+<li><p>Show that <span class="math inline">\(\Psi_v\)</span> is a group homomorphism <span class="math inline">\(V \to \mathbb{C}^\times\)</span>.</p></li>
+<li><p>Show that the assignment <span class="math inline">\(v \mapsto \Psi_v\)</span> is injective
+(one-to-one).</p>
+<p>(This assignment is a function <span class="math inline">\(V \to \operatorname{Hom}(V,\mathbb{C}^\times)\)</span>. In fact, it is a group
+homomorphism. Do you see why? How do you make
+<span class="math inline">\(\operatorname{Hom}(V,\mathbb{C}^\times)\)</span> into a group?)</p></li>
+<li><p>Show that any group homomorphism <span class="math inline">\(\Psi:V \to \mathbb{C}^\times\)</span>
+has the form <span class="math inline">\(\Psi = \Psi_v\)</span> for some <span class="math inline">\(v \in V\)</span>.</p>
+<p>Conclude that there are exactly <span class="math inline">\(|V| = q^n\)</span> group homomorphisms
+<span class="math inline">\(V \to \mathbb{C}^\times\)</span>.</p></li>
+</ol></li>
+</ol>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>
