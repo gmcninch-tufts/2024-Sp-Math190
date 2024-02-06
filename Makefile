@@ -6,7 +6,7 @@ BEAMER_META=--metadata-file=build-assets/beamer-metadata.yaml
 PD=pandoc --standalone --from markdown -V linkcolor:red --citeproc
 CMD=/home/george/.local/bin/course report
 
-VPATH = .:course-pages:course-posts
+VPATH = .:course-pages:course-posts:course-assets/images:course-contents
 
 CSS_DEFAULT="build-assets/default.css"
 

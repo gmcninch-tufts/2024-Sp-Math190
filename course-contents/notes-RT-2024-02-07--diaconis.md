@@ -35,9 +35,9 @@ gap>
 ```
 
 
-# Diaconis example -- survey data
+# /Course-Assets/Images/Diaconis example -- survey data
 
-This data is taken from the paper [@diaconisGeneralizationSpectralAnalysis1989]
+This data is taken from the paper [@/course-assets/images/diaconisGeneralizationSpectralAnalysis1989]
 
 It describes 5,738 completed ballots rank-ordering 5 candidates.
 
@@ -55,8 +55,8 @@ to study the *frequency function* $f$.
 This diagram shows the decomposition of the regular representation into
 *isotypic components*.
 
-Be careful: the notation Diaconis is using here does not match that
-used by `GAP` above.  For example, the representation Diaconis writes
+Be careful: the notation /Course-Assets/Images/Diaconis is using here does not match that
+used by `GAP` above.  For example, the representation /Course-Assets/Images/Diaconis writes
 as $V_3$ is the isotypic component determined by the irreducible
 representation `X.5` in `GAP`.
 
@@ -98,7 +98,7 @@ The $i,j$ entry of the preceding table is $\langle f_2 , \delta_{i,\sigma(j)} \r
 
 ![](/course-assets/images/diaconis-3.png)
 
-Intrepretation in this last table:
+Interpretation in this last table:
 
 Compute the projection $f_3$ of $f$ into the component $V_3$ of $M = \mathbb{C}[S_5]$.
 
