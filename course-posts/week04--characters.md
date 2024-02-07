@@ -14,5 +14,7 @@ Here are notes for Monday's lecture on *Characters of irreducible representation
 
 - [[Notes for 2024-02-05]](/course-contents/notes-RT-2024-02-05.html) [[pdf]](/course-contents/notes-RT-2024-02-05.pdf)
 
+Notes for Wednesday's lecture:
 
-
+- [[Notes for 2024-02-07 pt1]](/course-contents/notes-RT-2024-02-07--functions.html) [[pdf]](/course-contents/notes-RT-2024-02-07--functions.pdf)
+- [[Notes for 2024-02-07 pt2]](/course-contents/notes-RT-2024-02-07--diaconis-paper.html) [[pdf]](/course-contents/notes-RT-2024-02-07--diaconis-paper.pdf)

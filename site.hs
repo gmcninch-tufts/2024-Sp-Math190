@@ -18,7 +18,7 @@ mathjaxExtensions = extensionsFromList
 readMathjaxOptions :: ReaderOptions 
 readMathjaxOptions = defaultHakyllReaderOptions
                 {
-                    readerExtensions = (readerExtensions defaultHakyllReaderOptions) <> mathjaxExtensions
+                    readerExtensions = readerExtensions defaultHakyllReaderOptions <> mathjaxExtensions
                 }
                 
 writeMathjaxOptions :: WriterOptions
@@ -59,14 +59,13 @@ main = hakyllWith config $ do
     match "course-contents/*md" $ do
         route $ setExtension "html"
         compile $ myCompiler
-          >>= loadAndApplyTemplate "templates/content.html"    postCtx
+          >>= loadAndApplyTemplate "templates/content.html" postCtx
           >>= loadAndApplyTemplate "templates/default.html" postCtx
           >>= relativizeUrls
 
     match "course-contents/*pdf" $ do
       route idRoute
       compile copyFileCompiler
-
 
     match "css/*" $ do
         route   idRoute

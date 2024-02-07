@@ -37,7 +37,79 @@
         
     </section>
     <section>
-        <h1 id="irreducible-representations-of-the-symmetric-group">Irreducible representations of the symmetric group</h1>
+        <h1 id="irreducible-representations-of-finite-abelian-groups">Irreducible representations of finite abelian groups</h1>
+<p>Let <span class="math inline">\(A\)</span> be a finite abelian group, written <em>additively</em>.</p>
+<p>We set <span class="math inline">\(\widehat A = \operatorname{Hom}(A,\mathbb{C}^\times)\)</span> for the
+set of all group homomorphisms <span class="math inline">\(A \to \mathbb{C}^\times\)</span>. We can make
+<span class="math inline">\(\widehat A\)</span> into a group by declaring for <span class="math inline">\(\phi,\psi \in \widehat A\)</span>
+that <span class="math display">\[\phi\cdot \psi :A \to \mathbb{C}^\times\]</span> is the mapping <span class="math inline">\(a \mapsto \phi(a)\psi(a)\)</span>.</p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+<span class="math inline">\(\widehat A\)</span> is an abelian group, and <span class="math inline">\(\widehat A \simeq A\)</span>.
+</dd>
+<dt><strong>Sketch:</strong></dt>
+<dd>
+<p>When <span class="math inline">\(A = \mathbb{Z}/n\mathbb{Z}\)</span> is <em>cyclic</em> let <span class="math inline">\(\zeta = \exp(2  \pi i /n)\)</span> be primitive <span class="math inline">\(n\)</span>th root of unity.</p>
+<p>For <span class="math inline">\(j \in \mathbb{Z}/n\mathbb{Z}\)</span>, define
+<span class="math inline">\(\phi_j \in \widehat {\mathbb{Z}/n\mathbb{Z}}\)</span> by
+<span class="math display">\[\phi_j(i + n \mathbb{Z}_) = \zeta^{ij}.\]</span></p>
+<p>One checks that <span class="math inline">\(j \mapsto \phi_j\)</span> defines an isomorphism of groups
+<span class="math display">\[\mathbb{Z}/n\mathbb{Z} \to \widehat {\mathbb{Z}/n\mathbb{Z}}.\]</span></p>
+<p>Now the Proposition follows by using that
+<span class="math display">\[\widehat{A \times B} \simeq \widehat{A} \times \widehat{B}\]</span>
+for abelian group <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
+</dd>
+</dl>
+<p>Observe that elements of <span class="math inline">\(\widehat A\)</span> determine 1-dimensional
+representations, which are necessarily irreducible. Since a
+1-dimensional representation coincides with its trace, our results on
+the characters of irreducible representations imply that the
+functions <span class="math inline">\(\mathbb{C}\)</span>-valued functions <span class="math inline">\(\widehat{A}\)</span> form an orthonormal
+basis for <span class="math inline">\(\mathbb{C}[A]\)</span>.</p>
+<p>Let us write <span class="math inline">\(\widehat{A} = \{\phi_1,\phi_2,\cdots,\phi_n\}\)</span> where <span class="math inline">\(n = |A|\)</span>.</p>
+<p>Given a function <span class="math inline">\(f: A \to \mathbb{C}\)</span>, i.e. an element <span class="math inline">\(f \in \mathbb{C}[A]\)</span>, we may write
+<span class="math display">\[f = \sum_{i=1}^n \langle f,\phi_i \rangle \phi_i.\]</span></p>
+<p>The Fourier transform of <span class="math inline">\(f\)</span> is the function
+<span class="math display">\[\widehat{f}:\widehat{A} \to \mathbb{C}\]</span>
+given by <span class="math display">\[\widehat{f}(\phi) = \langle f, \phi \rangle.\]</span></p>
+<dl>
+<dt><strong>Remark:</strong></dt>
+<dd>
+<p>When <span class="math inline">\(A = \mathbb{Z}/n\mathbb{Z}\)</span>, one often views the values
+<span class="math inline">\(f(i)\)</span> for <span class="math inline">\(i + n\mathbb{Z}\)</span> as <em>samples</em> of some periodic
+function of (say) a real variable <span class="math inline">\(t\)</span>, viewed as <em>time</em>.</p>
+<p>In that case, the domain of <span class="math inline">\(\widehat{f}\)</span> is viewed as
+<em>frequency</em>.</p>
+</dd>
+<dt><strong>Remark:</strong></dt>
+<dd>
+In any event, for abelian <span class="math inline">\(A\)</span> we have two natural bases for <span class="math inline">\(\mathbb{C}[A]\)</span>:
+the functions <span class="math inline">\(\delta_a\)</span> for <span class="math inline">\(a \in A\)</span>, and the functions <span class="math inline">\(\widehat{A}\)</span>.
+</dd>
+</dl>
+<h1 id="how-to-study-mathbbcg-for-non-abelian-g">How to study <span class="math inline">\(\mathbb{C}[G]\)</span> for non-abelian <span class="math inline">\(G\)</span>?</h1>
+<p>Idea: the <em>matrix coefficients</em> of linear representations define functions on <span class="math inline">\(G\)</span>.
+If <span class="math inline">\(\rho:G \to \operatorname{GL}(V)\)</span> is a linear representation, let
+<span class="math inline">\(b_1,\dots,b_n\)</span> be a basis of <span class="math inline">\(V\)</span> and let <span class="math inline">\(b_1^\vee,\cdots,b_n^\vee\)</span> be the dual basis.</p>
+<p>For <span class="math inline">\(1 \le i,j \le n\)</span> we get a function <span class="math display">\[\rho_{i,j}:G \to
+\mathbb{C}\]</span> by the rule <span class="math display">\[\rho_{i,j}(g) = b_i^\vee(\rho(g)b_j).\]</span></p>
+<dl>
+<dt><strong>Claim:</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(L\)</span> be an irreducible representation and let
+<span class="math inline">\(\mathbb{C}[G]_{(L)}\)</span> be the isotypic component of the regular
+representation. Then the functions <span class="math inline">\(\rho_{i,j}\)</span> provide a <em>basis</em>
+for <span class="math inline">\(\mathbb{C}[G]_{(L)}\)</span> where <span class="math inline">\(\rho\)</span> defines the irreducible
+representation <em>dual</em> to <span class="math inline">\(L\)</span>.</p>
+<p>We omit the proof, and refer the reader
+e.g.<span class="citation" data-cites="jamesRepresentationsCharactersGroups2001">(James and Liebeck 2001)</span> for the notion of
+the <em>dual</em> of a representation.</p>
+<p>But recall that we know that <span class="math inline">\([\mathbb{C}[G]_{(L)}:L] = \dim L\)</span> so
+that <span class="math inline">\(\dim \mathbb{C}[G]_{(L)} = (\dim L)^2 = \dim \operatorname{End}(L).\)</span></p>
+</dd>
+</dl>
+<h1 id="irreducible-representations-of-the-symmetric-group">Irreducible representations of the symmetric group</h1>
 <p>Recall that two elements <span class="math inline">\(\sigma,\tau \in S_n\)</span> are <em>conjugate</em> <span class="math inline">\(\iff\)</span>
 they have the same <em>cycle structure</em>. We state this in the following form:</p>
 <dl>
@@ -132,36 +204,6 @@ given for <span class="math inline">\(\sigma \in S_n\)</span> by the rule <span 
 <p>Idea: View <span class="math inline">\(f\)</span> as a vector in the regular representation
 <span class="math inline">\(\mathbb{C}[S_n]\)</span>. We want to understand how <span class="math inline">\(f\)</span> decomposes
 in some natural descriptions of <span class="math inline">\(\mathbb{C}[S_n]\)</span>.</p>
-<h2 id="description-of-the-regular-representation-of-s_n.">Description of the regular representation of <span class="math inline">\(S_n\)</span>.</h2>
-<dl>
-<dt><strong>Theorem:</strong></dt>
-<dd>
-<p>We have <span class="math display">\[\mathbb{C}[S_n] = \bigoplus_{\lambda \vdash n} R^\lambda\]</span>
-where for each <span class="math inline">\(\lambda \vdash n\)</span>, the representation <span class="math inline">\(R^\lambda\)</span>
-is <span class="math inline">\(S^\lambda\)</span>-isotypic; i.e. every irreducible representation
-contained in <span class="math inline">\(R^\lambda\)</span> is isomorphic to <span class="math inline">\(S^\lambda\)</span>.</p>
-<p>Moreover,
-<span class="math display">\[R^\lambda = S^\lambda \oplus \cdots \oplus S^\lambda\]</span>
-and the number of summands is <span class="math inline">\(\dim S^\lambda\)</span>.</p>
-</dd>
-</dl>
-<p>In particular, given <span class="math inline">\(f \in \mathbb{C}[S_n]\)</span>, we may decompose <span class="math inline">\(f\)</span>
-according to this decomposition of <span class="math inline">\(\mathbb{C}[S_n]\)</span>; in other words,
-we may write <span class="math display">\[f = \sum_{\lambda \vdash n} f_\lambda\]</span> where <span class="math inline">\(f_\lambda \in R^\lambda.\)</span></p>
-<p>We want to consider this description when <span class="math inline">\(f\)</span> is the <em>frequency function</em>
-<span class="math inline">\(f = f_\Sigma\)</span> for some data
-<span class="math display">\[\Sigma: \sigma_1, \sigma_2, \cdots, \sigma_m\]</span>
-with <span class="math inline">\(\sigma_i \in S_n\)</span>.</p>
-<dl>
-<dt><strong>Lemma:</strong></dt>
-<dd>
-<p>For <span class="math inline">\(f \in \mathbb{C}[S_n]\)</span>, the component
-<span class="math inline">\(f_{(n)}\)</span> corresponding to the trivial representation <span class="math inline">\(\mathbf{1}= S^{(n)}\)</span> is
-the <em>average value</em> of <span class="math inline">\(f\)</span>:</p>
-<p><span class="math display">\[f_{(n)} = \dfrac{1}{n!} \sum_{\sigma \in S_n} f(\sigma).\]</span></p>
-</dd>
-</dl>
-<h2 id="first-order-effects">First-order effects</h2>
 <h1 id="bibliography">Bibliography</h1>
 <div class="refs">
 
@@ -169,6 +211,9 @@ the <em>average value</em> of <span class="math inline">\(f\)</span>:</p>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-diaconisGeneralizationSpectralAnalysis1989" class="csl-entry" role="listitem">
 Diaconis, Persi. 1989. <span>“A <span>Generalization</span> of <span>Spectral Analysis</span> with <span>Application</span> to <span>Ranked Data</span>.”</span> <em>The Annals of Statistics</em> 17 (3): 949–79. <a href="https://www.jstor.org/stable/2241705">https://www.jstor.org/stable/2241705</a>.
+</div>
+<div id="ref-jamesRepresentationsCharactersGroups2001" class="csl-entry" role="listitem">
+James, Gordon, and Martin Liebeck. 2001. <em>Representations and <span>Characters</span> of <span>Groups</span></em>. 2nd ed. <span>Cambridge</span>: <span>Cambridge University Press</span>. <a href="https://doi.org/10.1017/CBO9780511814532">https://doi.org/10.1017/CBO9780511814532</a>.
 </div>
 </div>
     </section>
