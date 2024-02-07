@@ -204,9 +204,9 @@ div.solution {
 
 @media (min-width: 640px) {
   body {
-    width: 85 rem;
+    width: 70 rem;
     margin: 0 auto;
-    padding: 5;
+    padding: 10;
   }
   header {
     margin: 0 0 3rem;
