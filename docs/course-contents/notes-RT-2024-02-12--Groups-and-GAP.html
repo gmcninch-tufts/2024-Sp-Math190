@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - Groups and GAP</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>Groups and GAP</h1>
+            <article>
+    <section class="header">
+        Posted on 2021-07-06
+        
+    </section>
+    <section>
+        <h1 id="a-overview-of-gap">A overview of <code>GAP</code></h1>
+<p><code>GAP</code> is</p>
+<blockquote>
+<p><a href="https://www.gap-system.org/index.html">GAP - Groups, Algorithms, Programming</a> -
+a System for Computational Discrete Algebra</p>
+</blockquote>
+<p>You can find lots of information at the preceding link, including a
+<a href="https://www.gap-system.org/Manuals/doc/tut/chap0.html">tutorial</a> and
+a variety of <a href="https://www.gap-system.org/Doc/Learning/learning.html">learning
+resources</a>.</p>
+<p>My basic goal here is to try to give you some idea of what you might
+be able to do with <code>GAP</code> (something of a
+<a href="https://en.wikipedia.org/wiki/Trailer_(promotion)">trailer</a> for the
+tutorial, perhaps?)</p>
+<h2 id="installation">Installation</h2>
+<p>The <a href="https://www.gap-system.org/Download/">installation instructions for <code>GAP</code> can be found
+here</a>.</p>
+<p>Personally, my computer’s <code>OS</code> is <a href="https://www.debian.org/">Debian
+GNU/Linux</a>, and I installed <code>GAP</code> by running
+the command</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode scheme"><code class="sourceCode scheme"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">$</span> apt install gap</span></code></pre></div>
+<p>But while that is handy, I don’t think the install process should be
+<strong>too</strong> difficult on any machine.</p>
+<h2 id="starting-gap">Starting <code>GAP</code></h2>
+<p>After installing <code>GAP</code>, open a <code>terminal</code> on the computer and run <code>GAP</code>;
+you should see something like the following:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>$ gap</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> ┌───────┐   GAP <span class="fl">4.11.0</span> of <span class="dv">29</span><span class="op">-</span>Feb<span class="op">-</span><span class="dv">2020</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> │  GAP  │   https:<span class="op">//</span>www.gap<span class="op">-</span>system.org</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a> └───────┘   Architecture: x86_64<span class="op">-</span>pc<span class="op">-</span>linux<span class="op">-</span>gnu<span class="op">-</span>default64<span class="op">-</span>kv7</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a> Configuration:  gmp <span class="fl">6.2.1</span>, GASMAN, readline</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a> Loading the library <span class="kw">and</span> packages ...</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a> Packages:   Alnuth <span class="fl">3.1.2</span>, AtlasRep <span class="fl">2.1.0</span>, AutPGrp <span class="fl">1.10.2</span>, CTblLib <span class="fl">1.3.1</span>, </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>             FactInt <span class="fl">1.6.3</span>, GAPDoc <span class="fl">1.6.3</span>, IO <span class="fl">4.7.0</span>, Polycyclic <span class="fl">2.15.1</span>, </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>             PrimGrp <span class="fl">3.4.0</span>, SmallGrp <span class="fl">1.4.1</span>, TomLib <span class="fl">1.2.9</span>, TransGrp <span class="fl">2.0.6</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a> Try <span class="st">'??help'</span> <span class="cf">for</span> <span class="bu">help</span>. See also <span class="st">'?copyright'</span>, <span class="st">'?cite'</span> <span class="kw">and</span> <span class="st">'?authors'</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> </span></code></pre></div>
+<p>The bit at the end – i.e. <code>gap&gt;</code> – is a <em>prompt</em>, and it indicates
+that <code>GAP</code> is waiting for you to type a command. Once you do so and
+press <code>Enter</code>, <code>GAP</code> will (try to) execute the command you
+entered.</p>
+<p>It will print any output (or errors) from the command on the screen,
+and then it will display another prompt and again wait for input.</p>
+<h1 id="permutation-groups">Permutation Groups</h1>
+<p>In <code>GAP</code>, probably the most straightforward way of representing
+(finite) groups is as permutation groups – i.e. subgroups of <span class="math inline">\(S_n\)</span>
+for some <span class="math inline">\(n \ge 1\)</span>.</p>
+<p>For example, one knows that the symmetric group <span class="math inline">\(S_n\)</span> is generated by
+an <span class="math inline">\(n\)</span>-cycle and a transposition. In <code>GAP</code>, we may check this for
+some chosen <span class="math inline">\(n\)</span> – say, <span class="math inline">\(n=8\)</span> – as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> G <span class="op">:=</span> Group((<span class="dv">1</span>,<span class="dv">2</span>),(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>))<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Group([ (<span class="dv">1</span>,<span class="dv">2</span>), (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>) ])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> Order(G) <span class="op">=</span> Factorial(<span class="dv">8</span>)<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>true</span></code></pre></div>
+<p>Note that elements are represented as <em>products of disjoint cycles</em>.
+If you enter them otherwise, <code>GAP</code> rewrites your representation as a
+product of disjoint cycles:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)<span class="op">*</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>)<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span>,<span class="dv">5</span>)(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span></code></pre></div>
+<p>We can ask about the derived subgroup of <span class="math inline">\(G\)</span>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> H <span class="op">:=</span> DerivedSubgroup(G)<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), (<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>), (<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>), (<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">4</span>), (<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">4</span>), (<span class="dv">2</span>,<span class="dv">6</span>)(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">5</span>) ])</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> Order(H) <span class="op">=</span> Factorial(<span class="dv">8</span>)<span class="op">/</span><span class="dv">2</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>true</span></code></pre></div>
+<p>And we can ask about <em>simplicity</em> of groups:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> IsSimple(H)<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>true</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> IsSimple(G)<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>false</span></code></pre></div>
+<p>We can ask about Sylow subgroups:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> f<span class="op">:=</span>Factors(Order(G))<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>[ <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span> ]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> Set(f)<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>[ <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span> ]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> ps<span class="op">:=</span>List(Set(f),p<span class="op">-&gt;</span>[p,SylowSubgroup(G,p)])<span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>[ [ <span class="dv">2</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>), (<span class="dv">3</span>,<span class="dv">4</span>), (<span class="dv">1</span>,<span class="dv">3</span>)(<span class="dv">2</span>,<span class="dv">4</span>), (<span class="dv">5</span>,<span class="dv">6</span>), (<span class="dv">7</span>,<span class="dv">8</span>), (<span class="dv">5</span>,<span class="dv">7</span>)(<span class="dv">6</span>,<span class="dv">8</span>), (<span class="dv">1</span>,<span class="dv">5</span>)(<span class="dv">2</span>,<span class="dv">6</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>          (<span class="dv">3</span>,<span class="dv">7</span>)(<span class="dv">4</span>,<span class="dv">8</span>) ]) ], [ <span class="dv">3</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), (<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>) ]) ], </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  [ <span class="dv">5</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) ]) ], [ <span class="dv">7</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>) ]) ] ]</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> <span class="cf">for</span> x <span class="kw">in</span> ps do</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  Print(<span class="st">&quot;p=&quot;</span>,x[<span class="dv">1</span>],<span class="st">&quot; Sylow order=&quot;</span>,Order(x[<span class="dv">2</span>]),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot; Sylow abelian? &quot;</span>,IsAbelian(x[<span class="dv">2</span>]),<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>od<span class="op">;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">2</span> Sylow order<span class="op">=</span><span class="dv">128</span> Sylow abelian? false</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">3</span> Sylow order<span class="op">=</span><span class="dv">9</span> Sylow abelian? true</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">5</span> Sylow order<span class="op">=</span><span class="dv">5</span> Sylow abelian? true</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">7</span> Sylow order<span class="op">=</span><span class="dv">7</span> Sylow abelian? true</span></code></pre></div>
+<p>Let’s define a <em>function</em> that takes a (finite) group as an argument
+and prints the “sylow information”.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>SylowInfo<span class="op">:=</span>function(G)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  ps<span class="op">:=</span>List(Set(Factors(Order(G))),p<span class="op">-&gt;</span>[p,SylowSubgroup(G,p)])<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> x <span class="kw">in</span> ps do</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    Print(<span class="st">&quot;p=&quot;</span>,x[<span class="dv">1</span>],<span class="st">&quot; Sylow order=&quot;</span>,Order(x[<span class="dv">2</span>]),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot; Sylow abelian? &quot;</span>,IsAbelian(x[<span class="dv">2</span>]),<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  od<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ps<span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>end</span></code></pre></div>
+<p>If we enter the above function in <code>GAP</code>, we can <em>call</em> it for different groups:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> SylowInfo(G)<span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">2</span> Sylow order<span class="op">=</span><span class="dv">128</span> Sylow abelian? false</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">3</span> Sylow order<span class="op">=</span><span class="dv">9</span> Sylow abelian? true</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">5</span> Sylow order<span class="op">=</span><span class="dv">5</span> Sylow abelian? true</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">7</span> Sylow order<span class="op">=</span><span class="dv">7</span> Sylow abelian? true</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>[ [ <span class="dv">2</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>), (<span class="dv">3</span>,<span class="dv">4</span>), (<span class="dv">1</span>,<span class="dv">3</span>)(<span class="dv">2</span>,<span class="dv">4</span>), (<span class="dv">5</span>,<span class="dv">6</span>), (<span class="dv">7</span>,<span class="dv">8</span>), (<span class="dv">5</span>,<span class="dv">7</span>)(<span class="dv">6</span>,<span class="dv">8</span>), (<span class="dv">1</span>,<span class="dv">5</span>)(<span class="dv">2</span>,<span class="dv">6</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>          (<span class="dv">3</span>,<span class="dv">7</span>)(<span class="dv">4</span>,<span class="dv">8</span>) ]) ], [ <span class="dv">3</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), (<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>) ]) ], </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  [ <span class="dv">5</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) ]) ], [ <span class="dv">7</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>) ]) ] ]</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> SylowInfo(H)<span class="op">;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">2</span> Sylow order<span class="op">=</span><span class="dv">64</span> Sylow abelian? false</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">3</span> Sylow order<span class="op">=</span><span class="dv">9</span> Sylow abelian? true</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">5</span> Sylow order<span class="op">=</span><span class="dv">5</span> Sylow abelian? true</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">7</span> Sylow order<span class="op">=</span><span class="dv">7</span> Sylow abelian? true</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>[ [ <span class="dv">2</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>)(<span class="dv">3</span>,<span class="dv">4</span>), (<span class="dv">1</span>,<span class="dv">3</span>)(<span class="dv">2</span>,<span class="dv">4</span>), (<span class="dv">1</span>,<span class="dv">2</span>)(<span class="dv">5</span>,<span class="dv">6</span>), (<span class="dv">1</span>,<span class="dv">2</span>)(<span class="dv">7</span>,<span class="dv">8</span>), (<span class="dv">5</span>,<span class="dv">7</span>)(<span class="dv">6</span>,<span class="dv">8</span>), </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>          (<span class="dv">1</span>,<span class="dv">5</span>)(<span class="dv">2</span>,<span class="dv">6</span>)(<span class="dv">3</span>,<span class="dv">7</span>)(<span class="dv">4</span>,<span class="dv">8</span>) ]) ], [ <span class="dv">3</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), (<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>) ]) ], </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  [ <span class="dv">5</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) ]) ], [ <span class="dv">7</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>) ]) ] ]</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> SylowInfo(SymmetricGroup(<span class="dv">13</span>))<span class="op">;</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">2</span> Sylow order<span class="op">=</span><span class="dv">1024</span> Sylow abelian? false</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">3</span> Sylow order<span class="op">=</span><span class="dv">243</span> Sylow abelian? false</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">5</span> Sylow order<span class="op">=</span><span class="dv">25</span> Sylow abelian? true</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">7</span> Sylow order<span class="op">=</span><span class="dv">7</span> Sylow abelian? true</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">11</span> Sylow order<span class="op">=</span><span class="dv">11</span> Sylow abelian? true</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">13</span> Sylow order<span class="op">=</span><span class="dv">13</span> Sylow abelian? true</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>[ [ <span class="dv">2</span>, <span class="op">&lt;</span>permutation group of size <span class="dv">1024</span> <span class="cf">with</span> <span class="dv">10</span> generators<span class="op">&gt;</span> ], </span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  [ <span class="dv">3</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), (<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), (<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>), (<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>)(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>)(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">9</span>), (<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>) </span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>         ]) ], [ <span class="dv">5</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>), (<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) ]) ], </span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  [ <span class="dv">7</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>) ]) ], </span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  [ <span class="dv">11</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>) ]) ], </span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  [ <span class="dv">13</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>) ]) ] ]</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> SylowInfo(AlternatingGroup(<span class="dv">14</span>))<span class="op">;</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">2</span> Sylow order<span class="op">=</span><span class="dv">1024</span> Sylow abelian? false</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">3</span> Sylow order<span class="op">=</span><span class="dv">243</span> Sylow abelian? false</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">5</span> Sylow order<span class="op">=</span><span class="dv">25</span> Sylow abelian? true</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">7</span> Sylow order<span class="op">=</span><span class="dv">49</span> Sylow abelian? true</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">11</span> Sylow order<span class="op">=</span><span class="dv">11</span> Sylow abelian? true</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="dv">13</span> Sylow order<span class="op">=</span><span class="dv">13</span> Sylow abelian? true</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>[ [ <span class="dv">2</span>, <span class="op">&lt;</span>permutation group of size <span class="dv">1024</span> <span class="cf">with</span> <span class="dv">10</span> generators<span class="op">&gt;</span> ], </span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  [ <span class="dv">3</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), (<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), (<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>), (<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>)(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>)(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">9</span>), (<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>) </span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>         ]) ], [ <span class="dv">5</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>), (<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) ]) ], </span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>  [ <span class="dv">7</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>), (<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>) ]) ], </span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>  [ <span class="dv">11</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>) ]) ], </span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>  [ <span class="dv">13</span>, Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>) ]) ] ]  </span></code></pre></div>
+<p>Finally, I’ll point out that we can ask about group <em>isomorphisms</em>.</p>
+<p>Let’s look at a dihedral group:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> sigma<span class="op">:=</span>function(n) </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> CycleFromList([<span class="fl">1.</span>.n])<span class="op">*</span>CycleFromList([n<span class="op">+</span><span class="fl">1..2</span><span class="op">*</span>n])<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>end<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>function( n ) ... end</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> sigma(<span class="dv">9</span>)<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>)(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">18</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># element of S_18 of order 9</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> tau<span class="op">:=</span> function(n)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Product(List([<span class="fl">1.</span>.n],i<span class="op">-&gt;</span>(i,<span class="dv">2</span><span class="op">*</span>n<span class="op">-</span>i<span class="op">+</span><span class="dv">1</span>)))<span class="op">;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>function( n ) ... end</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> tau(<span class="dv">9</span>)<span class="op">;</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span>,<span class="dv">18</span>)(<span class="dv">2</span>,<span class="dv">17</span>)(<span class="dv">3</span>,<span class="dv">16</span>)(<span class="dv">4</span>,<span class="dv">15</span>)(<span class="dv">5</span>,<span class="dv">14</span>)(<span class="dv">6</span>,<span class="dv">13</span>)(<span class="dv">7</span>,<span class="dv">12</span>)(<span class="dv">8</span>,<span class="dv">11</span>)(<span class="dv">9</span>,<span class="dv">10</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># element of S_18 of order 2</span></span></code></pre></div>
+<p>Note that “<code>tau * sigma * tau = sigma^-1</code>”. e.g.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> tau(<span class="dv">9</span>)<span class="op">*</span>sigma(<span class="dv">9</span>)<span class="op">*</span>tau(<span class="dv">9</span>)<span class="op">=</span>sigma(<span class="dv">9</span>)<span class="op">^-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>true</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> MyDihedralGroup<span class="op">:=</span>function(n)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Group(sigma(n),tau(n))<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>end<span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>function( n ) ... end</span></code></pre></div>
+<p>We’ve now defined the function <code>MyDihedralGroup</code>, and
+<code>MyDihedralGroup(n)</code> returns the subgroup of <span class="math inline">\(S_{2n}\)</span> generated
+by <code>sigma(n)</code> and <code>tau(n)</code>.</p>
+<p>Now, <code>GAP</code> has a built-in function <code>DihedralGroup</code>; here
+<code>DihedralGroup(n)</code> returns a copy of the dihedral group of order
+<code>n</code> (so <code>n</code> needs to be even…).</p>
+<p>Let’s check that we get isomorphic groups:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> DihedralGroup(<span class="dv">18</span>)<span class="op">;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>pc group of size <span class="dv">18</span> <span class="cf">with</span> <span class="dv">3</span> generators<span class="op">&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> MyDihedralGroup(<span class="dv">9</span>)<span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>Group([ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>)(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">18</span>), (<span class="dv">1</span>,<span class="dv">18</span>)(<span class="dv">2</span>,<span class="dv">17</span>)(<span class="dv">3</span>,<span class="dv">16</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">4</span>,<span class="dv">15</span>)(<span class="dv">5</span>,<span class="dv">14</span>)(<span class="dv">6</span>,<span class="dv">13</span>)(<span class="dv">7</span>,<span class="dv">12</span>)(<span class="dv">8</span>,<span class="dv">11</span>)(<span class="dv">9</span>,<span class="dv">10</span>) ])</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> IsomorphismGroups(DihedralGroup(<span class="dv">18</span>),MyDihedralGroup(<span class="dv">9</span>))<span class="op">;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>[ f1, f2, f3 ] <span class="op">-&gt;</span> [ (<span class="dv">1</span>,<span class="dv">18</span>)(<span class="dv">2</span>,<span class="dv">17</span>)(<span class="dv">3</span>,<span class="dv">16</span>)(<span class="dv">4</span>,<span class="dv">15</span>)(<span class="dv">5</span>,<span class="dv">14</span>)(<span class="dv">6</span>,<span class="dv">13</span>)(<span class="dv">7</span>,<span class="dv">12</span>)(<span class="dv">8</span>,<span class="dv">11</span>)(<span class="dv">9</span>,<span class="dv">10</span>), </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>)(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">18</span>), </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>)(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>)(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">9</span>)(<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">16</span>)(<span class="dv">11</span>,<span class="dv">14</span>,<span class="dv">17</span>)(<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">18</span>) ]</span></code></pre></div>
+<p>The function <code>IsomorphismGroups</code> takes two groups as arguments, and
+returns an isomorphism (if one exists) or “fails”. In the preceding
+case, <code>GAP</code> found an explicit isomorphism between <code>GAP's</code>
+<code>DihedralGroup(18)</code> and <code>MyDihedralGroup(9)</code>.</p>
+<p>You can check it for other values of <code>n</code>…</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> IsomorphismGroups(DihedralGroup(<span class="dv">32</span>),MyDihedralGroup(<span class="dv">16</span>))<span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>[ f1, f2, f3, f4, f5 ] <span class="op">-&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>[ (<span class="dv">1</span>,<span class="dv">32</span>)(<span class="dv">2</span>,<span class="dv">31</span>)(<span class="dv">3</span>,<span class="dv">30</span>)(<span class="dv">4</span>,<span class="dv">29</span>)(<span class="dv">5</span>,<span class="dv">28</span>)(<span class="dv">6</span>,<span class="dv">27</span>)(<span class="dv">7</span>,<span class="dv">26</span>)(<span class="dv">8</span>,<span class="dv">25</span>)(<span class="dv">9</span>,<span class="dv">24</span>)(<span class="dv">10</span>,<span class="dv">23</span>)(<span class="dv">11</span>,<span class="dv">22</span>)(<span class="dv">12</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">21</span>)(<span class="dv">13</span>,<span class="dv">20</span>)(<span class="dv">14</span>,<span class="dv">19</span>)(<span class="dv">15</span>,<span class="dv">18</span>)(<span class="dv">16</span>,<span class="dv">17</span>), (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">16</span>)(<span class="dv">17</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">22</span>,<span class="dv">23</span>,<span class="dv">24</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">27</span>,<span class="dv">28</span>,<span class="dv">29</span>,<span class="dv">30</span>,<span class="dv">31</span>,<span class="dv">32</span>), </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">15</span>)(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>)(<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">21</span>,<span class="dv">23</span>,<span class="dv">25</span>,<span class="dv">27</span>,<span class="dv">29</span>,<span class="dv">31</span>)(<span class="dv">18</span>,<span class="dv">20</span>,<span class="dv">22</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">24</span>,<span class="dv">26</span>,<span class="dv">28</span>,<span class="dv">30</span>,<span class="dv">32</span>), (<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">13</span>)(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">14</span>)(<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">15</span>)(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">16</span>)(<span class="dv">17</span>,<span class="dv">21</span>,<span class="dv">25</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">29</span>)(<span class="dv">18</span>,<span class="dv">22</span>,<span class="dv">26</span>,<span class="dv">30</span>)(<span class="dv">19</span>,<span class="dv">23</span>,<span class="dv">27</span>,<span class="dv">31</span>)(<span class="dv">20</span>,<span class="dv">24</span>,<span class="dv">28</span>,<span class="dv">32</span>), </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span>,<span class="dv">9</span>)(<span class="dv">2</span>,<span class="dv">10</span>)(<span class="dv">3</span>,<span class="dv">11</span>)(<span class="dv">4</span>,<span class="dv">12</span>)(<span class="dv">5</span>,<span class="dv">13</span>)(<span class="dv">6</span>,<span class="dv">14</span>)(<span class="dv">7</span>,<span class="dv">15</span>)(<span class="dv">8</span>,<span class="dv">16</span>)(<span class="dv">17</span>,<span class="dv">25</span>)(<span class="dv">18</span>,<span class="dv">26</span>)(<span class="dv">19</span>,<span class="dv">27</span>)(<span class="dv">20</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">28</span>)(<span class="dv">21</span>,<span class="dv">29</span>)(<span class="dv">22</span>,<span class="dv">30</span>)(<span class="dv">23</span>,<span class="dv">31</span>)(<span class="dv">24</span>,<span class="dv">32</span>) ]</span></code></pre></div>
+<p>And in the other order:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> IsomorphismGroups(MyDihedralGroup(<span class="dv">16</span>),DihedralGroup(<span class="dv">32</span>))<span class="op">;</span>	</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>[ (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">16</span>)(<span class="dv">17</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">22</span>,<span class="dv">23</span>,<span class="dv">24</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">27</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">28</span>,<span class="dv">29</span>,<span class="dv">30</span>,<span class="dv">31</span>,<span class="dv">32</span>), (<span class="dv">1</span>,<span class="dv">32</span>)(<span class="dv">2</span>,<span class="dv">31</span>)(<span class="dv">3</span>,<span class="dv">30</span>)(<span class="dv">4</span>,<span class="dv">29</span>)(<span class="dv">5</span>,<span class="dv">28</span>)(<span class="dv">6</span>,<span class="dv">27</span>)(<span class="dv">7</span>,<span class="dv">26</span>)(<span class="dv">8</span>,<span class="dv">25</span>)(<span class="dv">9</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">24</span>)(<span class="dv">10</span>,<span class="dv">23</span>)(<span class="dv">11</span>,<span class="dv">22</span>)(<span class="dv">12</span>,<span class="dv">21</span>)(<span class="dv">13</span>,<span class="dv">20</span>)(<span class="dv">14</span>,<span class="dv">19</span>)(<span class="dv">15</span>,<span class="dv">18</span>)(<span class="dv">16</span>,<span class="dv">17</span>) ] <span class="op">-&gt;</span> [ f2, f1 ]</span></code></pre></div>
+<p>And you can observe that it <em>fails</em> on nonsense:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> IsomorphismGroups(DihedralGroup(<span class="dv">30</span>),MyDihedralGroup(<span class="dv">16</span>))<span class="op">;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>fail</span></code></pre></div>
+<h1 id="matrix-groups-over-finite-fields">Matrix groups over finite fields</h1>
+<h2 id="finite-fields">Finite fields</h2>
+<p>Recall the following:</p>
+<ul>
+<li>a finite field <span class="math inline">\(\mathbb{F} = \mathbb{F}_q\)</span> has order <span class="math inline">\(q=p^n\)</span> for
+some prime <span class="math inline">\(p\)</span> and some <span class="math inline">\(n \ge 1\)</span></li>
+<li>the multiplicative group <span class="math inline">\(\mathbb{F}_q^\times\)</span> is cyclic of order <span class="math inline">\(q-1\)</span>.</li>
+</ul>
+<p><code>GAP</code> writes <code>Z(p,n)</code> or <code>Z(q)</code> for a <em>generator</em> of the
+multiplicative group <span class="math inline">\(\mathbb{F}_q^\times\)</span>.</p>
+<p>Now you can perform field operations with these elements:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> Z(<span class="dv">9</span>) <span class="op">+</span> <span class="dv">5</span><span class="op">*</span>Z(<span class="dv">3</span>) <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>Z(<span class="dv">9</span>)<span class="op">*</span>Z(<span class="dv">3</span>)<span class="op">;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>Z(<span class="dv">3</span><span class="op">^</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">3</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> Z(<span class="dv">9</span>) <span class="op">+</span> Z(<span class="dv">27</span>)<span class="op">;</span>  <span class="co"># note F_9 is not contained in F_27;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># the smallest field containing both F_9 and  </span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># F_27 is F_3^6=F_729</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>Z(<span class="dv">3</span><span class="op">^</span><span class="dv">6</span>)<span class="op">^</span><span class="dv">297</span></span></code></pre></div>
+<p>You can get the elements <code>0</code> or <code>1</code> viewed as members of a finite
+field using <code>0*Z(p,n)</code> for <code>0</code> and <code>Z(p,n)^0</code> for <code>1</code>.</p>
+<h2 id="matrices">Matrices</h2>
+<p>A <em>row vector</em> is just a list; e.g.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> [ <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span> ]<span class="op">;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>[ <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span> ]</span></code></pre></div>
+<p>A matrix is a list of row vectors:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> [ [ <span class="dv">1</span>, <span class="dv">1</span> ], [ <span class="dv">0</span>, <span class="dv">1</span> ] ]<span class="op">;</span>   <span class="co"># integer entries...</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>[ [ <span class="dv">1</span>, <span class="dv">1</span> ], [ <span class="dv">0</span>, <span class="dv">1</span> ] ]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> [ [ <span class="dv">1</span>, <span class="dv">1</span> ], [ <span class="dv">0</span>, <span class="dv">1</span> ] ]<span class="op">*</span>Z(<span class="dv">9</span>)<span class="op">^</span><span class="dv">0</span><span class="op">;</span>   <span class="co"># entries in the field F_9.</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>[ [ Z(<span class="dv">3</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">3</span>)<span class="op">^</span><span class="dv">0</span> ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">3</span>), Z(<span class="dv">3</span>)<span class="op">^</span><span class="dv">0</span> ] ]</span></code></pre></div>
+<h2 id="matrix-groups">Matrix Groups</h2>
+<p>In <code>GAP</code>, we can create the <em>general linear group</em>
+<span class="math inline">\(\operatorname{GL}_n(\mathbb{F}_q)\)</span> of invertible <span class="math inline">\(n\times n\)</span> matrices
+over the field of order <span class="math inline">\(q\)</span> using a command of the form
+<code>G:=GL(n,q);</code>; for example:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> G<span class="op">:=</span>GL(<span class="dv">3</span>,<span class="dv">17</span>)<span class="op">;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>GL(<span class="dv">3</span>,<span class="dv">17</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> Order(G)<span class="op">;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="dv">111203278848</span></span></code></pre></div>
+<p>Similarly, we can construct the <em>special linear group</em> – the kernel
+of</p>
+<p><span class="math display">\[\det:\operatorname{GL}_n(\mathbb{F}_q) \to \mathbb{F}_q^\times\]</span></p>
+<p>– using <code>SL(n,q)</code>.</p>
+<p><code>GAP</code> has constructors for other matrix groups (projective special
+linear group, symplectic group, unitary group , orthogonal group, …)
+which I’m going to ignore today.</p>
+<p>It is a fact that unless <code>(n,q) ∈ [(2,2),(2,3)]</code> one knows that
+<code>SL(n,q)</code> is a simple group <span class="math inline">\(\iff \gcd(n,q-1) =1\)</span>, which we can
+confirm in some cases in <code>GAP</code>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> IsSimple(SL(<span class="dv">5</span>,<span class="dv">7</span>))<span class="op">;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>true</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> IsSimple(SL(<span class="dv">3</span>,<span class="dv">7</span>))<span class="op">;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>false</span></code></pre></div>
+<p>In fact, the quotient of <code>SL(n,q)</code> by its center <em>is</em> simple (at
+least when <span class="math inline">\(n\)</span> and <span class="math inline">\(q\)</span> aren’t “tiny”):</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> ZZ<span class="op">:=</span>Center(SL(<span class="dv">3</span>,<span class="dv">7</span>))<span class="op">;</span> Order(ZZ)<span class="op">;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>group of <span class="dv">3</span><span class="er">x3</span> matrices over GF(<span class="dv">7</span>)<span class="op">&gt;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> P<span class="op">:=</span>SL(<span class="dv">3</span>,<span class="dv">7</span>)<span class="op">/</span>ZZ<span class="op">;</span> Order(P)<span class="op">;</span> IsSimple(P)<span class="op">;</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>permutation group <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1876896</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>true</span></code></pre></div>
+<p><code>GAP</code> can compute the <em>conjugacy classes</em> of a finite group:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> ConjugacyClasses(SL(<span class="dv">2</span>,<span class="dv">7</span>))<span class="op">;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>[ [ [ Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">0</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>) ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>), Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">0</span> ] ]<span class="op">^</span>G, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>), Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">3</span> ], [ Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">5</span> ] ]<span class="op">^</span>G, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>), Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">4</span> ], [ Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">5</span>, Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">5</span> ] ]<span class="op">^</span>G, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  [ [ Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">3</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>) ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>), Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">3</span> ] ]<span class="op">^</span>G, </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>), Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">3</span> ], [ Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">2</span> ] ]<span class="op">^</span>G, </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>), Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">4</span> ], [ Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">5</span>, Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">2</span> ] ]<span class="op">^</span>G, </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>), Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">3</span> ], [ Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">0</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>) ] ]<span class="op">^</span>G, </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>), Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">3</span> ], [ Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">4</span> ] ]<span class="op">^</span>G, </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>), Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">3</span> ], [ Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">7</span>) ] ]<span class="op">^</span>G, </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  [ [ Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">4</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>) ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>), Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">2</span> ] ]<span class="op">^</span>G, </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  [ [ Z(<span class="dv">7</span>)<span class="op">^</span><span class="dv">5</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>) ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">7</span>), Z(<span class="dv">7</span>) ] ]<span class="op">^</span>G ]</span></code></pre></div>
+<p>For each of these conjugacy classes, one may use the function
+<code>Representative</code> to choose a representative element.</p>
+<p>Let’s write some code that takes as input a whole number <code>n</code>, a
+prime power <code>q=p^m</code> and a matrix <code>M</code> and finds the
+conjugacy class in <code>GL(n,q)</code> containing <code>M*Z(q)</code>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>LocateClass<span class="op">:=</span>function(n,q,M)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  G<span class="op">:=</span>GL(n,q)<span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  cls<span class="op">:=</span>ConjugacyClasses(G)<span class="op">;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> First(cls,c<span class="op">-&gt;</span>IsConjugate(G,Representative(c),M<span class="op">*</span>Z(q)<span class="op">^</span><span class="dv">0</span>))<span class="op">;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>end<span class="op">;</span></span></code></pre></div>
+<p>This code uses the boolean-valued function <code>IsConjugate</code>. Note that
+<code>First(list,f)</code> applies the boolean-valued function <code>f</code> to
+successive elements of <code>list</code>, and returns the first element of
+<code>list</code> for which <code>f</code> evaluates to <code>true</code>.</p>
+<p>So for example:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> LocateClass(<span class="dv">2</span>,<span class="dv">17</span>,[[<span class="dv">1</span>,<span class="dv">1</span>],[<span class="dv">0</span>,<span class="dv">1</span>]])<span class="op">;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>[ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">17</span>), Z(<span class="dv">17</span>)<span class="op">^</span><span class="dv">8</span> ], [ Z(<span class="dv">17</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">17</span>)<span class="op">^</span><span class="dv">14</span> ] ]<span class="op">^</span>G</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> LocateClass(<span class="dv">2</span>,<span class="dv">17</span>,[[<span class="dv">1</span>,<span class="dv">5</span>],[<span class="dv">5</span>,<span class="dv">1</span>]])<span class="op">;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>[ [ Z(<span class="dv">17</span>)<span class="op">^</span><span class="dv">15</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">17</span>) ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">17</span>), Z(<span class="dv">17</span>)<span class="op">^</span><span class="dv">4</span> ] ]<span class="op">^</span>G</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> LocateClass(<span class="dv">2</span>,<span class="dv">17</span>,[[<span class="dv">1</span>,<span class="dv">5</span>],[<span class="dv">5</span>,<span class="dv">1</span>]]<span class="op">*</span>Z(<span class="dv">17</span><span class="op">^</span><span class="dv">2</span>))<span class="op">;</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>fail</span></code></pre></div>
+<h1 id="a-bit-more-on-group-actions">A bit more on group actions</h1>
+<p>Let’s consider a finite field <span class="math inline">\(k=\mathbb{F}_q\)</span> and a 2 dimensional
+vector space <span class="math inline">\(V \simeq k^2\)</span> over <span class="math inline">\(k\)</span>.</p>
+<p>The group <code>G=GL(4,q)</code> acts on <span class="math inline">\(V\)</span> by matrix multiplication.</p>
+<p>For a particular q, we can ask <code>GAP</code> for the list of
+<code>G</code> orbits on elements of <code>V</code> as follows:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> G<span class="op">:=</span>GL(<span class="dv">2</span>,<span class="dv">13</span>)<span class="op">;</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> k<span class="op">:=</span>GF(<span class="dv">13</span>)<span class="op">;</span>     <span class="co"># &quot;Galois field&quot; = finite field of order 13</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> V<span class="op">:=</span>k<span class="op">^</span><span class="dv">2</span><span class="op">;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> oo<span class="op">:=</span>OrbitsDomain(G,V)<span class="op">;</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>[ [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ] ], </span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">6</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">7</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>      [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">6</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">7</span> ], </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>      [ Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">6</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">9</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">2</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span> ], </span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>      [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">2</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">7</span> ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>) ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">2</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">6</span> ], </span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>      ...</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>      <span class="co">## there are two orbits...</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> oo[<span class="dv">1</span>]<span class="op">;</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>[ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ] ]</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> Length(oo[<span class="dv">2</span>])<span class="op">;</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="dv">168</span></span></code></pre></div>
+<p>Now, the stabilizer of a 1-dimensional subspace is the “upper
+triangular subgroup”, which we can construct as the normalizer of a
+<span class="math inline">\(13\)</span>-sylow subgroup.</p>
+<p>A 13-sylow subgroup is equal to</p>
+<p><span class="math display">\[\left\{\begin{bmatrix} 1 &amp; x \\ 0 &amp; 1 \end{bmatrix} \mid x \in \mathbb{F}_{13}.\right\}\]</span></p>
+<p>and the normalizer this sylow is
+<span class="math display">\[B=\left\{\begin{bmatrix}
+a &amp; x \\
+0 &amp; b
+\end{bmatrix} \mid a,b,x \in \mathbb{F}_{13}, ab \ne 0.\right\}\]</span></p>
+<p>Let’s describe <span class="math inline">\(B\)</span> using <code>GAP</code> in two ways:</p>
+<p>As normalizer:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> u<span class="op">:=</span>[[<span class="dv">1</span>,<span class="dv">1</span>],[<span class="dv">0</span>,<span class="dv">1</span>]]<span class="op">*</span>Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span><span class="op">;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> U<span class="op">:=</span>Subgroup(G,[u])<span class="op">;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>ActGroup([ [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span> ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span> ] ] ])</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> B<span class="op">:=</span>Normalizer(G,U)<span class="op">;</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>group of <span class="dv">2</span><span class="er">x2</span> matrices over GF(<span class="dv">13</span>)<span class="op">&gt;</span></span></code></pre></div>
+<p>And as stabilizer:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> BB<span class="op">:=</span>Basis(V)<span class="op">;</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>CanonicalBasis( ( GF(<span class="dv">13</span>)<span class="op">^</span><span class="dv">2</span> ) )</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> H<span class="op">:=</span>Stabilizer(G,BB[<span class="dv">2</span>],OnLines)<span class="op">;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>Group([ [ [ Z(<span class="dv">13</span>), <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span> ] ], </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">6</span>, Z(<span class="dv">13</span>) ] ] ])</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> H<span class="op">=</span>B<span class="op">;</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>true</span></code></pre></div>
+<p>Now, since the action of <span class="math inline">\(G\)</span> on lines in <span class="math inline">\(V\)</span> is <em>transitive</em>, the set
+of cosets <span class="math inline">\(G/B\)</span> identifies with the set of such lines.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> Index(G,B)<span class="op">;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="dv">14</span></span></code></pre></div>
+<p>Thus there are 14 lines in <span class="math inline">\(V\)</span>. Since <span class="math inline">\(G\)</span> acts on lines, we get a
+(transitive) action of <span class="math inline">\(G\)</span> on a set of 14 elements,
+which we are going to view as the cosets of <span class="math inline">\(B\)</span> in <span class="math inline">\(G\)</span>:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> P1<span class="op">:=</span>RightCosets(G,B)<span class="op">;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>[ RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>   [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span> ] ]), </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>   [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">6</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">6</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ] ]), </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>   [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">6</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">6</span> ] ]), </span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>   [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">2</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span>, Z(<span class="dv">13</span>) ] ]), </span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>   [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">10</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">11</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">11</span> ] ]), </span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>   [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">2</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">7</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">3</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">7</span> ] ]), </span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>   [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">5</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">5</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">4</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">5</span> ] ]), </span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>   [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">2</span> ], [ Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span> ] ]), </span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>   [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">3</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">11</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span> ] ]), </span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>   [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">2</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">3</span> ] ]), </span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>   [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">7</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span> ] ]), </span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>   [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">5</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">2</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">4</span> ] ]), </span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>   [ [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span> ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">2</span>, Z(<span class="dv">13</span>) ] ]), </span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>  RightCoset(<span class="op">&lt;</span>group of size <span class="dv">1872</span> <span class="cf">with</span> <span class="dv">2</span> generators<span class="op">&gt;</span>,</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>   [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">0</span>, Z(<span class="dv">13</span>) ], [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">9</span>, Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">7</span> ] ]) ]</span></code></pre></div>
+<p>This action corresponds to a homomorphism
+<span class="math display">\[\operatorname{GL}_2(\mathbb{F}_{13}) \to S_{14}\]</span>
+which we can create in <code>GAP</code> as follows:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> hom<span class="op">:=</span>ActionHomomorphism(G,P1,OnRight)<span class="op">;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> Image(hom)<span class="op">;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>Group([ (<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">8</span>), (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">5</span>)(<span class="dv">7</span>,<span class="dv">12</span>,<span class="dv">9</span>)(<span class="dv">10</span>,<span class="dv">14</span>,<span class="dv">13</span>) ])</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> Kernel(hom)<span class="op">;</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>Group([ [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">3</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">3</span> ] ], </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">4</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">4</span> ] ], </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">8</span> ] ], </span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  [ [ Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">9</span>, <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>) ], [ <span class="dv">0</span><span class="op">*</span>Z(<span class="dv">13</span>), Z(<span class="dv">13</span>)<span class="op">^</span><span class="dv">9</span> ] ] ])</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>gap<span class="op">&gt;</span> Order(Kernel(hom))<span class="op">;</span>    <span class="co"># should be just the scalar matrices!</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="dv">12</span></span></code></pre></div>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>

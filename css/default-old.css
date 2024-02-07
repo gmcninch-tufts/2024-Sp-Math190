@@ -81,68 +81,7 @@ table a {
     text-decoration: none;
 }
 
-
-
-footer nav {
-    text-align: center;
-}
-
-.image-container-1col {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 15px;
-    grid-gap: 15px;
-    justify-items: center;
-}
-
-.image-container-2col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* grid-template-columns: repeat(2, 1fr); */
-    padding: 15px;
-    grid-gap: 15px;
-}
-
-.image-container-3col {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 15px;
-    grid-gap: 15px;
-}
-.image {
-    height: 250px;
-}
-
-.document-list td {
-    border-bottom: 0.1rem solid navy;
-}
-
-div.sourceCode {
-    background-color: Lavender;
-    padding: 10px;    
-}
-
-
-div.csl-entry {
-        padding-left: 1.5em;
-        text-indent:-1.5em;
-	margin-bottom: 6px;
-    }
-
-del {
-    color: red;
-}
-
-div.solution {
-    background-color: lightblue;
-    padding: 5px;
-    margin: 5px;
-}
-    
-
-
 /*--------------------------------------------------------------------------------*/
-
 
 @media (max-width: 319px) {
   body {
@@ -204,9 +143,9 @@ div.solution {
 
 @media (min-width: 640px) {
   body {
-    width: 85 rem;
+    width: 60rem;
     margin: 0 auto;
-    padding: 5;
+    padding: 0;
   }
   header {
     margin: 0 0 3rem;
@@ -232,3 +171,61 @@ div.solution {
     font-size: 1.8rem;
   }
 }
+
+
+footer nav {
+    text-align: center;
+}
+
+.image-container-1col {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 15px;
+    grid-gap: 15px;
+    justify-items: center;
+}
+
+.image-container-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: repeat(2, 1fr); */
+    padding: 15px;
+    grid-gap: 15px;
+}
+
+.image-container-3col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 15px;
+    grid-gap: 15px;
+}
+.image {
+    height: 250px;
+}
+
+.document-list td {
+    border-bottom: 0.1rem solid navy;
+}
+
+div.sourceCode {
+    background-color: Lavender;
+    padding: 10px;    
+}
+
+
+div.csl-entry {
+        padding-left: 1.5em;
+        text-indent:-1.5em;
+	margin-bottom: 6px;
+    }
+
+del {
+    color: red;
+}
+
+div.solution {
+    background-color: lightblue;
+    padding: 5px;
+    margin: 5px;
+}
+    
