@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - ProblemSet 2 -- Representations and characters
+</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>ProblemSet 2 -- Representations and characters
+</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-01-29
+        
+            by George McNinch
+        
+    </section>
+    <section>
+        <p>In these exercises, <span class="math inline">\(G\)</span> always denotes a finite group and all vector
+spaces are assumed to be finite dimensional over the field <span class="math inline">\(F = \mathbb{C}\)</span>.</p>
+<p>In these exercises, you may use results stated but not yet proved in
+class about characters of representations of <span class="math inline">\(G\)</span>.</p>
+<ol type="1">
+<li><p>In this problem, we identify the character <span class="math inline">\(\chi_\Omega\)</span> of the
+<em>permutation representation</em> <span class="math inline">\((\rho,F[\Omega])\)</span> of a group <span class="math inline">\(G\)</span>.</p>
+<ol type="a">
+<li><p>Let <span class="math inline">\(V\)</span> be a vector space and let <span class="math inline">\(\Phi:V \to V\)</span> a linear mapping
+If <span class="math inline">\(\mathcal{B}\)</span> is a basis for <span class="math inline">\(V\)</span>, recall that the <em>trace</em> of <span class="math inline">\(\Phi\)</span>
+is defined by
+<span class="math display">\[\operatorname{tr}(\Phi) = \operatorname{tr}([\Phi]_{\mathcal{B}}).\]</span></p>
+<p><strong>apologies – this is just explanatory; it isn’t actually a question</strong></p></li>
+<li><p>Recall that the <em>dual</em> of <span class="math inline">\(V\)</span> is the vector space <span class="math inline">\(V^\vee = \operatorname{Hom}_F(V,F)\)</span> of <em>linear functionals</em> on <span class="math inline">\(V\)</span>.</p>
+<p>If <span class="math inline">\(b_1,\dots,b_n\)</span> is a basis for <span class="math inline">\(V\)</span>, let <span class="math inline">\({b_j}^\vee:V \to F\)</span> be
+defined by <span class="math inline">\({b_j}^\vee(b_i) = \delta_{i,j}\)</span>. Show that
+<span class="math inline">\({b_1}^\vee,\dots,{b_n}^\vee\)</span> is a basis for <span class="math inline">\(V^\vee\)</span>; it is known as
+the <em>dual basis</em> to <span class="math inline">\(b_1,\dots,b_n\)</span>.</p>
+<div class="solution">
+<p>We must show that the vectors <span class="math inline">\(\{ {b_i}^\vee \}\)</span> are <em>linearly independent</em> and <em>span</em> <span class="math inline">\(V^\vee\)</span>.</p>
+<p>First, linear independence:</p>
+<p>Suppose that <span class="math inline">\(\alpha_1,\cdots,\alpha_n \in F\)</span> and that
+<span class="math display">\[0 = \sum_{i=1}^n \alpha_i {b_i}^\vee\]</span>
+(note that this equality “takes place in the vector space <span class="math inline">\(V^\vee\)</span>”).</p>
+<p>We must argue that all coefficients <span class="math inline">\(\alpha_j\)</span> are zero. Well, fix <span class="math inline">\(j\)</span> and consider
+the vector <span class="math inline">\(b_j\)</span>. We apply the functional <span class="math inline">\(\sum_{i=1}^n \alpha_i {b_i}\)</span> to <span class="math inline">\(b_j\)</span>:
+<span class="math display">\[\left(\sum_{i=1}^n \alpha_i {b_i}^\vee\right)(b_j) = 
+\sum_{i=1}^n \alpha_i {b_i}^\vee)(b_j) = \alpha_j.\]</span>
+Since the <em>functional</em> <span class="math inline">\(\sum_{i=1}^n \alpha_i {b_i}^\vee\)</span> is equal to 0,
+we know that <span class="math inline">\(\left(\sum_{i=1}^n \alpha_i {b_i}^\vee\right)(v) =0\)</span> for every <span class="math inline">\(v \in V\)</span>.
+In particular, this holds when <span class="math inline">\(v=b_j\)</span> and we now conclude that <span class="math inline">\(\alpha_j = 0\)</span>.</p>
+<p>This proves linear independence.</p>
+<p>Finally, we prove the vectors span <span class="math inline">\(V^\vee\)</span>.</p>
+<p>Let <span class="math inline">\(\phi \in V^\vee\)</span>, and for <span class="math inline">\(1 \le i \le n\)</span> write <span class="math inline">\(\alpha_i = \phi(b_i)\)</span>.
+We claim that
+<span class="math display">\[(\clubsuit) \quad \phi = \sum_{i=1}^n \alpha_i {b_i}^\vee.\]</span></p>
+<p>TO prove this equality of functions (“functionals”) we must argue that
+<span class="math display">\[\phi(v) = \left(\sum_{i=1}^n \alpha_i {b_i}^\vee\right)(v)\]</span>
+for every <span class="math inline">\(v \in V\)</span>.</p>
+<p>And it suffices to prove the latter equality for vectors <span class="math inline">\(v\)</span>
+taken from the basis <span class="math inline">\(\{b_i\}\)</span>.</p>
+<p>But now by construction, for each <span class="math inline">\(j\)</span> we have
+<span class="math display">\[\phi(b_j) = \alpha_j =  \left(\sum_{i=1}^n \alpha_i {b_i}^\vee\right)(\alpha_j)\]</span></p>
+<p>This proves <span class="math inline">\((\clubsuit)\)</span> so that the <span class="math inline">\({b_i}^\vee\)</span> indeed span <span class="math inline">\(V^\vee\)</span>.</p>
+</div></li>
+<li><p>Prove that the trace of the linear mapping <span class="math inline">\(\Phi:V \to V\)</span> is
+given by the expression <span class="math display">\[\operatorname{tr}(\Phi) = \sum_{i=1}^n
+{b_i}^\vee(\Phi(b_i)).\]</span></p>
+<div class="solution">
+<p>Recall that <span class="math inline">\(\operatorname{tr}(\Phi)\)</span> is defined to be the trace of the matrix
+<span class="math inline">\([\Phi]_{\mathcal{B}}\)</span> where <span class="math inline">\(\mathcal{B}\)</span> is a <em>basis</em> of <span class="math inline">\(V\)</span>. It is a fact that
+this definition is <em>independent</em> of the choice of basis.</p>
+<p>Also recall that the trace of the <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(M = (M_{i,j})\)</span> is given by
+<span class="math display">\[\operatorname{tr}(M) = \sum_{i=1}^n M_{i,i}.\]</span></p>
+<p>We consider the basis <span class="math inline">\(\mathcal{B}\)</span> of <span class="math inline">\(V\)</span>, and the dual
+basis <span class="math inline">\(\mathcal{B}^\vee\)</span> of <span class="math inline">\(V^\vee\)</span>, as above.</p>
+<p>Recall that the <em>matrix <span class="math inline">\(M = [M_{j,i}] = [\Phi]_{\mathcal{B}}\)</span> of <span class="math inline">\(\Phi\)</span> in
+the basis <span class="math inline">\(\mathcal{B}\)</span></em> is defined by the condition
+<span class="math display">\[\Phi(b_i) = \sum_{j=1}^n M_{j,i} b_j\]</span>
+(for <span class="math inline">\(1 \le i \le n\)</span>).</p>
+<p>Thus, <span class="math display">\[{b_i}^\vee(\Phi(b_i)) = {b_i}^\vee\left(\sum_{j=1}^n
+M_{j,i} b_j\right) = M_{i,i}\]</span>.</p>
+<p>Summing over <span class="math inline">\(i\)</span> we find that <span class="math display">\[\sum_{i=1}^n
+{b_i}^\vee(\Phi(b_i)) = \sum_{i=1}^n M_{i,i} =
+\operatorname{tr}(M) = \operatorname{tr}([\Phi]_{\mathcal{B}}) =
+\operatorname{tr}(\Phi),\]</span> as required.</p>
+</div></li>
+<li><p>Suppose that the finite group <span class="math inline">\(G\)</span> acts on the finite set
+<span class="math inline">\(\Omega\)</span>, and consider the corresponding permutation
+representation <span class="math inline">\((\rho,F[\Omega])\)</span> of <span class="math inline">\(G\)</span>. Recall that
+<span class="math inline">\(F[\Omega]\)</span> is the vector space of all <span class="math inline">\(F\)</span>-values functions on
+<span class="math inline">\(\Omega\)</span>, and that for <span class="math inline">\(f \in F[\Omega]\)</span> and <span class="math inline">\(g \in G\)</span>, we have
+<span class="math display">\[\rho(g)f(\omega) = f(g^{-1}\omega).\]</span>
+In particular, we saw in the lecture that
+<span class="math display">\[\rho(g)\delta_\omega) = \delta_{g\omega},\]</span>
+where <span class="math inline">\(\delta_\omega\)</span> denotes the <em>Dirac function</em> at <span class="math inline">\(\omega \in \Omega\)</span>.</p>
+<p>Show that <span class="math display">\[\operatorname{tr}(\rho(g)) = \#\{\omega \in \Omega
+\mid g\omega = \omega\};\]</span> i.e. the trace of <span class="math inline">\(\rho(g)\)</span> is the
+number of fixed points of the action of <span class="math inline">\(g\)</span> on <span class="math inline">\(\Omega\)</span>.</p>
+<div class="solution">
+<p>Recall that the vector space <span class="math inline">\(F[\Omega]\)</span> has a basis consisting
+of the vectors <span class="math inline">\(\delta_\omega\)</span> for <span class="math inline">\(\omega \in \Omega\)</span>.</p>
+<p>We write <span class="math inline">\(\delta_\omega^\vee \in F[\Omega]^\vee\)</span> for vectors of
+the <em>dual basis</em>. The linear functional
+<span class="math display">\[\delta_\omega^\vee : F[\Omega] \to F\]</span>
+is defined by
+<span class="math display">\[\delta_\omega^\vee(\delta_\tau) = \left \{ \begin{matrix}
+1 &amp; \tau = \omega \\
+0 &amp; \tau \ne \omega
+\end{matrix} \right .\]</span></p>
+<p>Fix <span class="math inline">\(g \in G\)</span>.
+According to our earlier work, we know that</p>
+<p><span class="math display">\[\operatorname{tr}(\rho(g)) = \sum_{\omega \in \Omega} \delta_\omega^\vee ( \rho(g) \delta_\omega )
+= \sum_{\omega \in \Omega} \delta_\omega^\vee(\delta_{g \omega}).\]</span></p>
+<p>Now, <span class="math inline">\(\delta_\omega^\vee (\delta_g\omega)\)</span> is 1 when <span class="math inline">\(\omega = g\omega\)</span> and is 0 otherwise. This shows that
+<span class="math inline">\(\operatorname{tr}(\rho(g))\)</span> is given by the number of <span class="math inline">\(\omega \in \Omega\)</span> for which <span class="math inline">\(g\omega = \omega\)</span>, as required.</p>
+</div></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(V\)</span> be a representation of <span class="math inline">\(G\)</span>, suppose that <span class="math inline">\(W_1,W_2\)</span> are invariant subspaces,
+and that <span class="math inline">\(V\)</span> is the internal direct sum
+<span class="math display">\[V = W_1 \oplus W_2.\]</span></p>
+<p>Show that the character <span class="math inline">\(\chi_V\)</span> of <span class="math inline">\(V\)</span> satisfies
+<span class="math display">\[\chi_V = \chi_{W_1} + \chi_{W_2}\]</span>
+i.e. for <span class="math inline">\(g \in G\)</span> that
+<span class="math display">\[\chi_V(g) = \chi_{W_1}(g) + \chi_{W_2}(g).\]</span></p>
+<div class="solution">
+<p>Let <span class="math inline">\(\mathcal{B} = \{b_1,\cdots,b_n\}\)</span> be a basis
+of <span class="math inline">\(W_1\)</span> and let <span class="math inline">\(\mathcal{C} = \{c_1, \cdots, c_m\}\)</span> be a basis of
+<span class="math inline">\(W_2\)</span>.</p>
+<p>Since <span class="math inline">\(V = W_1 \oplus W_2\)</span>, we know that <span class="math inline">\(\mathcal{B} \cup \mathcal{C} = \{b_1,\cdots,b_n,c_1,\cdots,c_m\}\)</span> is a basis for</p>
+<p>We consider the dual basis <span class="math inline">\(b_1^\vee, b_2^\vee, \cdots, b_n^\vee,c_1^\vee,\cdots,c_m^\vee\)</span> of the dual vector space
+<span class="math inline">\(V^\vee\)</span>.</p>
+<p>(Be careful! <span class="math inline">\(W_1^\vee\)</span> is not a subspace of <span class="math inline">\(V^\vee\)</span>! Instead, it is a <em>quotient</em> of <span class="math inline">\(V^\vee\)</span>…)</p>
+<p>Observe that the functional <span class="math inline">\(b_i^\vee \in V^\vee\)</span> is determined by the rules
+<span class="math display">\[b_i^\vee(b_j) = \delta_{i,j} \quad \text{and}\quad 
+b_i^\vee(c_j) = 0.\]</span></p>
+<p>Similarly, the functional <span class="math inline">\(c_j^\vee \in V^\vee\)</span> is determined by the rules
+<span class="math display">\[c_j^\vee(b_i) = 0 \quad \text{and}\quad 
+c_j^\vee(c_i) = \delta_{j,i}.\]</span></p>
+<p>Observe that we can restrict <span class="math inline">\(b_i^\vee\)</span> to <span class="math inline">\(W_1\)</span>, and these
+restrictions <span class="math inline">\(\{b_i^\vee\vert_{W_1}\}\)</span> give the basis of <span class="math inline">\(W_1^\vee\)</span>
+dual to the basis <span class="math inline">\(\{b_i\}\)</span> of <span class="math inline">\(W_1\)</span>.</p>
+<p>Similarly the restrictions <span class="math inline">\(\{c_j^\vee \vert_{W_2}\}\)</span> give the basis of <span class="math inline">\(W_2^\vee\)</span>
+dual to the basis <span class="math inline">\(\{c_j\}\)</span> of <span class="math inline">\(W_2\)</span>.</p>
+<p>Now using the results of the previous problem applied to the mapping
+<span class="math inline">\(g:W_1 \to W_1\)</span>, <span class="math inline">\(g:W_2 \to W_2\)</span> and <span class="math inline">\(g:V \to V\)</span>, we see that</p>
+<p><span class="math display">\[\chi_{W_1}(g) = \operatorname{tr}(g:W_1 \to W_1) = \sum_{i=1}^n b_i^\vee(g\cdot b_i)\]</span>
+<span class="math display">\[\chi_{W_2}(g) = \operatorname{tr}(g:W_2 \to W_2) = \sum_{j=1}^m c_j^\vee(g\cdot c_j)\]</span>
+<span class="math display">\[\chi_V(g) = \operatorname{tr}(g:V \to V) = \sum_{i=1}^n b_i^\vee(g\cdot b_i) + \sum_{j=1}^m c_j^\vee(g \cdot c_j)\]</span></p>
+<p>Thus indeed <span class="math inline">\(\chi_V(g) = \chi_{W_1}(g) + \chi_{W_2}(g)\)</span> for each <span class="math inline">\(g\)</span>, as required.</p>
+</div></li>
+<li><p>Let <span class="math inline">\(G = A_4\)</span> be the alternating group of order <span class="math inline">\(\dfrac{4!}{2} = 12\)</span>.</p>
+<p>We are going to find the <em>character table</em> of this group.</p>
+<ol type="a">
+<li><p>Confirm that the following list gives a representative for each
+of the conjugacy classes of <span class="math inline">\(G\)</span>:</p>
+<p><span class="math display">\[1, (12)(34), (123), (124)\]</span></p>
+<p>(Note that <span class="math inline">\((123)\)</span> and <span class="math inline">\((124)\)</span> are conjugate in <span class="math inline">\(S_4\)</span>, but <em>not</em>
+in <span class="math inline">\(A_4\)</span>).</p>
+<p>What are the <em>sizes</em> of the corresponding conjugacy classes?</p>
+<div class="solution">
+<p>Note that the centralizer <span class="math inline">\(C_{A_4}( (12)(34) )\)</span> contains the
+group <span class="math inline">\(\langle (12), (34) \rangle\)</span>, which has 4 elements. On the
+other hand, <span class="math inline">\((12)(34)\)</span> is not central in <span class="math inline">\(A_4\)</span> (e.g. <span class="math inline">\((23)\)</span>
+doesn’t commute with <span class="math inline">\((12)(34)\)</span>). Since <span class="math inline">\([A_4:\langle (12)(34) \rangle] = 3\)</span> (a prime number), conclude that <span class="math inline">\(C_{A_4}( (12)(34) ) = \langle (12), (13) \rangle\)</span>. We conclude that <span class="math inline">\((12)(34)\)</span> has
+exactly <span class="math inline">\(12/4 = 3\)</span> conjugates in <span class="math inline">\(A_4\)</span>.</p>
+<p>Next note that the centralizer <span class="math inline">\(C_{A_4}( (123) )\)</span> contains the
+subgroup <span class="math inline">\(\langle (123) \rangle\)</span> of order <span class="math inline">\(3\)</span>.
+On the other hand, suppose that <span class="math inline">\(\sigma \in C_{A_4}((123))\)</span>.
+Then <span class="math inline">\(\sigma (123) \sigma^{-1} = (123)\)</span>.
+But we know <span class="math inline">\(\sigma(123)\sigma^{-1} = (\sigma(1) \sigma(2) \sigma(3))\)</span>,
+and now the condition <span class="math display">\[(123) = (\sigma(1) \sigma(2) \sigma(3))\]</span>
+implies that <span class="math inline">\(\sigma \in \langle (123) \rangle\)</span>. Thus
+<span class="math inline">\(C_{A_4}((123)) = \langle (123) \rangle\)</span> has order 3,
+and the conjugacy class of <span class="math inline">\((123)\)</span> has <span class="math inline">\(12/3 = 4\)</span> elements.</p>
+<p>Similarly, the centralizer of <span class="math inline">\((124)\)</span> has order 3, and its conjugacy
+class has <span class="math inline">\(4\)</span> elements.</p>
+<p>Finally, we should argue that <span class="math inline">\((123)\)</span> and <span class="math inline">\((124)\)</span> are not in fact conjugate in <span class="math inline">\(A_4\)</span>.
+Of course, they are conjugate in <span class="math inline">\(S_4\)</span> by the transposition <span class="math inline">\((34)\)</span>.
+Arguing as above, the centralizer of <span class="math inline">\((123)\)</span> in <span class="math inline">\(S_4\)</span> is still just equal to <span class="math inline">\(\langle (123) \rangle\)</span>.
+So any element <span class="math inline">\(\sigma\)</span> of <span class="math inline">\(S_4\)</span> for which <span class="math inline">\(\sigma(123)\sigma^{-1} = (124)\)</span> has the form
+<span class="math inline">\((123)^i(12)\)</span> for some <span class="math inline">\(i\)</span>, and none of those elements is in <span class="math inline">\(A_4\)</span>.</p>
+<p>We have</p>
+<table>
+<thead>
+<tr class="header">
+<th>class rep <span class="math inline">\(g\)</span></th>
+<th><span class="math inline">\(C_{A_4}(g)\)</span></th>
+<th>size of conjugacy class of <span class="math inline">\(g\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>12</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((12)(34)\)</span></td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((123)\)</span></td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((124)\)</span></td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Since
+<span class="math display">\[1 + 3 + 4 + 4 = 12\]</span>
+we have found all of the conjugacy classes in <span class="math inline">\(A_4\)</span>.</p>
+</div></li>
+<li><p>Let <span class="math inline">\(K = \langle (12)(34), (14)(23)\rangle\)</span>. Show that <span class="math inline">\(K\)</span> is a
+normal subgroup of index <span class="math inline">\(3\)</span>, so that <span class="math inline">\(G/K \simeq \mathbb{Z}/3\mathbb{Z}\)</span>.</p>
+<div class="solution">
+<p>One checks directly that
+<span class="math display">\[K = \{ 1, (12)(34), (14)(23), (13)(24) \}\]</span>
+so that <span class="math inline">\(K\)</span> has order 4 and index 3 as asserted.</p>
+<p>Notice that - as a set - <span class="math inline">\(K\)</span> is the union of <span class="math inline">\(\{1\}\)</span> and the
+3-element conjugacy class of <span class="math inline">\((12)(34)\)</span>. This makes clear that
+<span class="math inline">\(\sigma \tau \sigma^{-1} \in K\)</span> for all <span class="math inline">\(\sigma \in A_4\)</span> and
+<span class="math inline">\(\tau \in K\)</span>, so that <span class="math inline">\(K\)</span> is a <em>normal subgroup</em>.</p>
+<p>Since <span class="math inline">\(|G/K|=3\)</span>, of course <span class="math inline">\(G/K \simeq \mathbb{Z}/3\mathbb{Z}\)</span>
+(“groups of prime order are cyclic”).</p>
+</div>
+<p>Let <span class="math inline">\(\zeta_3\)</span> be a primitive <span class="math inline">\(3\)</span>rd root of unity in <span class="math inline">\(F^\times\)</span> and for
+<span class="math inline">\(i=0,1,2\)</span> let
+<span class="math inline">\(\rho_i:G \to F^\times\)</span>
+be the unique homomorphism with the following properties:</p>
+<ol type="i">
+<li><span class="math inline">\(\rho_i\left( (123) \right) = \zeta^i\)</span></li>
+<li><span class="math inline">\(K \subseteq \ker \rho_i\)</span>.</li>
+</ol>
+<p>Explain why <span class="math inline">\(\rho_0 = \mathbf{1},\rho_1,\rho_2\)</span> determine distinct irreducible
+(1-dimensional) representations of <span class="math inline">\(G\)</span>.</p>
+<div class="solution">
+<p>In fact, let <span class="math inline">\((\rho_1,V_1)\)</span> and <span class="math inline">\((\rho_2,V_2)\)</span> be
+representations of <span class="math inline">\(G\)</span> for which <span class="math inline">\(V_1\)</span> and <span class="math inline">\(V_2\)</span> are 1
+dimensional. In this case, <span class="math inline">\(\operatorname{GL}(V_i) = \operatorname{GL}_1(F) = F^\times\)</span> is a commutative group.</p>
+<p>Since <span class="math inline">\(V_1\)</span> and <span class="math inline">\(V_2\)</span> have dimension 1, any isomorphism
+<span class="math inline">\(\Phi:V_1 \to V_2\)</span> is just given by multiplication with a scalar
+<span class="math inline">\(\alpha \in F^\times\)</span>. So if the representations are
+isomorphic, we
+have for each <span class="math inline">\(g\in G\)</span> and <span class="math inline">\(v \in V_1\)</span>:
+<span class="math display">\[\rho_2(g)\Phi(v) = \Phi(\rho_1(g)v) \implies
+\alpha \rho_2(g)v = \alpha \rho_1(g)v\]</span></p>
+<p>Since <span class="math inline">\(\alpha \ne 0\)</span> and since this holds for all <span class="math inline">\(v \in V_1\)</span>, we conclude
+that <span class="math inline">\(\rho_1(g) = \rho_2(g)\)</span> for each <span class="math inline">\(g \in G\)</span>.</p>
+<p>In other words, two 1 dimensional representations are isomorphic
+iff they are <em>equal</em> (as functions <span class="math inline">\(G \to F^\times)\)</span>.</p>
+<p>Now, the three homomorphisms <span class="math inline">\(\rho_i\)</span> <span class="math inline">\((i=0,1,2)\)</span> are clearly
+distinct, because each maps the element <span class="math inline">\((123)\)</span> to a different
+element of <span class="math inline">\(F^\times\)</span>. Thus they constitute distinct irreducible
+1 dimensional representations of <span class="math inline">\(G\)</span>.</p>
+</div></li>
+<li><p>Let <span class="math inline">\(\Omega = \{1,2,3,4\}\)</span> on which <span class="math inline">\(G\)</span> acts by the embedding
+<span class="math inline">\(A_4 \subset S_4\)</span>.</p>
+<p>Compute the character <span class="math inline">\(\chi_\Omega\)</span> of the representation
+<span class="math inline">\(F[\Omega]\)</span>. (This means: compute and list the values of
+<span class="math inline">\(\chi_\Omega\)</span> at the conjugacy class representatives given in a.)</p>
+<p>(<em>Use the result of problem 1 above</em>).</p>
+<div class="solution">
+<p>According to problem 1, the trace of the action of an element
+<span class="math inline">\(\sigma \in A_4\)</span> on the permutation representation <span class="math inline">\(F[\Omega]\)</span>
+is equal to the number of fixed points of <span class="math inline">\(\sigma\)</span> on
+<span class="math inline">\(\Omega\)</span>.</p>
+<p>Let’s write <span class="math inline">\(\chi_\Omega\)</span> for the character of the representation <span class="math inline">\(F[\Omega]\)</span>.</p>
+<p>Thus, the trace is given by</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\sigma\)</span></th>
+<th><span class="math inline">\(\chi_\Omega\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(1\)</span></td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((12)(34)\)</span></td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((123)\)</span></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((124)\)</span></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+<li><p>The span of the vector <span class="math inline">\(\delta_1 + \delta_2 + \delta_3 + \delta_4 \in F[\Omega]\)</span> is an invariant subspace isomorphic to
+the irreducible representation <span class="math inline">\(\rho_0\)</span> (the so-called <em>trivial
+representation</em>).</p>
+<p>Thus <span class="math inline">\(F[\Omega] = \rho_0 \oplus W\)</span> for a <span class="math inline">\(3\)</span>-dimensional invariant
+subspace. Explain why problem 2 shows that the character of <span class="math inline">\(W\)</span> is given by
+<span class="math inline">\(\chi_W = \chi_\Omega - \mathbf{1}\)</span>.</p>
+<div class="solution">
+<p>Problem 2 shows that <span class="math display">\[\chi_{\Omega}= \mathbf{1}+ \chi_W.\]</span></p>
+<p>This is an identity of <em><span class="math inline">\(F\)</span>-valued functions on <span class="math inline">\(G\)</span></em>, and it immediately implies that
+<span class="math inline">\(\chi_W = \chi_\Omega - \mathbf{1}\)</span> as required.</p>
+</div>
+<p>Now prove that <span class="math inline">\(\langle \chi_W, \chi_W \rangle = 1\)</span> and conclude
+that <span class="math inline">\(W\)</span> is an irreducible representation.</p>
+<div class="solution">
+<p>Write <span class="math inline">\(\sigma_1,\sigma_2,\sigma_3,\sigma_4\)</span> for class representatives
+<span class="math inline">\(1,(12)(34), (123), (124)\)</span>. And write <span class="math inline">\(c_i\)</span> for the order of the <em>centralizer</em> of <span class="math inline">\(\sigma_i\)</span>.</p>
+<p>Notice that the <em>values</em> of <span class="math inline">\(\chi_W = \chi_\Omega - \mathbf{1}\)</span> are given in the following table:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\sigma_i\)</span></th>
+<th><span class="math inline">\(c_i\)</span></th>
+<th><span class="math inline">\(\chi_\Omega(\sigma_i)\)</span></th>
+<th><span class="math inline">\(\chi_W(\sigma_i)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(1 = \sigma_1\)</span></td>
+<td>12</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((12)(34) = \sigma_2\)</span></td>
+<td>4</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((123) = \sigma_3\)</span></td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((124) = \sigma_4\)</span></td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>We calculate</p>
+<p><span class="math display">\[\begin{align*}
+\langle \chi_W,\chi_W \rangle =&amp; \sum_{i=1}^4 \dfrac{1}{c_i}
+\chi_W(\sigma_i) \overline{\chi_W(\sigma_i)} = \dfrac{1}{12} 3
+\cdot 3 + \dfrac{1}{4} (-1) \cdot (-1) + \dfrac{1}{3} 0 \cdot
+0 + \dfrac{1}{3} 0 \cdot 0 \\
+=&amp; \dfrac{9}{12} + \dfrac{1}{4} = \dfrac{9 + 3}{12} = 1
+\end{align*}\]</span></p>
+<p>It follows from the results described in lecture that a
+representation <span class="math inline">\(V\)</span> is irreducible if and only if <span class="math inline">\(\langle \chi_V,\chi_V \rangle = 1\)</span>, so we conclude that <span class="math inline">\(W\)</span> is an
+irreducible representation.</p>
+</div></li>
+<li><p>Explain why <span class="math display">\[\mathbf{1},\rho_1,\rho_2,W\]</span> is a complete set of
+non-isomorphic irreducible representations of <span class="math inline">\(G\)</span>.</p>
+<div class="solution">
+<p>We know that <span class="math inline">\(G\)</span> has 4 conjugacy classes, so up to isomorphism
+there are exactly 4 irreducible representations of <span class="math inline">\(G\)</span>.</p>
+<p>We’ve already pointed out that <span class="math inline">\(1,\rho_1,\rho_2\)</span> are
+non-isomorphic irreducible representations each of
+dimension 1. Now, we’ve seen that <span class="math inline">\(W\)</span> is an irreducible
+representation; since <span class="math inline">\(W\)</span> is 2 dimensional, it is not isomorphic
+to any of the representations <span class="math inline">\(1,\rho_1,\rho_2\)</span>.</p>
+<p>Thus we have found 4 non-isomorphic irreducible representations,
+and we can conclude that any irreducible representation is
+isomorphic to once of these 4.</p>
+</div></li>
+<li><p>Display the <em>character table</em> of <span class="math inline">\(G = A_4\)</span>.</p>
+<div class="solution">
+<p><span class="math display">\[\begin{array}{l|lll}
+&amp; 1 &amp; (12)(34) &amp; (123) &amp; (124) \\
+&amp; 12 &amp; 4 &amp; 3 &amp; 3 \\
+\hline
+\mathbf{1}&amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+\rho_1 &amp; 1 &amp; 1 &amp; \zeta &amp; \zeta^2 \\
+\rho_2 &amp; 1 &amp; 1 &amp; \zeta^2 &amp; \zeta \\
+\chi_W &amp; 3 &amp; -1 &amp; 0 &amp; 0 
+\end{array}\]</span></p>
+</div></li>
+</ol></li>
+</ol>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>

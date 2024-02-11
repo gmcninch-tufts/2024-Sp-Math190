@@ -8,7 +8,7 @@ date: 2024-01-17
 The problem set for this week is found here
 
 - [[problem set 02]](/course-contents/PS02--rep-theory.html) [[pdf]](/course-contents/PS02--rep-theory.pdf) due 2024-02-02
-
+- [[**solution**]](/course-contents/PS02--rep-theory--solutions.html) 
 
 Here are notes for Monday's lecture on *Schur's Lemma & irreducibility*:
 
