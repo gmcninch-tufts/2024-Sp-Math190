@@ -31,8 +31,8 @@ discussion of "applications of group representations to related parts
 of mathematics" -- the notes probably don't give all details of that
 discussion (ask if you want a reference!).
 
-- [[RT notes 2024-02-12]](notes-RT--2024-02-12--number-of-irreducibles.html)
-  [[pdf]](notes-RT--2024-02-12--number-of-irreducibles.pdf)
+- [[RT notes 2024-02-12]](/course-contents/notes-RT--2024-02-12--number-of-irreducibles.html)
+  [[pdf]](/course-contents/notes-RT--2024-02-12--number-of-irreducibles.pdf)
   
 On Wednesday, I begin talking about *error-correcting codes*.
 Remember that I listed a [few references to consult](resources-references.html).
@@ -43,12 +43,12 @@ Remember that I listed a [few references to consult](resources-references.html).
 I plan to sometimes use the computer-algebra system `sage-math` to
 accompany the lectures/presentation. 
 
-- [[suggestions for installing `sage-math`]](resources--conda-sage-math-jupyter.html)
+- [[suggestions for using / installing `sage-math`]](resources--conda-sage-math-jupyter.html)
 
 
 
 - Example of ternary code, in `sage-math`
-  [[via colab]](https://colab.research.google.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/ECC-01--ternary-code.ipynb)
+  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/ECC-01--ternary-code.ipynb)
   [[download notebook]](/course-contents/ECC-01--ternary-code.ipynb) 
 
 

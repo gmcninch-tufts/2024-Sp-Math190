@@ -41,7 +41,117 @@
         
     </section>
     <section>
-        
+        <h1 id="using-sagemath-for-computer-algebra-calculations">Using <code>SageMath</code> for computer algebra calculations</h1>
+<p>Blurb:</p>
+<blockquote>
+<p><a href="https://www.sagemath.org/"><code>SageMath</code></a> is a free open-source
+mathematics software system licensed under the GPL. It builds on
+top of many existing open-source packages: NumPy, SciPy,
+matplotlib, Sympy, Maxima, GAP, FLINT, R and many more. Access
+their combined power through a common, Python-based language or
+directly via interfaces or wrappers.</p>
+</blockquote>
+<p>Moreover, <code>SageMath</code> can be run inside
+<a href="https://jupyter.org/"><code>jupyter</code></a> notebooks; since it combines <code>code</code>
+and exposition, this format can be useful e.g. for classroom
+demonstrations.</p>
+<h1 id="cocalc"><code>CoCalc</code></h1>
+<p>You can interact with a <code>SageMath</code> kernel “in the cloud” at
+<a href="https://cocalc.com/"><code>CoCalc</code></a>. For example, you can open <code>jupyter notebooks</code> whose kernel is <code>SageMath</code> via <code>CoCalc</code> (I’m going to
+provide links that should enable you to do this).</p>
+<h1 id="installation-on-your-computer">Installation on “your” computer</h1>
+<p>There are a fair number of parts required to get a <code>SageMath</code>
+installation working, so I recommend installing it using
+<a href="https://conda.org"><code>conda</code></a> (short for <em>anaconda</em>;
+together with <code>python</code>, this amounts to a bunch of snakes …).</p>
+<p><code>conda</code> describes itself as follows:</p>
+<blockquote>
+<p>Initially started as a multi-platform package management tool, the
+term “conda” has since evolved to encompass an entire open-source
+packaging ecosystem and philosophy. This ecosystem is supported by
+many organizations who all share the common goal of providing
+easier access to programming tools and libraries.</p>
+</blockquote>
+<h2 id="install-conda-via-miniforge">install <code>conda</code> via <code>miniforge</code></h2>
+<p>Specifically, I recommend installing <code>conda</code> using something called
+the <code>miniforge</code> – here is the <a href="https://github.com/conda-forge/miniforge"><code>miniforge</code> github
+repository</a>.</p>
+<p><a href="https://github.com/conda-forge/miniforge#miniforge3">Here is the list of
+<em>installers</em>.</a>
+The installer must be chose to match your computer’s architecture and
+operating system.</p>
+<ul>
+<li><p>If you have a recent Apple MacBook (“M1” or “M2”) your architecture is
+likely <code>arm64</code> and you need to use the <code>OS X</code> <code>arm64 (Apple Silicon)</code> installer.</p></li>
+<li><p>somewhat older Apple MacBooks need to use the <code>OS X</code> <code>x86_64</code> installer.</p></li>
+<li><p>Windows users need to use the <code>Windows</code> <code>x86_64</code> installer.</p></li>
+<li><p>There are installers for <code>linux</code> users as well.</p></li>
+</ul>
+<p>You should now read and follow the <a href="https://github.com/conda-forge/miniforge#install">installation
+instructions</a> for
+your operating system. (I’ve provided some annotation below, which you might read first).</p>
+<h2 id="installing-in-mac-os-or-linux">installing in <code>Mac OS</code> or <code>Linux</code></h2>
+<p>The <code>Mac OS &amp; Linux</code> instructions tell you to execute the following commands in a terminal window (i.e. a “shell”):</p>
+<blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~$</span> curl <span class="at">-L</span> <span class="at">-O</span> <span class="st">&quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-</span><span class="va">$(</span><span class="fu">uname</span><span class="va">)</span><span class="st">-</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span><span class="st">.sh&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">~$</span> bash Miniforge3-<span class="va">$(</span><span class="fu">uname</span><span class="va">)</span>-<span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span>.sh</span></code></pre></div>
+</blockquote>
+<p>Note that these should be executed in a <code>shell</code>– in particular, you don’t type the prompts (“<code>~$</code>”). The first command
+uses the utility <code>curl</code> to download the relevant installer (the
+expressions <code>$(uname)</code> and <code>$(uname- m)</code> should select the correct
+installer for your computers architecture + operating system, without
+you having to make the choice).</p>
+<p>The second command (<code>bash...</code>) <em>executes</em> the installer that you just
+downloaded. When it is running, you’ll need to interact a bit with it
+(pressing “ENTER” when requested, accepting the licence terms,
+confirming the install location, etc.)</p>
+<p>Once the installer is done downloading packages from the <code>conda-forge</code>, you will be asked:</p>
+<blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Do</span> you wish the installer to initialize Miniforge3</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">by</span> running conda init<span class="pp">?</span> [yes<span class="kw">|</span><span class="ex">no]</span></span></code></pre></div>
+</blockquote>
+<p>In order to use <code>conda</code>, you should answer <code>yes</code>. It will add some
+code to your config file <code>~/.bashrc</code>.</p>
+<p>After closing and reopening your shell, you should have a prompt that
+looks something like the following:</p>
+<blockquote>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">george@valhalla:~$</span> </span></code></pre></div>
+</blockquote>
+<p>The <code>(base)</code> prefix indicates that the <code>base</code> environment of <code>conda</code>
+has been <code>activated</code>.</p>
+<h2 id="use-conda-to-install-sage-in-a-new-environment">Use conda to install sage in a new environment</h2>
+<p>After installing conda,
+run the following command in a shell:</p>
+<blockquote>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mamba create <span class="at">-n</span> sage sage python=3.11.6  </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span></code></pre></div>
+</blockquote>
+<p>Now activate the new <code>sage</code> environment you just created:</p>
+<blockquote>
+<p>$ mamba activate sage
+…</p>
+</blockquote>
+<p>Your terminal prompt should now look something like</p>
+<blockquote>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">sage</span><span class="kw">)</span> <span class="ex">george@valhalla:~$</span> </span></code></pre></div>
+</blockquote>
+<p>At minimum you need to install <code>jupyterlab</code></p>
+<blockquote>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">sage</span><span class="kw">)</span> <span class="ex">george@valhalla:~$</span>  mamba install jupyterlab</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span></code></pre></div>
+</blockquote>
+<p>Now if you <em>run</em> <code>jupyterlab</code>, a server will be started – running on
+your computer – and a tab in your browser will open with a <code>jupyter</code>
+session where you can interact with <code>jupyter</code> notebooks.</p>
+<blockquote>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">sage</span><span class="kw">)</span> <span class="ex">george@valhalla:~$</span>  jupyter-lab</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span></code></pre></div>
+</blockquote>
+<p>(You can exit this server by typing <code>C-c</code> (“control C”) in the terminal in which
+<code>jupyter-lab</code> is running…)</p>
+<p>If you save <code>ipynb</code> files from class, you can <em>open</em> them in this
+<code>jupyterlab</code> browser tab.</p>
     </section>
 </article>
 

@@ -38,6 +38,130 @@
     </section>
     <section>
         <h1 id="the-number-of-irreducible-representations-of-g">The number of irreducible representations of <span class="math inline">\(G\)</span></h1>
+<p>Recall that <span class="math inline">\(G\)</span> denotes a finite group.</p>
+<p>Recall that the space <span class="math inline">\(\mathbb{C}[G]\)</span> of <em>all <span class="math inline">\(\mathbb{C}\)</span>-valued
+functions on <span class="math inline">\(G\)</span></em> is the vector space underlying the <em>regular
+representation</em> of <span class="math inline">\(G\)</span>.</p>
+<p>We introduced the <em>convolution multiplication</em> <span class="math inline">\(\star\)</span> on
+<span class="math inline">\(\mathbb{C}[G]\)</span> by the rule <span class="math display">\[(f_1 \star f_2)(x) = \sum_{yz = x}
+f_1(y)f_2(z)\]</span> for <span class="math inline">\(f_1,f_2 \in \mathbb{C}[G]\)</span>.</p>
+<p>This product makes <span class="math inline">\(\mathbb{C}[G]\)</span> into a (in-general non-commutative)
+ring. We mostly will avoid invoking general results about rings, and
+so we define the <em>center</em> <span class="math inline">\(\mathbb{C}[G]\)</span> to be the subspace <span class="math display">\[Z = \{
+f\in \mathbb{C}[G] \mid f \star h = h \star f \quad \forall h \in
+\mathbb{C}[G]\}.\]</span></p>
+<dl>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+<p>The subspace <span class="math inline">\(Z\)</span> coincides with the subspace of <span class="math inline">\(\mathbb{C}[G]\)</span>
+consisting of those functions which are <em>constant</em> on the
+conjugacy classes of <span class="math inline">\(G\)</span>.</p>
+<p>In particular, <span class="math inline">\(\dim Z = \# \{\text{conjugacy classes of $G$}\}\)</span>.</p>
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>Since <span class="math inline">\(\mathbb{C}[G]\)</span> has a vector space basis consisting of the dirac functions
+<span class="math inline">\(\delta_g\)</span> for <span class="math inline">\(g \in G\)</span>, one immediately sees that <span class="math inline">\(f \in Z\)</span> if and only if
+<span class="math display">\[f \star \delta_g = \delta_g \star f\]</span>
+for every <span class="math inline">\(g \in G\)</span>.</p>
+<p>Note that <span class="math inline">\(\delta_g \star \delta_{g^{-1}} = \delta_1\)</span> is a
+*multiplicative identity for the operation <span class="math inline">\(\star\)</span>, so that for any <span class="math inline">\(g\)</span>,
+<span class="math inline">\(\delta_{g^{-1}} = (\delta_g)^{-1}\)</span> is a multiplicative inverse.</p>
+<p>Thus
+<span class="math display">\[f \star \delta_g = \delta_g \star f \iff f = \delta_g \star f \star \delta_{g^{-1}}.\]</span></p>
+<p>Now, fix <span class="math inline">\(f \in \mathbb{C}[G]\)</span> and <span class="math inline">\(g \in G\)</span>, and let’s compute the value
+of <span class="math inline">\(\delta_g \star f \star \delta_{g^{-1}}\)</span> at an element <span class="math inline">\(h \in G\)</span>. We have</p>
+<p><span class="math display">\[(\delta_g \star f \star \delta_{g^{-1}})(h) = \sum_{xyz = h}
+\delta_g(x) f(y) \delta_{g^{-1}}(z) = f(g^{-1}hg)\]</span></p>
+<p>We now conclude that <span class="math inline">\(f \in Z\)</span> if and only if <span class="math display">\[f(h) = f(g^{-1}hg)
+\quad \forall g,h \in G\]</span> i.e. if and only if <span class="math inline">\(f\)</span> is constant on
+the conjugacy classes of <span class="math inline">\(G\)</span>.</p>
+<p>Since the characteristic functions <span class="math inline">\(\psi_C\)</span> of the conjugacy
+classes <span class="math inline">\(C\)</span> of <span class="math inline">\(G\)</span> form a basis for the space of <em>class
+functions</em>, it follows that <span class="math inline">\(\dim Z\)</span> is the number of conjugacy
+classes <span class="math inline">\(C\)</span> of <span class="math inline">\(G\)</span>; this completes the proof of the Proposition.</p>
+</dd>
+</dl>
+<p>We write <span class="math inline">\(L_1,L_2, \cdots,L_r\)</span> for a complete set of irreducible
+representations of <span class="math inline">\(G\)</span> on <span class="math inline">\(\mathbb{C}\)</span>-vector spaces, no two of which
+are isomorphic.</p>
+<dl>
+<dt><strong>Lemma:</strong></dt>
+<dd>
+Let <span class="math inline">\(z\)</span> be an element of the center <span class="math inline">\(Z \subseteq \mathbb{C}[G]\)</span>.
+For each <span class="math inline">\(i\)</span> there is a scalar <span class="math inline">\(\lambda_i \in \mathbb{C}\)</span> such that
+for every <span class="math inline">\(v \in L_i\)</span> we have
+<span class="math display">\[z \star v = \lambda_i v.\]</span>
+</dd>
+<dt><strong>Proof of Lemma:</strong></dt>
+<dd>
+<p>Note that for each <span class="math inline">\(i\)</span> the mapping “convolution with <span class="math inline">\(z\)</span>” – i.e. the mapping
+<span class="math display">\[\phi:L_i \to L_i \quad \text{given by $\phi(v) = z \star v$}\]</span>
+– is a homomorphism of <span class="math inline">\(G\)</span>-representations.</p>
+<p>Indeed, note for <span class="math inline">\(g \in G\)</span> that – since <span class="math inline">\(z \in Z\)</span> – we have
+<span class="math display">\[\phi(gv) = \phi(\delta_g \star v)  = z \star \delta_g \star v = 
+\delta_g \star z \star v = \delta_g \star \phi(v) = g\phi(v).\]</span></p>
+<p>Now, Schur’s Lemma tells us – since <span class="math inline">\(L_i\)</span> is <em>irreducible</em> –
+that the endomorphisms of <span class="math inline">\(L_i\)</span> as a <span class="math inline">\(G\)</span>-representation identify
+with the scalar operators <span class="math inline">\(\mathbb{C} = \mathbb{C} \cdot \operatorname{id}_{W_i}.\)</span></p>
+<p>Thus, there is <span class="math inline">\(\lambda_i \in \mathbb{C}\)</span> such that <span class="math display">\[\phi =
+\lambda_i \operatorname{id}_{W_i};\]</span> in other words, <span class="math inline">\(z \star w = \phi(w) = \lambda_i w\)</span> for <span class="math inline">\(w \in W_i\)</span>, as required.</p>
+</dd>
+<dt><strong>Theorem:</strong></dt>
+<dd>
+The number <span class="math inline">\(r\)</span> of irreducible representations is equal to <span class="math inline">\(\dim Z\)</span>.
+In particular, <span class="math inline">\(r\)</span> is equal to the number of conjugacy classes in <span class="math inline">\(G\)</span>.
+</dd>
+<dt><strong>Proof:</strong></dt>
+<dd>
+<p>Write <span class="math inline">\(W_i = \mathbb{C}[G]_{(L_i)}\)</span> for the <span class="math inline">\(L_i\)</span>-isotypic
+component of the regular representation <span class="math inline">\(\mathbb{C}[G]\)</span>.</p>
+<p>Thus for each <span class="math inline">\(i\)</span>, <span class="math inline">\(W_i\)</span> is a direct sum of copies of the
+irreducible representation <span class="math inline">\(L_i\)</span>, and the quotient representation
+<span class="math inline">\(\mathbb{C}[G]/W_i\)</span> contains no irreducible invariant subspace
+isomorphic to <span class="math inline">\(L_i\)</span>.</p>
+<p>You proved for homework that</p>
+<p><span class="math display">\[\mathbb{C}[G] = W_1 \oplus W_2 \oplus \cdots \oplus  W_r.\]</span></p>
+<p>In view of this decomposition of <span class="math inline">\(\mathbb{C}[G]\)</span>, we may write
+<span class="math display">\[\delta_1 = f_1 + f_2 + \cdots + f_r\]</span>
+for uniquely determined elements <span class="math inline">\(f_i \in W_i\)</span>.</p>
+<p>Let <span class="math inline">\(z \in Z\)</span>. According to the Lemma, there are scalars
+<span class="math inline">\(\lambda_i \in \mathbb{C}\)</span> for which <span class="math inline">\(z \star v_i = \lambda_i v_i\)</span>
+for <span class="math inline">\(v_i \in L_i\)</span>.</p>
+<p>Since <span class="math inline">\(W_i\)</span> is <span class="math inline">\(L_i\)</span>-isotypic, it follows at once that
+<span class="math display">\[z \star w_i = \lambda_i w_i\]</span>
+for each <span class="math inline">\(w_i \in W_i\)</span>.
+In particular,
+<span class="math display">\[z \star f_i = \lambda_i f_i \quad \text{for $i=1,2,\cdots,r$}.\]</span></p>
+<p>Now we notice that
+<span class="math display">\[\begin{align*}
+z &amp; = z \star \delta_1  = z \star (f_1 + f_2 + \cdots + f_r) \\
+&amp; = z \star f_1 + z \star f_2 + \cdots + z \star f_r \\
+&amp; = \lambda_1 f_1 + \lambda_2 f_2 + \cdots + \lambda_r f_r	
+\end{align*}\]</span></p>
+<p>This proves that <span class="math inline">\(Z\)</span> is contained in the <em>span</em> of the vectors <span class="math inline">\(f_1,f_2,\cdots,f_r\)</span>; i.e.
+<span class="math display">\[Z \subseteq \sum_{i=1}^r \mathbb{C}f_i.\]</span></p>
+<p>We conclude that <span class="math display">\[\dim Z \le \dim \sum_{i=1}^r \mathbb{C}f_i  \le r.\]</span></p>
+<p>But on the other hand, we have proved that the <em>characters</em>
+<span class="math inline">\(\chi_i = \chi_{L_i}\)</span> of the irreducible representations form an
+orthonormal – hence linearly independent – set of <em>class functions</em>
+on <span class="math inline">\(G\)</span>.</p>
+<p>According to the preceding Proposition, <span class="math inline">\(\chi_i \in Z\)</span> for each <span class="math inline">\(i\)</span>.
+This proves that
+<span class="math display">\[r = \dim \sum_{i=1}^r \mathbb{C} \chi_i \le \dim Z.\]</span></p>
+<p>We may now conclude that <span class="math inline">\(\dim Z = r\)</span> as required.</p>
+</dd>
+<dt><strong>Remarks:</strong></dt>
+<dd>
+<p>With notations as in the proof of the Theorem, note that</p>
+<ul>
+<li><p>we have an equality <span class="math inline">\(Z = \sum_{i=r}^r \mathbb{C}f_i\)</span> of
+subspaces of <span class="math inline">\(\mathbb{C}[G]\)</span>.</p></li>
+<li><p>since <span class="math inline">\(\dim Z = r\)</span>, conclude that <span class="math inline">\(f_1,f_2,\cdots,f_r\)</span> are <em>linearly independent</em></p></li>
+<li><p>Moreover, <span class="math inline">\(f_i \in Z\)</span> for each <span class="math inline">\(i\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
 <h1 id="bibliography">Bibliography</h1>
 <div class="refs">
 
