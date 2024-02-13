@@ -63,9 +63,9 @@ main = hakyllWith config $ do
           >>= loadAndApplyTemplate "templates/default.html" postCtx
           >>= relativizeUrls
 
-    match "course-contents/*pdf" $ do
-      route idRoute
-      compile copyFileCompiler
+    match ("course-contents/*ipynb" .||. "course-contents/*pdf" ) $ version "copy" $ do
+        route   idRoute
+        compile copyFileCompiler
 
     match "css/*" $ do
         route   idRoute

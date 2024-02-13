@@ -5,6 +5,11 @@ tags    : math, GAP, computer algebra
 summary : A quick overview of some tools for carrying out "computer algebra" calculations.
 ---
 
+**Note:** In class, I promised I'd include these in the
+notes... you'll have to read the docs a bit to figure out how to get
+Character Tables. (The [notes
+her](notes-RT-2024-02-07--diaconis-paper.html) might help you get
+started).
 
 A overview of ``GAP``
 =====================
