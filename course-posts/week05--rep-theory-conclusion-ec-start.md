@@ -37,8 +37,8 @@ discussion (ask if you want a reference!).
 On Wednesday, I begin talking about *error-correcting codes*.
 Remember that I listed a [few references to consult](resources-references.html).
 
-- [[ECC notes 2024-02-14]](notes-RT--2024-02-14--intro.html)
-  [[pdf]](notes-RT--2024-02-14--intro.pdf)
+- [[ECC notes 2024-02-14]](/course-contents/notes-ECC-2024-02-14--intro.html)
+  [[pdf]](/course-contents/notes-ECC-2024-02-14--intro.pdf)
 
 I plan to sometimes use the computer-algebra system `sage-math` to
 accompany the lectures/presentation. 
