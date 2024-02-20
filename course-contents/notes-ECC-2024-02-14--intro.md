@@ -6,7 +6,7 @@ date: 2024-02-14
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\e}{\mathbf{e}}
-\newcommand{\b}{\mathbf{b}}
+\newcommand{\bb}{\mathbf{b}}
 \newcommand{\Null}{\operatorname{Null}}
 
 # The idea
@@ -58,9 +58,9 @@ choose a *basis* $b_1,\cdots,b_k$ for $C$ as $\F_q$-vector space.
 Since $C \subset \F_q^n = \F_q^{1 \times n}$, we view elements of $C$ as $1 \times n$ *row vectors*.
 
 Now form the matrix $k \times n$ matrix $G$ whose *rows* are the $1 \times n$
-vectors $\b_1,\b_2,\cdots,\b_k$:
+vectors $\bb_1,\bb_2,\cdots,\bb_k$:
 
-$$G = \begin{bmatrix} \b_1 \\ \b_2 \\ \vdots \\ \b_k \end{bmatrix}.$$
+$$G = \begin{bmatrix} \bb_1 \\ \bb_2 \\ \vdots \\ \bb_k \end{bmatrix}.$$
 
 $G$ is known as a *generator matrix* for the code $C$.
 

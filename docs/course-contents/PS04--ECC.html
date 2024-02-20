@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - ProblemSet 4 -- Finite field projective spaces
+</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>ProblemSet 4 -- Finite field projective spaces
+</h1>
+            <article>
+    <section class="header">
+        Posted on due 2024-03-01
+        
+            by George McNinch
+        
+    </section>
+    <section>
+        <ol type="1">
+<li><p>Find the irreducible factors of the polynomial <span class="math inline">\(T^9 - 1\)</span> in
+<span class="math inline">\(\mathbb{F}_7[T]\)</span>.</p>
+<p>(You should include proofs that the factors you describe are
+irreducible).</p></li>
+<li><p>Let <span class="math inline">\(0 &lt; k,m \in \mathbb{N}\)</span>, put <span class="math inline">\(n =mk\)</span>, and consider the subspace <span class="math inline">\(C \subset \mathbb{F}_q^n\)</span> defined by <span class="math display">\[C = \{ (v_1,v_2,\cdots,v_m ) \mid v_i
+\in \mathbb{F}_q^k\}.\]</span> Prove that <span class="math inline">\(C\)</span> is an <span class="math inline">\([n,k,m]_q\)</span>-code; i.e. show
+that the <em>minimal distance</em> of this code is given by <span class="math inline">\(d = m.\)</span></p></li>
+<li><p>By an <span class="math inline">\([n,k,d]_q\)</span>-system we mean a pair <span class="math inline">\((V,\mathcal{P})\)</span>, where
+<span class="math inline">\(V\)</span> is a finite dimensional vector space over <span class="math inline">\(\mathbb{F}_q\)</span> and
+<span class="math inline">\(\mathcal{P}\)</span> is an ordered finite family <span class="math display">\[\mathcal{P} =
+(P_1,P_2,\cdots,P_n)\]</span> of points in <span class="math inline">\(V\)</span> (in general, points of
+<span class="math inline">\(\mathcal{P}\)</span> need not be distinct – you should view <span class="math inline">\(\mathcal{P}\)</span>
+as a <em>list</em> of points which may contain repetitions) such that
+<span class="math inline">\(\mathcal{P}\)</span> spans <span class="math inline">\(V\)</span> as a vector space. Evidently <span class="math inline">\(|\mathcal{P}| \ge \dim V\)</span>.</p>
+<p>The parameters <span class="math inline">\([n,k,d]\)</span> are defined by <span class="math display">\[n = |\mathcal{P}|, \quad
+k = \dim V, \quad d = n - \max_H |\mathcal{P} \cap H|.\]</span>
+where the maximum defining <span class="math inline">\(d\)</span> is taken over all linear hyperplanes
+<span class="math inline">\(H \subset V\)</span> and where points are counted with their multiplicity –
+i.e. <span class="math inline">\(|\mathcal{P} \cap H| = |\{i \mid P_i \in H \}|\)</span>.</p>
+<p>Gjven a <span class="math inline">\([n,k,d]_q\)</span>-system <span class="math inline">\((V,\mathcal{P})\)</span>, let <span class="math inline">\(V^*\)</span> denote the
+dual space to <span class="math inline">\(V\)</span> and consider the linear mapping
+<span class="math display">\[\Phi:V^* \to \mathbb{F}_q^n\]</span>
+defined by <span class="math display">\[\Phi(\psi) = (\psi(P_1),\cdots,\psi(P_n)).\]</span></p>
+<ol type="a">
+<li><p>Show that <span class="math inline">\(\Phi\)</span> is injective.</p></li>
+<li><p>Write <span class="math inline">\(C = \Phi(V^*)\)</span> for the image of <span class="math inline">\(\Phi\)</span>, so that <span class="math inline">\(C\)</span> is an
+<span class="math inline">\([n,k]_q\)</span>-code. Show that the minimal distance of the code <span class="math inline">\(C\)</span>
+is given by <span class="math inline">\(d\)</span>.</p></li>
+<li><p>Conversely, let <span class="math inline">\(C \subset \mathbb{F}_q^n\)</span> be an <span class="math inline">\([n,k,d]_q\)</span>-code, and
+put <span class="math inline">\(V = C^*\)</span>. Let <span class="math inline">\(e^1,\cdots,e^n \in (\mathbb{F}_q^n)^*\)</span> be the dual
+basis to the standard basis. The restriction of <span class="math inline">\(e^i\)</span> to the
+subspace <span class="math inline">\(C\)</span> determines an element <span class="math inline">\(P_i\)</span> of <span class="math inline">\(C^* = V\)</span>. Write
+<span class="math inline">\(\mathcal{P} = (P_1,P_2,\cdots,P_n)\)</span> for the resulting list of vectors in <span class="math inline">\(V\)</span>..</p>
+<p>Prove that the minimum distance <span class="math inline">\(d\)</span> of the code <span class="math inline">\(C\)</span> satisfies <span class="math display">\[d =
+n - \max_H | \mathcal{P} \cap H |.\]</span></p></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(C\)</span> be the linear code over <span class="math inline">\(\mathbb{F}_5\)</span> generated by the matrix
+<span class="math display">\[G = \begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 2 \\
+0 &amp; 1 &amp; 0 &amp; 1 &amp; 2 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 2 &amp; 1 &amp; 1
+\end{pmatrix}.\]</span></p>
+<ol type="a">
+<li><p>Find a <em>check matrix</em> <span class="math inline">\(H\)</span> for <span class="math inline">\(C\)</span>.</p></li>
+<li><p>Find the minimum distance of <span class="math inline">\(C\)</span>.</p></li>
+<li><p>Decode the received vectors <span class="math inline">\((0,2,3,4,3,2)\)</span>
+and <span class="math inline">\((0,1,2,0,4,0)\)</span> using
+syndrome decoding.</p></li>
+</ol></li>
+</ol>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>
