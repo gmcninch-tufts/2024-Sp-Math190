@@ -21,8 +21,7 @@ date: due 2024-03-01
 
 2. Let $0 < k,m \in \mathbb{N}$, put $n =mk$, and consider the subspace $C
    \subset \F_q^n$ defined by $$C = \{ (v_1,v_2,\cdots,v_m ) \mid v_i
-   \in \F_q^k\}.$$ Prove that $C$ is an $[n,k,m]_q$-code; i.e. show
-   that the *minimal distance* of this code is given by $d = m.$
+   \in \F_q^k\}.$$ Find the *minimal distance* $d$ of this code.
    
 3. By an $[n,k,d]_q$-system we mean a pair $(V,\mathcal{P})$, where
    $V$ is a finite dimensional vector space over $\F_q$ and
