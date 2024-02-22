@@ -79,7 +79,7 @@ main = hakyllWith config $ do
             >>= relativizeUrls
 
 
-    match "course-posts/*" $ do
+    match ("course-posts/*md" .||. "course-assignments/*md") $ do
         route $ setExtension "html"
         compile $ myCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx

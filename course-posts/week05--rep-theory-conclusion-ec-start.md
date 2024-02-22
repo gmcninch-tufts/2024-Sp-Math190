@@ -8,8 +8,8 @@ date: 2024-02-12
 
 Remember the third assignment on representation:
 
-- [[problem set 03]](/course-contents/PS03--rep-theory.html)
-  [[pdf]](/course-contents/PS03--rep-theory.pdf) due 2024-02-16
+- [[problem set 03]](/course-assignments/PS03--rep-theory.html)
+  [[pdf]](/course-assignments/PS03--rep-theory.pdf) due 2024-02-16
 
 I was originally planning to give a lecture on usage of the
 computer-algebra package/language `GAP` to solve group-theoretic
@@ -31,14 +31,14 @@ discussion of "applications of group representations to related parts
 of mathematics" -- the notes probably don't give all details of that
 discussion (ask if you want a reference!).
 
-- [[RT notes 2024-02-12]](/course-contents/notes-RT--2024-02-12--number-of-irreducibles.html)
-  [[pdf]](/course-contents/notes-RT--2024-02-12--number-of-irreducibles.pdf)
+- [[RT notes 2024-02-12]](/course-contents/2024-02-12--notes-RT--number-of-irreducibles.html)
+  [[pdf]](/course-contents/-2024-02-12--notes-RT--number-of-irreducibles.pdf)
   
 On Wednesday, I begin talking about *error-correcting codes*.
 Remember that I listed a [few references to consult](resources-references.html).
 
-- [[ECC notes 2024-02-14]](/course-contents/notes-ECC-2024-02-14--intro.html)
-  [[pdf]](/course-contents/notes-ECC-2024-02-14--intro.pdf)
+- [[ECC notes 2024-02-14]](/course-contents/2024-02-14--notes-ECC--intro.html)
+  [[pdf]](/course-contents/2024-02-14--notes-ECC--intro.pdf)
 
 I plan to sometimes use the computer-algebra system `sage-math` to
 accompany the lectures/presentation. 
@@ -48,8 +48,8 @@ accompany the lectures/presentation.
 
 
 - Example of ternary code, in `sage-math`
-  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/ECC-01--ternary-code.ipynb)
-  [[download notebook]](/course-contents/ECC-01--ternary-code.ipynb) 
+  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/2024-02-14--ECC-01--ternary-code.ipynb)
+  [[download notebook]](/course-contents/2024-02-14--ECC-01--ternary-code.ipynb) 
 
 
 

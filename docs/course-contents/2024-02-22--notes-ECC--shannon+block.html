@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Math190-Tufts University - Week06 -- Error-correcting codes
-</title>
+        <title>Math190-Tufts University - Shannon's Theorem; block codes</title>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 	</script>	
         <link rel="stylesheet" href="../css/default.css" />
@@ -31,28 +30,24 @@
         </header>
 
         <main role="main">
-            <h1>Week06 -- Error-correcting codes
-</h1>
+            <h1>Shannon's Theorem; block codes</h1>
             <article>
     <section class="header">
-        Posted on 2024-02-21
-        
-            by George McNinch
+        Posted on 2024-02-22
         
     </section>
     <section>
-        <ul>
-<li><p><a href="../course-assignments/PS04--ECC.html">[Problem set 4]</a> due 2024-03-01</p></li>
-<li><p><a href="../course-contents/2024-02-21--notes-ECC--hamming+finite.html">[Notes
-2024-02-21]</a>
-Includes material on check matrices, on finite projective spaces and
-Hamming codes, and on finite fields.</p></li>
-<li><p><a href="../course-contents/2024-02-22--notes-ECC--shannon+block.html">[Notes 2024-02-22]</a>
-Includes material on Shannon’s Theorem, and on block codes.</p>
-<p>(Actually, I’ve put all of the “finite field” material in the first
-set of notes, even though some of the material appeared in the
-second lecture. Seemed cleaner that way … )</p></li>
-</ul>
+        <h1 id="overview">Overview</h1>
+<p>So far, we have chosen to use the term <em>code</em> for a vector subspace
+<span class="math inline">\(C\)</span> of <span class="math inline">\(\mathbb{F}_q^n\)</span>. The idea is that we are interested in encoding some
+data by identifying it with vectors in <span class="math inline">\(\mathbb{F}_q^k\)</span>.</p>
+<p>If <span class="math inline">\(G\)</span> is a <em>generator matrix</em> for our code in <em>standard form</em>, then we <em>encode</em>
+our data: given a vector <span class="math inline">\(v \in \mathbb{F}_q^k\)</span>, the encoded version is
+<span class="math display">\[v \cdot G \in \mathbb{F}_q^n.\]</span></p>
+<p>Note that – since <span class="math inline">\(G\)</span> is in standard form – if <span class="math inline">\(v = (v_1,\cdots,v_k)\)</span> then
+<span class="math display">\[v\cdot G = (v_1,\cdots,v_k,w_{k+1},\cdots,w_n)\]</span>
+for some scalars <span class="math inline">\(w_j \in \mathbb{F}_q.\)</span></p>
+<p>Our intent is to “<em>transmit</em>” this encoded data</p>
     </section>
 </article>
 

@@ -417,7 +417,7 @@ class about characters of representations of $G$.
 	  
 	  ::: {.solution}
 	  
-	  $$\begin{array}{l|lll}
+	  $$\begin{array}{l|llll}
 	  & 1 & (12)(34) & (123) & (124) \\
 	  & 12 & 4 & 3 & 3 \\
 	  \hline

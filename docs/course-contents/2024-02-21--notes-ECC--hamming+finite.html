@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - Hamming codes; and generalities on finite fields</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>Hamming codes; and generalities on finite fields</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-02-21
+        
+    </section>
+    <section>
+        <h1 id="a-result-on-check-matrices.">A result on check-matrices.</h1>
+<p>We resume our discussion from the previous lecture. An <span class="math inline">\(m \times n\)</span>
+matrix <span class="math inline">\(H\)</span> with entries in <span class="math inline">\(\mathbb{F}_q\)</span> determines a subspace <span class="math inline">\(C \subset \mathbb{F}_q^n\)</span> by the rule <span class="math display">\[C = \{x \mid Hx^T = 0\} = \operatorname{Null}(H).\]</span></p>
+<dl>
+<dt><strong>Proposition</strong></dt>
+<dd>
+<p>Suppose that every collection of <span class="math inline">\(d-1\)</span> columns of <span class="math inline">\(H\)</span> is linearly
+independent and that some collection of <span class="math inline">\(d\)</span> columns of <span class="math inline">\(H\)</span> is
+linearly dependent.</p>
+<p>Then the minimal distance of the code <span class="math inline">\(C\)</span> is <span class="math inline">\(d\)</span>.</p>
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(x = (x_1,x_2,\cdots,x_n) \in C \subset \mathbb{F}_q^n\)</span>.</p>
+<p>Let <span class="math inline">\(D = D(x) = \{i \mid x_i \ne 0\}\)</span> so that the weight of <span class="math inline">\(x\)</span> is given
+by <span class="math inline">\(|D|\)</span>.</p>
+<p>If we denote by <span class="math inline">\(\mathbf{h}_1,\mathbf{h}_2,\cdots,\mathbf{h}_n\)</span> the <em>columns</em> of the matrix <span class="math inline">\(H\)</span>,
+then we have
+<span class="math display">\[x_1 \mathbf{h}_1 + x_2 \mathbf{h}_2 + \cdots + x_n \mathbf{h}_n = 0\]</span>
+and thus
+<span class="math display">\[\sum_{i \in D}  x_i \mathbf{h}_i = 0\]</span>
+so that the there are <span class="math inline">\(|D|\)</span> columns that are linearly dependent.</p>
+<p>If <span class="math inline">\(d'\)</span> denotes the <em>minimal distance</em> of the code <span class="math inline">\(C\)</span>, and if
+<span class="math inline">\(x'\)</span> has weight <span class="math inline">\(d'\)</span> then the indices <span class="math inline">\(D(x')\)</span> define a collection
+of <span class="math inline">\(d'\)</span> linearly dependent columns. Moreover, any smaller
+collection of columns is linearly independent; thus <span class="math inline">\(d' = d\)</span>.</p>
+</dd>
+<dt><strong>Remark</strong></dt>
+<dd>
+Given a check matrix <span class="math inline">\(H\)</span> with coefficients in <span class="math inline">\(\mathbb{F}_q\)</span>, one can
+construct a code <span class="math inline">\(C_a\)</span> over the field <span class="math inline">\(\mathbb{F}_{q^a}\)</span> for any natural
+number <span class="math inline">\(a\)</span> - i.e. <span class="math display">\[C_a = \{ x\in \mathbb{F}_{q^a}^n \mid H x^T = 0\}.\]</span>
+This Proposition shows that the <em>minimal distance</em> of the code
+<span class="math inline">\(C_a\)</span> is independent of <span class="math inline">\(a\)</span>, since the minimal distance can be
+determined from the matrix <span class="math inline">\(H\)</span>.
+</dd>
+</dl>
+<h1 id="projective-spaces-over-mathbbf_q-and-the-hamming-codes">Projective spaces over <span class="math inline">\(\mathbb{F}_q\)</span> and the Hamming Codes</h1>
+<h2 id="projective-spaces-over-a-finite-field-and-their-size">Projective spaces over a finite field and their size</h2>
+<dl>
+<dt><strong>Definition</strong></dt>
+<dd>
+For a natural number <span class="math inline">\(n\)</span>, the projective space <span class="math inline">\(\mathbb{P}^n\)</span> is defined to
+be the set lines through the origin in the vector space <span class="math inline">\(\mathbb{F}_q^{n+1}\)</span>.
+</dd>
+</dl>
+<p>If <span class="math inline">\(0 \ne \mathbf{v}= (v_0,v_1,\cdots,v_n) \in k^{n+1}\)</span>, then <span class="math inline">\(\mathbb{F}_q \mathbf{v}\)</span> is a
+line, and we denote this line using the symbol <span class="math display">\[\mathbb{F}_q \mathbf{v}= [v_0:v_1:
+\cdots:v_n] \in \mathbb{P}^n = \mathbb{P}^n_{\mathbb{F}_q}.\]</span></p>
+<p>For <span class="math inline">\(\lambda \ne 0\)</span> note that <span class="math inline">\(\mathbb{F}_q \mathbf{v}= \mathbb{F}_q \lambda v\)</span>, and it
+follows that <span class="math display">\[[v_0:v_1:\cdots:v_n] = [\lambda v_0:\lambda v_1:
+\cdots: \lambda v_n].\]</span></p>
+<dl>
+<dt><strong>Example</strong></dt>
+<dd>
+<p>Let’s consider <span class="math inline">\(\mathbb{P}^1 = \mathbb{P}^1_{\mathbb{F}_q}\)</span>. An arbitrary point has the
+form <span class="math inline">\([a:b]\)</span>. If <span class="math inline">\(a \ne 0\)</span>, this point may be written <span class="math inline">\([a:b] = [1:b/a]\)</span>. There are exactly <span class="math inline">\(q\)</span> points of the form <span class="math inline">\([1:c]\)</span>.</p>
+<p>If <span class="math inline">\(a = 0\)</span>, then <span class="math inline">\(b\)</span> is non-zero and <span class="math inline">\([0:b] = [0:1]\)</span>.</p>
+<p>Thus <span class="math inline">\(\mathbb{P}^1 = \{[1:c]:c \in \mathbb{F}_q\} \cup \{[0:1]\}\)</span>
+so that <span class="math inline">\(|\mathbb{P}^1| = q + 1\)</span>.</p>
+</dd>
+<dt><strong>Proposition:</strong></dt>
+<dd>
+<p>For <span class="math inline">\(n \ge 1\)</span> we have
+<span class="math inline">\(\mathbb{P}^n = \{[1:u_1:u_2:\cdots:u_n] \mid u_i \in \mathbb{F}_q\} \cup \{[0:\beta]: \beta \in \mathbb{P}^{n-1}\}.\)</span></p>
+<p>In particular,
+<span class="math display">\[|\mathbb{P}^n| = q^n + |\mathbb{P}^{n-1}|.\]</span></p>
+</dd>
+<dt><strong>Sketch:</strong></dt>
+<dd>
+<p>If <span class="math inline">\(v_0 \ne 0\)</span> then <span class="math inline">\([v_0:v_1:\cdots:v_n] = [1:v_1/v_0:\cdots:v_n/v_0] = [1:u_1:\cdots:u_n]\)</span> where <span class="math inline">\(u_i = v_i / v_0\)</span>. Moreover, if <span class="math inline">\([1:u_1:\cdots:u_n] = [1:u_1':\cdots:u_n']\)</span>
+then <span class="math inline">\(u_i = u_i'\)</span> for each <span class="math inline">\(i\)</span>.</p>
+<p>On the other hand, points for which <span class="math inline">\(v_0 = 0\)</span> are in one-to-one correspondence with points
+<span class="math inline">\(\beta= [v_1:\cdots:v_n]\)</span> in <span class="math inline">\(\mathbb{P}^{n-1}\)</span>.</p>
+</dd>
+<dt><strong>Proposition</strong></dt>
+<dd>
+For <span class="math inline">\(n \ge 1\)</span>, we have
+<span class="math display">\[|\mathbb{P}^n| = \dfrac{q^{n+1} - 1}{q-1} = q^n + q^{n-1} + \cdots + q + 1.\]</span>
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p>We proceed by induction on <span class="math inline">\(n\)</span>. When <span class="math inline">\(n=1\)</span> we have
+already seen that
+<span class="math display">\[|\mathbb{P}^1| = q+1 = \dfrac{q^2 - 1}{q-1}.\]</span></p>
+<p>Now let <span class="math inline">\(n &gt; 1\)</span>. We have seen that
+<span class="math display">\[|\mathbb{P}^n| = q^n + |\mathbb{P}^{n-1}|\]</span>
+and we know by induction that
+<span class="math display">\[|\mathbb{P}^{n-1}| = \dfrac{q^n - 1}{q-1}.\]</span></p>
+<p>Thus <span class="math display">\[|\mathbb{P}^n| = q^n + \dfrac{q^n-1}{q-1} = \dfrac{q^{n+1} - q^n +
+q^n -1}{q-1} = \dfrac{q^{n+1} - 1}{q-1}.\]</span></p>
+</dd>
+</dl>
+<h2 id="hamming-codes">Hamming codes</h2>
+<p>Let <span class="math inline">\(m \ge 1\)</span> and consider the projective space <span class="math inline">\(\mathbb{P}^{m-1} = \mathbb{P}^{m-1}_{\mathbb{F}_q}.\)</span></p>
+<p>List the elements <span class="math display">\[p_1,p_2,\cdots,p_n \quad \text{of $\mathbb{P}^{m-1}$}\]</span>
+so that <span class="math inline">\(n = \dfrac{q^m -1}{q-1}.\)</span></p>
+<p>For each point <span class="math inline">\(p_i \in \mathbb{P}^{m-1}\)</span>, choose a (column) vector <span class="math inline">\(h_i\)</span> in
+<span class="math inline">\(\mathbb{F}_q^m\)</span> representing <span class="math inline">\(p_i\)</span>, and let <span class="math inline">\(H\)</span> be the <span class="math inline">\(m \times n\)</span> matrix
+whose columns are the <span class="math inline">\(h_i\)</span>: <span class="math display">\[H = \begin{bmatrix} h_1 &amp; h_2 &amp; \cdots
+&amp; h_n \end{bmatrix}.\]</span></p>
+<p>If <span class="math inline">\(b_1,\dots,b_m\)</span> is a basis for <span class="math inline">\(\mathbb{F}_q^m\)</span>, the lines <span class="math inline">\(\mathbb{F}_q b_j\)</span>
+determine points <span class="math inline">\(p_{i_j} \in \mathbb{P}^{m-1}\)</span>, and the corresponding
+vectors <span class="math inline">\(h_{i_1},h_{i_2},\cdots,h_{i_m}\)</span> are again a basis for <span class="math inline">\(\mathbb{F}_q^m\)</span>.</p>
+<p>This shows that <span class="math inline">\(H\)</span> has <span class="math inline">\(m\)</span> linearly independent columns, since <span class="math inline">\(H\)</span> is
+<span class="math inline">\(m \times n\)</span> it follows that <span class="math inline">\(H\)</span> has <em>rank <span class="math inline">\(m\)</span></em>.</p>
+<p>If we set
+<span class="math display">\[C = \operatorname{Null}(H) = \{v \in \mathbb{F}_q^n \mid H v^T = 0\}\]</span>
+then the rank-nullity theorem implies that
+<span class="math inline">\(\dim C = n - m = \dfrac{q^m - 1}{q-1} - m.\)</span></p>
+<dl>
+<dt><strong>Proposition</strong></dt>
+<dd>
+<span class="math inline">\(C\)</span> is a <span class="math inline">\([n,n-m,3]_q\)</span>-code. In particular, the minimal distance of <span class="math inline">\(C\)</span> is
+<span class="math inline">\(d = 3\)</span>.
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p>If <span class="math inline">\(p,q\)</span> are distinct points of <span class="math inline">\(\mathbb{P}^{m-1}\)</span> and if <span class="math inline">\(p = \mathbb{F}_q v\)</span>
+and <span class="math inline">\(q = \mathbb{F}_q w\)</span> then <span class="math inline">\(v\)</span> and <span class="math inline">\(w\)</span> are linearly independent. In particular,
+any two distinct columns of <span class="math inline">\(H\)</span> are linearly independent.</p>
+<p>On the other hand, let <span class="math inline">\(p,q\)</span> as above and let <span class="math inline">\(r\)</span> be the point
+determined by the vector <span class="math inline">\(v + w\)</span>. Then <span class="math inline">\(\{p,q,r\}\)</span> consists of 3
+distinct points of <span class="math inline">\(\mathbb{P}^{m-1}\)</span>, say <span class="math inline">\(p = p_i\)</span>, <span class="math inline">\(q = p_j\)</span>, <span class="math inline">\(r = p_k\)</span>. Since <span class="math inline">\(v,w,v+w\)</span> are linearly dependent, it follows that
+<span class="math inline">\(h_i,h_j,h_k\)</span> are linearly dependent. Thus there are 3 columns of
+<span class="math inline">\(H\)</span> that are linearly dependent. This shows that <span class="math inline">\(C\)</span> has minimal
+distance <span class="math inline">\(d=3\)</span>.</p>
+</dd>
+</dl>
+<h1 id="some-recollections-on-finite-fields">Some recollections on finite fields</h1>
+<dl>
+<dt><strong>Proposition</strong></dt>
+<dd>
+Let <span class="math inline">\(k\)</span> be a finite field. Then <span class="math inline">\(k\)</span> contains the field <span class="math inline">\(\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}\)</span> for some
+prime number <span class="math inline">\(p\)</span>, and <span class="math inline">\(|k|\)</span> is a power of <span class="math inline">\(p\)</span>, say <span class="math inline">\(|k| = p^n\)</span> where <span class="math inline">\(n = \dim_{\mathbb{F}_p} k.\)</span>
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p>If <span class="math inline">\(k\)</span> is a finite field, consider the additive subgroup generated
+by <span class="math inline">\(1 = 1_k\)</span>. This additive subgroup is cyclic of some order <span class="math inline">\(n\)</span>,
+and is in fact a subring of <span class="math inline">\(k\)</span> isomorphic to <span class="math inline">\(\mathbb{Z}/n\mathbb{Z}\)</span>.</p>
+<p>If <span class="math inline">\(n\)</span> were <em>composite</em> this subring would contain zero divisors,
+which is impossible since <span class="math inline">\(k\)</span> is a field. Thus <span class="math inline">\(n = p\)</span> is <em>prime</em>
+and we see that <span class="math inline">\(k\)</span> contains a copy of <span class="math inline">\(\mathbb{Z}/p\mathbb{Z}\)</span> as required.</p>
+<p>We may choose a basis for <span class="math inline">\(k\)</span> as a vector space over <span class="math inline">\(\mathbb{F}_p\)</span>, and
+this basis is finite, say <span class="math inline">\(\dim_{\mathbb{F}_p} k = n\)</span>. Writing
+<span class="math inline">\(\mathbf{b}_1,\cdots,\mathbf{b}_n\)</span> for the elements of this basis, we know that
+every element of <span class="math inline">\(k\)</span> may be written uniquely in the form <span class="math display">\[s_1
+\mathbf{b}_1 + s_2 \mathbf{b}_2 + \cdots + s_n \mathbf{b}_n\]</span> for scalars <span class="math inline">\(s_i \in \mathbb{F}_p\)</span>. Since there are <span class="math inline">\(p\)</span> choices for each scalar <span class="math inline">\(s_i\)</span>, conclude
+that <span class="math inline">\(|k| = p^n\)</span>.</p>
+</dd>
+<dt><strong>Proposition</strong></dt>
+<dd>
+Let <span class="math inline">\(k\)</span> be a finite field having <span class="math inline">\(q = p^n\)</span> elements. For any <span class="math inline">\(x \in  k\)</span> we have <span class="math inline">\(x^q = x\)</span> in <span class="math inline">\(k\)</span>.
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+We may suppose <span class="math inline">\(x \ne 0\)</span>. Then <span class="math inline">\(k = kx\)</span> and thus
+<span class="math display">\[\prod_{a \in k \setminus \{0\}} a =
+   \prod_{\alpha \in kx \setminus \{0\}}\alpha
+   = \prod_{a \in k \setminus \{0\}} ax 
+   = \left(\prod_{a \in k \setminus \{0\}} a\right)x^{q-1}.\]</span>
+</dd>
+</dl>
+<p>Canceling the common non-zero factor, we find that
+<span class="math display">\[1 = x^{q-1}\]</span>
+so that indeed <span class="math inline">\(x = x^q\)</span>.</p>
+<p>We recall that if <span class="math inline">\(F\)</span> is a field and if <span class="math inline">\(f \in F[T]\)</span>, we may find an extension
+field <span class="math inline">\(F \subset E\)</span> such that <span class="math inline">\(f\)</span> splits over <span class="math inline">\(E\)</span>; i.e. there are elements
+<span class="math inline">\(a_1,\cdots,a_r \in E\)</span> and <span class="math inline">\(\alpha \in F\)</span> such that
+<span class="math display">\[f = \alpha (T-a_1)(T-a_2) \cdots (T-a_r).\]</span></p>
+<p>The field <span class="math inline">\(F(a_1,a_2,\cdots,a_r)\)</span> is called a <em>splitting field</em> for <span class="math inline">\(f\)</span>.</p>
+<p>If <span class="math inline">\(q = p^n\)</span>,
+we write <span class="math inline">\(\mathbb{F}_q\)</span> for a splitting field over <span class="math inline">\(\mathbb{F}_p\)</span> for the polynomial
+<span class="math inline">\(T^q - T\)</span>.</p>
+<dl>
+<dt><strong>Theorem</strong></dt>
+<dd>
+<span class="math inline">\(\mathbb{F}_q\)</span> is a field having <span class="math inline">\(q\)</span> elements, and any field having <span class="math inline">\(q\)</span>
+elements is isomorphic to <span class="math inline">\(\mathbb{F}_q\)</span>.
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+The previous Proposition shows that <span class="math inline">\(\mathbb{F}_q\)</span> contains the roots of
+<span class="math inline">\(T^q - T\)</span>.
+</dd>
+<dt><strong>Proposition</strong></dt>
+<dd>
+Suppose that <span class="math inline">\(a,b \in \mathbb{N}\)</span> and that <span class="math inline">\(a \mid b\)</span>.
+Then <span class="math inline">\(T^a -1 \mid T^b -1\)</span> in the polynomial ring <span class="math inline">\(\mathbb{Z}[T]\)</span>.
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+First suppose that <span class="math inline">\(a = 1.\)</span> Then
+<span class="math display">\[\dfrac{T^b - 1}{T-1} = T^{b-1} + T^{b-2} + \cdots + T + 1\]</span>
+so indeed <span class="math inline">\(T-1 \mid T^b - 1\)</span> in <span class="math inline">\(\mathbb{Z}[T]\)</span>.
+</dd>
+</dl>
+<p>Now in general set <span class="math inline">\(U = T^a\)</span> so that <span class="math inline">\(T^b = U^m\)</span> where <span class="math inline">\(m = b/a\)</span>.</p>
+<p>The preceding discussion shows that <span class="math inline">\(U-1 \mid U^m - 1\)</span>; we have
+<span class="math display">\[\dfrac{U^m - 1}{U-1} = U^{m-1} + U^{m-2} + \cdots + U + 1.\]</span> Thus
+<span class="math display">\[\dfrac{T^b - 1}{T^a - 1} = T^{a(m-1)} + T^{a(m-2)} + \cdots +
+   T^a + 1\]</span> so indeed <span class="math inline">\(T^a -1\)</span> divides <span class="math inline">\(T^b -1\)</span> in <span class="math inline">\(\mathbb{Z}[T]\)</span>.</p>
+<dl>
+<dt><strong>Proposition</strong></dt>
+<dd>
+Let <span class="math inline">\(a,b \in \mathbb{N}\)</span>. Then <span class="math inline">\(T^{p^a - 1} - 1\)</span> divides <span class="math inline">\(T^{p^b - 1} - 1\)</span>
+in <span class="math inline">\(\mathbb{F}_p[T]\)</span> if and only if <span class="math inline">\(a \mid b\)</span>.
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p><span class="math inline">\((\Leftarrow):\)</span> Assume that <span class="math inline">\(a \mid b\)</span>. The previous proposition
+shows that <span class="math inline">\(T^a -1 \mid T^b -1\)</span> in <span class="math inline">\(\mathbb{Z}[T]\)</span>, and it then follows (by
+evaluation of the polynomials at <span class="math inline">\(p\)</span>) that <span class="math inline">\(p^a -1 \mid p^b - 1\)</span> in
+<span class="math inline">\(\mathbb{Z}\)</span>.</p>
+<p>Now a second application of the previous proposition shows that
+<span class="math inline">\(T^{p^a -1} -1\)</span> divides <span class="math inline">\(T^{p^b -1} -1\)</span> in <span class="math inline">\(\mathbb{Z}[T]\)</span> and <em>a fortiori</em>
+<span class="math inline">\(T^{p^a -1} -1\)</span> divides <span class="math inline">\(T^{p^b -1} -1\)</span> in <span class="math inline">\(\mathbb{F}_p[T]\)</span></p>
+<p><span class="math inline">\((\Rightarrow):\)</span> If <span class="math inline">\(T^{p^a - 1} - 1\)</span> divides <span class="math inline">\(T^{p^b - 1} - 1\)</span>,
+then it is clear that <span class="math inline">\(T^{p^a -1} - 1\)</span> <em>splits</em> over <span class="math inline">\(\mathbb{F}_{p^b}\)</span>. In
+particular, <span class="math inline">\(\mathbb{F}_{p^b}\)</span> contains a splitting field for <span class="math inline">\(T^{p^a -1} -1\)</span> and hence <span class="math inline">\(\mathbb{F}_{p^b}\)</span> contains (a copy of) <span class="math inline">\(\mathbb{F}_{p^a}.\)</span></p>
+<p>Now, notice that the multiplicativity of extension degrees gives <span class="math display">\[b
+= [\mathbb{F}_{p^b}:\mathbb{F}_p] = [\mathbb{F}_{p^b}:\mathbb{F}_{p^a}] \cdot [\mathbb{F}_{p^a}:\mathbb{F}_p] =
+[\mathbb{F}_{p^b}:\mathbb{F}_{p^a}] \cdot a\]</span> so that indeed <span class="math inline">\(a \mid b\)</span>.</p>
+</dd>
+<dt><strong>Example</strong></dt>
+<dd>
+<p>Let’s find the irreducible factors of <span class="math inline">\(f(T) = T^8 -1\)</span> in <span class="math inline">\(\mathbb{F}_{13}[T]\)</span>.</p>
+<p>Since <span class="math inline">\(8 \not \mid 13 -1 = 12\)</span>, <span class="math inline">\(\mathbb{F}_{13}^\times\)</span> does not contain
+an element of order 8, so <span class="math inline">\(f(T)\)</span> doesn’t split over
+<span class="math inline">\(\mathbb{F}_{13}\)</span>.</p>
+<p>But <span class="math inline">\(\mathbb{F}_{13}^\times\)</span> does contain an element of order 4, since <span class="math inline">\(4 \mid 12\)</span>. Some investigation shows that in fact <span class="math inline">\(5\)</span> is an element of
+order 4 (since <span class="math inline">\(5^2 = 25 = 26 -1 \equiv -1 \pmod{13}\)</span>).</p>
+<p>In fact, we know that <span class="math inline">\(T^4 -1 \mid T^8 -1\)</span>, and we now know that
+<span class="math display">\[T^4 -1 = (T-1)(T+1)(T-5)(T+5).\]</span></p>
+<p>In particular, <span class="math inline">\(\pm 1\)</span> and <span class="math inline">\(\pm 5\)</span> are the (only) roots of <span class="math inline">\(f(T)\)</span>
+in <span class="math inline">\(\mathbb{F}_{13}\)</span>.</p>
+<p>If we consider the field <span class="math inline">\(\mathbb{F}_{13^2}\)</span>, we see that
+<span class="math inline">\(\mathbb{F}_{13^2}^\times\)</span> has order <span class="math inline">\(13^2 - 1\)</span>. We know that <span class="math display">\[13^2 - 1
+\equiv 5^2 -1 \equiv 24 \equiv 0 \pmod 8\]</span> i.e. <span class="math inline">\(8 \mid 13^2 - 1\)</span>. Thus <span class="math inline">\(\mathbb{F}_{13^2}^\times\)</span> contains an element of order 8, so
+<span class="math inline">\(T^8 -1\)</span> splits over <span class="math inline">\(\mathbb{F}_{13^2}\)</span>.</p>
+<p>We know that <span class="math inline">\(T^2 - 5\)</span> is irreducible over <span class="math inline">\(\mathbb{F}_{13}\)</span>, since if
+<span class="math inline">\(\alpha\)</span> is a root, then <span class="math inline">\(\alpha^2 = 5 \implies \alpha^8 = 1\)</span>
+while <span class="math inline">\(\alpha^4 = -1\)</span>. Thus <span class="math inline">\(\pm \alpha \not \in \mathbb{F}_{13}\)</span> so <span class="math inline">\(T^2 -5\)</span> has no roots in <span class="math inline">\(\mathbb{F}_{13}\)</span>.</p>
+<p>We’ve just seen that each root of <span class="math inline">\(T^2 - 5\)</span> is a root of <span class="math inline">\(T^8 -1\)</span>. Thus <span class="math inline">\(T^2 - 5\)</span> divides <span class="math inline">\(T^8 - 1\)</span>.</p>
+<p>Similarly, <span class="math inline">\(T^2 + 5\)</span> is irreducible and divides <span class="math inline">\(T^8 - 1\)</span> and we
+find that <span class="math display">\[\begin{align*} T^8 - 1 &amp;= (T-1)(T+1)(T-5)(T+5)(T^2 -
+5)(T^2 + 5) \\ &amp;= (T-1)(T-12)(T-5)(T-8)(T^2 - 5)(T^2 - 8)
+\end{align*}\]</span> is the factorization of <span class="math inline">\(T^8 - 1\)</span> as a product of
+irreducibles over <span class="math inline">\(\mathbb{F}_{13}\)</span>.</p>
+<p><code>SAGE</code> agrees:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> GF(<span class="dv">13</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>k.<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> PolynomialRing(k)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> (T<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>(T<span class="op">-</span><span class="dv">12</span>)<span class="op">*</span>(T<span class="op">-</span><span class="dv">5</span>)<span class="op">*</span>(T<span class="op">-</span><span class="dv">8</span>)<span class="op">*</span>(T<span class="op">^</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">5</span>)<span class="op">*</span>(T<span class="op">^</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">8</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>f</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>T<span class="op">^</span><span class="dv">8</span> <span class="op">+</span> <span class="dv">12</span></span></code></pre></div>
+</dd>
+</dl>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>
