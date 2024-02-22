@@ -47,7 +47,111 @@ our data: given a vector <span class="math inline">\(v \in \mathbb{F}_q^k\)</spa
 <p>Note that – since <span class="math inline">\(G\)</span> is in standard form – if <span class="math inline">\(v = (v_1,\cdots,v_k)\)</span> then
 <span class="math display">\[v\cdot G = (v_1,\cdots,v_k,w_{k+1},\cdots,w_n)\]</span>
 for some scalars <span class="math inline">\(w_j \in \mathbb{F}_q.\)</span></p>
-<p>Our intent is to “<em>transmit</em>” this encoded data</p>
+<p>Our intent is to “<em>transmit</em>” this encoded data <span class="math inline">\(v \cdot G\)</span>, possibly
+through some noisy channels that may result in transmission errors. At
+the other end, some vector <span class="math inline">\(w\)</span> in <span class="math inline">\(\mathbb{F}_q^n\)</span> is received, and the hope
+is to recover the vector <span class="math inline">\(v\)</span> from the received vector <span class="math inline">\(w\)</span>.</p>
+<p>The field of <em>Information Theory</em> formulates a way to reason about
+such systems; we are going to sketch a rudimentary description.</p>
+<h1 id="noisy-channels-and-shannons-theorem">Noisy Channels and Shannon’s Theorem</h1>
+<p>We consider finite sets <span class="math inline">\(S\)</span> and <span class="math inline">\(T\)</span> (say <span class="math inline">\(S = \{s_1,\cdots,s_n\}\)</span> and
+<span class="math inline">\(T = \{t_1,\cdots,t_m\}\)</span>).</p>
+<p>We consider <em>random variables</em> <span class="math inline">\(X\)</span> on <span class="math inline">\(S\)</span> and <span class="math inline">\(Y\)</span> on <span class="math inline">\(T\)</span>. In particular,
+we may consider probabilities:</p>
+<p><span class="math display">\[P(X=s) = p_s, \quad \text{the probability that the random var $X$
+takes value $s \in S$}\]</span></p>
+<p><span class="math display">\[P(Y=t) = q_t, \quad \text{the probability that the random var $Y$
+takes value $t \in T$}\]</span></p>
+<p>We view the elements of the set <span class="math inline">\(S\)</span> as the data we <em>send</em> through some
+transmission channel, and <span class="math inline">\(T\)</span> as the data we <em>receive</em>.</p>
+<p>In the case of our linear codes <span class="math inline">\(C \subset \mathbb{F}_q^n\)</span> described above,
+<span class="math inline">\(S\)</span> would be <span class="math inline">\(\mathbb{F}_q^k\)</span> and <span class="math inline">\(T\)</span> would be <span class="math inline">\(\mathbb{F}_q^n\)</span>.</p>
+<h2 id="block-codes">Block codes</h2>
+<p>More generally, we consider <em>block codes</em> <span class="math inline">\(C \subset A^n\)</span>. Here <span class="math inline">\(A\)</span>
+is an <em>alphabet</em>, and the code words in <span class="math inline">\(C\)</span> are just <span class="math inline">\(n\)</span>-tuples of
+elements from <span class="math inline">\(A\)</span>. We write <span class="math inline">\(q = |A|\)</span>. We say that the <em>length</em> of the
+code <span class="math inline">\(C\)</span> is <span class="math inline">\(n\)</span>.</p>
+<p>In this setting, for our transmission channel we take <span class="math inline">\(S = C\)</span> and <span class="math inline">\(T = A^n\)</span>.</p>
+<h2 id="channel">Channel</h2>
+<p>A channel <span class="math inline">\(\Gamma\)</span> for transmission amounts to the following matrix
+with rows indexed by the set <span class="math inline">\(S\)</span> and columns indexed by the set <span class="math inline">\(T\)</span>:
+<span class="math display">\[p_{st} = P( Y = t \mid  X = s)\]</span>
+i.e. the conditional probability that <span class="math inline">\(Y= t\)</span> given that <span class="math inline">\(X = s\)</span>.</p>
+<dl>
+<dt><strong>Example</strong></dt>
+<dd>
+<p>An example is the <em>binary symmetric channel</em>, where <span class="math inline">\(S = T = \{0,1\}\)</span> and the channel matrix <span class="math inline">\(\Gamma\)</span> is given by <span class="math display">\[(p_{st}) =
+\begin{bmatrix} \phi &amp; 1 - \phi \\ 1 - \phi &amp; \phi \end{bmatrix}
+\quad \text{for some $\phi \in [0,1]$}.\]</span></p>
+<p>Here <span class="math inline">\(\phi\)</span> represents the probability that <span class="math inline">\(0\)</span> was received given that <span class="math inline">\(0\)</span> was sent,
+and also the probability that <span class="math inline">\(1\)</span> was received given that <span class="math inline">\(1\)</span> was sent.</p>
+</dd>
+</dl>
+<p>Note for example that if we know the channel matrix and if we know the
+probabilities for the random variable <span class="math inline">\(X\)</span>, we find the probabilities for <span class="math inline">\(Y\)</span> via
+<span class="math display">\[P(Y=t) = \sum_{s \in S} P(Y=t \mid X = s) \cdot P(X=s).\]</span></p>
+<dl>
+<dt><strong>Example</strong></dt>
+<dd>
+For the binary symmetric channel if we know that <span class="math inline">\(P(X=0) = p\)</span>, then
+<span class="math display">\[P(Y=0) = \phi \cdot p + (1-\phi) (1-p).\]</span>
+</dd>
+</dl>
+<h2 id="decoding">Decoding</h2>
+<p>With notation as above, a <em>decoding</em> is a function <span class="math inline">\(\Delta:T \to S\)</span>. Think of it this way: given that <span class="math inline">\(t \in T\)</span> was received, the
+decoding function “guesses” that <span class="math inline">\(\Delta(t) \in S\)</span> was sent.</p>
+<p>The question is: how to identify a good decoding function.</p>
+<p>Well, we can consider the probabilities that reflect how often a
+decoding <span class="math inline">\(\Delta\)</span> is correct:</p>
+<p><span class="math display">\[q_{\Delta(t),t} = P(X = \Delta(t) \mid Y = t)\]</span>
+represents the probability that <span class="math inline">\(\Delta(t)\)</span> was sent given that <span class="math inline">\(t\)</span> was received.</p>
+<p>The <em>average probability of a correct decoding</em> is given by
+<span class="math display">\[P_{\operatorname{COR}} = \sum_{t \in T} q_t \cdot q_{\Delta(t),t}\]</span>
+(remember that <span class="math inline">\(q_t = P(Y = t)\)</span>)</p>
+<h2 id="maximum-likelihood-decoding">Maximum likelihood decoding</h2>
+<p>A decoding <span class="math inline">\(\Delta:T \to S\)</span> is said to be a <em>maximal likelihood
+decoding</em> if <span class="math display">\[p_{\Delta(t),t} \ge p_{s,t}\]</span> for every <span class="math inline">\(s \in S\)</span> and
+every <span class="math inline">\(t \in T\)</span>.</p>
+<p>Under some circumstances, one achieves maximal likelihood decoding
+through <em>minimum distance decoding</em>.</p>
+<p>For example, we have:</p>
+<dl>
+<dt><strong>Lemma</strong></dt>
+<dd>
+<p>For the binary symmetric channel and <span class="math inline">\(C \subset \mathbb{F}_2^n\)</span>, consider
+the assignment <span class="math display">\[\Delta(v) = u\]</span> where <span class="math inline">\(u\)</span> is the closest neighbor
+to <span class="math inline">\(v\)</span> in <span class="math inline">\(C\)</span> with respect to the Hamming distance.</p>
+<p>Then <span class="math inline">\(\Delta\)</span> is <em>maximal likelihood decoding</em>.</p>
+</dd>
+</dl>
+<h2 id="transmission-rate-and-capacity">Transmission rate and capacity</h2>
+<p>For a block code <span class="math inline">\(C \subset A^n\)</span> with <span class="math inline">\(|A| = q\)</span>, the <em>transmission rate</em> of <span class="math inline">\(C\)</span>
+is defined to be
+<span class="math display">\[R = \dfrac{\log_q(|C|)}{n}\]</span></p>
+<p>If <span class="math inline">\(A = \mathbb{F}_q\)</span> and <span class="math inline">\(C\)</span> is a linear code with <span class="math inline">\(k = \dim_{\mathbb{F}_q} C\)</span>, then
+<span class="math display">\[R = k/n.\]</span></p>
+<p>There is a notion of the <em>capacity</em> of a channel <span class="math inline">\(\Gamma\)</span>; it is a
+number which in some sense encodes the theoretical maximum rate at
+which information can be reliably transmitted over the channel; we
+omit the definition here.</p>
+<h2 id="shannons-theorem">Shannon’s Theorem</h2>
+<dl>
+<dt><strong>Theorem (Shannon)</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(\delta &gt; 0\)</span> be given and let <span class="math inline">\(0 &lt; R\)</span> with <span class="math inline">\(R\)</span> less than the
+channel capacity.</p>
+<p>For every sufficiently large natural number <span class="math inline">\(n\)</span>, there is a code
+of length <span class="math inline">\(n\)</span> and transmission rate <span class="math inline">\(\ge R\)</span> such that, using
+maximum likelihood decoding, the probability
+<span class="math inline">\(P_{\operatorname{COR}}\)</span> of a correct decoding satisfies
+<span class="math display">\[P_{\operatorname{COR}} &gt; 1 - \delta.\]</span></p>
+</dd>
+</dl>
+<p>This shows that, given a channel with non-zero capacity, there are
+codes which allow us to communicate using the channel and decode with
+a probability of a correct decoding arbitrary close to 1.</p>
+<p>It is not constructive, of course – in some sense, this motivates the
+subject: how to find the codes that work well?</p>
     </section>
 </article>
 
