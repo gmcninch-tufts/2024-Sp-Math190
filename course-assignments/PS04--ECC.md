@@ -1,6 +1,6 @@
 ---
 title: |
- ProblemSet 4 -- Finite field projective spaces
+ ProblemSet 4 -- Finite fields and codes
 author: George McNinch
 date: due 2024-03-01
 ---
