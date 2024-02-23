@@ -213,8 +213,17 @@ $T^q - T$.
    elements is isomorphic to $\F_q$.
    
 **Proof**
-: The previous Proposition shows that $\F_q$ contains the roots of
-  $T^q - T$.
+: The previous Proposition shows that each element of $\F_q$ is a root
+  of $f(T) = T^q - T$. Since the degree of $f(T)$ is $q$, this shows
+  that $|\F_q| \le q$. Since the formal derivative satsfies $f'(T) =
+  -1$, one knows that $\gcd(f(T),f'(T)) = 1$ so that $f(T)$ has
+  distinct roots in a splitting field. Thus $f(T)$ has *exactly* $q$
+  roots, and it follows that $|\F_q| \ge q$ so that indeed $|\F_q| =
+  q$.
+  
+  The uniqueness assertion follows since any two splitting fields for
+  the polynomial $f(T) \in \F_p[T]$ are isomorphic (this is a general
+  fact about splitting fields).
 
    
 **Proposition**
@@ -304,4 +313,14 @@ $T^q - T$.
 	
 	=> 
 	T^8 + 12
+	
+	[f.is_irreducible() for f in [ T^2 - 5, T^2 -8 ]]
+	=>
+	[True, True]
+	
+	## in fact, we could have just asked SAGE to factor the polynomial
+	
+	(T^8  - 1).factor()
+	=>
+	(T + 1) * (T + 5) * (T + 8) * (T + 12) * (T^2 + 5) * (T^2 + 8)
 	```

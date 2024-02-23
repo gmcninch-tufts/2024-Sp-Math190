@@ -14,7 +14,7 @@ date: 2024-02-22
 
 \newcommand{\PP}{\mathbb{P}}
 \newcommand{\vv}{\mathbf{v}}
-
+\newcommand{\dist}{\operatorname{dist}}
 
 # Overview
 
@@ -163,3 +163,107 @@ a probability of a correct decoding arbitrary close to 1.
 
 It is not constructive, of course -- in some sense, this motivates the
 subject: how to find the codes that work well?
+
+# Bounds for block codes
+
+Here we consider an *alphabet* $A$ -- thus $A$ is just a finite set,
+of order $|A| = q$ -- and a set of codewords $C \subset A^n$; we call
+$n$ the *length* of the codewords.
+
+We consider the Hamming distance on $A^n$: for $u,v \in A^n$,
+$$\dist(u,v) = \#\{i \mid u_i \ne v_i\}$$ where e.g. $u =
+(u_1,\cdots,u_n) \in A^n$. In words, the distance between $u$ and $v$
+is the number of coordinates in which the tuples differ.
+
+It is straightforward to check that $\dist$ is a *metric* on the finite set
+$A^n$; in particular, the *triangle inequality* holds: for every $u,v,w \in A^n$ we have
+$$\dist(u,v) \le \dist(u,w) + \dist(w,v).$$
+
+The *minimal distance* of $C$ is given by
+$$d = \min \{ \dist(u,v) \mid u,v \in C, u \ne v\}.$$
+
+**Lemma** 
+:   Using nearest neighbor decoding, a block code of minimal distance $d$
+    can correct up to $(d-1)/2$ errors.
+
+
+**Proof**
+:   For every $w \in A^n$ and every $u,v \in C$ we have
+    $$(*) \quad d \le \dist(u,v) \le \dist(u,w) + \dist(w,v).$$
+   
+    Now, if $\dist(u,w) \le (d-1)/2$ and $\dist(w,v) \le (d-1)/2$ then
+    $\dist(u,v) \le d-1$, contrary to $(*)$. Thus for any $w$ there is
+    at most one codeword $u \in C$ for which $\dist(u,w) \le (d-1)/2$.
+   
+    From the point of view of code transmission, if $w \in A^n$ is
+    *received* and no more than $(d-1)/2$ of the components of $w =
+    (w_1,w_2,\cdots,w_n)$ are erroneous, then nearest neighbor
+    decoding will find the codeword in $C$ that was transmitted.
+
+
+**Example** (*Repetition code*)
+:   Consider a finite alphabet $A$ and the the codewords $C=\{(a,a,\cdots,a) \in A^r \mid a \in A\}$.
+    Thus the data $a \in A$ is encoded by the redundant codeword $(a,a,\cdots,a)$.
+	
+	The minimal distance between distinct codewords in $C$ is $r$, so
+	the Lemma shows that using nearest neighbor decoding, this code
+	can correct up to $(r-1)/2$ errors.
+	
+	(Note that in this case nearest neighbor decoding amounts to
+	decoding $$(a_1,a_2,\cdots,a_r)$$ by "majority vote"; in other
+	words, view $\{a_1,a_2,\cdots,a_r\}$ as a *multi-set* and choose an
+	element with maximal multiplicity.)
+
+## Counting codes with given parameters
+
+Write $A_q(n,d)$ for the maximum size $|C|$ of a block code $C \subset A^n$ having
+minimal distance $d$.
+
+We are going to prove some results about the quantity $A_q(n,d)$.
+
+We first compute the size of a "ball" in the metric space $(A^n,\dist)$.
+
+**Lemma**
+:   For $u \in A^n$ and a natural number $m$ write:
+    $$B_m(u)  = \{v \in A^n \mid \dist(u,v) \le m\}.$$
+
+    Let $$\delta(m) = 1 + \dbinom{n}{1}(q-1) + \dbinom{n}{2}(q-1)^2 + \cdots + \dbinom{n}{m}(q-1)^m
+	= \sum_{j=0}^m \dbinom{n}{j}(q-1)^j.$$
+	Then $|B_m(u)| = \delta(m)$.
+	
+**Remark**
+:   Note that if $k \in \NN$, $k > n$ then we insist that $\dbinom{n}{k} = 0$; in this case
+    "there are 0 ways of choosing precisely $k$ elements from a set of size $n$."
+	
+    This is consistent e.g. with the formula
+	$$\dbinom{n}{k} = \dfrac{n(n-1)\cdots(n-k+1)}{k!}$$
+	since the factor $(n-n) = 0$ appears in the numerator.
+
+**Proof of Lemma**
+:   For each $j = 0,1,\cdots,m$ there $\dbinom{n}{j} \cdot (q-1)^j$
+    elements of $A^n$ at distance precisely $j$ from $u$.
+
+
+We may now state and prove the following:
+
+**Theorem** (*Gilbert-Varshamov Bound*)
+:   $$A_q(n,d) \cdot \delta(d) \ge q^n.$$
+
+
+**Proof**
+:   Suppose that $C \subset A^n$ is a code with minimal distance $d$
+    for which $|C| = A_q(n,d)$.
+
+    Notice that
+	$|C| \cdot \delta(d)$ is the size of the disjoint union
+	$$\bigsqcup_{u \in C} B_d(u)$$.
+
+
+    Thus, if $$|C|\cdot \delta(d) < q^n = |A^n|$$
+	then there is some element $v \in A^n$ for which $$v \not \in \bigcup_{u\in C} B_d(u).$$
+	We then have $\dist(u,v) > d$ for every $u \in C$.
+	
+	This shows that $C \cup \{v\} \subset A^n$ is a code having
+	minimal distance $d$, contradicting the assumption that $|C| =
+	A_q(n,d)$; i.e. contradicting the assumption that $C$ has maximal
+	size among codes $C' \subset A^n$ with minimal distance $d$.

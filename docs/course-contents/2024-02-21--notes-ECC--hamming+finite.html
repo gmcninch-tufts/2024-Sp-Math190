@@ -220,9 +220,17 @@ elements is isomorphic to <span class="math inline">\(\mathbb{F}_q\)</span>.
 </dd>
 <dt><strong>Proof</strong></dt>
 <dd>
-The previous Proposition shows that <span class="math inline">\(\mathbb{F}_q\)</span> contains the roots of
-<span class="math inline">\(T^q - T\)</span>.
+The previous Proposition shows that each element of <span class="math inline">\(\mathbb{F}_q\)</span> is a root
+of <span class="math inline">\(f(T) = T^q - T\)</span>. Since the degree of <span class="math inline">\(f(T)\)</span> is <span class="math inline">\(q\)</span>, this shows
+that <span class="math inline">\(|\mathbb{F}_q| \le q\)</span>. Since the formal derivative satsfies <span class="math inline">\(f'(T) =  -1\)</span>, one knows that <span class="math inline">\(\gcd(f(T),f'(T)) = 1\)</span> so that <span class="math inline">\(f(T)\)</span> has
+distinct roots in a splitting field. Thus <span class="math inline">\(f(T)\)</span> has <em>exactly</em> <span class="math inline">\(q\)</span>
+roots, and it follows that <span class="math inline">\(|\mathbb{F}_q| \ge q\)</span> so that indeed <span class="math inline">\(|\mathbb{F}_q| =  q\)</span>.
 </dd>
+</dl>
+<p>The uniqueness assertion follows since any two splitting fields for
+the polynomial <span class="math inline">\(f(T) \in \mathbb{F}_p[T]\)</span> are isomorphic (this is a general
+fact about splitting fields).</p>
+<dl>
 <dt><strong>Proposition</strong></dt>
 <dd>
 Suppose that <span class="math inline">\(a,b \in \mathbb{N}\)</span> and that <span class="math inline">\(a \mid b\)</span>.
@@ -295,7 +303,17 @@ irreducibles over <span class="math inline">\(\mathbb{F}_{13}\)</span>.</p>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>f</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>T<span class="op">^</span><span class="dv">8</span> <span class="op">+</span> <span class="dv">12</span></span></code></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>T<span class="op">^</span><span class="dv">8</span> <span class="op">+</span> <span class="dv">12</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>[f.is_irreducible() <span class="cf">for</span> f <span class="kw">in</span> [ T<span class="op">^</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">5</span>, T<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="dv">8</span> ]]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>[<span class="va">True</span>, <span class="va">True</span>]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">## in fact, we could have just asked SAGE to factor the polynomial</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>(T<span class="op">^</span><span class="dv">8</span>  <span class="op">-</span> <span class="dv">1</span>).factor()</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>(T <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> (T <span class="op">+</span> <span class="dv">5</span>) <span class="op">*</span> (T <span class="op">+</span> <span class="dv">8</span>) <span class="op">*</span> (T <span class="op">+</span> <span class="dv">12</span>) <span class="op">*</span> (T<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">5</span>) <span class="op">*</span> (T<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">8</span>)</span></code></pre></div>
 </dd>
 </dl>
     </section>

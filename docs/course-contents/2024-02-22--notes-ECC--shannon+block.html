@@ -152,6 +152,97 @@ codes which allow us to communicate using the channel and decode with
 a probability of a correct decoding arbitrary close to 1.</p>
 <p>It is not constructive, of course – in some sense, this motivates the
 subject: how to find the codes that work well?</p>
+<h1 id="bounds-for-block-codes">Bounds for block codes</h1>
+<p>Here we consider an <em>alphabet</em> <span class="math inline">\(A\)</span> – thus <span class="math inline">\(A\)</span> is just a finite set,
+of order <span class="math inline">\(|A| = q\)</span> – and a set of codewords <span class="math inline">\(C \subset A^n\)</span>; we call
+<span class="math inline">\(n\)</span> the <em>length</em> of the codewords.</p>
+<p>We consider the Hamming distance on <span class="math inline">\(A^n\)</span>: for <span class="math inline">\(u,v \in A^n\)</span>,
+<span class="math display">\[\operatorname{dist}(u,v) = \#\{i \mid u_i \ne v_i\}\]</span> where e.g. <span class="math inline">\(u = (u_1,\cdots,u_n) \in A^n\)</span>. In words, the distance between <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>
+is the number of coordinates in which the tuples differ.</p>
+<p>It is straightforward to check that <span class="math inline">\(\operatorname{dist}\)</span> is a <em>metric</em> on the finite set
+<span class="math inline">\(A^n\)</span>; in particular, the <em>triangle inequality</em> holds: for every <span class="math inline">\(u,v,w \in A^n\)</span> we have
+<span class="math display">\[\operatorname{dist}(u,v) \le \operatorname{dist}(u,w) + \operatorname{dist}(w,v).\]</span></p>
+<p>The <em>minimal distance</em> of <span class="math inline">\(C\)</span> is given by
+<span class="math display">\[d = \min \{ \operatorname{dist}(u,v) \mid u,v \in C, u \ne v\}.\]</span></p>
+<dl>
+<dt><strong>Lemma</strong></dt>
+<dd>
+Using nearest neighbor decoding, a block code of minimal distance <span class="math inline">\(d\)</span>
+can correct up to <span class="math inline">\((d-1)/2\)</span> errors.
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p>For every <span class="math inline">\(w \in A^n\)</span> and every <span class="math inline">\(u,v \in C\)</span> we have
+<span class="math display">\[(*) \quad d \le \operatorname{dist}(u,v) \le \operatorname{dist}(u,w) + \operatorname{dist}(w,v).\]</span></p>
+<p>Now, if <span class="math inline">\(\operatorname{dist}(u,w) \le (d-1)/2\)</span> and <span class="math inline">\(\operatorname{dist}(w,v) \le (d-1)/2\)</span> then
+<span class="math inline">\(\operatorname{dist}(u,v) \le d-1\)</span>, contrary to <span class="math inline">\((*)\)</span>. Thus for any <span class="math inline">\(w\)</span> there is
+at most one codeword <span class="math inline">\(u \in C\)</span> for which <span class="math inline">\(\operatorname{dist}(u,w) \le (d-1)/2\)</span>.</p>
+<p>From the point of view of code transmission, if <span class="math inline">\(w \in A^n\)</span> is
+<em>received</em> and no more than <span class="math inline">\((d-1)/2\)</span> of the components of <span class="math inline">\(w = (w_1,w_2,\cdots,w_n)\)</span> are erroneous, then nearest neighbor
+decoding will find the codeword in <span class="math inline">\(C\)</span> that was transmitted.</p>
+</dd>
+<dt><strong>Example</strong> (<em>Repetition code</em>)</dt>
+<dd>
+<p>Consider a finite alphabet <span class="math inline">\(A\)</span> and the the codewords <span class="math inline">\(C=\{(a,a,\cdots,a) \in A^r \mid a \in A\}\)</span>.
+Thus the data <span class="math inline">\(a \in A\)</span> is encoded by the redundant codeword <span class="math inline">\((a,a,\cdots,a)\)</span>.</p>
+<p>The minimal distance between distinct codewords in <span class="math inline">\(C\)</span> is <span class="math inline">\(r\)</span>, so
+the Lemma shows that using nearest neighbor decoding, this code
+can correct up to <span class="math inline">\((r-1)/2\)</span> errors.</p>
+<p>(Note that in this case nearest neighbor decoding amounts to
+decoding <span class="math display">\[(a_1,a_2,\cdots,a_r)\]</span> by “majority vote”; in other
+words, view <span class="math inline">\(\{a_1,a_2,\cdots,a_r\}\)</span> as a <em>multi-set</em> and choose an
+element with maximal multiplicity.)</p>
+</dd>
+</dl>
+<h2 id="counting-codes-with-given-parameters">Counting codes with given parameters</h2>
+<p>Write <span class="math inline">\(A_q(n,d)\)</span> for the maximum size <span class="math inline">\(|C|\)</span> of a block code <span class="math inline">\(C \subset A^n\)</span> having
+minimal distance <span class="math inline">\(d\)</span>.</p>
+<p>We are going to prove some results about the quantity <span class="math inline">\(A_q(n,d)\)</span>.</p>
+<p>We first compute the size of a “ball” in the metric space <span class="math inline">\((A^n,\operatorname{dist})\)</span>.</p>
+<dl>
+<dt><strong>Lemma</strong></dt>
+<dd>
+<p>For <span class="math inline">\(u \in A^n\)</span> and a natural number <span class="math inline">\(m\)</span> write:
+<span class="math display">\[B_m(u)  = \{v \in A^n \mid \operatorname{dist}(u,v) \le m\}.\]</span></p>
+<p>Let <span class="math display">\[\delta(m) = 1 + \dbinom{n}{1}(q-1) + \dbinom{n}{2}(q-1)^2 + \cdots + \dbinom{n}{m}(q-1)^m
+= \sum_{j=0}^m \dbinom{n}{j}(q-1)^j.\]</span>
+Then <span class="math inline">\(|B_m(u)| = \delta(m)\)</span>.</p>
+</dd>
+<dt><strong>Remark</strong></dt>
+<dd>
+<p>Note that if <span class="math inline">\(k \in \mathbb{N}\)</span>, <span class="math inline">\(k &gt; n\)</span> then we insist that <span class="math inline">\(\dbinom{n}{k} = 0\)</span>; in this case
+“there are 0 ways of choosing precisely <span class="math inline">\(k\)</span> elements from a set of size <span class="math inline">\(n\)</span>.”</p>
+<p>This is consistent e.g. with the formula
+<span class="math display">\[\dbinom{n}{k} = \dfrac{n(n-1)\cdots(n-k+1)}{k!}\]</span>
+since the factor <span class="math inline">\((n-n) = 0\)</span> appears in the numerator.</p>
+</dd>
+<dt><strong>Proof of Lemma</strong></dt>
+<dd>
+For each <span class="math inline">\(j = 0,1,\cdots,m\)</span> there <span class="math inline">\(\dbinom{n}{j} \cdot (q-1)^j\)</span>
+elements of <span class="math inline">\(A^n\)</span> at distance precisely <span class="math inline">\(j\)</span> from <span class="math inline">\(u\)</span>.
+</dd>
+</dl>
+<p>We may now state and prove the following:</p>
+<dl>
+<dt><strong>Theorem</strong> (<em>Gilbert-Varshamov Bound</em>)</dt>
+<dd>
+<span class="math display">\[A_q(n,d) \cdot \delta(d) \ge q^n.\]</span>
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p>Suppose that <span class="math inline">\(C \subset A^n\)</span> is a code with minimal distance <span class="math inline">\(d\)</span>
+for which <span class="math inline">\(|C| = A_q(n,d)\)</span>.</p>
+<p>Notice that
+<span class="math inline">\(|C| \cdot \delta(d)\)</span> is the size of the disjoint union
+<span class="math display">\[\bigsqcup_{u \in C} B_d(u)\]</span>.</p>
+<p>Thus, if <span class="math display">\[|C|\cdot \delta(d) &lt; q^n = |A^n|\]</span>
+then there is some element <span class="math inline">\(v \in A^n\)</span> for which <span class="math display">\[v \not \in \bigcup_{u\in C} B_d(u).\]</span>
+We then have <span class="math inline">\(\operatorname{dist}(u,v) &gt; d\)</span> for every <span class="math inline">\(u \in C\)</span>.</p>
+<p>This shows that <span class="math inline">\(C \cup \{v\} \subset A^n\)</span> is a code having
+minimal distance <span class="math inline">\(d\)</span>, contradicting the assumption that <span class="math inline">\(|C| = A_q(n,d)\)</span>; i.e. contradicting the assumption that <span class="math inline">\(C\)</span> has maximal
+size among codes <span class="math inline">\(C' \subset A^n\)</span> with minimal distance <span class="math inline">\(d\)</span>.</p>
+</dd>
+</dl>
     </section>
 </article>
 
