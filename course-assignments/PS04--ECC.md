@@ -20,8 +20,11 @@ date: due 2024-03-01
    
 
 2. Let $0 < k,m \in \mathbb{N}$, put $n =mk$, and consider the subspace $C
-   \subset \F_q^n$ defined by $$C = \{ (v_1,v_2,\cdots,v_m ) \mid v_i
-   \in \F_q^k\}.$$ Find the *minimal distance* $d$ of this code.
+   \subset \F_q^n$ defined by $$C = \{ (v,v,\cdots,v ) \mid v
+   \in \F_q^k\} \subset \F_q^n.$$ Find the *minimal distance* $d$ of this code.
+   
+   > For example, if $n = 6$, $k=3$ and $m = 2$ then $$C =
+   > \{(a_1,a_2,a_3,a_1,a_2,a_3) \mid a_i \in \F_q\} \subset \F_q^6.$$
    
 3. By an $[n,k,d]_q$-system we mean a pair $(V,\mathcal{P})$, where
    $V$ is a finite dimensional vector space over $\F_q$ and
