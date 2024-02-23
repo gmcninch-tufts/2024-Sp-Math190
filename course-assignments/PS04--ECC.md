@@ -26,6 +26,8 @@ date: due 2024-03-01
    > For example, if $n = 6$, $k=3$ and $m = 2$ then $$C =
    > \{(a_1,a_2,a_3,a_1,a_2,a_3) \mid a_i \in \F_q\} \subset \F_q^6.$$
    
+   **(Corrected)**
+   
 3. By an $[n,k,d]_q$-system we mean a pair $(V,\mathcal{P})$, where
    $V$ is a finite dimensional vector space over $\F_q$ and
    $\mathcal{P}$ is an ordered finite family $$\mathcal{P} =
