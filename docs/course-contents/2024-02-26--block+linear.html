@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - Shannon's Theorem; block codes</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>Shannon's Theorem; block codes</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-02-22
+        
+    </section>
+    <section>
+        <h1 id="bounds-for-block-codes-continued">Bounds for block codes, continued</h1>
+<p>Let <span class="math inline">\(C \subset A^n\)</span> be a block code, where <span class="math inline">\(q = |A|\)</span>, and suppose
+that <span class="math inline">\(d\)</span> is the <em>minimal distance</em> of <span class="math inline">\(C\)</span>.</p>
+<p>Recall that we showed that <span class="math inline">\(C\)</span> “corrects up to <span class="math inline">\(t\)</span> errors”, where
+<span class="math display">\[t = \lfloor (d-1)/2 \rfloor.\]</span></p>
+<p>And recall that <span class="math inline">\(A_q(n,d)\)</span> is the maximal size of a code <span class="math inline">\(C \subset A^n\)</span> with minimal distance <span class="math inline">\(d\)</span>.</p>
+<p>Let <span class="math display">\[\delta(m) = 1 + \dbinom{n}{1}(q-1) + \dbinom{n}{2}(q-1)^2 +
+\cdots + \dbinom{n}{m}(q-1)^m = \sum_{j=0}^m \dbinom{n}{j}(q-1)^j.\]</span>
+The (closed) ball <span class="math inline">\(B_m(u)\)</span> of radius <span class="math inline">\(m\)</span> in <span class="math inline">\(A^n\)</span> satisfies <span class="math inline">\(|B_m(u)| = \delta(m)\)</span>.</p>
+<p>Recall that the <em>Gilbert-Varshamov</em> result gave in some sense a <em>lower
+bound</em> result for <span class="math inline">\(A_q(n,d)\)</span>; it showed that <span class="math display">\[A_q(n,d) \cdot
+\delta(d) \ge r^n.\]</span></p>
+<p>We now give an <em>upper bound</em>, known as the <em>sphere-packing bound</em>.</p>
+<dl>
+<dt><strong>Theorem</strong> (<em>Sphere-packing bound</em>)</dt>
+<dd>
+Let <span class="math inline">\(t = \lfloor (d-1)/2 \rfloor\)</span>.
+Then
+<span class="math display">\[A_q(n,d) \cdot \delta(t) \le q^n.\]</span>
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(C \subset A^n\)</span> be a code of minimal distance <span class="math inline">\(d\)</span> with <span class="math inline">\(|C| = A_q(n,d)\)</span>.</p>
+<p>Suppose that <span class="math inline">\(u,v \in C\)</span>, and suppose that <span class="math inline">\(w \in B_t(u) \cap B_t(v)\)</span>.
+Thus we have
+<span class="math display">\[\operatorname{dist}(u,v) \le \operatorname{dist}(u,w) + \operatorname{dist}(w,v) \le 2t \le d-1.\]</span></p>
+<p>Since <span class="math inline">\(d\)</span> is the minimal distance of <span class="math inline">\(C\)</span> it follows that <span class="math inline">\(u=v\)</span>.
+This shows that <span class="math display">\[u \ne v \implies B_t(u) \cap B_t(v) = \emptyset.\]</span></p>
+<p>Thus the union <span class="math inline">\(\displaystyle \bigcup_{u \in C} B_t(u)\)</span> is disjoint, so that
+<span class="math display">\[|\bigcup_{u \in C} B_t(u)| = |C| \cdot \delta(t).\]</span></p>
+<p>Since <span class="math inline">\(\displaystyle \bigcup_{u \in C} B_t(u) \subseteq A^n\)</span>, the Theorem follows at once.</p>
+</dd>
+<dt><strong>Remark</strong></dt>
+<dd>
+<p>A code is said to be <em>perfect</em> if it meets the sphere packing bound; i.e. if
+<span class="math inline">\(|C|\cdot \delta(t) = q^n\)</span>.</p>
+<p>We’ll have some examples of perfect codes later; meanwhile note
+that to have a perfect code of length <span class="math inline">\(n\)</span> and given <span class="math inline">\(t\)</span>, we need
+<span class="math inline">\(\delta(t) \mid q^n\)</span>. This doesn’t happen too often…:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delta(n,q,m):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">sum</span>([ binomial(n,j) <span class="op">*</span> (q<span class="op">-</span><span class="dv">1</span>)<span class="op">**</span>j <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(m<span class="op">+</span><span class="dv">1</span>) ])</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test(n,q,t):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Mod(q<span class="op">^</span>n,delta(n,q,t)) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> n: test(n,q,t),<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">200</span>)))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">90</span>]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> n: test(n,q,t), <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">200</span>)))</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">23</span>]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>q<span class="op">=</span><span class="dv">3</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>t<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> n: test(n,q,t),<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">200</span>)))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">11</span>]</span></code></pre></div>
+</dd>
+<dt><strong>Lemma</strong> (<em>Plotkin Lemma</em>)</dt>
+<dd>
+Let <span class="math inline">\(C \subset A^n\)</span>, <span class="math inline">\(|A|=q\)</span>, and suppose the maximal distance of <span class="math inline">\(C\)</span> is <span class="math inline">\(d\)</span>.
+Then
+<span class="math display">\[|C| \left( d + \dfrac{n}{q} - n \right) \le d.\]</span>
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p>Fix <span class="math inline">\(1 \le j \le n\)</span> and for each <span class="math inline">\(a \in A\)</span> write
+<span class="math inline">\(\lambda_a\)</span> for the number of times <span class="math inline">\(a\)</span> appears as the <span class="math inline">\(j\)</span>th coordinate of a codeword in <span class="math inline">\(C\)</span>.</p>
+<p>i.e.
+<span class="math display">\[\lambda_a = |\{(u_1,u_2,\cdots,u_n) \in C \mid u_j = a\}|.\]</span></p>
+<p>Of course, we have
+<span class="math display">\[(\clubsuit) \quad \sum_{a \in A} \lambda_a = |C|.\]</span></p>
+<p>Moreover,
+<span class="math display">\[(\diamondsuit) \quad \sum_{a \in A} \left(\lambda_a - \dfrac{|C|}{q}\right)^2 \ge 0\]</span>
+since the sum of non-negative terms is non-negative.</p>
+<p>Expanding each summand in <span class="math inline">\((\diamondsuit)\)</span> and using <span class="math inline">\((\clubsuit)\)</span> we see that
+<span class="math display">\[\begin{align*}
+0 \le&amp;  \sum_{a \in A} \left ( \lambda_a^2 - \dfrac{2|C|}{q} \lambda_a  + \dfrac{|C|^2}{q^2} \right ) \\
+=&amp; \left(\sum_{a \in A} \lambda_a^2 \right) - \dfrac{2|C|}{q} \left(\sum_a \lambda_a\right) + 
+\dfrac{|C|^2}{q} \\
+=&amp; \left(\sum_{a \in A} \lambda_a^2 \right) - \dfrac{2|C|^2}{q}  + 
+\dfrac{|C|^2}{q} \\	
+=&amp; \left(\sum_{a \in A} \lambda_a^2 \right) - \dfrac{|C|^2}{q}  
+\end{align*}\]</span>
+Thus
+<span class="math display">\[(\heartsuit) \quad \sum_{a \in a} \lambda_a^2 \ge \dfrac{|C|^2}{q}.\]</span></p>
+<p>Now write <span class="math inline">\(\displaystyle S = \sum_{u,v \in C} \operatorname{dist}(u,v)\)</span>, and let <span class="math inline">\(S_j\)</span> be the contribution
+that the <span class="math inline">\(j\)</span>-th coordinate makes to this sum. More precisely,
+<span class="math display">\[S_j = \sum_{a \in A} \lambda_a \left( |C| - \lambda_a \right).\]</span>
+Of course,
+<span class="math display">\[S = \sum_j S_j.\]</span></p>
+<p>Using <span class="math inline">\((\clubsuit)\)</span> and <span class="math inline">\((\heartsuit)\)</span> we find
+<span class="math display">\[\begin{align*}
+S_j &amp;= \sum_{a \in A} \lambda_a |C| - \sum_{a \in A} \lambda_a^2 \\
+&amp;= |C|^2 - \sum_{a \in A} \lambda_a^2 \\ 
+&amp;\le |C|^2 - \dfrac{|C|^2}{q} 
+\end{align*}\]</span></p>
+<p>Finally, since <span class="math inline">\(d\)</span> is the minimal distance of <span class="math inline">\(C\)</span> we have
+<span class="math display">\[d |C| ( |C|-1) \le S\]</span>
+and on the other hand we have established
+<span class="math display">\[S = \sum_j S_j \le n \left( |C|^2 - \dfrac{|C|^2}{q}\right)\]</span></p>
+<p>Combining these inequalities (and canceling a factor of <span class="math inline">\(|C|\)</span>) we find
+<span class="math display">\[\begin{align*} &amp; d\left( |C| - 1 \right) \le n |C| (1 - 1/q) \\
+\implies &amp; d|C| - n|C|(1 - 1/q) \le d \\
+\implies &amp; |C|\left(d - n + \dfrac{n}{q} \right) \le d;
+\end{align*}\]</span>
+this completes the proof.</p>
+</dd>
+</dl>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>

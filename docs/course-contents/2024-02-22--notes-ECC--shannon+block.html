@@ -152,6 +152,7 @@ codes which allow us to communicate using the channel and decode with
 a probability of a correct decoding arbitrary close to 1.</p>
 <p>It is not constructive, of course – in some sense, this motivates the
 subject: how to find the codes that work well?</p>
+<hr />
 <h1 id="bounds-for-block-codes">Bounds for block codes</h1>
 <p>Here we consider an <em>alphabet</em> <span class="math inline">\(A\)</span> – thus <span class="math inline">\(A\)</span> is just a finite set,
 of order <span class="math inline">\(|A| = q\)</span> – and a set of codewords <span class="math inline">\(C \subset A^n\)</span>; we call
@@ -234,7 +235,7 @@ elements of <span class="math inline">\(A^n\)</span> at distance precisely <span
 for which <span class="math inline">\(|C| = A_q(n,d)\)</span>.</p>
 <p>Notice that
 <span class="math inline">\(|C| \cdot \delta(d)\)</span> is the size of the disjoint union
-<span class="math display">\[\bigsqcup_{u \in C} B_d(u)\]</span>.</p>
+<span class="math display">\[\bigsqcup_{u \in C} B_d(u).\]</span>.</p>
 <p>Thus, if <span class="math display">\[|C|\cdot \delta(d) &lt; q^n = |A^n|\]</span>
 then there is some element <span class="math inline">\(v \in A^n\)</span> for which <span class="math display">\[v \not \in \bigcup_{u\in C} B_d(u).\]</span>
 We then have <span class="math inline">\(\operatorname{dist}(u,v) &gt; d\)</span> for every <span class="math inline">\(u \in C\)</span>.</p>

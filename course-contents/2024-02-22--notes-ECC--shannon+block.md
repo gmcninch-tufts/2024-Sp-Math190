@@ -164,6 +164,8 @@ a probability of a correct decoding arbitrary close to 1.
 It is not constructive, of course -- in some sense, this motivates the
 subject: how to find the codes that work well?
 
+-----
+
 # Bounds for block codes
 
 Here we consider an *alphabet* $A$ -- thus $A$ is just a finite set,
@@ -256,7 +258,7 @@ We may now state and prove the following:
 
     Notice that
 	$|C| \cdot \delta(d)$ is the size of the disjoint union
-	$$\bigsqcup_{u \in C} B_d(u)$$.
+	$$\bigsqcup_{u \in C} B_d(u).$$.
 
 
     Thus, if $$|C|\cdot \delta(d) < q^n = |A^n|$$
