@@ -219,26 +219,27 @@ since the factor <span class="math inline">\((n-n) = 0\)</span> appears in the n
 </dd>
 <dt><strong>Proof of Lemma</strong></dt>
 <dd>
-For each <span class="math inline">\(j = 0,1,\cdots,m\)</span> there <span class="math inline">\(\dbinom{n}{j} \cdot (q-1)^j\)</span>
-elements of <span class="math inline">\(A^n\)</span> at distance precisely <span class="math inline">\(j\)</span> from <span class="math inline">\(u\)</span>.
+For each <span class="math inline">\(j = 0,1,\cdots,m\)</span> there are <span class="math inline">\(\dbinom{n}{j} \cdot (q-1)^j\)</span> elements of <span class="math inline">\(A^n\)</span> at distance precisely <span class="math inline">\(j\)</span> from <span class="math inline">\(u\)</span>.
 </dd>
 </dl>
 <p>We may now state and prove the following:</p>
 <dl>
 <dt><strong>Theorem</strong> (<em>Gilbert-Varshamov Bound</em>)</dt>
 <dd>
-<span class="math display">\[A_q(n,d) \cdot \delta(d) \ge q^n.\]</span>
+<span class="math display">\[A_q(n,d) \cdot \delta(d-1) \ge q^n.\]</span>
 </dd>
 <dt><strong>Proof</strong></dt>
 <dd>
 <p>Suppose that <span class="math inline">\(C \subset A^n\)</span> is a code with minimal distance <span class="math inline">\(d\)</span>
 for which <span class="math inline">\(|C| = A_q(n,d)\)</span>.</p>
 <p>Notice that
-<span class="math inline">\(|C| \cdot \delta(d)\)</span> is the size of the disjoint union
-<span class="math display">\[\bigsqcup_{u \in C} B_d(u).\]</span>.</p>
-<p>Thus, if <span class="math display">\[|C|\cdot \delta(d) &lt; q^n = |A^n|\]</span>
-then there is some element <span class="math inline">\(v \in A^n\)</span> for which <span class="math display">\[v \not \in \bigcup_{u\in C} B_d(u).\]</span>
-We then have <span class="math inline">\(\operatorname{dist}(u,v) &gt; d\)</span> for every <span class="math inline">\(u \in C\)</span>.</p>
+<span class="math inline">\(|C| \cdot \delta(d-1)\)</span> is the size of the disjoint union
+<span class="math display">\[\bigsqcup_{u \in C} B_{d-1}(u).\]</span>.</p>
+<p>Thus, if <span class="math display">\[|C|\cdot \delta(d-1) &lt; q^n = |A^n|\]</span> then
+<span class="math display">\[\bigcup_{u \in C} B_{d-1}(u) \subsetneq A^n;\]</span>
+thus, there is some
+element <span class="math inline">\(v \in A^n\)</span> for which <span class="math display">\[v \not \in \bigcup_{u \in C}
+B_{d-1}(u).\]</span> We then have <span class="math inline">\(\operatorname{dist}(u,v) \ge d\)</span> for every <span class="math inline">\(u \in C\)</span>.</p>
 <p>This shows that <span class="math inline">\(C \cup \{v\} \subset A^n\)</span> is a code having
 minimal distance <span class="math inline">\(d\)</span>, contradicting the assumption that <span class="math inline">\(|C| = A_q(n,d)\)</span>; i.e. contradicting the assumption that <span class="math inline">\(C\)</span> has maximal
 size among codes <span class="math inline">\(C' \subset A^n\)</span> with minimal distance <span class="math inline">\(d\)</span>.</p>

@@ -242,14 +242,13 @@ We first compute the size of a "ball" in the metric space $(A^n,\dist)$.
 	since the factor $(n-n) = 0$ appears in the numerator.
 
 **Proof of Lemma**
-:   For each $j = 0,1,\cdots,m$ there $\dbinom{n}{j} \cdot (q-1)^j$
-    elements of $A^n$ at distance precisely $j$ from $u$.
-
+:   For each $j = 0,1,\cdots,m$ there are $\dbinom{n}{j} \cdot
+    (q-1)^j$ elements of $A^n$ at distance precisely $j$ from $u$.
 
 We may now state and prove the following:
 
 **Theorem** (*Gilbert-Varshamov Bound*)
-:   $$A_q(n,d) \cdot \delta(d) \ge q^n.$$
+:   $$A_q(n,d) \cdot \delta(d-1) \ge q^n.$$
 
 
 **Proof**
@@ -257,13 +256,15 @@ We may now state and prove the following:
     for which $|C| = A_q(n,d)$.
 
     Notice that
-	$|C| \cdot \delta(d)$ is the size of the disjoint union
-	$$\bigsqcup_{u \in C} B_d(u).$$.
+	$|C| \cdot \delta(d-1)$ is the size of the disjoint union
+	$$\bigsqcup_{u \in C} B_{d-1}(u).$$.
 
 
-    Thus, if $$|C|\cdot \delta(d) < q^n = |A^n|$$
-	then there is some element $v \in A^n$ for which $$v \not \in \bigcup_{u\in C} B_d(u).$$
-	We then have $\dist(u,v) > d$ for every $u \in C$.
+    Thus, if $$|C|\cdot \delta(d-1) < q^n = |A^n|$$ then 
+	$$\bigcup_{u \in C} B_{d-1}(u) \subsetneq A^n;$$
+	thus, there is some
+	element $v \in A^n$ for which $$v \not \in \bigcup_{u \in C}
+	B_{d-1}(u).$$ We then have $\dist(u,v) \ge d$ for every $u \in C$.
 	
 	This shows that $C \cup \{v\} \subset A^n$ is a code having
 	minimal distance $d$, contradicting the assumption that $|C| =
