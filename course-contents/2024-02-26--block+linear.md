@@ -1,5 +1,5 @@
 ---
-title: Shannon's Theorem; block codes
+title: Block codes
 date: 2024-02-22
 ---
 
@@ -10,6 +10,9 @@ date: 2024-02-22
 \newcommand{\e}{\mathbf{e}}
 \newcommand{\h}{\mathbf{h}}
 \newcommand{\bb}{\mathbf{b}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\ww}{\mathbf{w}}
+
 \newcommand{\Null}{\operatorname{Null}}
 
 \newcommand{\PP}{\mathbb{P}}
@@ -155,3 +158,391 @@ We now give an *upper bound*, known as the *sphere-packing bound*.
 	\end{align*}
     this completes the proof.
     
+# Asymptotics of codes
+
+(*sketch*/*motivation*)
+
+If we wish to send a large amount of data with short length codes, we
+have to cut up a string of $n$ "bits" of data into strings of some
+fixed length $n_0$.
+
+If the probability of decoding the string of length $n_0$ is $p$, then 
+the probability of decoding the string of length $n$ is $p^{n/n_0}$.
+For fixed $n_0$, note that
+$$p^{n/n_0} \to 0 \quad \text{as $n \to \infty$}$$
+
+On the other hand, Shanon's Theorem promises us that we should be able
+to send the string of $n$ bits through a channel with some given
+capacity $\Lambda$ which encodes almost $\Lambda n$ bits of
+information and then decode correctly with probability approaching
+$1$.
+
+Now, a proof of Shannon's theorem e.g. for the *binary symmetric
+channel* uses the fact that the average number of errors which occur
+in the transmission of $n$ bits is $(1-\phi)n$.
+
+Thus, to satisfy Shannon's Theorem, our code should be able to correct
+a number of errors that is *linear in $n$* -- i.e. we want to
+construct codes of length $n$ for which the *minimal distance* grows
+linearly with $n$.
+
+**Defn**
+:  A *sequence of asymptotically good codes* is a sequence $\{C_n\}$
+   where $C_n$ is a code of length $n$, dimension $k(n)$ and minimal
+   distance $d(n)$ for which $d(n)/n$ and $k(n)/n$ are bounded away
+   from zero (as $n \to \infty$).
+   
+In some sense, the goal of constructing asymptotically good codes
+hopefully makes clear the utility of the preceding result on *bounds*
+for codes.
+   
+# Decoding
+
+Let $C$ be a (linear) $[n,k,d]_q$-code.
+
+The following diagram outlines components of usage of such a code for data transmission:
+
+![](/course-assets/images/decoding-diagram.png){width=750px}
+
+So, we begin with *data* $\mathbf{x} \in \F_q^k$. We encode it using
+a generator matrix $G$ for the code $C$:
+
+$$\mathbf{x} \mapsto \mathbf{x} \cdot G$$
+
+Now, this vector in $\F_q^n$ is somehow *transmitted through the
+channel*; the received data is a vector $\vv \in \F_q^n$, possible
+suffering transmission errors.
+
+This leaves the decoding step: how do we hope to recover from $\vv$ the data vector
+$\mathbf{x} \in \F_q^k$?
+
+## Standard array decoding
+
+Here is a fairly simple-to-describe procedure for decoding. 
+
+For each coset $\bb + C$ in $\F_q^n$, find an element with *minimal weight*.
+
+Now, to decode the vector $\vv$, find the coset containing $\vv$,
+and write $\ww$ for the element (chosen previously) of minimal length.
+
+Notice that $\vv - \ww \in C$ (since both vectors are in $C$); we decode
+to this vector.
+
+**Example**
+:   Let's consider a $[5,2]_2$ code with $k = \F_2$.
+
+    ``` python
+    K = GF(2);
+    V = VectorSpace(K,5)
+    
+    C= V.subspace([V([1,0,1,1,0]),
+                   V([0,1,1,0,1])])
+    
+    W = V.subspace([V([0,0,1,0,0]),
+                    V([0,0,0,1,0]),
+                    V([0,0,0,0,1])])
+    
+    def weight(v):
+        r = [x for x in v if x != 0]
+        return len(r)
+    
+    
+    min([ weight(v) for v in C if v != 0])
+    => 
+    3
+    ```
+    
+    This confirms that the minimal weight is `d=3`.             
+ 
+    ``` python
+    # build the coset of C with representative v, and sort the vectors in order of
+    # increasing weight
+    
+    def coset(v):
+        c =  [ v + c for c in C ]
+        c.sort(key = lambda x: weight(x))
+        return list(c)
+    	
+    # build the lookup array
+    # rows are the cosets of C in V, vectors ordered by increasing weight
+    #
+    lookup = [ coset(w) for w in W ]
+    ```
+    
+    Now we can perform *nearest neighbor decoding*. To
+    decode the vector `w`, we find the row `c` of the `lookup` array
+    containing `w`, and return `w - c[0]`.
+    
+    ``` python
+	def decode(w):
+      c = [ x for x in lookup if w in x ][0]
+      return w - c[0]
+
+    #  vectors in C are decoded to themselves, of course. e.g.
+    [  (c,decode(c)) for c in C ]
+	=>
+	[((0, 0, 0, 0, 0), (0, 0, 0, 0, 0)),
+     ((1, 0, 1, 1, 0), (1, 0, 1, 1, 0)),
+	 ((2, 0, 2, 2, 0), (2, 0, 2, 2, 0)),
+	 ((0, 1, 1, 0, 1), (0, 1, 1, 0, 1)),
+	 ((1, 1, 2, 1, 1), (1, 1, 2, 1, 1)),
+	 ((2, 1, 0, 2, 1), (2, 1, 0, 2, 1)),
+	 ((0, 2, 2, 0, 2), (0, 2, 2, 0, 2)),
+	 ((1, 2, 0, 1, 2), (1, 2, 0, 1, 2)),
+	 ((2, 2, 1, 2, 2), (2, 2, 1, 2, 2))]
+	```
+	
+	We should be able to correct `(d-1)/2 = (3-1)/2 = 1` error.
+	
+	``` python
+	# consider "error vectors" of weight 1
+	
+	[ (e,[(c+e, decode(c+e), decode(c+e) ==  c) for c in C]) for e in V.basis()]
+    =>
+	[((1, 0, 0, 0, 0),
+     [((1, 0, 0, 0, 0), (0, 0, 0, 0, 0), True),
+      ((2, 0, 1, 1, 0), (1, 0, 1, 1, 0), True),
+      ((0, 0, 2, 2, 0), (2, 0, 2, 2, 0), True),
+      ((1, 1, 1, 0, 1), (0, 1, 1, 0, 1), True),
+      ((2, 1, 2, 1, 1), (1, 1, 2, 1, 1), True),
+      ((0, 1, 0, 2, 1), (2, 1, 0, 2, 1), True),
+      ((1, 2, 2, 0, 2), (0, 2, 2, 0, 2), True),
+      ((2, 2, 0, 1, 2), (1, 2, 0, 1, 2), True),
+      ((0, 2, 1, 2, 2), (2, 2, 1, 2, 2), True)]),
+    ((0, 1, 0, 0, 0),
+     [((0, 1, 0, 0, 0), (0, 0, 0, 0, 0), True),
+      ((1, 1, 1, 1, 0), (1, 0, 1, 1, 0), True),
+      ((2, 1, 2, 2, 0), (2, 0, 2, 2, 0), True),
+      ((0, 2, 1, 0, 1), (0, 1, 1, 0, 1), True),
+      ((1, 2, 2, 1, 1), (1, 1, 2, 1, 1), True),
+      ((2, 2, 0, 2, 1), (2, 1, 0, 2, 1), True),
+      ((0, 0, 2, 0, 2), (0, 2, 2, 0, 2), True),
+      ((1, 0, 0, 1, 2), (1, 2, 0, 1, 2), True),
+      ((2, 0, 1, 2, 2), (2, 2, 1, 2, 2), True)]),
+    ((0, 0, 1, 0, 0),
+     [((0, 0, 1, 0, 0), (0, 0, 0, 0, 0), True),
+      ((1, 0, 2, 1, 0), (1, 0, 1, 1, 0), True),
+      ((2, 0, 0, 2, 0), (2, 0, 2, 2, 0), True),
+      ((0, 1, 2, 0, 1), (0, 1, 1, 0, 1), True),
+      ((1, 1, 0, 1, 1), (1, 1, 2, 1, 1), True),
+      ((2, 1, 1, 2, 1), (2, 1, 0, 2, 1), True),
+      ((0, 2, 0, 0, 2), (0, 2, 2, 0, 2), True),
+      ((1, 2, 1, 1, 2), (1, 2, 0, 1, 2), True),
+      ((2, 2, 2, 2, 2), (2, 2, 1, 2, 2), True)]),
+    ((0, 0, 0, 1, 0),
+     [((0, 0, 0, 1, 0), (0, 0, 0, 0, 0), True),
+      ((1, 0, 1, 2, 0), (1, 0, 1, 1, 0), True),
+      ((2, 0, 2, 0, 0), (2, 0, 2, 2, 0), True),
+      ((0, 1, 1, 1, 1), (0, 1, 1, 0, 1), True),
+      ((1, 1, 2, 2, 1), (1, 1, 2, 1, 1), True),
+      ((2, 1, 0, 0, 1), (2, 1, 0, 2, 1), True),
+      ((0, 2, 2, 1, 2), (0, 2, 2, 0, 2), True),
+      ((1, 2, 0, 2, 2), (1, 2, 0, 1, 2), True),
+      ((2, 2, 1, 0, 2), (2, 2, 1, 2, 2), True)]),
+    ((0, 0, 0, 0, 1),
+     [((0, 0, 0, 0, 1), (0, 0, 0, 0, 0), True),
+      ((1, 0, 1, 1, 1), (1, 0, 1, 1, 0), True),
+      ((2, 0, 2, 2, 1), (2, 0, 2, 2, 0), True),
+      ((0, 1, 1, 0, 2), (0, 1, 1, 0, 1), True),
+      ((1, 1, 2, 1, 2), (1, 1, 2, 1, 1), True),
+      ((2, 1, 0, 2, 2), (2, 1, 0, 2, 1), True),
+      ((0, 2, 2, 0, 0), (0, 2, 2, 0, 2), True),
+      ((1, 2, 0, 1, 0), (1, 2, 0, 1, 2), True),
+      ((2, 2, 1, 2, 0), (2, 2, 1, 2, 2), True)])]
+	```
+	
+	On the other hand, we shouldn't expect to correct 2 errors:
+	
+    ``` python	
+ 	# consider an "error vector" with weight 2 
+	f = V([0,1,0,1,0])
+
+    [ (c+f, decode(c+f), decode(c+f) == c) for c in C ]	
+    =>
+	[((0, 1, 0, 0, 1), (0, 1, 1, 0, 1), False),
+	 ((1, 1, 1, 1, 1), (1, 1, 2, 1, 1), False),
+	 ((2, 1, 2, 2, 1), (2, 1, 0, 2, 1), False),
+	 ((0, 2, 1, 0, 2), (0, 2, 2, 0, 2), False),
+	 ((1, 2, 2, 1, 2), (1, 2, 0, 1, 2), False),
+	 ((2, 2, 0, 2, 2), (2, 2, 1, 2, 2), False),
+	 ((0, 0, 2, 0, 0), (0, 0, 0, 0, 0), False),
+	 ((1, 0, 0, 1, 0), (1, 0, 1, 1, 0), False),
+	 ((2, 0, 1, 2, 0), (2, 0, 2, 2, 0), False)]	 
+   ```
+	
+
+Standard array decoding is pretty costly, though. The array consists of
+$q^{nk} \times k$ vectors of length $n$.
+
+
+## Syndrome decoding
+
+Let $C$ as before an $[n,k,d]_q$-code, and suppose
+that $H$ is a *check matrix* for $C$.
+
+If the vector $\vv$ is sent, and the error pattern $\e$ appears,
+so that $\vv + \e$ is received, we observe that
+$$H(\vv + \e)^T = H\e^T.$$
+
+So: we create a *lookup table* whose entries are pairs $(H.\e^T,\e)$
+for $\e \in V$ with weight $\e$ $\le (d-1)/2$; the first entry is an
+element of $\F_q^{n-k}$.
+
+To decode a received vector $\vv$, we compute its syndrome $\ww= H
+\vv^T$. If no more than $(d-1)/2$ errors occured, we will find an
+entry $(\ww,\e)$ in the table.
+
+Now we decode to $\vv - \e$.
+
+**Example:**
+:   We consider
+
+    ``` python
+	K = GF(3);
+    V = VectorSpace(K,5)
+
+    C= V.subspace([V([1,0,1,1,0]),
+                   V([0,1,1,0,1])])
+
+    # generator matrix
+    G = MatrixSpace(K,2,5).matrix(C.basis())
+
+    A = MatrixSpace(K,2,3).matrix([b[2:5] for b in G])
+
+    # check matrix
+    H=block_matrix([[-A.transpose(),MatrixSpace(K,3,3).one()]],
+                   subdivide=False)  
+
+    def weight(v):
+        r = [x for x in v if x != 0]
+        return len(r)
+
+    min([ weight(v) for v in C if v != 0])
+	=>
+	3
+	```
+	
+	We create a *lookup table*: for each vector $v \in \F_q^n$ of `weight <= 1`;
+	the `keys` of the lookup table are the *syndromes* $H v^T$.
+
+    ``` python
+	lookup = { tuple(H*v):v for v in V if weight(v) < 2 }
+    lookup
+	=>
+    {(0, 0, 0): (0, 0, 0, 0, 0),
+     (2, 2, 0): (1, 0, 0, 0, 0),
+     (1, 1, 0): (2, 0, 0, 0, 0),
+     (2, 0, 2): (0, 1, 0, 0, 0),
+     (1, 0, 1): (0, 2, 0, 0, 0),
+     (1, 0, 0): (0, 0, 1, 0, 0),
+     (2, 0, 0): (0, 0, 2, 0, 0),
+     (0, 1, 0): (0, 0, 0, 1, 0),
+     (0, 2, 0): (0, 0, 0, 2, 0),
+     (0, 0, 1): (0, 0, 0, 0, 1),
+     (0, 0, 2): (0, 0, 0, 0, 2)}	
+	```
+	
+	Decoding a vector $\vv$ is easy: compute the syndrome $H.\vv^T$
+	and use it to locate the *error vector* $e$ in the lookup
+	table. Then return $\vv - e$.
+	
+	``` python
+	def decode(v):
+      return v-lookup[tuple(H*v)]
+    ```
+
+    Once again we can check that vectors in $C$ are decoded as themselves:
+   
+    ``` python
+    [ (decode(c), c==decode(c)) for c in C ]
+    =>
+    [((0, 0, 0, 0, 0), True),
+     ((1, 0, 1, 1, 0), True),
+     ((2, 0, 2, 2, 0), True),
+     ((0, 1, 1, 0, 1), True),
+     ((1, 1, 2, 1, 1), True),
+     ((2, 1, 0, 2, 1), True),
+     ((0, 2, 2, 0, 2), True),
+     ((1, 2, 0, 1, 2), True),
+     ((2, 2, 1, 2, 2), True)]
+    ```
+	
+	
+	Again, we should be able to correct `(d-1)/2 = (3-1)/2 = 1` error.
+
+	``` python
+	# consider "error vectors" of weight 1
+	
+	[ (e,[(c+e, decode(c+e), decode(c+e) ==  c) for c in C]) for e in V.basis()]
+    =>
+	[((1, 0, 0, 0, 0),
+     [((1, 0, 0, 0, 0), (0, 0, 0, 0, 0), True),
+      ((2, 0, 1, 1, 0), (1, 0, 1, 1, 0), True),
+      ((0, 0, 2, 2, 0), (2, 0, 2, 2, 0), True),
+      ((1, 1, 1, 0, 1), (0, 1, 1, 0, 1), True),
+      ((2, 1, 2, 1, 1), (1, 1, 2, 1, 1), True),
+      ((0, 1, 0, 2, 1), (2, 1, 0, 2, 1), True),
+      ((1, 2, 2, 0, 2), (0, 2, 2, 0, 2), True),
+      ((2, 2, 0, 1, 2), (1, 2, 0, 1, 2), True),
+      ((0, 2, 1, 2, 2), (2, 2, 1, 2, 2), True)]),
+    ((0, 1, 0, 0, 0),
+     [((0, 1, 0, 0, 0), (0, 0, 0, 0, 0), True),
+      ((1, 1, 1, 1, 0), (1, 0, 1, 1, 0), True),
+      ((2, 1, 2, 2, 0), (2, 0, 2, 2, 0), True),
+      ((0, 2, 1, 0, 1), (0, 1, 1, 0, 1), True),
+      ((1, 2, 2, 1, 1), (1, 1, 2, 1, 1), True),
+      ((2, 2, 0, 2, 1), (2, 1, 0, 2, 1), True),
+      ((0, 0, 2, 0, 2), (0, 2, 2, 0, 2), True),
+      ((1, 0, 0, 1, 2), (1, 2, 0, 1, 2), True),
+      ((2, 0, 1, 2, 2), (2, 2, 1, 2, 2), True)]),
+    ((0, 0, 1, 0, 0),
+     [((0, 0, 1, 0, 0), (0, 0, 0, 0, 0), True),
+      ((1, 0, 2, 1, 0), (1, 0, 1, 1, 0), True),
+      ((2, 0, 0, 2, 0), (2, 0, 2, 2, 0), True),
+      ((0, 1, 2, 0, 1), (0, 1, 1, 0, 1), True),
+      ((1, 1, 0, 1, 1), (1, 1, 2, 1, 1), True),
+      ((2, 1, 1, 2, 1), (2, 1, 0, 2, 1), True),
+      ((0, 2, 0, 0, 2), (0, 2, 2, 0, 2), True),
+      ((1, 2, 1, 1, 2), (1, 2, 0, 1, 2), True),
+      ((2, 2, 2, 2, 2), (2, 2, 1, 2, 2), True)]),
+    ((0, 0, 0, 1, 0),
+     [((0, 0, 0, 1, 0), (0, 0, 0, 0, 0), True),
+      ((1, 0, 1, 2, 0), (1, 0, 1, 1, 0), True),
+      ((2, 0, 2, 0, 0), (2, 0, 2, 2, 0), True),
+      ((0, 1, 1, 1, 1), (0, 1, 1, 0, 1), True),
+      ((1, 1, 2, 2, 1), (1, 1, 2, 1, 1), True),
+      ((2, 1, 0, 0, 1), (2, 1, 0, 2, 1), True),
+      ((0, 2, 2, 1, 2), (0, 2, 2, 0, 2), True),
+      ((1, 2, 0, 2, 2), (1, 2, 0, 1, 2), True),
+      ((2, 2, 1, 0, 2), (2, 2, 1, 2, 2), True)]),
+    ((0, 0, 0, 0, 1),
+     [((0, 0, 0, 0, 1), (0, 0, 0, 0, 0), True),
+      ((1, 0, 1, 1, 1), (1, 0, 1, 1, 0), True),
+      ((2, 0, 2, 2, 1), (2, 0, 2, 2, 0), True),
+      ((0, 1, 1, 0, 2), (0, 1, 1, 0, 1), True),
+      ((1, 1, 2, 1, 2), (1, 1, 2, 1, 1), True),
+      ((2, 1, 0, 2, 2), (2, 1, 0, 2, 1), True),
+      ((0, 2, 2, 0, 0), (0, 2, 2, 0, 2), True),
+      ((1, 2, 0, 1, 0), (1, 2, 0, 1, 2), True),
+      ((2, 2, 1, 2, 0), (2, 2, 1, 2, 2), True)])]
+	```
+
+    And again we don't expect to correct more than a single error with
+    this code.
+	
+	``` python
+	# consider an "error vector" with weight 2
+	f = V([0,1,1,0,0])
+
+    [ (c+f, decode(c+f), decode(c+f) == c) for c in C ]
+	=>
+	[((0, 1, 1, 0, 0), (0, 1, 1, 0, 1), False),
+     ((1, 1, 2, 1, 0), (1, 1, 2, 1, 1), False),
+     ((2, 1, 0, 2, 0), (2, 1, 0, 2, 1), False),
+     ((0, 2, 2, 0, 1), (0, 2, 2, 0, 2), False),
+     ((1, 2, 0, 1, 1), (1, 2, 0, 1, 2), False),
+     ((2, 2, 1, 2, 1), (2, 2, 1, 2, 2), False),
+     ((0, 0, 0, 0, 2), (0, 0, 0, 0, 0), False),
+     ((1, 0, 1, 1, 2), (1, 0, 1, 1, 0), False),
+     ((2, 0, 2, 2, 2), (2, 0, 2, 2, 0), False)]
+	```
