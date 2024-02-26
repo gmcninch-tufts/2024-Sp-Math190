@@ -38,9 +38,10 @@ The (closed) ball $B_m(u)$ of radius $m$ in $A^n$ satisfies $|B_m(u)|
 
 Recall that the *Gilbert-Varshamov* result gave in some sense a *lower
 bound* result for $A_q(n,d)$; it showed that $$A_q(n,d) \cdot
-\delta(d) \ge r^n.$$
+\delta(d) \ge q^n.$$
 
-We now give an *upper bound*, known as the *sphere-packing bound*.
+We now give an *upper bound* for $A_q(n,d)$ known as the
+*sphere-packing bound*.
 
 **Theorem** (*Sphere-packing bound*)
 :   Let $t = \floor{(d-1)/2}$.
@@ -371,8 +372,9 @@ to this vector.
    ```
 	
 
-Standard array decoding is pretty costly, though. The array consists of
-$q^{nk} \times k$ vectors of length $n$.
+Standard array decoding is pretty costly, though. The array we
+construct amounts to a list of $q^{nk} \times q^k$ vectors each of
+length $n$.
 
 
 ## Syndrome decoding

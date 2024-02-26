@@ -48,8 +48,9 @@ that <span class="math inline">\(d\)</span> is the <em>minimal distance</em> of 
 The (closed) ball <span class="math inline">\(B_m(u)\)</span> of radius <span class="math inline">\(m\)</span> in <span class="math inline">\(A^n\)</span> satisfies <span class="math inline">\(|B_m(u)| = \delta(m)\)</span>.</p>
 <p>Recall that the <em>Gilbert-Varshamov</em> result gave in some sense a <em>lower
 bound</em> result for <span class="math inline">\(A_q(n,d)\)</span>; it showed that <span class="math display">\[A_q(n,d) \cdot
-\delta(d) \ge r^n.\]</span></p>
-<p>We now give an <em>upper bound</em>, known as the <em>sphere-packing bound</em>.</p>
+\delta(d) \ge q^n.\]</span></p>
+<p>We now give an <em>upper bound</em> for <span class="math inline">\(A_q(n,d)\)</span> known as the
+<em>sphere-packing bound</em>.</p>
 <dl>
 <dt><strong>Theorem</strong> (<em>Sphere-packing bound</em>)</dt>
 <dd>
@@ -330,8 +331,9 @@ containing <code>w</code>, and return <code>w - c[0]</code>.</p>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a> ((<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>), (<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>), <span class="va">False</span>)]	 </span></code></pre></div>
 </dd>
 </dl>
-<p>Standard array decoding is pretty costly, though. The array consists of
-<span class="math inline">\(q^{nk} \times k\)</span> vectors of length <span class="math inline">\(n\)</span>.</p>
+<p>Standard array decoding is pretty costly, though. The array we
+construct amounts to a list of <span class="math inline">\(q^{nk} \times q^k\)</span> vectors each of
+length <span class="math inline">\(n\)</span>.</p>
 <h2 id="syndrome-decoding">Syndrome decoding</h2>
 <p>Let <span class="math inline">\(C\)</span> as before an <span class="math inline">\([n,k,d]_q\)</span>-code, and suppose
 that <span class="math inline">\(H\)</span> is a <em>check matrix</em> for <span class="math inline">\(C\)</span>.</p>
