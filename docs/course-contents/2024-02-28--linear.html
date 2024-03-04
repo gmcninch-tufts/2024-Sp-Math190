@@ -159,8 +159,7 @@ Arguing as in an earlier homework exercise, it is easy to see that
 For <span class="math inline">\(\mathbf{x}\in \mathbb{F}_q^n\)</span>, we have
 <span class="math display">\[\sum_{\mathbf{u}\in C}   \chi_\mathbf{u}(\mathbf{x})  \left \{
    \begin{matrix}
-   0 &amp; \text{if $\mathbf{x}\not \in C^\perp$} \\
-   |C| &amp; \text{if $\mathbf{x}\in C^\perp$}
+   0 &amp; \text{if $\mathbf{x}\not \in C^\perp$} \\  |C| &amp; \text{if $\mathbf{x}\in C^\perp$}
    \end{matrix}
    \right .\]</span>
 </dd>
@@ -169,14 +168,14 @@ For <span class="math inline">\(\mathbf{x}\in \mathbb{F}_q^n\)</span>, we have
 <p>We know that <span class="math inline">\(\chi_\mathbf{u}\mid_C\)</span> is a character of <span class="math inline">\(C\)</span>; i.e. an element of <span class="math inline">\(\widehat{C}\)</span>.</p>
 <p>Now,
 <span class="math display">\[\begin{align*}
-\sum_{\mathbf{u}\in C} \chi_\mathbf{u}(\mathbf{x}) &amp;= \sum_{\mathbf{u}\in C} \zeta_p^{\operatorname{tr}(\langle \mathbf{u}, \mathbf{x}\rangle )} = \sum_{u \in C} \chi_\mathbf{x}(\mathbf{u}) \\
+\sum_{\mathbf{u}\in C} \chi_\mathbf{u}(\mathbf{x}) &amp;= \sum_{\mathbf{u}\in C} \zeta_p^{\operatorname{tr}(\langle \mathbf{u}, \mathbf{x}\rangle )} 
+= \sum_{u \in C} \chi_\mathbf{x}(\mathbf{u}) \\
 &amp;= |C| \langle \chi_\mathbf{x}, \mathbf{1}_C \rangle_C \\
-&amp;= \left \{ \begin{matrix}
-|C|  &amp; \text{if $\chi_\mathbf{x}= \mathbf{1}_C$} \\ 
+&amp;= \left \{ \begin{matrix} |C|  &amp; \text{if $\chi_\mathbf{x}= \mathbf{1}_C$} \\ 
 0 &amp; \text{otherwise}
 \end{matrix} \right .
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(\mathbf{1}_C\)</span> denotes the trivial homomorphism <span class="math inline">\(C \to \mathbb{C}^\times\)</span>.</p>
+\end{align*}\]</span>
+where <span class="math inline">\(\mathbf{1}_C\)</span> denotes the trivial homomorphism <span class="math inline">\(C \to \mathbb{C}^\times\)</span>.</p>
 <p>Now the result follows from the observation that <span class="math inline">\(\chi_\mathbf{x}= \mathbf{1}_C\)</span> if and only
 <span class="math inline">\(\langle \mathbf{x},\mathbf{u}\rangle = 0 \quad \forall \mathbf{u}\in C\)</span> if and only if <span class="math inline">\(\mathbf{x}\in C^\perp\)</span>.</p>
 </dd>
