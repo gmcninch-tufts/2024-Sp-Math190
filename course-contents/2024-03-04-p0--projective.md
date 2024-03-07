@@ -208,7 +208,7 @@ Let $f$ be a irreducible homogeneous polynomial of degree 2 in two variables.
    irreducible, we could take $f(T,S) = T^2 - \alpha S^2$.
 
 Now form $F(T_0,T_1,T_2,T_3) = T_0 T_1 - f(T_2,T_3) \in
-k[T_0,T_1,T_2,T_3]_2$ and let $$Q = \{ P \in \PP^3 \mid Q(P) = 0\}.$$
+k[T_0,T_1,T_2,T_3]_2$ and let $$Q = \{ P \in \PP^3 \mid F(P) = 0\}.$$
 
 **Proposition**
 :   If $L$ is a line in $\PP^3$, then $Q$ contains no more than 2
