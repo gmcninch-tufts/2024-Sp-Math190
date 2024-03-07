@@ -129,7 +129,7 @@ polynomials in <span class="math inline">\(C\)</span>.</p>
 <dt><strong>Proposition</strong></dt>
 <dd>
 If <span class="math inline">\(C = \langle g \rangle\)</span> with <span class="math inline">\(g\)</span> monic of minimal degree, then
-<span class="math inline">\(g \mid T^n -1\)</span> in <span class="math inline">\(\mathbb{F}_q[T]\)</span>, and <span class="math inline">\(\dim C \ge n - \deg g\)</span>.
+<span class="math inline">\(g \mid T^n -1\)</span> in <span class="math inline">\(\mathbb{F}_q[T]\)</span>.
 </dd>
 <dt><strong>Proof</strong></dt>
 <dd>
@@ -150,67 +150,54 @@ element of the quotient ring <span class="math inline">\(A\)</span> represented 
 than <span class="math inline">\(g\)</span>, contradicting the fact that <span class="math inline">\(g\)</span> has minimal degree among
 polynomials in <span class="math inline">\(C\)</span>.</p>
 <p>This contradiction shows that <span class="math inline">\(g \mid T^n - 1\)</span>.</p>
-<p>Now, the elements <span class="math inline">\([T^j g]\)</span> for <span class="math inline">\(j = 0,1, \cdots,n - \deg g -1\)</span>
-are clearly linearly independent in <span class="math inline">\(A\)</span>, which shows that
-<span class="math display">\[\dim C \ge n - \deg(g).\]</span></p>
+</dd>
+<dt><strong>Example</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(0 \le i &lt; n\)</span> and consider the ideal <span class="math inline">\(\langle T^i \rangle\)</span> of
+<span class="math inline">\(A = \mathbb{F}_q[T]/\langle T^n - 1 \rangle.\)</span></p>
+<p>Notice that <span class="math inline">\(T^i\)</span> (or more precisely, the the element of <span class="math inline">\(A\)</span>
+determined by the coste <span class="math inline">\(T^i + \langle T^n -1 \rangle\)</span>) is a
+<em>unit</em> in <span class="math inline">\(A\)</span>, since <span class="math display">\[T^i \cdot T^{n-i} = 1 \quad \text{in
+$A$}\]</span>
+(i.e. <span class="math inline">\(T^i \cdot T^{n-i} \equiv T^n \equiv 1 \pmod{T^n - 1}\)</span>).</p>
+<p>Thus <span class="math inline">\(1 \in \langle T^i \rangle\)</span> so that <span class="math inline">\(\langle T^i \rangle = \langle 1 \rangle = A\)</span>.</p>
+<p>In particular, the minimal degree representative for the ideal
+<span class="math inline">\(\langle T^i \rangle\)</span> is <span class="math inline">\(1 = T^0\)</span>.</p>
+</dd>
+<dt><strong>Proposition</strong></dt>
+<dd>
+Let <span class="math inline">\(F\)</span> be any field, let <span class="math inline">\(f,g \in F[T]\)</span> and suppose that <span class="math inline">\(g \mid f\)</span>.
+Form the quotient ring <span class="math inline">\(B = F[T]/\langle f \rangle\)</span>. Then
+<span class="math display">\[\dim_F\langle g \rangle = \dim_F gB = \deg f - \deg g.\]</span>
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p>Note that <span class="math inline">\(g \mid f \implies \langle f \rangle \subseteq \langle g \rangle\)</span>. Now, basic properties of the polynomial ring tell us
+that <span class="math inline">\(\dim B = \dim F[T]/\langle f \rangle = \deg f\)</span>.</p>
+<p>(Indeed, the cosets <span class="math inline">\(T^i + \langle f \rangle\)</span> for <span class="math inline">\(0 \le i &lt; \deg f\)</span> form an <span class="math inline">\(F\)</span>-basis).</p>
+<p>One of the <em>Isomorphism Theorems</em> tells us that the quotient ring
+<span class="math inline">\(B/gB = B/\langle g \rangle\)</span> may be identified with <span class="math inline">\(F[T]/\langle g \rangle\)</span>; indeed, the natural mapping</p>
+<p><span class="math display">\[B/gB = \dfrac{F[T]/\langle f \rangle}{\langle g \rangle /
+\langle f \rangle} \to F[T]/\langle g \rangle\]</span>
+is a ring isomorphism.
+In particular, we see that <span class="math inline">\(\dim B/gB = \deg g\)</span>.</p>
+<p>Our goal is to compute the dimension of <span class="math inline">\(gB = \langle g \rangle\)</span>.
+Of course, <em>as linear spaces</em> <span class="math display">\[B \simeq \langle g \rangle
+\oplus (B/\langle g \rangle);\]</span> this shows that <span class="math display">\[\dim \langle g
+\rangle = \dim B - \dim (B/\langle g \rangle) = \deg f - \deg.\]</span></p>
 </dd>
 </dl>
-<p>We are actually going to argue that the inequality in the previous
-Lemma is always an <em>equality</em>.</p>
-<p>We first prove:</p>
+<p>We get at once:</p>
 <dl>
-<dt><strong>Lemma</strong></dt>
+<dt><strong>Corollary</strong></dt>
 <dd>
-Let <span class="math inline">\(f = \sum_{i = 0}^n a_i T^i \in \mathbb{F}_q[T]\)</span> and suppose that <span class="math inline">\(n = \deg f\)</span>. Put <span class="math inline">\(f^R(T) = T^n f(1/T)\)</span>. Then <span class="math display">\[f^R(T) =
-\sum_{i=0}^n a_{n-i} T^i.\]</span>
-</dd>
-<dt><strong>Proof</strong></dt>
-<dd>
-We compute:
-<span class="math display">\[f^R(T) = T^n \sum_{i=0}^n a_i (1/T)^i = \sum_{i=0}^n a_i T^{n-i}
-= \sum_{j=0}^n a_{n-j} T^j.\]</span>
-</dd>
-<dt><strong>Theorem</strong></dt>
-<dd>
-Let <span class="math inline">\(C = \langle g \rangle\)</span> be a cyclic code on length <span class="math inline">\(n\)</span>, where
-<span class="math inline">\(g\)</span> is monic of minimal degree in <span class="math inline">\(C\)</span>. The dual code <span class="math inline">\(C^\perp\)</span> is
-the cyclic code <span class="math inline">\(\langle h^R \rangle\)</span> where <span class="math display">\[g(T)h(T) = T^n -1
-\quad \text{and} \quad h^R(T) = T^k h(1/T), \quad k = \deg(h).\]</span>
-</dd>
-<dt><strong>Proof</strong></dt>
-<dd>
-<p>A previous proposition shows that <span class="math inline">\(g \mid T^n -1\)</span>, so we write
-<span class="math inline">\(T^n -1 = g(T) h(T)\)</span>.</p>
-<p>Let’s write <span class="math display">\[g(T) = \sum_{j=0}^{n-k} g_j T^j \quad \text{and}
-\quad h(T) = \sum_{i =0}^k h_i T^i.\]</span></p>
-<p>Observe that the code <span class="math inline">\(\langle g \rangle\)</span> (thought of in <span class="math inline">\(\mathbb{F}_q^n\)</span>)
-is generated by the rows of the <span class="math inline">\(k \times n\)</span> matrix
-<span class="math display">\[G = \begin{bmatrix}
-g_0 &amp; g_1 &amp; \cdots &amp; g_{n-k} &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; g_0 &amp; g_1 &amp; \cdots &amp; g_{n-k} &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; 0 &amp; \ddots &amp; \cdots &amp; \ddots &amp; \ddots &amp;  &amp; \vdots \\
-\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; &amp; &amp; \ddots &amp; 0 \\
-0 &amp; \cdots &amp; \cdots &amp; 0 &amp; g_0 &amp; g_1 &amp; \cdots &amp; g_{n-k}
-\end{bmatrix}.\]</span></p>
-<p>and the code <span class="math inline">\(\langle h^R \rangle\)</span> (thought of in <span class="math inline">\(\mathbb{F}_q^n\)</span>)
-is generated by the rows of the <span class="math inline">\((n-k) \times n\)</span> matrix
-<span class="math display">\[H = \begin{bmatrix}
-h_k &amp; h_{k-1} &amp; \cdots &amp; h_0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; h_k &amp; h_{k-1} &amp; \cdots &amp; h_0 &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; 0 &amp; \ddots &amp; \cdots &amp; \ddots &amp; \ddots &amp;  &amp; \vdots \\
-\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; &amp; &amp; \ddots &amp; 0 \\
-0 &amp; \cdots &amp; \cdots &amp; 0 &amp; h_k &amp; h_{k-1} &amp; \cdots &amp; h_0
-\end{bmatrix}.\]</span></p>
-<p>We view the rows and columns of <span class="math inline">\(G\)</span> as “0-indexed”.</p>
-<p>For <span class="math inline">\(0 \le s &lt; k\)</span>, row <span class="math inline">\(s\)</span> of <span class="math inline">\(G\)</span> is the vector
-<span class="math display">\[\sum_{i=0}^{n-k} g_i \mathbf{e}_{s+i} = \sum_{j=s}^{s+n-k} g_{j-s} \mathbf{e}_j\]</span>
-and for <span class="math inline">\(0 \le r &lt; n-k\)</span>, row <span class="math inline">\(r\)</span> of <span class="math inline">\(H\)</span> is the vector
-<span class="math display">\[\sum_{i=0}^{k} h_i \mathbf{e}_{r+i} = \sum_{j=r}^{r+k} h_{j-r} \mathbf{e}_j\]</span></p>
-<p>Thus the (usual) scalar product of row <span class="math inline">\(s\)</span> of <span class="math inline">\(G\)</span> and the row <span class="math inline">\(r\)</span> of <span class="math inline">\(H\)</span>
-is equal to
-$$_{i=s}^{k+r} $</p>
+If <span class="math inline">\(g \in \mathbb{F}_q[T]\)</span> and <span class="math inline">\(g\)</span> divides <span class="math inline">\(T^n - 1\)</span>, then the ideal
+<span class="math inline">\(\langle g \rangle \subset A = \mathbb{F}_q[T]/\langle T^n - 1 \rangle\)</span>
+has dimension <span class="math display">\[\dim \langle g \rangle = \dim gA = n - \deg g.\]</span>
 </dd>
 </dl>
+<p>In particular, we see that a polynomial <span class="math inline">\(g \mid T^n -1\)</span> determines a
+code with paramters <span class="math inline">\([n,n-\deg g]_q\)</span></p>
     </section>
 </article>
 

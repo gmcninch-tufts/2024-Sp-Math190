@@ -185,7 +185,7 @@ If <span class="math inline">\(\alpha \in \mathbb{F}_q^\times\)</span> is not a 
 irreducible, we could take <span class="math inline">\(f(T,S) = T^2 - \alpha S^2\)</span>.
 </dd>
 </dl>
-<p>Now form <span class="math inline">\(F(T_0,T_1,T_2,T_3) = T_0 T_1 - f(T_2,T_3) \in k[T_0,T_1,T_2,T_3]_2\)</span> and let <span class="math display">\[Q = \{ P \in \mathbb{P}^3 \mid Q(P) = 0\}.\]</span></p>
+<p>Now form <span class="math inline">\(F(T_0,T_1,T_2,T_3) = T_0 T_1 - f(T_2,T_3) \in k[T_0,T_1,T_2,T_3]_2\)</span> and let <span class="math display">\[Q = \{ P \in \mathbb{P}^3 \mid F(P) = 0\}.\]</span></p>
 <dl>
 <dt><strong>Proposition</strong></dt>
 <dd>
@@ -235,18 +235,33 @@ and <span class="math inline">\((0:1:0:0)\)</span>.</p>
 <p>If one of <span class="math inline">\(a,b\)</span> is non-zero, we may suppose WLOG that <span class="math inline">\(a \ne 0\)</span>
 and even that <span class="math inline">\(a=1\)</span>. Now, at least one of <span class="math inline">\(c',d'\)</span> is non-zero and
 WLOG we suppose that <span class="math inline">\(c' \ne 0\)</span> and even that <span class="math inline">\(c' = 1\)</span>.</p>
-<p>For a point <span class="math display">\[(x_0:x_1:x_2:x_3) \in Q \cap L\]</span> we have
+<p>So we have
+<span class="math display">\[\begin{align*} 
+\phi =&amp;  X_0  + bX_1 +&amp; cX_2 + dX_3 \\
+\psi =&amp;   &amp; X_2 + d'X_3 \\		
+\end{align*}\]</span>
+Replacing <span class="math inline">\(\phi\)</span> by a suitable <span class="math inline">\(\phi + t \psi\)</span> we can arrange
+<span class="math display">\[\begin{align*} 
+\phi =&amp;  X_0  + bX_1 +&amp; + dX_3 \\
+\psi =&amp;   &amp; X_2 + d'X_3 \\		
+\end{align*}\]</span></p>
+<p>For a point <span class="math display">\[\mathbf{x}=(x_0:x_1:x_2:x_3) \in Q \cap L\]</span> we have
 <span class="math display">\[\begin{align*}
 x_2 &amp;= -d' x_3 \\
-x_0 &amp;= -b x_1 - cx_2 - dx_3 = -b x_1 + cd' x_3 - dx_3
-= -bx_1 + (cd' -d)x_3\\
+x_0 &amp;= -b x_1 - dx_3 \\
 \end{align*}\]</span>
 Applying <span class="math inline">\(\phi\)</span> we find that
-<span class="math display">\[(-bx_1 + (cd' -d)x_3) x_1 -  f(-d x_3,x_3) = 0.\]</span></p>
-<p>Since <span class="math inline">\(f\)</span> is irreducible, the degree 2 homogeneous polynomial
-<span class="math display">\[H(X_1,X_3) = (-bX_1 + (cd' -d)X_3) X_1 -  f(-d X_3,X_3) \in \mathbb{F}_q[X_1,X_3]\]</span>
-is non-zero. Thus <span class="math inline">\(H\)</span> has no more than 2 roots in <span class="math inline">\(\mathbb{P}^1\)</span>, and this shows
-that <span class="math inline">\(\phi\)</span> has no more than 2 roots in the line <span class="math inline">\(L\)</span> determined by <span class="math inline">\(\phi,\psi\)</span>.</p>
+<span class="math display">\[(-bx_1 + -dx_3) x_1 -  f(-d' x_3,x_3) = 0.\]</span></p>
+<p>Observe that the polyonomial <span class="math inline">\(f(-d'X_3,X_3)\)</span> is just a multiple of
+<span class="math inline">\(X_3^2\)</span>; say <span class="math inline">\(f(-d'X_3,X_3) = \alpha X_3^2\)</span>. Now, <span class="math inline">\(\mathbf{x}\)</span> is a root
+of the degree 2 homogeneous polynomial <span class="math display">\[H(X_1,X_3) = (-bX_1 -
+dX_3) X_1 - f(-d' X_3,X_3) = - bX_1^2 + - dX_1X_3 - \alpha X_3^2\in
+\mathbb{F}_q[X_1,X_3].\]</span></p>
+<p>If either <span class="math inline">\(b\)</span> or <span class="math inline">\(d\)</span> is non-zero, then <span class="math inline">\(H\)</span> is non-zero. If <span class="math inline">\(b = d = 0\)</span>, the irreducibility of <span class="math inline">\(f\)</span> shows that <span class="math inline">\(f(0,X_3)\)</span> is a <em>non-zero</em>
+multiple of <span class="math inline">\(X_3\)</span> – i.e. <span class="math inline">\(\alpha \ne 0\)</span>. So in all cases, <span class="math inline">\(H \ne 0\)</span>.
+Thus, <span class="math inline">\(H\)</span> has no more than 2 roots in
+<span class="math inline">\(\mathbb{P}^1\)</span>. This shows that <span class="math inline">\(\phi\)</span> has no more than 2 roots in the
+line <span class="math inline">\(L\)</span> determined by <span class="math inline">\(\phi,\psi\)</span>.</p>
 <p>This completes the proof.</p>
 </dd>
 </dl>

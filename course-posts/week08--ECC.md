@@ -6,7 +6,7 @@ date: 2024-03-03
 ---
 
 
-- [[Codes from points in projective space - 2024-03-04]](/course-contents/2024-03-04-p0--projective.html)
+- [[Codes from points in projective space - 2024-03-04]](/course-contents/2024-03-04--projective.html)
 
 - [[Cyclic codes - 2024-03-06]](/course-contents/2024-03-06--cyclic.html)
 
