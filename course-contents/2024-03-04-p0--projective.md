@@ -269,20 +269,38 @@ k[T_0,T_1,T_2,T_3]_2$ and let $$Q = \{ P \in \PP^3 \mid Q(P) = 0\}.$$
     If one of $a,b$ is non-zero, we may suppose WLOG that $a \ne 0$
 	and even that $a=1$.  Now, at least one of $c',d'$ is non-zero and
 	WLOG we suppose that $c' \ne 0$ and even that $c' = 1$.
+
+    So we have
+	\begin{align*} 
+	\phi =&  X_0  + bX_1 +& cX_2 + dX_3 \\
+	\psi =&   & X_2 + d'X_3 \\		
+	\end{align*}
+	Replacing $\phi$ by a suitable $\phi + t \psi$ we can arrange
+	\begin{align*} 
+	\phi =&  X_0  + bX_1 +& + dX_3 \\
+	\psi =&   & X_2 + d'X_3 \\		
+	\end{align*}
 	
-	For a point $$(x_0:x_1:x_2:x_3) \in Q \cap L$$ we have
+	For a point $$\xx=(x_0:x_1:x_2:x_3) \in Q \cap L$$ we have
 	\begin{align*}
 	x_2 &= -d' x_3 \\
-	x_0 &= -b x_1 - cx_2 - dx_3 = -b x_1 + cd' x_3 - dx_3
-	= -bx_1 + (cd' -d)x_3\\
+	x_0 &= -b x_1 - dx_3 \\
 	\end{align*}
 	Applying $\phi$ we find that
-	$$(-bx_1 + (cd' -d)x_3) x_1 -  f(-d x_3,x_3) = 0.$$
+	$$(-bx_1 + -dx_3) x_1 -  f(-d' x_3,x_3) = 0.$$
 	
-	Since $f$ is irreducible, the degree 2 homogeneous polynomial
-	$$H(X_1,X_3) = (-bX_1 + (cd' -d)X_3) X_1 -  f(-d X_3,X_3) \in \F_q[X_1,X_3]$$
-	is non-zero. Thus $H$ has no more than 2 roots in $\PP^1$, and this shows
-	that $\phi$ has no more than 2 roots in the line $L$ determined by $\phi,\psi$.
+	Observe that the polyonomial $f(-d'X_3,X_3)$ is just a multiple of
+	$X_3^2$; say $f(-d'X_3,X_3) = \alpha X_3^2$.  Now, $\xx$ is a root
+	of the degree 2 homogeneous polynomial $$H(X_1,X_3) = (-bX_1 -
+	dX_3) X_1 - f(-d' X_3,X_3) = - bX_1^2 + - dX_1X_3 - \alpha X_3^2\in
+	\F_q[X_1,X_3].$$ 
+	
+	If either $b$ or $d$ is non-zero, then $H$ is non-zero. If $b = d
+	= 0$, the irreducibility of $f$ shows that $f(0,X_3)$ is a *non-zero*
+	multiple of $X_3$ -- i.e. $\alpha \ne 0$. So in all cases, $H \ne 0$.
+	Thus, $H$ has no more than 2 roots in
+	$\PP^1$. This shows that $\phi$ has no more than 2 roots in the
+	line $L$ determined by $\phi,\psi$.
 	
 	This completes the proof.
 	

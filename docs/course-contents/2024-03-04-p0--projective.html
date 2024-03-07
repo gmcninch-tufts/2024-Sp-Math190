@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - Codes from points in projective space</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>Codes from points in projective space</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-03-04
+        
+    </section>
+    <section>
+        <h1 id="codes-and-vectors">Codes and vectors</h1>
+<p>From the usual perspective, an <span class="math inline">\([n,k]_q\)</span>-code <span class="math inline">\(C\)</span> is given as a
+subspace <span class="math inline">\(C \subset \mathbb{F}_q^n\)</span>. Rather than give the embedding, we are
+going to explain how the “additional coordinates” can instead be
+understood using points in <span class="math inline">\(\mathbb{P}^{k-1}\)</span>.</p>
+<p>So, let <span class="math inline">\(C\)</span> be an <span class="math inline">\([n,k]_q\)</span>-code and let the <span class="math inline">\(k \times n\)</span> matrix <span class="math inline">\(G\)</span>
+be a generator matrix for <span class="math inline">\(C\)</span>.</p>
+<p>Let us view the <em>columns of <span class="math inline">\(G\)</span></em> as a multi-set <span class="math inline">\(S\)</span> of vectors in
+<span class="math inline">\(\mathbb{F}_q^k\)</span>.</p>
+<dl>
+<dt><strong>Proposition</strong></dt>
+<dd>
+<p>The following are equivalent for the natural number <span class="math inline">\(d\)</span>:</p>
+<ol type="a">
+<li><p><span class="math inline">\(d\)</span> is the minimal distance of <span class="math inline">\(C\)</span></p></li>
+<li><p>each hyperplane of <span class="math inline">\(\mathbb{F}_q^k\)</span> contains at most <span class="math inline">\(n-d\)</span> vectors of
+<span class="math inline">\(S\)</span>, and some hyperplane of <span class="math inline">\(\mathbb{F}_q^k\)</span> contains exactly <span class="math inline">\(n-d\)</span>
+vectors of <span class="math inline">\(S\)</span>.</p></li>
+</ol>
+</dd>
+<dt><strong>Proof/sketch</strong></dt>
+<dd>
+<p>Recall that the map <span class="math inline">\(v \mapsto vG\)</span> gives an isomorphism
+<span class="math inline">\(\mathbb{F}_q^k \to C\)</span>.</p>
+<p>Write <span class="math inline">\(\langle \cdot, \cdot \rangle\)</span> for the standard inner
+product on <span class="math inline">\(\mathbb{F}_q^k\)</span>. For a vector <span class="math inline">\(\mathbf{u}\in \mathbb{F}_q^k\)</span>, write
+<span class="math inline">\(\pi_\mathbf{u}\)</span> for the hyperplane defined by <span class="math display">\[\pi_\mathbf{u}= \{ \mathbf{v}\in
+\mathbb{F}_q^k \mid \langle \mathbf{v},\mathbf{u}\rangle = 0\}.\]</span></p>
+<p>Notice that <span class="math inline">\(\pi_{\mathbf{u}} = \pi_{\lambda \mathbf{u}}\)</span> for any <span class="math inline">\(0 \ne \lambda \in \mathbb{F}_q^k\)</span>. The <span class="math inline">\(\pi_\mathbf{u}\)</span> for <span class="math inline">\(\mathbf{u}\ne 0\)</span> are precisely the
+hyperplanes of <span class="math inline">\(\mathbb{F}_q^k\)</span>.</p>
+<p>Now, label the coordinates of <span class="math inline">\(vG\)</span> by the points in <span class="math inline">\(S\)</span>; for <span class="math inline">\(s\in S\)</span>
+the <span class="math inline">\(s\)</span>-coordinate of <span class="math inline">\(vG\)</span> is thus <span class="math inline">\(\langle v , s \rangle\)</span>.</p>
+<p>Now the proposition follows from the observation that for <span class="math inline">\(v \in \mathbb{F}_q^k\)</span>, we have:</p>
+<p><span class="math display">\[\langle v, s \rangle = 0 \iff s \in \pi_v.\]</span></p>
+</dd>
+</dl>
+<h1 id="points-in-projective-space">Points in projective space</h1>
+<p>We can reformulate the above discussion using the projective space
+<span class="math inline">\(\mathbb{P}^{k-1}\)</span> determined by <span class="math inline">\(\mathbb{F}_q^k\)</span>.</p>
+<p><em>Assume that the generator matrix has no <span class="math inline">\(0\)</span>-columns</em>. Let <span class="math inline">\(S\)</span> be the
+set of points <span class="math inline">\([x] \in \mathbb{P}^{k-1}\)</span> where <span class="math inline">\(x\)</span> is a column of the matrix
+<span class="math inline">\(G\)</span>.</p>
+<p>Now observe that each hyperplane <span class="math inline">\(\Pi_\mathbf{u}\)</span> in <span class="math inline">\(\mathbb{P}^{k-1}\)</span> has the form
+<span class="math display">\[\Pi_\mathbf{u}= \{ [v] \in \mathbb{P}^{k-1} \mid \langle \mathbf{v},\mathbf{u}\rangle = 0\}.\]</span></p>
+<p>Repeating the proof given above we obtain:</p>
+<dl>
+<dt><strong>Proposition</strong> <em>(Reformulation)</em></dt>
+<dd>
+<p>The following are equivalent for the natural number <span class="math inline">\(d\)</span>:</p>
+<ol type="a">
+<li><p><span class="math inline">\(d\)</span> is the minimal distance of <span class="math inline">\(C\)</span></p></li>
+<li><p>each hyperplane of <span class="math inline">\(\mathbb{P}^{k-1}\)</span> contains at most <span class="math inline">\(n-d\)</span> vectors of
+<span class="math inline">\(S\)</span>, and some hyperplane of <span class="math inline">\(\mathbb{P}^{k-1}\)</span> contains exactly <span class="math inline">\(n-d\)</span>
+vectors of <span class="math inline">\(S\)</span>.</p></li>
+</ol>
+</dd>
+</dl>
+<p>Conversely, given a subset <span class="math inline">\(S \subset \mathbb{P}^{k-1}\)</span>, we construct a code
+<span class="math inline">\(C(S)\)</span> with generator matrix <span class="math inline">\(G\)</span>, where the columns of <span class="math inline">\(G\)</span> are vector
+representatives for the points in <span class="math inline">\(S\)</span>.</p>
+<h1 id="polynomials-on-mathbbp1">Polynomials on <span class="math inline">\(\mathbb{P}^1\)</span></h1>
+<p>Let <span class="math inline">\(g(X,Y) \in k[X,Y]_d\)</span> be a <em>homogeneous polynomial of degree
+<span class="math inline">\(d\)</span></em>. Thus <span class="math inline">\(g(X,Y)\)</span> is a <span class="math inline">\(k\)</span>-linear combination of <em>monomials</em> of the
+form <span class="math inline">\(X^i Y^{d-i}\)</span>, say <span class="math display">\[(*) \quad g(X,Y) = \sum_{i=0}^d a_i X^{d-i}
+Y^i, \quad a_i \in \mathbb{F}_q.\]</span></p>
+<p>Note that we can “evaluate” <span class="math inline">\(g(X,Y)\)</span> at a point <span class="math inline">\(P=(x:y) \in \mathbb{P}^1\)</span>;
+we write <span class="math display">\[g(P) = g(x,y).\]</span> Note that since <span class="math inline">\(g\)</span> is <em>homogeneous</em>, for
+a non-zero <span class="math inline">\(\lambda \in \mathbb{F}_q\)</span> we have <span class="math inline">\(g(\lambda x, \lambda y) = \lambda^d g(x,y)\)</span>. Thus, the <em>value</em> of <span class="math inline">\(g\)</span> at <span class="math inline">\(P\)</span> is not
+well-defined, but the condition <span class="math inline">\(g(P) = 0\)</span> is independent of the
+choice of representative <span class="math inline">\((x:y)\)</span> for <span class="math inline">\(P\)</span>.</p>
+<p>If <span class="math inline">\(g(P) = 0\)</span> for a point <span class="math inline">\(P \in \mathbb{P}^1\)</span> we say that <span class="math inline">\(P\)</span> is a <em>root</em> of
+<span class="math inline">\(g(X,Y)\)</span>.</p>
+<dl>
+<dt><strong>Proposition</strong></dt>
+<dd>
+If <span class="math inline">\(g(X,Y) \ne 0\)</span> then are <span class="math inline">\(\le d\)</span> roots of <span class="math inline">\(g(X,Y)\)</span> in <span class="math inline">\(\mathbb{P}^1\)</span>.
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p>Recall that <span class="math inline">\(\mathbb{P}^1 = \{(0:1)\} \cup \{(1:t) \mid t \in \mathbb{F}_q\}\)</span>.</p>
+<p>Let’s proceed by induction on <span class="math inline">\(d \ge 1\)</span>.</p>
+<p>If <span class="math inline">\(d = 1\)</span>, then <span class="math inline">\(g(X,Y) = a X + b Y\)</span>, and there is exactly one
+solution in <span class="math inline">\(\mathbb{P}^1\)</span>, namely the point <span class="math inline">\((-b:a)\)</span>.</p>
+<p>Now suppose that <span class="math inline">\(d \ge 2\)</span> and that every polynomial of degree
+<span class="math inline">\(d-1\)</span> is know to have no more than <span class="math inline">\(d-1\)</span> roots in <span class="math inline">\(\mathbb{P}^1\)</span>.
+Let <span class="math inline">\(g(X,Y)\)</span> have degree <span class="math inline">\(d\)</span>.</p>
+<p>First suppose that <span class="math inline">\(g(0,1) = 0\)</span> – i.e. that <span class="math inline">\((0:1)\)</span> is a root of
+<span class="math inline">\(g(X,Y)\)</span>. Then <span class="math display">\[g(0,1) = a_d = 0\]</span> so that <span class="math display">\[g(X,Y) =
+\sum_{i=0}^{d-1} a_i X^{d-i}Y^i = X\left(\sum_{i=0}^{d-1} a_i
+X^{d-i-1}Y^i\right) = X \cdot h(X,Y)\]</span> where <span class="math display">\[h(X,Y) =
+\sum_{i=0}^{d-1} a_i X^{d-i-1}Y^i\]</span> is homogeneous of degree
+<span class="math inline">\(d-1\)</span>. Now, by induction <span class="math inline">\(h(X,Y)\)</span> has no more than <span class="math inline">\(d-1\)</span> roots in
+<span class="math inline">\(\mathbb{P}^1\)</span>, and if <span class="math inline">\((1:t)\)</span> is a root of <span class="math inline">\(g(X,Y)\)</span> then it is also a
+root of <span class="math inline">\(h(X,Y)\)</span>. This proves that <span class="math inline">\(g(X,Y)\)</span> has no more than
+<span class="math inline">\((d-1) + 1 = d\)</span> roots in <span class="math inline">\(\mathbb{P}^1\)</span> in this case.</p>
+<p>Finally, suppose that <span class="math inline">\(g(0,1) \ne 0\)</span>. Thus <span class="math inline">\(a_d \ne 0\)</span>. In this
+case, for points of the form <span class="math inline">\(P = (1:t)\)</span> we see that <span class="math display">\[g(1,t)=
+\sum_{i=0}^d a_i t^i,\]</span> so <span class="math inline">\(P\)</span> is a root of <span class="math inline">\(g(X,Y)\)</span> just in case
+<span class="math inline">\(t\)</span> is a root of the polynomial <span class="math inline">\(\displaystyle \sum_{i=0}^d a_i T^i \in \mathbb{F}_q[T]\)</span>. Since this polynomial has degree <span class="math inline">\(d\)</span>, there are
+no more than <span class="math inline">\(d\)</span> such roots <span class="math inline">\(t \in \mathbb{F}_q\)</span>.</p>
+</dd>
+<dt><strong>Construction</strong></dt>
+<dd>
+<p>We give an example of a construction of a code by specifying
+points in projective space.</p>
+<p>More precisely, let <span class="math display">\[\phi = \phi(T_0,T_1,T_2) \in
+\mathbb{F}_q[T_0,T_1,T_2]_m\]</span> be <em>irreducible</em> homogeneous of degree <span class="math inline">\(m\)</span>
+and let
+<span class="math display">\[S = \{ P \in \mathbb{P}^2 \mid \phi(P) = 0\}.\]</span></p>
+<p>Now, a line <span class="math inline">\(L\)</span> in <span class="math inline">\(\mathbb{P}^2\)</span> is determined by a non-zero linear
+function <span class="math inline">\(\psi = a T_0 + b T_1 + c T_2\)</span>. Note that <span class="math inline">\(L\)</span> may be
+identified with <span class="math inline">\(\mathbb{P}^1\)</span>. Since <span class="math inline">\(\phi\)</span> is irreducible, <span class="math inline">\(\psi \not \mid \phi\)</span>; thus <span class="math inline">\(\phi\)</span> defines by restriction a non-zero
+homogeneous polynomial of degree <span class="math inline">\(m\)</span> on <span class="math inline">\(L\)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. According to the
+previous Proposition, <span class="math inline">\(\phi\)</span> has no more than <span class="math inline">\(m\)</span> roots in <span class="math inline">\(L\)</span>.</p>
+<p>The code <span class="math inline">\(C(S)\)</span> determined by <span class="math inline">\(S\)</span> has parameters
+<span class="math display">\[[|S|, 3, d]_q\]</span> where
+<span class="math inline">\(d \ge |S| - \deg \phi\)</span>. Indeed, the preceding discussion shows
+that <span class="math inline">\(|S \cap L| \le \deg \phi\)</span>.</p>
+</dd>
+</dl>
+<dl>
+<dt><strong>Example</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(\phi = T_0^2 - T_1 T_2\)</span> so that <span class="math inline">\(\phi\)</span> has degree 2.
+Then <span class="math inline">\(|S| = q+1\)</span>. Indeed,</p>
+<ul>
+<li><p><span class="math inline">\((1:y:z) \in S \iff yz = 1\)</span> so there are <span class="math inline">\(q-1\)</span> solutions of this
+form.</p></li>
+<li><p><span class="math inline">\((0:1:z) \in S \iff z = 0\)</span> so there is 1 solution of this form.</p></li>
+<li><p><span class="math inline">\((0:0:1) \in S\)</span> gives another solution.</p></li>
+</ul>
+<p>In this case, note that that the line <span class="math inline">\(Y=Z\)</span> has two roots of
+<span class="math inline">\(\phi\)</span>, namely <span class="math inline">\((1:1:1)\)</span> and <span class="math inline">\((1:-1:-1)\)</span>. Since each line has no
+more than 2 roots of <span class="math inline">\(\phi\)</span>, it follows that the code <span class="math inline">\(C(S)\)</span> has
+minimal distance <span class="math inline">\(d = q+1 - 2 = q-1\)</span> so that
+<span class="math inline">\(C(S)\)</span> has parameters
+<span class="math display">\[[q+1,3,q-2]_q.\]</span></p>
+</dd>
+</dl>
+<h1 id="an-elliptic-quadric">An “elliptic quadric”</h1>
+<p>Let <span class="math inline">\(f\)</span> be a irreducible homogeneous polynomial of degree 2 in two variables.</p>
+<dl>
+<dt><strong>Example</strong></dt>
+<dd>
+If <span class="math inline">\(\alpha \in \mathbb{F}_q^\times\)</span> is not a square, so that <span class="math inline">\(T^2 - \alpha\)</span> is
+irreducible, we could take <span class="math inline">\(f(T,S) = T^2 - \alpha S^2\)</span>.
+</dd>
+</dl>
+<p>Now form <span class="math inline">\(F(T_0,T_1,T_2,T_3) = T_0 T_1 - f(T_2,T_3) \in k[T_0,T_1,T_2,T_3]_2\)</span> and let <span class="math display">\[Q = \{ P \in \mathbb{P}^3 \mid Q(P) = 0\}.\]</span></p>
+<dl>
+<dt><strong>Proposition</strong></dt>
+<dd>
+If <span class="math inline">\(L\)</span> is a line in <span class="math inline">\(\mathbb{P}^3\)</span>, then <span class="math inline">\(Q\)</span> contains no more than 2
+points on <span class="math inline">\(L\)</span>.
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+<p>Let <span class="math inline">\(L\)</span> be a line in <span class="math inline">\(\mathbb{P}^3\)</span>. Of course, <span class="math inline">\(L\)</span> is determined by a 2 dimensional
+subspace <span class="math inline">\(W\)</span> of <span class="math inline">\(\mathbb{F}_q^4\)</span>. Thus there are <span class="math inline">\(\phi,\psi \in (\mathbb{F}_q^k)^*\)</span>
+for which <span class="math inline">\(W = \ker \phi \cap \ker \psi\)</span>; i.e.
+<span class="math display">\[L = \{ P \mid \phi(P) = \psi(P) = 0\}.\]</span></p>
+<p>Let’s write
+<span class="math display">\[\begin{align*}
+\phi =&amp; a X_0  + bX_1 + cX_2 + dX_3 \\
+\psi =&amp; a' X_0  + b'X_1 + c'X_2 + d'X_3 \\	
+\end{align*}\]</span>
+for scalars <span class="math inline">\(a,b,c,a',b',c' \in \mathbb{F}_q\)</span>.</p>
+<p>Of course, <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\psi\)</span> are linearly independent.</p>
+<p>Let us first consider the case where <span class="math inline">\(\det \begin{bmatrix} a &amp; b \\ a' &amp; b' \end{bmatrix} \ne 0\)</span>. Under this assumption, after replacing
+<span class="math inline">\(\phi\)</span> and <span class="math inline">\(\psi\)</span> by suitable linear combinations <span class="math inline">\(\alpha \phi + \beta \psi\)</span>, we may suppose that
+<span class="math display">\[\begin{align*}
+\phi =&amp; X_0  - \alpha X_2 -  \beta X_3 \\
+\psi =&amp; X_1- \gamma X_2 - \delta X_3 
+\end{align*}\]</span>
+for scalars <span class="math inline">\(\alpha,\beta,\gamma,\delta \in \mathbb{F}_q\)</span>.</p>
+<p>Thus on <span class="math inline">\(L\)</span> we have <span class="math inline">\(X_0 = \alpha X_2 + \beta X_3\)</span> and <span class="math inline">\(X_1 = \gamma X_2 + \delta X_3\)</span>.
+For a point <span class="math inline">\(P=(x_0:x_1:x_2:x_3) \in Q \cap L\)</span> we have
+<span class="math display">\[Q(P) = (\alpha x_2 + \beta x_3)(\gamma x_2 + \delta x_3) - f(x_2,x_3).\]</span>
+i.e. <span class="math inline">\((x_2:x_3)\)</span> is a root of the 2-variable homogeneous polynomial
+<span class="math display">\[h(X_2,X_3) = (\alpha X_2 + \beta X_3)(\gamma X_2 + \delta X_3) - f(X_2,X_3).\]</span></p>
+<p>Since <span class="math inline">\(f\)</span> is <em>irreducible</em>, the polynomial <span class="math inline">\(h\)</span> is <em>non-zero</em>, and
+<span class="math inline">\(h\)</span> thus has no more than 2 solutions in <span class="math inline">\(\mathbb{P}^1\)</span> so that <span class="math inline">\(\phi\)</span>
+has no more than 2 roots in <span class="math inline">\(L\)</span>.</p>
+<p>Next we suppose that <span class="math inline">\(\det \begin{bmatrix} a &amp; b \\ a' &amp; b' \end{bmatrix} = 0.\)</span> Since one row is a multiple of the other, we
+may suppose - after replacing <span class="math inline">\(\psi\)</span> by <span class="math inline">\(\phi - \lambda \psi\)</span> for
+suitable <span class="math inline">\(\lambda \in \mathbb{F}_q\)</span> - that we have</p>
+<p><span class="math display">\[\begin{align*} 
+\phi =&amp; a X_0  + bX_1 +&amp; cX_2 + dX_3 \\
+\psi =&amp; &amp;  c'X_2 + d'X_3 \\		
+\end{align*}\]</span></p>
+<p>If <span class="math inline">\(a = b = 0\)</span>, then after replacing <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\psi\)</span> by suitable
+linear combinations of <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\psi\)</span> we may suppose that <span class="math inline">\(\phi = X_2\)</span> and <span class="math inline">\(\psi = X_3\)</span>. Then any point <span class="math inline">\((x_0:x_1:x_2:x_3) \in Q \cap L\)</span> has <span class="math inline">\(x_2 = x_3 = 0\)</span>. Now applying <span class="math inline">\(\phi\)</span>
+we find <span class="math display">\[x_0 x_1 = f(x_2,x_3) = f(0,0) = 0\]</span> so that one of
+<span class="math inline">\(x_0,x_1\)</span> must be zero. This leads to the two solutions <span class="math inline">\((1:0:0:0)\)</span>
+and <span class="math inline">\((0:1:0:0)\)</span>.</p>
+<p>If one of <span class="math inline">\(a,b\)</span> is non-zero, we may suppose WLOG that <span class="math inline">\(a \ne 0\)</span>
+and even that <span class="math inline">\(a=1\)</span>. Now, at least one of <span class="math inline">\(c',d'\)</span> is non-zero and
+WLOG we suppose that <span class="math inline">\(c' \ne 0\)</span> and even that <span class="math inline">\(c' = 1\)</span>.</p>
+<p>So we have
+<span class="math display">\[\begin{align*} 
+\phi =&amp;  X_0  + bX_1 +&amp; cX_2 + dX_3 \\
+\psi =&amp;   &amp; X_2 + d'X_3 \\		
+\end{align*}\]</span>
+Replacing <span class="math inline">\(\phi\)</span> by a suitable <span class="math inline">\(\phi + t \psi\)</span> we can arrange
+<span class="math display">\[\begin{align*} 
+\phi =&amp;  X_0  + bX_1 +&amp; + dX_3 \\
+\psi =&amp;   &amp; X_2 + d'X_3 \\		
+\end{align*}\]</span></p>
+<p>For a point <span class="math display">\[\mathbf{x}=(x_0:x_1:x_2:x_3) \in Q \cap L\]</span> we have
+<span class="math display">\[\begin{align*}
+x_2 &amp;= -d' x_3 \\
+x_0 &amp;= -b x_1 - dx_3 \\
+\end{align*}\]</span>
+Applying <span class="math inline">\(\phi\)</span> we find that
+<span class="math display">\[(-bx_1 + -dx_3) x_1 -  f(-d' x_3,x_3) = 0.\]</span></p>
+<p>Observe that the polyonomial <span class="math inline">\(f(-d'X_3,X_3)\)</span> is just a multiple of
+<span class="math inline">\(X_3^2\)</span>; say <span class="math inline">\(f(-d'X_3,X_3) = \alpha X_3^2\)</span>. Now, <span class="math inline">\(\mathbf{x}\)</span> is a root
+of the degree 2 homogeneous polynomial <span class="math display">\[H(X_1,X_3) = (-bX_1 -
+dX_3) X_1 - f(-d' X_3,X_3) = - bX_1^2 + - dX_1X_3 - \alpha X_3^2\in
+\mathbb{F}_q[X_1,X_3].\]</span></p>
+<p>If either <span class="math inline">\(b\)</span> or <span class="math inline">\(d\)</span> is non-zero, then <span class="math inline">\(H\)</span> is non-zero. If <span class="math inline">\(b = d = 0\)</span>, the irreducibility of <span class="math inline">\(f\)</span> shows that <span class="math inline">\(f(0,X_3)\)</span> is a <em>non-zero</em>
+multiple of <span class="math inline">\(X_3\)</span> – i.e. <span class="math inline">\(\alpha \ne 0\)</span>. So in all cases, <span class="math inline">\(H \ne 0\)</span>.
+Thus, <span class="math inline">\(H\)</span> has no more than 2 roots in
+<span class="math inline">\(\mathbb{P}^1\)</span>. This shows that <span class="math inline">\(\phi\)</span> has no more than 2 roots in the
+line <span class="math inline">\(L\)</span> determined by <span class="math inline">\(\phi,\psi\)</span>.</p>
+<p>This completes the proof.</p>
+</dd>
+</dl>
+<p>The points in <span class="math inline">\(Q\)</span> are easy to describe; they are as follows:
+<span class="math display">\[Q = \{ (1:f(x,y):x:y) \mid x,y \in \mathbb{F}_q\} \cup \{(0:1:0:0)\}.\]</span>
+In particular, this shows that <span class="math inline">\(|Q| = q^2 + 1\)</span>.</p>
+<p>Now form the <span class="math inline">\(4 \times (q^2 + 1)\)</span> matrix <span class="math inline">\(H\)</span> whose columns are vector
+representatives for the points in <span class="math inline">\(Q\)</span>.</p>
+<p>The previous Proposition immediately implies:</p>
+<dl>
+<dt><strong>Corollary</strong></dt>
+<dd>
+Any 3 columns of <span class="math inline">\(H\)</span> are linearly independent.
+</dd>
+<dt><strong>Proof</strong></dt>
+<dd>
+Indeed, if <span class="math inline">\(P_1,P_2,P_3 \in Q\)</span> are distinct points, the
+proposition shows that they are not co-linear. Hence if the
+vectors <span class="math inline">\(v_1,v_2,v_3\)</span> are representatives of the <span class="math inline">\(P_i\)</span>, the span
+<span class="math inline">\(\mathbb{F}_q v_1 + \mathbb{F}_q v_2 + \mathbb{F}_q v_3\)</span> must have dimension 3.
+</dd>
+</dl>
+<p>On the other hand, <span class="math inline">\(H\)</span> has 4 linearly dependent columns, at least if <span class="math inline">\(q \ge 3\)</span>. For this it is enough to see that there is a plane in <span class="math inline">\(\mathbb{P}^3\)</span>
+containing <span class="math inline">\(4\)</span> points of <span class="math inline">\(Q\)</span>. In fact, any three points <span class="math inline">\(P_1,P_2,P_3\)</span>
+in <span class="math inline">\(Q\)</span> determine a unique plane <span class="math inline">\(H\)</span> in <span class="math inline">\(\mathbb{P}^3\)</span>, and there are <span class="math inline">\(q+1\)</span>
+points of <span class="math inline">\(Q\)</span> contained in <span class="math inline">\(H\)</span>.</p>
+<p>We write <span class="math inline">\(C^\perp\)</span> of the code <em>generated</em> by the rows of <span class="math inline">\(H\)</span> –
+i.e. <span class="math inline">\(C^\perp = C(Q)\)</span>. Thus <span class="math inline">\(C^\perp\)</span> is a <span class="math inline">\([q^2 + 1,4]_q\)</span>-code.</p>
+<p>Now, the code <span class="math inline">\(C\)</span> dual to <span class="math inline">\(C^\perp\)</span> has <em>check matrix</em> <span class="math inline">\(H\)</span>.
+The corollary shows that the minimal distance <span class="math inline">\(d\)</span> of <span class="math inline">\(C\)</span> satisfies
+<span class="math inline">\(d = 4\)</span> so that
+<span class="math inline">\(C\)</span> is a <span class="math inline">\([q^2+1,q^2-3,4]_q\)</span>-code.</p>
+<p>In fact, one can describe the weight-enumerator polynomial of
+<span class="math inline">\(C^\perp\)</span> geometrically, and then use the McWilliams identity to get
+the weight-enumerator polynomial for <span class="math inline">\(C\)</span>; see
+<span class="citation" data-cites="ballCourseAlgebraicErrorCorrecting2020">(Ball 2020, sec. 4.6, page 62)</span></p>
+<h1 id="bibliography">Bibliography</h1>
+<div class="refs">
+
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-ballCourseAlgebraicErrorCorrecting2020" class="csl-entry" role="listitem">
+Ball, Simeon. 2020. <em>A <span>Course</span> in <span>Algebraic Error-Correcting Codes</span></em>. Compact <span>Textbooks</span> in <span>Mathematics</span>. <span>Cham</span>: <span>Springer International Publishing</span>. <a href="https://doi.org/10.1007/978-3-030-41153-4">https://doi.org/10.1007/978-3-030-41153-4</a>.
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>To be more precise, one knows that <span class="math inline">\(\phi\)</span> doesn’t vanish on the
+points of <span class="math inline">\(L\)</span> in any extension field. Note that if <span class="math inline">\(m \ge q+1\)</span>,
+it is possible that <span class="math inline">\(\phi(P) = 0\)</span> for every point <span class="math inline">\(P\)</span> in <span class="math inline">\(L\)</span>,
+though there will be some field extension <span class="math inline">\(\mathbb{F}_{q^r}\)</span> and a point
+<span class="math inline">\(Q\)</span> in “<span class="math inline">\(L\)</span> over <span class="math inline">\(\mathbb{F}_{q^r}\)</span>” with <span class="math inline">\(\phi(Q) \ne 0\)</span>. But in any
+event, it is still true that <span class="math inline">\(\phi\)</span> can have no more than <span class="math inline">\(m\)</span>
+roots in <span class="math inline">\(L\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>
