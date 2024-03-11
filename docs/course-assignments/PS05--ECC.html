@@ -42,7 +42,39 @@
     </section>
     <section>
         <ol type="1">
-<li><p><strong>[temporarily removed [2024-03-11]. After reformulation I’ll repost, hopefully later today]</strong></p></li>
+<li><p>Let <span class="math inline">\(q\)</span> be a power of a prime <span class="math inline">\(p &gt; 3\)</span> and let <span class="math inline">\(k = \mathbb{F}_q\)</span>.</p>
+<p>For a homogeneous polynomial <span class="math inline">\(F \in k[X,Y,Z,W]\)</span>, let us write
+<span class="math display">\[V(F) = \{ P = (x:y:z:w) \in \mathbb{P}^2_k \mid F(x,y,z,w) = 0\}\]</span>
+for the set of roots of <span class="math inline">\(F\)</span> in <span class="math inline">\(\mathbb{P}^2_k\)</span>.</p>
+<p>For <span class="math inline">\(a \in k^\times\)</span>, consider the polynomial
+<span class="math display">\[F_a = XY + Z^2 - aW^2 \in k[X,Y,Z,W].\]</span></p>
+<ol type="a">
+<li><p>If <span class="math inline">\(4 \mid q -1\)</span> show that
+<span class="math display">\[|V(F_a)| = |V(X^2 + Y^2 + Z^2 - aW^2)|\]</span></p>
+<p><strong>Hint:</strong> First show that <span class="math inline">\(X^2 + Y^2 + Z^2 - aW^2\)</span> is obtained
+from <span class="math inline">\(F_a\)</span> by a linear change of variables.</p></li>
+<li><p>If <span class="math inline">\(a = 1\)</span>, show that <span class="math inline">\(|V(F_1)| = q^2 + 2q + 1\)</span>.</p>
+<p><strong>Hint:</strong> Making a linear change of variables, first show that
+<span class="math inline">\(|V(F_1)| = |V(G)|\)</span> where <span class="math inline">\(G = XY + ZW\)</span>.</p>
+<p>To count the points <span class="math inline">\((x:y:z:w)\)</span> in <span class="math inline">\(V(G)\)</span>, first count the points
+with <span class="math inline">\(xy = 0\)</span> (and hence also <span class="math inline">\(zw = 0\)</span>), and then the points with <span class="math inline">\(xy \ne 0\)</span>.</p></li>
+</ol>
+<p>Let <span class="math inline">\(S = \{ a^2 \mid a \in k\}\)</span>.</p>
+<ol start="3" type="a">
+<li><p>Show that <span class="math inline">\(|S| = \dfrac{q+1}{2}\)</span>. Conclude that there are <span class="math inline">\(q - \dfrac{q+1}{2} = \dfrac{q-1}{2}\)</span> <em>non-squares</em> in <span class="math inline">\(k\)</span>.</p></li>
+<li><p>If <span class="math inline">\(a \in S\)</span>, show that <span class="math inline">\(|V(F_a)| = |V(F_1)| = q^2 + 2q + 1\)</span>.</p></li>
+<li><p>If <span class="math inline">\(a \in k\)</span>, <span class="math inline">\(a \not \in S\)</span>, show for any <span class="math inline">\(\alpha \in k^\times\)</span>
+that there are exactly <span class="math inline">\(q+1\)</span> pairs <span class="math inline">\((c,d) \in k \times k\)</span> with <span class="math inline">\(c^2 - ad^2 = \alpha\)</span>.</p>
+<p><strong>Hint:</strong> We may identify <span class="math inline">\(\ell = \mathbb{F}_{q^2} = \mathbb{F}_q[\sqrt{a}]\)</span>. Under this identification, the norm
+homomorphism <span class="math inline">\(N=N_{\ell/k}: \ell^\times \to k^\times\)</span> is given
+by the formula <span class="math display">\[N(c + d\sqrt{a}) = (c+d\sqrt{a})(c-d\sqrt{a}) =
+c^2 - ad^2.\]</span> On the other hand, by Galois Theory, we have
+<span class="math inline">\(N(x) = x \cdot x^q = x^{1+q}\)</span> for any <span class="math inline">\(x \in \ell\)</span>. Thus
+<span class="math inline">\(N(\ell^\times) = k^\times\)</span> and <span class="math inline">\(|\ker N| = q+1\)</span>.</p></li>
+<li><p>If <span class="math inline">\(a \in k\)</span>, <span class="math inline">\(a \not \in S\)</span> show that <span class="math inline">\(|V(F_a)| = q^2 + 1\)</span></p>
+<p><strong>Hint:</strong> Notice that the equation <span class="math inline">\(Z^2 - aW^2 = 0\)</span> has <em>no solutions</em>
+<span class="math inline">\((z:w) \in \mathbb{P}^1_k\)</span>, and use (e) to help count.</p></li>
+</ol></li>
 <li><p>Let <span class="math inline">\(f = T^{11} - 1 \in \mathbb{F}_4[T]\)</span>.</p>
 <ol type="a">
 <li><p>Show that <span class="math inline">\(T^{11} -1\)</span> has a root in <span class="math inline">\(\mathbb{F}_{4^5}\)</span>.</p></li>

@@ -15,7 +15,55 @@ date: due 2024-03-29
 \newcommand{\tr}{\operatorname{tr}}
 
 
-1. **[temporarily removed [2024-03-11]. After reformulation I'll repost, hopefully later today]**      
+1. Let $q$ be a power of a prime $p > 3$ and let $k = \F_q$.
+
+   For a homogeneous polynomial $F \in k[X,Y,Z,W]$, let us write
+   $$V(F) = \{ P = (x:y:z:w) \in \PP^2_k \mid F(x,y,z,w) = 0\}$$
+   for the set of roots of $F$ in $\PP^2_k$.
+
+   For $a \in k^\times$, consider the polynomial
+   $$F_a = XY + Z^2 - aW^2 \in k[X,Y,Z,W].$$
+
+   a. If $4 \mid q -1$ show that
+      $$|V(F_a)| = |V(X^2 + Y^2 + Z^2 - aW^2)|$$
+
+      **Hint:** First show that $X^2 + Y^2 + Z^2 - aW^2$ is obtained
+	  from $F_a$ by a linear change of variables.
+
+   b. If $a = 1$, show that $|V(F_1)| = q^2 + 2q + 1$.
+   
+      **Hint:** Making a linear change of variables, first show that
+	  $|V(F_1)| = |V(G)|$ where $G = XY + ZW$.
+
+      To count the points $(x:y:z:w)$ in $V(G)$, first count the points
+	  with $xy = 0$ (and hence also $zw = 0$), and then the points with $xy \ne 0$.
+
+   Let $S = \{ a^2 \mid a \in k\}$.
+
+   c. Show that $|S| = \dfrac{q+1}{2}$.  Conclude that there are $q -
+      \dfrac{q+1}{2} = \dfrac{q-1}{2}$ *non-squares* in $k$.
+
+   
+   d. If $a \in S$, show that $|V(F_a)| = |V(F_1)| = q^2 + 2q + 1$.
+
+   e. If $a \in k$, $a \not \in S$, show for any $\alpha \in k^\times$
+      that there are exactly $q+1$ pairs $(c,d) \in k \times k$ with $c^2 -
+      ad^2 = \alpha$.
+      
+	  **Hint:** We may identify $\ell = \F_{q^2} =
+	  \F_q[\sqrt{a}]$. Under this identification, the norm
+	  homomorphism $N=N_{\ell/k}: \ell^\times \to k^\times$ is given
+	  by the formula $$N(c + d\sqrt{a}) = (c+d\sqrt{a})(c-d\sqrt{a}) =
+	  c^2 - ad^2.$$ On the other hand, by Galois Theory, we have
+	  $N(x) = x \cdot x^q = x^{1+q}$ for any $x \in \ell$. Thus
+	  $N(\ell^\times) = k^\times$ and $|\ker N| = q+1$.
+
+
+   f. If $a \in k$, $a \not \in S$ show that $|V(F_a)| = q^2 + 1$
+
+      **Hint:** Notice that the equation $Z^2 - aW^2 = 0$ has *no solutions*
+	  $(z:w) \in \PP^1_k$, and use (e) to help count.
+
 
 2. Let $f = T^{11} - 1 \in \F_4[T]$. 
 
