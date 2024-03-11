@@ -35,13 +35,84 @@
 </h1>
             <article>
     <section class="header">
-        Posted on due 2024-03-01
+        Posted on due 2024-03-29
         
             by George McNinch
         
     </section>
     <section>
-        
+        <ol type="1">
+<li><p>Let <span class="math inline">\(q\)</span> be a power of a prime <span class="math inline">\(p \ne 3\)</span>, let <span class="math inline">\(k = \mathbb{F}_q\)</span> and let
+<span class="math inline">\(\ell = \mathbb{F}_{q^3}\)</span> be the degree 3 extension.</p>
+<p>Suppose that <span class="math inline">\(3 \mid q -1\)</span>.</p>
+<p>(Examples: <span class="math inline">\(q=7, 13, 16, 19, 25, ...\)</span>)</p>
+<ol type="a">
+<li><p>Show that there are elements <span class="math inline">\(\alpha \in k\)</span> for which <span class="math inline">\(T^3 - \alpha \in k[T]\)</span> is <em>irreducible</em>.</p></li>
+<li><p>Choose <span class="math inline">\(\alpha \in k\)</span> as in (a), explain why <span class="math inline">\(\ell = k[\beta] \simeq k[T]/\langle T^3 - \alpha \rangle\)</span> where
+<span class="math inline">\(\beta^3 = \alpha\)</span>. Explain why <span class="math inline">\(1,\beta,\beta^2\)</span> is a
+<span class="math inline">\(k\)</span>-basis for <span class="math inline">\(\ell\)</span>.</p></li>
+</ol>
+<p>View <span class="math inline">\(\ell\)</span> as a <span class="math inline">\(k\)</span>-vector space; for any <span class="math inline">\(\gamma \in \ell\)</span>, multiplication by <span class="math inline">\(\gamma\)</span> defines a <span class="math inline">\(k\)</span>-linear map
+<span class="math display">\[\lambda_\gamma:\ell \to \ell \quad \text{defined by
+$\lambda_\gamma(x) = \gamma \cdot x$}\]</span></p>
+<p>The <em>trace</em> <span class="math inline">\(\operatorname{tr}= \operatorname{tr}_{\ell/k}:\ell \to k\)</span> is defined
+by <span class="math inline">\(\operatorname{tr}(\gamma) = \operatorname{tr}(\lambda_\gamma)\)</span>.</p>
+<ol start="3" type="a">
+<li><p>Compute the matrix of the linear mapping <span class="math inline">\(\lambda_\beta:\ell = k[\beta] \to \ell = k[\beta]\)</span> in the basis <span class="math inline">\(1,\beta,\beta^2\)</span>.</p></li>
+<li><p>Prove that <span class="math inline">\(\operatorname{tr}(1) = 3\)</span> and <span class="math inline">\(\operatorname{tr}(\beta) = \operatorname{tr}(\beta^2) = 0\)</span>. Conclude
+that <span class="math inline">\(\operatorname{tr}:\ell \to k\)</span> is a non-zero linear mapping.</p></li>
+<li><p>Compute the <em>matrix</em> of the bilinear form <span class="math display">\[\langle -,- \rangle
+= \ell \times \ell \to k\]</span> defined for <span class="math inline">\(x, y \in \ell\)</span> by
+<span class="math inline">\(\langle x,y \rangle = \operatorname{tr}(xy)\)</span> in the basis <span class="math inline">\(e_0 = 1, e_1 = \beta, e_2 = \beta^2\)</span>. In other words, compute the <span class="math inline">\(3 \times 3\)</span>
+matrix <span class="math display">\[M=( \langle e_i,e_j \rangle)_{ij} = ( \operatorname{tr}(e_ie_j)
+)_{ij} \in \operatorname{Mat}_{3 \times 3}(k).\]</span></p></li>
+<li><p>Show that <span class="math inline">\(\det M \ne 0\)</span> so that <span class="math inline">\(\langle x,y \rangle = \operatorname{tr}(xy)\)</span> is a non-degenerate symmetric bilinear form on <span class="math inline">\(\ell\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(X,Y,Z\)</span> be polynomial variables, let <span class="math display">\[\displaystyle v = X +
+Y \beta + Z \beta ^2 = X e_0 + Y e_1 + Z e_2 \in \ell[X,Y,Z]_1\]</span>
+and compute <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\[Q(X,Y,Z) := \langle v,v \rangle \in k[X,Y,Z]_2.\]</span>
+Note that <span class="math display">\[Q(X,Y,Z) = \begin{bmatrix} X &amp; Y &amp; Z
+\end{bmatrix} \cdot M \cdot \begin{bmatrix} X \\ Y \\ Z
+\end{bmatrix},\]</span>
+and that <span class="math inline">\(Q\)</span>
+is a homogeneous polynomial of degree 2.</p></li>
+<li><p>For any <span class="math inline">\(P=(x:y:z) \in \mathbb{P}^2_k\)</span>, prove that <span class="math inline">\(Q(P) \ne 0\)</span>.</p></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(f = T^{11} - 1 \in \mathbb{F}_4[T]\)</span>.</p>
+<ol type="a">
+<li><p>Show that <span class="math inline">\(T^{11} -1\)</span> has a root in <span class="math inline">\(\mathbb{F}_{4^5}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\alpha \in F_{4^5}\)</span> is a primitive element – i.e. an
+element of order <span class="math inline">\(4^5 -1\)</span>, find an element <span class="math inline">\(a = \alpha^i \in \mathbb{F}_{4^5}\)</span> of order <span class="math inline">\(11\)</span>, for a suitable <span class="math inline">\(i\)</span>.</p></li>
+<li><p>Show that the minimal polynomial <span class="math inline">\(g\)</span> of <span class="math inline">\(a\)</span> over <span class="math inline">\(\mathbb{F}_4\)</span> has
+degree 5, and that the roots of <span class="math inline">\(g\)</span> are powers of <span class="math inline">\(a\)</span>. Which
+powers?</p></li>
+<li><p>Show that <span class="math inline">\(f = g\cdot h \cdot (T-1)\)</span> for another irreducible
+polynomial <span class="math inline">\(h \in \mathbb{F}_4[T]\)</span> of degree 5. The roots of <span class="math inline">\(h\)</span> are
+again powers of <span class="math inline">\(a\)</span>. Which powers?</p></li>
+<li><p>Show that <span class="math inline">\(\langle f \rangle\)</span> is a
+<span class="math inline">\([11,6,d]_4\)</span> code for which <span class="math inline">\(d \ge 4\)</span>.</p></li>
+</ol></li>
+<li><p>Consider the following variant of a Reed-Solomon code: let
+<span class="math inline">\(\mathcal{P} \subset \mathbb{F}_q\)</span> be a subset with <span class="math inline">\(n = |\mathcal{P}|\)</span>
+and write <span class="math inline">\(\mathcal{P} = \{a_1,\cdots,a_n\}\)</span>.</p>
+<p>Let <span class="math inline">\(1 \le k \le n\)</span> and write <span class="math inline">\(\mathbb{F}_q[T]_{&lt; k}\)</span> for the space of
+polynomial of degree <span class="math inline">\(\le k\)</span>, and let</p>
+<p><span class="math inline">\(C \subset \mathbb{F}_q^n\)</span> be given by
+<span class="math display">\[C = \{ (p(a_1),\cdots,p(a_n)) \mid p \in \mathbb{F}_q[T]_{&lt;k}.\]</span></p>
+<ol type="a">
+<li><p>Prove that <span class="math inline">\(C\)</span> is a <span class="math inline">\([n,k,n-k]_q\)</span>-code.</p></li>
+<li><p>If <span class="math inline">\(P = \mathbb{F}_q^\times\)</span>, prove that <span class="math inline">\(C\)</span> is a <em>cyclic code</em>.</p></li>
+<li><p>If <span class="math inline">\(q = p\)</span> is <em>prime</em> and if <span class="math inline">\(P = \mathbb{F}_p\)</span>, prove that <span class="math inline">\(C\)</span> is a <em>cyclic code</em>.</p></li>
+</ol></li>
+</ol>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>We are extending the bilinear form linearly; to compute for
+example the quantity <span class="math inline">\(\langle X v + Y w, Z u \rangle\)</span> for
+vectors <span class="math inline">\(v,w,u \in \ell\)</span>, we must take <span class="math display">\[\langle X v + Y w, Z u
+  \rangle = XZ \langle v,u \rangle + YZ \langle w,u\rangle.\]</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
     </section>
 </article>
 

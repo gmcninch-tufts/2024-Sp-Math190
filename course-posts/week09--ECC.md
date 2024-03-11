@@ -6,6 +6,8 @@ date: 2024-03-11
 ---
 
 
+- [[PS05]](/course-assignments/PS05--ECC.html) due [2024-03-29 Fri]
+
 - [[final project proposal]](/course-assignments/FinReport-Proposal.html) due [2024-03-29 Friday]
 
 Here are the notes on cyclic codes - part of this material was in the
