@@ -1,6 +1,6 @@
 ---
 title: |
- ProblemSet 4 -- Finite fields and codes
+ ProblemSet 5 -- Solutions of equations and cyclic codes
 author: George McNinch
 date: due 2024-03-29
 ---
