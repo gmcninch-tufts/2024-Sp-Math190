@@ -18,8 +18,8 @@ date: due 2024-03-29
 1. Let $q$ be a power of a prime $p > 3$ and let $k = \F_q$.
 
    For a homogeneous polynomial $F \in k[X,Y,Z,W]$, let us write
-   $$V(F) = \{ P = (x:y:z:w) \in \PP^2_k \mid F(x,y,z,w) = 0\}$$
-   for the set of roots of $F$ in $\PP^2_k$.
+   $$V(F) = \{ P = (x:y:z:w) \in \PP^3_k \mid F(x,y,z,w) = 0\}$$
+   for the set of solutions of the equation $F=0$ in $\PP^3_k$.
 
    For $a \in k^\times$, consider the polynomial
    $$F_a = XY + Z^2 - aW^2 \in k[X,Y,Z,W].$$
