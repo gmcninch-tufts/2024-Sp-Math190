@@ -11,6 +11,8 @@ Remember the third assignment on representation:
 - [[problem set 03]](/course-assignments/PS03--rep-theory.html)
   [[pdf]](/course-assignments/PS03--rep-theory.pdf) due 2024-02-16
 
+- [[problem set 03 solutions]](/course-assignments/PS03--rep-theory--solutions.html)
+
 I was originally planning to give a lecture on usage of the
 computer-algebra package/language `GAP` to solve group-theoretic
 problems, but I second-guessed this decision because I anyhow plan to

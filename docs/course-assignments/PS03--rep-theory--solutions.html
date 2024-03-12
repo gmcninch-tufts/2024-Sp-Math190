@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - ProblemSet 3 -- Solutions
+</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>ProblemSet 3 -- Solutions
+</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-02-16
+        
+            by George McNinch
+        
+    </section>
+    <section>
+        <p>In these exercises, <span class="math inline">\(G\)</span> always denotes a finite group. Unless
+indicated otherwise, all vector spaces are assumed to be finite
+dimensional over the field <span class="math inline">\(F = \mathbb{C}\)</span>. The representation
+space <span class="math inline">\(V\)</span> of a representation of <span class="math inline">\(G\)</span> is always assumed to be finite
+dimensional over <span class="math inline">\(\mathbb{C}\)</span>.</p>
+<ol type="1">
+<li><p>Let <span class="math inline">\(\phi:G \to F^\times\)</span> be a group homomorphism; since <span class="math inline">\(F^\times = \operatorname{GL}_1(F)\)</span>, we can think of <span class="math inline">\(\phi\)</span> as a
+1-dimensional representation <span class="math inline">\((\phi,F)\)</span> of <span class="math inline">\(G\)</span>.</p>
+<p>If <span class="math inline">\(V\)</span> is any representation of <span class="math inline">\(G\)</span>, we can form a <em>new</em>
+representation <span class="math inline">\(\phi \otimes V\)</span>. The underlying vector space for
+this representation is just <span class="math inline">\(V\)</span>, and the “new” action of an element
+<span class="math inline">\(g \in G\)</span> on a vector <span class="math inline">\(v\)</span> is given by the rule <span class="math display">\[g \star v =
+\phi(g) gv.\]</span></p>
+<ol type="a">
+<li><p>Prove that if <span class="math inline">\(V\)</span> is irreducible, then <span class="math inline">\(\phi \otimes V\)</span> is also irreducible.</p>
+<div class="solution">
+<p>We prove the following statement: <span class="math inline">\((*)\)</span> if <span class="math inline">\(W \subset V\)</span> is a subspace, then <span class="math inline">\(W\)</span>
+is invariant for the <em>original</em> action of <span class="math inline">\(G\)</span> if and only if it
+is invariant for the <span class="math inline">\(\star\)</span> action of <span class="math inline">\(G\)</span>.</p>
+<p>First note that <span class="math inline">\((*)\)</span> immediately implies the assertion of (a).</p>
+<p>To test invariance, let <span class="math inline">\(w \in W\)</span> and let <span class="math inline">\(g \in G\)</span>. Since <span class="math inline">\(W\)</span>
+is a linear subspace and since <span class="math inline">\(\phi(g)\)</span> is a non-zero scalar,
+it is immediate that <span class="math display">\[gw \in W \iff g \star w = \phi(g) gw \in
+W\]</span> Since this holds for all <span class="math inline">\(w\)</span> and all <span class="math inline">\(g\)</span>, <span class="math inline">\((*)\)</span> follows.</p>
+</div></li>
+<li><p>Prove that if <span class="math inline">\(\chi\)</span> denotes the <em>character</em> of <span class="math inline">\(V\)</span>, then the
+character of <span class="math inline">\(\phi \otimes V\)</span> is given by <span class="math inline">\(\phi \cdot \chi\)</span>; in
+other words, the trace of the action of <span class="math inline">\(g \in G\)</span> on <span class="math inline">\(\phi \otimes V\)</span> is given by <span class="math display">\[\chi_{\phi \otimes V}(g) =
+\operatorname{tr}( v\mapsto g \star v) = \phi(g) \chi(g).\]</span></p>
+<div class="solution">
+<p>We just need to compute the trace of the linear mapping <span class="math inline">\(V \to V\)</span> given by
+<span class="math inline">\(v \mapsto g \star v\)</span>.</p>
+<p>If the action of <span class="math inline">\(g\)</span> on <span class="math inline">\(V\)</span> is given by the linear mapping
+<span class="math inline">\(\rho(g)\)</span>,
+then <span class="math display">\[\chi_V(g) = \operatorname{tr}(\rho(g)).\]</span></p>
+<p>Now, the <span class="math inline">\(\star\)</span>-action of <span class="math inline">\(g\)</span> is given by the linear mapping
+<span class="math inline">\(v \mapsto g \star v = \phi(g) \rho(g)v\)</span>.</p>
+<p>So <span class="math inline">\(\chi_{\phi \otimes V}(g) = \operatorname{tr}(\phi(g)\rho(g))\)</span>.
+For any scalar <span class="math inline">\(s \in k\)</span>, trace of the linear mapping <span class="math inline">\(s \rho(g)\)</span> is
+given by
+<span class="math display">\[\operatorname{tr}(s \rho(g)) = s \operatorname{tr}(\rho(g)) = s \chi_V(g)\]</span>
+(“linearity of the trace”).</p>
+<p>Thus <span class="math display">\[\chi_{\phi\otimes V}(g) =
+\operatorname{tr}(\phi(g)\rho(g)) = \phi(g) \chi_V(g).\]</span></p>
+</div></li>
+<li><p>Recall that in class we saw that <span class="math inline">\(S_3\)</span> has an irreducible representation <span class="math inline">\(V_2\)</span> of dimension 2
+whose character <span class="math inline">\(\psi_2\)</span> is given by</p>
+<p><span class="math display">\[\begin{array}{l|lll}
+g &amp; 1 &amp; (12) &amp; (123) \\
+\hline
+\psi_2 &amp; 2 &amp; 0 &amp; -1
+\end{array}\]</span></p>
+<p>Observe that <span class="math inline">\(\operatorname{sgn} \psi = \psi\)</span> and conclude that
+<span class="math inline">\(V_2 \simeq \operatorname{sgn} \otimes V_2\)</span>, where
+<span class="math inline">\(\operatorname{sgn}:S_n \to \{\pm 1\} \subset \mathbb{C}^\times\)</span>
+is the <em>sign homomorphism.</em></p>
+<p>On the other hand, <span class="math inline">\(S_4\)</span> has an irreducible representation <span class="math inline">\(V_3\)</span> of dimension 3
+whose character <span class="math inline">\(\psi_3\)</span> is given by</p>
+<p><span class="math display">\[\begin{array}{l|lllll}
+g &amp; 1 &amp; (12) &amp; (123) &amp; (1234) &amp;  (12)(34) \\
+\hline
+\psi_3 &amp; 3 &amp;  1 &amp; 0 &amp; -1 &amp; -1 
+\end{array}\]</span></p>
+<p>(I’m not asking you to confirm that <span class="math inline">\(\psi_3\)</span> is irreducible, though it would be
+straightforward to check that <span class="math inline">\(\langle \psi_3,\psi_3 \rangle = 1\)</span>).</p>
+<p>Prove that <span class="math inline">\(V_3 \not \simeq \operatorname{sgn} \otimes V_3\)</span> as
+<span class="math inline">\(S_4\)</span>-representations.</p>
+<p>(In particular, <span class="math inline">\(S_4\)</span> has <em>at least two</em>
+irreducible representations of dimension 3.)</p>
+<div class="solution">
+<p>We first consider the representation <span class="math inline">\(V_2\)</span> of <span class="math inline">\(S_3\)</span>. Write
+<span class="math inline">\(\chi_2\)</span> of the character of this irreducible representation.
+The character of <span class="math inline">\(\operatorname{sgn}\chi_2\)</span> is then given by
+the product <span class="math inline">\(\operatorname{sgn}\chi_2\)</span>.</p>
+<p><span class="math display">\[\begin{array}{l|lll}
+g &amp; 1 &amp; (12) &amp; (123) \\
+\hline
+\psi_2 &amp; 2 &amp; 0 &amp; -1 \\
+\operatorname{sgn} &amp; 1 &amp; -1 &amp; 1 \\
+\operatorname{sgn} \psi_2 &amp; 2 &amp; 0 &amp; -1
+\end{array}\]</span></p>
+<p>Inspecting the table we see that <span class="math inline">\(\psi_2 = \operatorname{sgn}\psi_2\)</span>. This shows that <span class="math inline">\(V_2\)</span> is isomorphic
+to <span class="math inline">\(\operatorname{sgn} \otimes V_2\)</span> as representations for
+<span class="math inline">\(S_3\)</span>.</p>
+</div></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(V\)</span> be a representation of <span class="math inline">\(G\)</span>.</p>
+<p>For an irreducible representation <span class="math inline">\(L\)</span>,
+consider the set <span class="math display">\[\mathcal{S}=\{ S \subseteq V \mid S \simeq L\}\]</span> of all invariant
+subspaces that are isomorphic to <span class="math inline">\(L\)</span> as <span class="math inline">\(G\)</span>-representations.</p>
+<p>Put <span class="math display">\[V_{(L)} = \sum_{S \in \mathcal{S}} S.\]</span></p>
+<ol type="a">
+<li><p>Prove that <span class="math inline">\(V_{(L)}\)</span> is an invariant subspace, and show that
+<span class="math inline">\(V_{(L)}\)</span> is isomorphic to a direct sum
+<span class="math display">\[V_{(L)} \simeq L \oplus \cdots \oplus L\]</span>
+as <span class="math inline">\(G\)</span>-representations.</p>
+<div class="solution">
+<p>First of all, we note more generally that if <span class="math inline">\(I\)</span> is an index set
+and if <span class="math inline">\(W_i \subset V\)</span> is a <span class="math inline">\(G\)</span>-invariant subspace for each <span class="math inline">\(i \in I\)</span>, then <span class="math inline">\(\displaystyle \sum_{i \in I} W_i\)</span> is again an
+invariant subspace. (The proof is straightforward from the
+definitions). This confirms that <span class="math inline">\(V_{(L)}\)</span> is an invariant
+subspace.</p>
+<p>To prove the remaining assertion, we proceed as follows.</p>
+<p>Let us say that a <span class="math inline">\(G\)</span>-representation <span class="math inline">\(W\)</span> is <span class="math inline">\(L\)</span>-isotypic if
+every irreducible invariant subspace of <span class="math inline">\(W\)</span> is isomorphic to
+<span class="math inline">\(L\)</span>.</p>
+<p>It is immediate that <span class="math inline">\(V_{(L)}\)</span> is <span class="math inline">\(L\)</span>-isotypic. We are going to
+prove:</p>
+<p>If <span class="math inline">\(W\)</span> is an <em><span class="math inline">\(L\)</span>-isotypic</em> <span class="math inline">\(G\)</span>-representation, then <span class="math inline">\(W\)</span> is isomorphic
+to a direct sum <span class="math display">\[W \simeq L \oplus \cdots \oplus L.\]</span></p>
+<p>Proceed by induction on <span class="math inline">\(\dim W\)</span>. If <span class="math inline">\(\dim W = 0\)</span> then <span class="math inline">\(W = \{0\}\)</span> and the
+result is immediate (<span class="math inline">\(W\)</span> is the direct sum of zero copies of <span class="math inline">\(L\)</span>).</p>
+<p>Now observe that if <span class="math inline">\(\dim W &gt; 0\)</span> then <span class="math inline">\(W\)</span> contains an
+invariant subspace isomorphic to <span class="math inline">\(L\)</span>, so that <span class="math inline">\(\dim W \ge \dim L\)</span>.</p>
+<p>Now if <span class="math inline">\(\dim W = \dim L\)</span>, then <span class="math inline">\(W \simeq L\)</span> and the
+result holds in this case.</p>
+<p>Finally, suppose that <span class="math inline">\(\dim W &gt; \dim L\)</span> and let <span class="math inline">\(S \subset W\)</span> be an invariant subspace with <span class="math inline">\(S \simeq L\)</span>.</p>
+<p>By complete reducibility we may find an invariant subspace <span class="math inline">\(U \subset W\)</span> such that <span class="math inline">\(W\)</span> is the internal direct sum <span class="math display">\[W = S
+\oplus U.\]</span></p>
+<p>Since <span class="math inline">\(\dim W = \dim S + \dim U\)</span>, we have <span class="math inline">\(\dim U &lt; \dim W\)</span>. Moreover, <span class="math inline">\(U\)</span> is also <span class="math inline">\(L\)</span>-isotypic. So by induction on
+dimension, we know that <span class="math display">\[U \simeq L \oplus \cdots \oplus L,\]</span>
+(say, a direct sum of <span class="math inline">\(d\)</span> copies of <span class="math inline">\(L\)</span>).</p>
+<p>But then
+<span class="math display">\[W = S \oplus U \simeq L \oplus ( L \oplus
+\cdots \oplus L) = L \oplus L \oplus \cdots \oplus L\]</span>
+is isomorphic to a direct sum of <span class="math inline">\(d+1\)</span> copies of <span class="math inline">\(L\)</span>.</p>
+</div></li>
+<li><p>Prove that the <em>quotient representation</em> <span class="math inline">\(V/V_{(L)}\)</span> has no
+invariant subspaces isomorphic to <span class="math inline">\(L\)</span> as <span class="math inline">\(G\)</span>-representations.</p>
+<div class="solution">
+<p>Write <span class="math inline">\(\pi:V \to V/V_{(L)}\)</span> for the quotient map <span class="math inline">\(v \mapsto v + V_{(L)}\)</span>; thus <span class="math inline">\(\pi\)</span> is a surjective homomorphism of
+<span class="math inline">\(G\)</span>-representations.</p>
+<p>Suppose by way of contradiction that <span class="math inline">\(S \subset V/V_{(L)}\)</span> is an
+invariant subspace isomorphic to <span class="math inline">\(L\)</span>, and let <span class="math inline">\(S' \subset V\)</span>
+be the inverse image under <span class="math inline">\(\pi\)</span> of <span class="math inline">\(S\)</span>:
+<span class="math display">\[S' = \pi^{-1}(S).\]</span></p>
+<p>Then <span class="math inline">\(S'\)</span> is an invariant subspace of <span class="math inline">\(V\)</span> containing <span class="math inline">\(V_{(L)}\)</span>, and
+the restriction of <span class="math inline">\(\pi\)</span> to <span class="math inline">\(S'\)</span> defines a surjective mapping
+<span class="math display">\[\pi_{\mid S'}:S' \to S \simeq L.\]</span></p>
+<p>If <span class="math inline">\(K\)</span> denotes the kernel of <span class="math inline">\(\pi_{\mid S'}\)</span>, then complete reducibility
+implies that there is an invariant subspace <span class="math inline">\(M\)</span> of <span class="math inline">\(V\)</span> such that
+<span class="math inline">\(S'\)</span> is the internal direct sum
+<span class="math display">\[(*) \quad S' = K \oplus M.\]</span></p>
+<p>In particular, the invariant subspace <span class="math inline">\(M\)</span> is isomorphic to <span class="math inline">\(L\)</span>
+as <span class="math inline">\(G\)</span>-representations. But then by definition we have <span class="math inline">\(M \subset V_{(L)}\)</span> contradicting the condition <span class="math inline">\(M \cap K = \{0\}\)</span> which must hold by <span class="math inline">\((*)\)</span>. This contradiction proves the result.</p>
+</div></li>
+<li><p>If <span class="math inline">\(L_1,L_2,\cdots,L_m\)</span> is a complete set of non-isomorphic
+irreducible representations for <span class="math inline">\(G\)</span>, prove that <span class="math inline">\(V\)</span> is the
+internal direct sum <span class="math display">\[V = \bigoplus_{i=1}^m V_{(L_i)}.\]</span></p>
+<div class="solution">
+<p>We first note that <span class="math inline">\(V\)</span> is equal to the sum <span class="math display">\[\sum_{i=1}^m
+V_{(L_i)};\]</span> indeed, if <span class="math inline">\(W = \sum_{i=1}^m V_{(L_i)}\)</span>, then by
+complete reducibility <span class="math inline">\(V = W \oplus W'\)</span> for an invariant
+subspace <span class="math inline">\(W'\)</span>. But if <span class="math inline">\(W' \ne 0\)</span> then <span class="math inline">\(W'\)</span> contains an
+irreducible invariant subspace, so that <span class="math inline">\(W' \cap V_{(L_i)} \ne 0\)</span> for some <span class="math inline">\(i\)</span> and hence <span class="math inline">\(W' \cap W \ne 0\)</span>; this is impossible
+since the internal sum <span class="math inline">\(V = W \oplus W'\)</span> is direct. This argument shows
+that <span class="math inline">\(W' = 0\)</span> and hence that <span class="math inline">\(V = W\)</span>.</p>
+<p>Finally, we show that
+the sum
+<span class="math display">\[\sum_{i=1}^m V_{(L_i)}\]</span>
+is <em>direct</em>, i.e. that for each <span class="math inline">\(j\)</span> we have
+<span class="math display">\[(\clubsuit) \quad V_{(L_j)} \cap \left ( \sum_{i\ne j} V_{(L_i)} \right ) = 0.\]</span></p>
+<p>Wrote <span class="math inline">\(I\)</span> for the intersection appearing in <span class="math inline">\((\clubsuit)\)</span>; thus,
+<span class="math inline">\(I\)</span> is an invariant subspace of <span class="math inline">\(V\)</span>. If <span class="math inline">\(I\)</span> is non-zero, it has
+an irreducible invariant subspace <span class="math inline">\(S\)</span>. Since <span class="math inline">\(I \subset V_{(L_j)}\)</span>
+and since <span class="math inline">\(V_{(L_j)}\)</span> is <span class="math inline">\(L_j\)</span>-isotypic, we conclude that
+<span class="math display">\[S \simeq L_j.\]</span></p>
+<p>But then <span class="math inline">\(S \cap V_{(L_i)} = 0\)</span> for every <span class="math inline">\(i \ne j\)</span> so that
+<span class="math display">\[S \cap \left( \sum_{i \ne j} V_{(L_i)} \right ) = 0.\]</span>
+Since <span class="math inline">\(I \subset \displaystyle \left( \sum_{i \ne j} V_{(L_i)} \right )\)</span>,
+we conclude that <span class="math inline">\(I = 0\)</span>.</p>
+<p>This completes the proof that <span class="math inline">\(V\)</span> is the direct sum of the <span class="math inline">\(V_{(L_i)}\)</span>, as required.</p>
+</div></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(\chi\)</span> be the character of a representation <span class="math inline">\(V\)</span> of <span class="math inline">\(G\)</span>. For <span class="math inline">\(g\in G\)</span> prove
+that <span class="math inline">\(\overline{\chi(g)} = \chi(g^{-1})\)</span>.</p>
+<p>Is it true for any arbitrary class function <span class="math inline">\(f:G \to \mathbb{C}\)</span>
+that <span class="math inline">\(\overline{f(g)} = f(g^{-1})\)</span> for every <span class="math inline">\(g\)</span>? (Give a proof or
+a counterexample…)</p>
+<div class="solution">
+<p>Let <span class="math inline">\(\rho(g):V \to V\)</span> denote the linear automorphism of <span class="math inline">\(V\)</span>
+determined by the action of <span class="math inline">\(g \in G\)</span>.
+Then <span class="math inline">\(\chi(g) = \operatorname{tr}(\rho(g))\)</span>.</p>
+<p>Now, since <span class="math inline">\(\rho(g)\)</span> has <em>finite order</em>, say <span class="math inline">\(n\)</span>, its minimal polynomial divides
+<span class="math inline">\(T^n - 1 \in \mathbb{C}[T]\)</span>, and hence every eigenvalue of <span class="math inline">\(\rho(g)\)</span>
+is an <span class="math inline">\(n\)</span>-th root of unity.</p>
+<p>For any <span class="math inline">\(n\)</span>-th root of unity <span class="math inline">\(\zeta\)</span>, note that <span class="math inline">\(\overline{\zeta} = \zeta^{-1}\)</span>.</p>
+<p>Write <span class="math inline">\(\alpha_1,\cdots,\alpha_d\)</span> for the eigenvalues of <span class="math inline">\(\rho(g)\)</span>,
+with multiplicity (so that <span class="math inline">\(d = \dim V\)</span>).
+Notice that <span class="math inline">\(\rho(g^{-1})\)</span> has eigenvalues <span class="math inline">\(\alpha_1^{-1},\cdots,\alpha_d^{-1}.\)</span></p>
+<p>Thus</p>
+<p><span class="math display">\[\chi(g) = \sum_{i=1}^d \alpha_i\quad
+\text{and} \quad
+\chi(g^{-1}) = \sum_{i=1}^d \alpha_i^{-1}.
+\]</span></p>
+<p>Now, we see that
+<span class="math display">\[\overline{\chi(g)} = \sum_{i=1}^d \overline{\alpha_i}
+= \sum_{i=1}^d \alpha_i^{-1} = \chi(g^{-1})\]</span>
+as required.</p>
+<p>It is <em>not</em> true that <span class="math inline">\(\overline{f(g)} = f(g^{-1})\)</span> for every class
+function <span class="math inline">\(f\)</span> and every <span class="math inline">\(g \in G\)</span>. Indeed, let <span class="math inline">\(f = \alpha\delta_1\)</span> be
+a multiple of the characterisitic function <span class="math inline">\(\delta_1\)</span> of the trivial conjugacy class
+<span class="math inline">\(\{1\}\)</span>.</p>
+<p>Then <span class="math inline">\(\overline{f(1)} = \overline{\alpha}\)</span> while <span class="math inline">\(f(1^{-1}) = f(1) = \alpha\)</span>, so that if <span class="math inline">\(\alpha \not \in \mathbb{R}\)</span>, we have
+<span class="math inline">\(\overline{f(1)} \ne f(1^{-1})\)</span>.</p>
+</div></li>
+<li><p>For a prime number <span class="math inline">\(p\)</span>, let <span class="math inline">\(k=\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}\)</span> be the field with <span class="math inline">\(p\)</span> elements. Let <span class="math inline">\(V\)</span> be
+an <span class="math inline">\(n\)</span>-dimensional vector space over <span class="math inline">\(\mathbb{F}_p\)</span> for some
+natural number <span class="math inline">\(n\)</span>, and let <span class="math display">\[\langle \cdot,\cdot \rangle: V \times
+V \to k\]</span> be a non-degenerate bilinear form on <span class="math inline">\(V\)</span>.</p>
+<p>(<em>A common example would be to take <span class="math inline">\(V = \mathbb{F}_{p^n}\)</span> the
+field of order <span class="math inline">\(p^n\)</span>, and <span class="math inline">\(\langle \alpha,\beta\rangle = \operatorname{tr}_{\mathbb{F}_{p^n}/\mathbb{F}_p}(\alpha \beta)\)</span> the trace pairing</em>).</p>
+<p>Let us fix a non-trivial group homomorphism <span class="math inline">\(\psi:k \to \mathbb{C}^\times\)</span> (recall that <span class="math inline">\(k = \mathbb{Z}/p\mathbb{Z}\)</span> is an
+additive group, while <span class="math inline">\(\mathbb{C}^\times\)</span> is multiplicative). Thus
+<span class="math display">\[\psi(\alpha + \beta) = \psi(\alpha)\psi(\beta) \quad \text{for all} \quad
+\alpha,\beta \in k.\]</span> If you want an explicit choice, set <span class="math inline">\(\psi(j + p\mathbb{Z}) = \exp(j \cdot 2 \pi i/p) = \exp(2 \pi i /p)^j.\)</span></p>
+<p>For a vector <span class="math inline">\(v \in V\)</span>, consider the mapping
+<span class="math inline">\(\Psi_v:V \to \mathbb{C}^\times\)</span> given by the
+rule
+<span class="math display">\[\Psi_v(w) = \psi( \langle w,v \rangle ).\]</span></p>
+<ol type="a">
+<li><p>Show that <span class="math inline">\(\Psi_v\)</span> is a group homomorphism <span class="math inline">\(V \to \mathbb{C}^\times\)</span>.</p>
+<div class="solution">
+<p>For <span class="math inline">\(w,w' \in V\)</span> notice that
+<span class="math display">\[\begin{align*}
+\Psi_v(w + w') &amp;= \psi(\langle w + w',v \rangle) &amp; \\
+&amp;= \psi(\langle w,v \rangle + \langle w',v \rangle) &amp; \text{since the form is bilinear} \\
+&amp;= \psi(\langle w,v \rangle) \cdot \psi(\langle w',v \rangle) &amp; \text{since $\psi$ is a group homom} \\
+&amp;= \Psi_v(w)\cdot \Psi_v(w') &amp; \text{by definition.}
+\end{align*}\]</span>
+This confirms that <span class="math inline">\(\Psi_v\)</span> is a group homomorphism.</p>
+</div></li>
+<li><p>Show that the assignment <span class="math inline">\(v \mapsto \Psi_v\)</span> is injective
+(one-to-one).</p>
+<p>(This assignment is a function <span class="math inline">\(V \to \operatorname{Hom}(V,\mathbb{C}^\times)\)</span>. In fact, it is a group
+homomorphism. Do you see why? How do you make
+<span class="math inline">\(\operatorname{Hom}(V,\mathbb{C}^\times)\)</span> into a group?)</p>
+<div class="solution">
+<p>One checks that <span class="math inline">\(\operatorname{Hom}(V,\mathbb{C}^\times)\)</span> is a
+multiplicitive group (this is the <em>dual group</em> <span class="math inline">\(\widehat V\)</span> of <span class="math inline">\(V\)</span>, mentioned in the
+lectures); the product of <span class="math inline">\(\phi,\psi \in \widehat V\)</span> is given by the rule
+<span class="math inline">\(g \mapsto \phi(g) \cdot \psi(g)\)</span>.</p>
+<p>We note that the assignment <span class="math inline">\(v \mapsto \Psi_v\)</span> is a group homomorphism. For <span class="math inline">\(v,v' \in V\)</span> we must
+argue that
+<span class="math inline">\(\Psi_{v+v'} = \Psi_v \Psi_{v'}.\)</span></p>
+<p>For <span class="math inline">\(w \in W\)</span> we have
+<span class="math display">\[\begin{align*}
+\Psi_{v+v'}(w) =&amp; \psi( \langle v + v',w \rangle ) &amp; \\
+=&amp; \psi(\langle v,w \rangle + \langle v',w\rangle) &amp; \text{since the form is bilinear}\\
+=&amp; \psi(\langle v,w \rangle )\cdot \psi(\langle v',w\rangle) &amp; \text{since $\psi$ is a group homom}\\
+=&amp; \Psi_v(w)\cdot \Psi_{v'}(w) &amp; \text{by defn} \\	  
+\end{align*}\]</span></p>
+<p>Now to show that <span class="math inline">\(v \mapsto \Psi_v\)</span> is injective, it is enough to argue that
+the kernel of this mapping is <span class="math inline">\(\{0\}\)</span>.</p>
+<p>So, suppose that <span class="math inline">\(\Psi_v\)</span> is the identity element of
+<span class="math inline">\(\widehat{V}\)</span>. In other words, suppose that <span class="math inline">\(\Psi_v(w) = 1\)</span> for
+every <span class="math inline">\(w \in V\)</span>. This shows that <span class="math inline">\(\psi(\langle v,w \rangle) = 1\)</span> for every <span class="math inline">\(w \in V\)</span>. Since <span class="math inline">\(\psi\)</span> is a non-trivial
+homomorphism <span class="math inline">\(\mathbb{F}_p \to \mathbb{C}^\times\)</span>, we know that
+<span class="math inline">\(\ker \psi = \{0\}\)</span> (remember that <span class="math inline">\(k\)</span> has prime order…) and
+we conclude that <span class="math inline">\(\langle v,w \rangle = 0\)</span> for every <span class="math inline">\(w \in W\)</span>.</p>
+<p>(Note that <span class="math inline">\(\langle v,w \rangle = 0\)</span> is an equality in <span class="math inline">\(k = \mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}\)</span>).</p>
+<p>Since the form <span class="math inline">\(\langle \cdot,\cdot \rangle\)</span> is non-degenerate, so
+we may now conclude that <span class="math inline">\(v = 0\)</span>.</p>
+<p>This proves that the kernel of the mapping <span class="math inline">\(v \mapsto \Psi_v\)</span> is
+<span class="math inline">\(\{0\}\)</span>, hence the mapping is injective.</p>
+</div></li>
+<li><p>Show that any group homomorphism <span class="math inline">\(\Psi:V \to \mathbb{C}^\times\)</span>
+has the form <span class="math inline">\(\Psi = \Psi_v\)</span> for some <span class="math inline">\(v \in V\)</span>.</p>
+<p>Conclude that there are exactly <span class="math inline">\(|V| = q^n\)</span> group homomorphisms
+<span class="math inline">\(V \to \mathbb{C}^\times\)</span>.</p>
+<div class="solution">
+<p>We observed in class that for any finite abelian group <span class="math inline">\(A\)</span>, there is an isomorphism
+<span class="math inline">\(A \simeq \widehat{A}\)</span>.</p>
+<p>In particular, <span class="math inline">\(|A| = |\widehat{A}|\)</span>.</p>
+<p>Applying this in the case <span class="math inline">\(A = V\)</span>, we conclude that
+<span class="math display">\[|V|  = |\widehat{V}| = |\operatorname{Hom}(V,\mathbb{C}^\times)|.\]</span></p>
+<p>Now, we have define an <em>injective</em> mapping <span class="math display">\[v \mapsto \Psi_v:V \to \widehat(V).\]</span>
+Since the domain and co-domain of this mapping are finite of the same order,
+the mapping <span class="math inline">\(v \mapsto \Psi_v\)</span> is also <em>surjective</em>.</p>
+<p>Thus the <em>pigeonhole principal</em> shows that every homomorphism
+<span class="math inline">\(\Psi:V \to \mathbb{C}^\times\)</span> has the form <span class="math inline">\(\Psi = \Psi_v\)</span> for
+some <span class="math inline">\(v \in V\)</span>, as required.</p>
+</div></li>
+</ol></li>
+</ol>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>

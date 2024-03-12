@@ -8,7 +8,7 @@ date: 2024-02-05
 Here is the next problem set:
 
 - [[problem set 03]](/course-assignments/PS03--rep-theory.html) [[pdf]](/course-assignments/PS03--rep-theory.pdf) due 2024-02-16
-
+- [[problem set 03 solutions]](/course-assignments/PS03--rep-theory--solutions.html)
 
 Here are notes for Monday's lecture on *Characters of irreducible representations*:
 
