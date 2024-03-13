@@ -2,7 +2,7 @@
 title: |
   Notes and Assignments (collected)
 author: George McNinch  
-date: 2024-02-07
+date: 2024-03-13
 ---
 
 # Representation Theory
