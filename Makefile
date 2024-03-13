@@ -6,34 +6,34 @@ BEAMER_META=--metadata-file=build-assets/beamer-metadata.yaml
 PD=pandoc --standalone --from markdown -V linkcolor:red --citeproc
 CMD=/home/george/.local/bin/course report
 
+PFP=--lua-filter build-assets/prefix-path.lua -MpathToProjectRoot=/home/george/Classes/2024-Sp-Math190/
+
 VPATH = .:course-pages:course-posts:course-assets/images:course-contents
 
 CSS_DEFAULT="build-assets/default.css"
 
-posts=$(notdir $(wildcard course-posts/*.md))
-pages=$(notdir $(wildcard course-pages/*.md))
-
-pages_pdf=$(addprefix course-assets/pages-pdf/,$(pages:.md=.pdf))
-
-posts_pdf=$(addprefix course-assets/posts-pdf/,$(posts:.md=.pdf))
+content=$(wildcard course-contents/*.md)
+content_pdf=$(content:.md=.pdf)
 
 problems=$(wildcard course-assignments/*.md)
 problems_pdf=$(problems:.md=.pdf)
 
+pages=$(wildcard course-pages/*.md)
+pages_pdf=$(pages:.md=.pdf)
 
-all: pages posts problems
 
-pages: $(pages_pdf)
-posts: $(posts_pdf)
+all: problems content pages
 
+content: $(content_pdf)
 problems: $(problems_pdf)
+pages: $(pages_pdf)
 
 %-slides.html: %.md
 	$(PD) $(META) $< build-assets/biblio.md --css=$(CSS_DEFAULT) -V slideous-url=$(SLIDEOUS) -t slidy --mathjax=$(MJ)  -o $@
 
 
-course-assets/pages-pdf/%.pdf course-assets/posts-pdf/%.pdf %.pdf: %.md
-	$(PD) $(META) $< build-assets/biblio.md --pdf-engine=xelatex --resource-path=$(RP) -t latex -o $@
+%.pdf: %.md
+	$(PD) $(META) $< build-assets/biblio.md --pdf-engine=xelatex $(PFP) --resource-path=$(RP) -t latex -o $@
 
 .PHONY: echoes
 
@@ -42,6 +42,8 @@ echoes:
 	@echo $(pages_pdf)
 	@echo $(posts)
 	@echo $(posts_pdf)
+	@echo $(content)
+	@echo $(content_pdf)
 
 
 .PHONY: clean

@@ -23,7 +23,7 @@ date: 2024-03-04
 \newcommand{\weight}{\operatorname{weight}}
 
 \newcommand{\PP}{\mathbb{P}}
-\newcommand{\vv}{\mathbf{v}}
+
 \newcommand{\dist}{\operatorname{dist}}
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
 

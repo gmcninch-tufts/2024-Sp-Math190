@@ -39,10 +39,10 @@ complex numbers.
    $\zeta = e^{2\pi i/n}$).
 	  
    c. Let $v_1 = \displaystyle \sum_{i=1}^n \zeta^i e_i$. Show that
-      $v_1$ ~~is a $\zeta$-eigenvector~~ is a $\zeta^{-1}$-eigenvector for $T$.
+      $v_1$ is a $\zeta^{-1}$-eigenvector for $T$.
 
    d. More generally, let $0 \le j < n$ and let $$v_j = \sum_{i=1}^n
-      \zeta^{ij} e_i.$$ Show that $v_j$ ~~is a $\zeta^j$-eigenvector~~
+      \zeta^{ij} e_i.$$ Show that $v_j$ 
       is a $\zeta^{-j}$-eigenvector for $T$.
 
    e. Conclude that $v_0,v_1,\cdots,v_{n-1}$ is a basis of $V$
