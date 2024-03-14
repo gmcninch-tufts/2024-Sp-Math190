@@ -7,6 +7,7 @@ PD=pandoc --standalone --from markdown -V linkcolor:red --citeproc
 CMD=/home/george/.local/bin/course report
 
 PFP=--lua-filter build-assets/prefix-path.lua -MpathToProjectRoot=/home/george/Classes/2024-Sp-Math190/
+PFC=--lua-filter build-assets/color-sols.lua
 
 VPATH = .:course-pages:course-posts:course-assets/images:course-contents
 
@@ -33,7 +34,7 @@ pages: $(pages_pdf)
 
 
 %.pdf: %.md
-	$(PD) $(META) $< build-assets/biblio.md --pdf-engine=xelatex $(PFP) --resource-path=$(RP) --highlight-style=zenburn -t latex -o $@
+	$(PD) $(META) $< build-assets/biblio.md --pdf-engine=xelatex $(PFP) $(PFC) --resource-path=$(RP) --highlight-style=zenburn -t latex -o $@
 
 .PHONY: echoes
 
