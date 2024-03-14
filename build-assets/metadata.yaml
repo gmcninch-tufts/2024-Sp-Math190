@@ -13,6 +13,7 @@ header-includes: |
   \usepackage{mathtools}
   \usepackage{amscd}
   \usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+  \usepackage{color}
 theoremnos-names:
 - id: thm
   name: Theorem

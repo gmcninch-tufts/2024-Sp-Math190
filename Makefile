@@ -33,7 +33,7 @@ pages: $(pages_pdf)
 
 
 %.pdf: %.md
-	$(PD) $(META) $< build-assets/biblio.md --pdf-engine=xelatex $(PFP) --resource-path=$(RP) -t latex -o $@
+	$(PD) $(META) $< build-assets/biblio.md --pdf-engine=xelatex $(PFP) --resource-path=$(RP) --highlight-style=zenburn -t latex -o $@
 
 .PHONY: echoes
 

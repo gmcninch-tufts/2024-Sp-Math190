@@ -1,6 +1,7 @@
 ---
 title: Cyclic
 date: 2024-03-06 and 2024-03-11
+highlight-style: tango
 ---
 
 \newcommand{\F}{\mathbb{F}}
@@ -21,7 +22,7 @@ date: 2024-03-06 and 2024-03-11
 \newcommand{\Hom}{\operatorname{Hom}}
 
 \newcommand{\ord}{\operatorname{ord}}
-\newcommand{\div}{\operatorname{div}}
+\newcommand{\divisor}{\operatorname{div}}
 \newcommand{\weight}{\operatorname{weight}}
 
 \newcommand{\PP}{\mathbb{P}}
@@ -472,22 +473,22 @@ and $K = \F_q(X)$ is the field of $F_q$-defined rational functions on $X$.
 By a *divisor* we mean a $\Z$-linear combination of points of $X$:
 $$D = \sum_{p \in X} n_p [p] \quad \text{with $n_p \in \Z$ and almost all $n_p = 0$}.$$
 
-One source of divisors is the divisor $\div(f)$ of a rational function $f \in K = \F_q(X)$:  we have
-$$\div(f) = \sum_{x \in C} \ord_x(f) [x]$$
+One source of divisors is the divisor $\divisor(f)$ of a rational function $f \in K = \F_q(X)$:  we have
+$$\divisor(f) = \sum_{x \in C} \ord_x(f) [x]$$
 where $\ord_x(f)$ denotes the *order of vanishing* of $f$ at $x \in X$. Note that $\ord_x(f) < 0$ precisely
 when $f$ has *a pole* at $x$.
 
 The *degree* of a divisor $D = \sum_{p \in X} n_p$ is the integer $\deg(D) = \sum_{p \in X} n_p$.
 
 An important result states that for any $f \in \F_q(X) = K$, we have
-$$\deg(\div(f)) = 0.$$
+$$\deg(\divisor(f)) = 0.$$
 
 Finally, a divisor $D$ is non-negative - written $D \ge 0$ - provided that $n_p \ge 0$ for each $p \in X$.
 
 ## Riemann-Roch spaces
 
 For a divisor $D$ we consider
-$$L(D) = \{f \in K \mid \div(f) + D \ge 0\}.$$
+$$L(D) = \{f \in K \mid \divisor(f) + D \ge 0\}.$$
 This is an $\F_q$-vector space, and it turns out to always be finite dimensional.
 
 According to 
