@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - ProblemSet 4 -- Finite field projective spaces **Solutions**
+</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>ProblemSet 4 -- Finite field projective spaces **Solutions**
+</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-02-23
+        
+            by George McNinch
+        
+    </section>
+    <section>
+        <ol type="1">
+<li><p>Find the irreducible factors of the polynomial <span class="math inline">\(T^9 - 1\)</span> in
+<span class="math inline">\(\mathbb{F}_7[T]\)</span>.</p>
+<p>(You should include proofs that the factors you describe are
+irreducible).</p>
+<div class="solution">
+<p>Note that the multiplicative group <span class="math inline">\(\mathbb{F}_7^\times\)</span> has order 6 and
+hence contains an element of order 3; in fact, <span class="math inline">\(2\)</span> has order 3
+since <span class="math inline">\(2^3 = 8 \equiv 1 \pmod{7}\)</span>.</p>
+<p>Now, <span class="math inline">\(\mathbb{F}_{7^2}^\times\)</span> has order <span class="math inline">\(49 - 1 = 48\)</span> which is not
+divisible by 9. And <span class="math inline">\(\mathbb{F}_{7^3}^\times\)</span> has order <span class="math inline">\(7^3 - 1 \equiv (-2)^3 - 1 \equiv -9 \equiv 0 \pmod{9}\)</span>. So <span class="math inline">\(\mathbb{F}_{7^3}^\times\)</span> has an
+element of order <span class="math inline">\(9\)</span>.</p>
+<p>Consider the polynomial <span class="math inline">\(T^3 - 2\)</span>. Any root <span class="math inline">\(\alpha\)</span> of this
+polynomial satisfies <span class="math inline">\(\alpha^3 = 2\)</span> and <span class="math inline">\(\alpha^9 = 1\)</span>; this shows
+that the multiplicative order of <span class="math inline">\(\alpha\)</span> is 9.</p>
+<p>In particular, <span class="math inline">\(\mathbb{F}_7\)</span> contains no roots of <span class="math inline">\(f(T) = T^3 -2\)</span>; since
+<span class="math inline">\(f(T)\)</span> has degree 3, it is irreducible over <span class="math inline">\(\mathbb{F}_7\)</span>.</p>
+<p>If <span class="math inline">\(\alpha\)</span> is a root of <span class="math inline">\(f(T)\)</span>, then <span class="math inline">\(\alpha^7\)</span> and <span class="math inline">\(\alpha^{7^2} = \alpha^4\)</span> are also roots (note that <span class="math inline">\(7^2 \equiv (-2)^2 = 4 \pmod{9}\)</span>). Thus
+<span class="math display">\[f(T) = (T-\alpha)(T-\alpha^7)(T-\alpha^4)\]</span>
+and <span class="math display">\[f(T) \mid T^9 -1.\]</span></p>
+<p>Notice that <span class="math inline">\(\mathbb{F}_{7^3}\)</span> is a splitting field for <span class="math inline">\(f(T)\)</span> over <span class="math inline">\(\mathbb{F}_7\)</span>.</p>
+<p>Note that <span class="math inline">\(2^2 = 4\)</span> is also an element of <span class="math inline">\(\mathbb{F}_7^\times\)</span> of order
+<span class="math inline">\(3\)</span>. Arguing as before, any root of <span class="math inline">\(T^3 - 4\)</span> is an element
+of multiplicative order <span class="math inline">\(9\)</span>.</p>
+<p>On the other hand, since <span class="math inline">\(\gcd(2,9)=1\)</span>, <span class="math inline">\(\alpha^2 \in \mathbb{F}_{7^3}\)</span> is
+also an element of order 9.</p>
+<p>Moreover, the roots of its minimal polynomial <span class="math inline">\(g(T)\)</span> have the form
+<span class="math inline">\(\alpha^2\)</span>, <span class="math inline">\(\alpha^{2 \cdot 7} = \alpha^5\)</span> (since <span class="math inline">\(14 \equiv 5 \pmod 9\)</span>), and <span class="math inline">\(\alpha^{2 \cdot 7^2} = \alpha^{5 \cdot 7} = \alpha^3\)</span> (since <span class="math inline">\(2 \cdot 7^2 \equiv 8 \pmod{9}\)</span>.</p>
+<p>Thus
+<span class="math display">\[g(T) = (T - \alpha^2)(T-\alpha^5)(T-\alpha^8).\]</span></p>
+<p>Now, notice that <span class="math inline">\((\alpha^2)^3 = (\alpha^3)^2 = 2^2 = 4 \in \mathbb{F}_7\)</span>.
+Thus the minimal polynomial <span class="math inline">\(g(T)\)</span> of <span class="math inline">\(\alpha^2\)</span> divides <span class="math inline">\(T^3 - 4\)</span>.
+It follows that
+<span class="math display">\[g(T) = T^3 - 4 = (T - \alpha^2)(T-\alpha^5)(T-\alpha^8).\]</span></p>
+<p>Now, <span class="math inline">\(g(T) \mid T^9 - 1\)</span> and since <span class="math inline">\(\gcd(f(T),g(T)) =1\)</span> we see that
+<span class="math inline">\(f(T) g(T) \mid T^9 -1\)</span>. Thus
+<span class="math display">\[T^9 -1 = f(T) \cdot g(T) \cdot (T-1) \cdot (T-2) \cdot (T-4).\]</span></p>
+</div></li>
+<li><p>Let <span class="math inline">\(0 &lt; k,m \in \mathbb{N}\)</span>, put <span class="math inline">\(n =mk\)</span>, and consider the subspace <span class="math inline">\(C \subset \mathbb{F}_q^n\)</span> defined by <span class="math display">\[C = \{ (v,v,\cdots,v ) \mid v
+\in \mathbb{F}_q^k\} \subset \mathbb{F}_q^n.\]</span> Find the <em>minimal distance</em> <span class="math inline">\(d\)</span> of this code.</p>
+<blockquote>
+<p>For example, if <span class="math inline">\(n = 6\)</span>, <span class="math inline">\(k=3\)</span> and <span class="math inline">\(m = 2\)</span> then <span class="math display">\[C =
+\{(a_1,a_2,a_3,a_1,a_2,a_3) \mid a_i \in \mathbb{F}_q\} \subset \mathbb{F}_q^6.\]</span></p>
+</blockquote>
+<p><strong>(Corrected)</strong></p>
+<div class="solution">
+<p>If <span class="math inline">\(\mathbf{v}= (v,v,\cdots,v) \in C\)</span> for <span class="math inline">\(v \in \mathbb{F}_q^n\)</span>, note that
+<span class="math inline">\(\operatorname{weight}(\mathbf{v}) = m \cdot \operatorname{weight}(v)\)</span>.</p>
+<p>In particular, for a non-zero vector we see that <span class="math inline">\(\operatorname{weight}(\mathbf{v}) \ge m\)</span>.</p>
+<p>On the other hand, a standard basis vector <span class="math inline">\(v = \mathbf{e}_i \in \mathbb{F}_q^n\)</span> has weight 1, so
+if <span class="math inline">\(\mathbf{w}= (\mathbf{e}_i,\mathbf{e}_i,\cdots,\mathbf{e}_i)\)</span>, then <span class="math inline">\(\operatorname{weight}(\mathbf{w}) = m\)</span>.</p>
+<p>Thus <span class="math display">\[\min \{ \operatorname{weight}(\mathbf{v}) \mid 0  \ne \mathbf{v}\in C\} = m.\]</span></p>
+<p>For a linear code, the minimal distance is simply the minimal weight of a non-zero vector;
+thus the minimal distance of <span class="math inline">\(C\)</span> is <span class="math inline">\(m\)</span>.</p>
+</div></li>
+<li><p>By an <span class="math inline">\([n,k,d]_q\)</span>-system we mean a pair <span class="math inline">\((V,\mathcal{P})\)</span>, where
+<span class="math inline">\(V\)</span> is a finite dimensional vector space over <span class="math inline">\(\mathbb{F}_q\)</span> and
+<span class="math inline">\(\mathcal{P}\)</span> is an ordered finite family <span class="math display">\[\mathcal{P} =
+(P_1,P_2,\cdots,P_n)\]</span> of points in <span class="math inline">\(V\)</span> (in general, points of
+<span class="math inline">\(\mathcal{P}\)</span> need not be distinct – you should view <span class="math inline">\(\mathcal{P}\)</span>
+as a <em>list</em> of points which may contain repetitions) such that
+<span class="math inline">\(\mathcal{P}\)</span> spans <span class="math inline">\(V\)</span> as a vector space. Evidently <span class="math inline">\(|\mathcal{P}| \ge \dim V\)</span>.</p>
+<p>The parameters <span class="math inline">\([n,k,d]\)</span> are defined by <span class="math display">\[n = |\mathcal{P}|, \quad
+k = \dim V, \quad d = n - \max_H |\mathcal{P} \cap H|.\]</span>
+where the maximum defining <span class="math inline">\(d\)</span> is taken over all linear hyperplanes
+<span class="math inline">\(H \subset V\)</span> and where points are counted with their multiplicity –
+i.e. <span class="math inline">\(|\mathcal{P} \cap H| = |\{i \mid P_i \in H \}|\)</span>.</p>
+<p>Gjven a <span class="math inline">\([n,k,d]_q\)</span>-system <span class="math inline">\((V,\mathcal{P})\)</span>, let <span class="math inline">\(V^*\)</span> denote the
+dual space to <span class="math inline">\(V\)</span> and consider the linear mapping
+<span class="math display">\[\Phi:V^* \to \mathbb{F}_q^n\]</span>
+defined by <span class="math display">\[\Phi(\psi) = (\psi(P_1),\cdots,\psi(P_n)).\]</span></p>
+<ol type="a">
+<li><p>Show that <span class="math inline">\(\Phi\)</span> is injective.</p>
+<div class="solution">
+<p><span class="math inline">\(\Phi\)</span> is a linear mapping, so we just need to show that <span class="math inline">\(\ker \Phi = \{0\}\)</span>.</p>
+<p>Suppose that <span class="math inline">\(\psi \in V^*\)</span> and <span class="math inline">\(\Phi(\psi) = 0\)</span>. This means
+that <span class="math inline">\(\psi(P_j) = 0\)</span> for <span class="math inline">\(1 \le j \le n\)</span>. Since <span class="math inline">\(\psi\)</span> is
+linear, it follows that <span class="math inline">\(\psi\)</span> vanishes at any linear
+combination of the vectors <span class="math inline">\(\{P_j\}\)</span>.</p>
+<p>Since <span class="math inline">\(\mathcal{P}\)</span> <em>spans</em> <span class="math inline">\(V\)</span> by assumption, it follows that
+<span class="math inline">\(\psi = 0\)</span>. This proves that <span class="math inline">\(\Phi\)</span> is injective.</p>
+</div></li>
+<li><p>Write <span class="math inline">\(C = \Phi(V^*)\)</span> for the image of <span class="math inline">\(\Phi\)</span>, so that <span class="math inline">\(C\)</span> is an
+<span class="math inline">\([n,k]_q\)</span>-code. Show that the minimal distance of the code <span class="math inline">\(C\)</span>
+is given by <span class="math inline">\(d\)</span>.</p>
+<div class="solution">
+<p>Write <span class="math inline">\(d'\)</span> for the minimal weight of <span class="math inline">\(C\)</span>;
+we must argue that <span class="math display">\[d'=d = n - \max_H |\mathcal{P}
+\cap H|.\]</span></p>
+<p>Let <span class="math inline">\(\mathbf{v}= \Phi(\psi) \in C\)</span> be a non-zero vector.
+We have
+<span class="math display">\[\operatorname{weight}(\mathbf{v}) = |\{j \mid \psi(P_j) \ne 0\}|.\]</span></p>
+<p>Write <span class="math inline">\(H = \ker \psi\)</span> and note that
+<span class="math display">\[|\mathcal{P} \cap H| = |\{j \mid \psi(P_j) = 0\}|.\]</span></p>
+<p>Thus
+<span class="math display">\[(*) \quad \operatorname{weight}(\mathbf{v}) = n - |\mathcal{P} \cap H|.\]</span></p>
+<p>In <span class="math inline">\(\max_H |\mathcal{P} \cap H|\)</span> the <em>hyperplanes</em> <span class="math inline">\(H\)</span> are precisely the kernels
+<span class="math inline">\(H = \ker \psi\)</span> of functionals <span class="math inline">\(0 \ne \psi \in V^*\)</span>.
+Thus <span class="math inline">\((*)\)</span> shows that
+<span class="math display">\[\min_{\mathbf{v}= \Phi(\psi) \ne 0} \operatorname{weight}(\mathbf{v}) = n - \max_{H = \ker \psi, \psi \ne 0} |\mathcal{P} \cap H|;\]</span>
+it follows that <span class="math inline">\(d' =d\)</span>.</p>
+</div></li>
+<li><p>Conversely, let <span class="math inline">\(C \subset \mathbb{F}_q^n\)</span> be an <span class="math inline">\([n,k,d]_q\)</span>-code, and
+put <span class="math inline">\(V = C^*\)</span>. Let <span class="math inline">\(e^1,\cdots,e^n \in (\mathbb{F}_q^n)^*\)</span> be the dual
+basis to the standard basis. The restriction of <span class="math inline">\(e^i\)</span> to the
+subspace <span class="math inline">\(C\)</span> determines an element <span class="math inline">\(P_i\)</span> of <span class="math inline">\(C^* = V\)</span>. Write
+<span class="math inline">\(\mathcal{P} = (P_1,P_2,\cdots,P_n)\)</span> for the resulting list of vectors in <span class="math inline">\(V\)</span>..</p>
+<p>Prove that the minimum distance <span class="math inline">\(d\)</span> of the code <span class="math inline">\(C\)</span> satisfies <span class="math display">\[d =
+n - \max_H | \mathcal{P} \cap H |.\]</span></p>
+<div class="solution">
+<p>We have <span class="math inline">\(V^* = (C^*)^* = C\)</span>; the mapping <span class="math inline">\(\Phi : V^* = C \to \mathbb{F}_q^n\)</span> is just the given inclusion. Indeed, let <span class="math inline">\(x = (x_1,x_2,\cdots,x_n) \in C \subset \mathbb{F}_q^n\)</span>. The mapping
+<span class="math inline">\(\Phi:V^* \to \mathbb{F}_q^n\)</span> is given by <span class="math inline">\(\Phi(x) = (e^1(x),\cdots,e^n(x)) = (x_1,\dots,x_n).\)</span></p>
+<p>Now the equality
+<span class="math display">\[d =
+n - \max_H | \mathcal{P} \cap H |\]</span>
+follows from the result of part (b).</p>
+</div></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(C\)</span> be the linear code over <span class="math inline">\(\mathbb{F}_5\)</span> generated by the matrix
+<span class="math display">\[G = \begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 2 \\
+0 &amp; 1 &amp; 0 &amp; 1 &amp; 2 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 2 &amp; 1 &amp; 1
+\end{pmatrix}.\]</span></p>
+<ol type="a">
+<li><p>Find a <em>check matrix</em> <span class="math inline">\(H\)</span> for <span class="math inline">\(C\)</span>.</p>
+<div class="solution">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> GF(<span class="dv">5</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> VectorSpace(k,<span class="dv">6</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span>V.subspace([ V([<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>]),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                V([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>]),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                V([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>])])</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># generator matrix, in standard form</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> MatrixSpace(k,<span class="dv">3</span>,<span class="dv">6</span>).matrix(C.basis())</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>G</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span> </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span>]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span>]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span>]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> MatrixSpace(k,<span class="dv">3</span>,<span class="dv">3</span>).matrix([b[<span class="dv">3</span>:<span class="dv">6</span>] <span class="cf">for</span> b <span class="kw">in</span> G])</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># construct the check matrix, as a block matrix</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> block_matrix([[<span class="op">-</span>A.transpose(),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                   MatrixSpace(k,<span class="dv">3</span>,<span class="dv">3</span>).one()]],</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>               subdivide<span class="op">=</span><span class="va">False</span>)        </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>H</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span>]</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span>]</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span>]</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">## verification:</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>H <span class="op">*</span> G.T</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span>]</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span>]</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span>]</span></code></pre></div>
+</div></li>
+<li><p>Find the minimum distance of <span class="math inline">\(C\)</span>.</p>
+<div class="solution">
+<p>The minimal distance of <span class="math inline">\(C\)</span> is 4.</p>
+<p>We check the weight of a vector using the following function:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> weight(v):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> v <span class="cf">if</span> x <span class="op">!=</span> <span class="dv">0</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(r)</span></code></pre></div>
+<p>Now, we can just find the minimal weight
+of the non-zero vectors of <span class="math inline">\(V\)</span>, as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>([ weight(v) <span class="cf">for</span> v <span class="kw">in</span> C <span class="cf">if</span> v <span class="op">!=</span> <span class="dv">0</span>])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span></span></code></pre></div>
+<p>Alternatively, you can investigate the columns of the check
+matrix <span class="math inline">\(H\)</span>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> VectorSpace(k,<span class="dv">3</span>)  <span class="co"># column space</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># return the ith column of the 3xm matrix M</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> col(M,i):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> W([ b[i] <span class="cf">for</span> b <span class="kw">in</span> M ])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check whether the columns of the 3xm matrix M </span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># specified by the list ll of indices are lin indep</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cols_lin_indep(M,ll):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    vecs <span class="op">=</span>  [ col(M,i) <span class="cf">for</span> i <span class="kw">in</span> ll ]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>   <span class="co"># the method `linear_dependence` returns a list </span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>   <span class="co"># of *linear relations*</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>   <span class="co"># so we return True if `W.linear_dependence(vecs)` is </span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>   <span class="co"># the empty list</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> W.linear_dependence(vecs) <span class="op">==</span> []</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># check whether all collections of r columns of the </span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 3xm matrix M are linearly independent</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check(M,r):</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get the number of columns of M.</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    l <span class="op">=</span> <span class="bu">len</span>(<span class="bu">list</span>(M.T))</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>   <span class="co"># get all lists of r-element subses of the numbers 0,...,l-1</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    al <span class="op">=</span> <span class="bu">map</span>(<span class="bu">list</span>,Subsets(<span class="bu">range</span>(l),r))</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>   <span class="co"># return True iff `cols_lin_indep(M,ll)` is true for every </span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>   <span class="co"># r-element subset ll of range(l)</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">all</span>([ cols_lin_indep(M,ll) <span class="cf">for</span> ll <span class="kw">in</span> al])</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>check(H,<span class="dv">3</span>)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="va">True</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>check(H,<span class="dv">4</span>)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="va">False</span></span></code></pre></div>
+<p>This shows that every collection of 3 columns of <code>H</code> is linearly
+independent, while there is some collection of 4 columns of <code>H</code> that is
+linearly dependent; thus <span class="math inline">\(d = 4\)</span>.</p>
+</div></li>
+<li><p>Decode the received vectors <span class="math inline">\((0,2,3,4,3,2)\)</span>
+and <span class="math inline">\((0,1,2,0,4,0)\)</span> using
+syndrome decoding.</p>
+<div class="solution">
+<p>The minimal distance of the code <span class="math inline">\(C\)</span> is <span class="math inline">\(4\)</span>, so we should expect to correct <span class="math inline">\(\lfloor (4-1)/2 \rfloor = \lfloor 3/2 \rfloor= 1\)</span> error.</p>
+<p>We first make the lookup table</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lookup <span class="op">=</span> { <span class="bu">tuple</span>(H<span class="op">*</span>v):v <span class="cf">for</span> v <span class="kw">in</span> V <span class="cf">if</span> weight(v) <span class="op">&lt;=</span> <span class="dv">1</span> }</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lookup</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>{(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> (<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>): (<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a> (<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>): (<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a> (<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>): (<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a> (<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>): (<span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a> (<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>): (<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a> (<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>): (<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a> (<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>): (<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>): (<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a> (<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a> (<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a> (<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a> (<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a> (<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a> (<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a> (<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a> (<span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a> (<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a> (<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>),</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a> (<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>),</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a> (<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">0</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">0</span>),</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a> (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a> (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>),</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a> (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>),</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a> (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>): (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>)} </span></code></pre></div>
+<p>Now we can decode using the lookup table</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> decode(v):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> v<span class="op">-</span>lookup[<span class="bu">tuple</span>(H<span class="op">*</span>v)]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>[ (decode(v), decode(v) <span class="kw">in</span> C) <span class="cf">for</span> v <span class="kw">in</span> [ V([<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>]),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                                         V([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">0</span>])]]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>[((<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>), <span class="va">True</span>), ((<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">3</span>), <span class="va">True</span>)]</span></code></pre></div>
+</div></li>
+</ol></li>
+</ol>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>

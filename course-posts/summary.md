@@ -66,13 +66,44 @@ date: 2024-03-13
   [[pdf]](/course-contents/2024-03-06--cyclic.pdf)
 
 
+## `sage-math` notebooks
+
+- example of ternary code
+  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/notebooks/2024-02-14--ECC-01--ternary-code.ipynb)
+  [[download notebook]](/course-contents/notebooks/2024-02-14--ECC-01--ternary-code.ipynb) 
+- Hamming code example
+  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/notebooks/2024-02-21--ECC-02--Hamming-example.ipynb)
+  [[download notebook]](/course-contents/notebooks/2024-02-21--ECC-02--Hamming-example.ipynb) 
+- perfect codes
+  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/notebooks/2024-02-22--perfect.ipynb)
+  [[download notebook]](/course-contents/notebooks/2024-02-22--perfect.ipynb) 
+- array decoding
+  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/notebooks/2024-02-26--array-decoding.ipynb)
+  [[download notebook]](/course-contents/notebooks/2024-02-26--array-decoding.ipynb) 
+- syndrome decoding
+  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/notebooks/2024-02-26--syndrome-decoding.ipynb)
+  [[download notebook]](/course-contents/notebooks/2024-02-26--syndrome-decoding.ipynb) 
+- dual-codes
+  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/notebooks/2024-02-28--dual-code.ipynb)
+  [[download notebook]](/course-contents/notebooks/2024-02-28--dual-code.ipynb) 
+- ternary Golay codes
+  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/notebooks/2024-03-06--ternary-golay.ipynb)
+  [[download notebook]](/course-contents/notebooks/2024-03-06--ternary-golay.ipynb) 
+- decoding Reed-Solomon codes
+  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/notebooks/2024-03-13--ReedSolomon-class.ipynb)
+  [[download notebook]](/course-contents/notebooks/2024-03-13--ReedSolomon-class.ipynb) 
+
+
 
 ## assignments
 
 - due 2024-03-01 [[problem set 04]](/course-assignments/PS04--ECC.html) 
   [[pdf]](/course-assignments/PS04--ECC.pdf) 
+  [[solutions]](/course-assignments/PS04--ECC--solutions.html)
+  [[solutions pdf]](/course-assignments/PS04--ECC--solutions.pdf)  
 - due 2024-03-29 [[problem set 05]](/course-assignments/PS05--ECC.html) 
   [[pdf]](/course-assignments/PS05--ECC.html) 
 - due 2024-03-29 [[final project proposal]](/course-assignments/FinReport-Proposal.html) 
   [[pdf]](/course-assignments/FinReport-Proposal.pdf) 
+
 

@@ -51,8 +51,8 @@ accompany the lectures/presentation.
 
 
 - Example of ternary code, in `sage-math`
-  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/2024-02-14--ECC-01--ternary-code.ipynb)
-  [[download notebook]](/course-contents/2024-02-14--ECC-01--ternary-code.ipynb) 
+  [[via `cocalc`]](https://cocalc.com/github/gmcninch-tufts/2024-Sp-Math190/blob/main/course-contents/notebooks/2024-02-14--ECC-01--ternary-code.ipynb)
+  [[download notebook]](/course-contents/notebooks/2024-02-14--ECC-01--ternary-code.ipynb) 
 
 
 
