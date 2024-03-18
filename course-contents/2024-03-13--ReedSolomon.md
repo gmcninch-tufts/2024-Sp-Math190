@@ -1,7 +1,6 @@
 ---
 title: Cyclic
 date: 2024-03-06 and 2024-03-11
-highlight-style: tango
 ---
 
 \newcommand{\F}{\mathbb{F}}

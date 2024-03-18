@@ -4,6 +4,7 @@ html {
 }
 
 body {
+    /* margin-left: 15px; */
     font-family: Roboto, Lato,  sans;
     font-size: 1.6rem;
     color: #000;
@@ -37,11 +38,13 @@ footer {
 }
 
 h1 {
-  font-size: 2.4rem;
+    font-size: 2.4rem;
+    /* margin-left: -10px; */
+    border-top: 2px solid blue;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 article .header {
@@ -82,6 +85,11 @@ table a {
 }
 
 
+.center {
+    text-align: center;
+}
+
+		       
 
 footer nav {
     text-align: center;
@@ -102,6 +110,14 @@ footer nav {
     padding: 15px;
     grid-gap: 15px;
 }
+
+/* p {margin-left: 15px;} */
+/* dl { margin-left: 15px;} */
+h2 {/* margin-left: 15px; */
+    font-variant: small-caps;
+    font-weight: normal;
+    /* display: list-item; */
+    list-style: square;}
 
 .image-container-3col {
     display: grid;

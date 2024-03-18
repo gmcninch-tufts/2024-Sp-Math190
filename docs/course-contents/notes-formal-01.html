@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - Overview on Formalization</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>Overview on Formalization</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-03-25
+        
+    </section>
+    <section>
+        <p>https://proofassistants.stackexchange.com/</p>
+<h2 id="proof-assistants-for-beginners">Proof assistants for beginners</h2>
+<ul>
+<li>partisan advocates
+https://proofassistants.stackexchange.com/questions/43/proof-assistants-for-beginners-a-comparison</li>
+</ul>
+<h2 id="list-of-proof-assistants">List of Proof Assistants</h2>
+<ul>
+<li><p><a href="https://coq.inria.fr/">The Coq Proof Assistant</a></p></li>
+<li><p><a href="https://wiki.portal.chalmers.se/agda/Main/HomePage">Agda</a></p></li>
+<li><p><a href="https://leanprover-community.github.io/">LEAN-prover community</a></p></li>
+<li><p><a href="https://isabelle.in.tum.de/">Isabelle/HOL</a></p></li>
+</ul>
+<h2 id="foundations-of-mathematics-in-proof-assistants">Foundations of mathematics in proof assistants</h2>
+<p>Quoting from an answer by <a href="https://proofassistants.stackexchange.com/questions/866/which-proof-assistant-would-you-advise-me-to-learn-in-2022-considering-my-inte/884#884">Jason Rute on the proofassistants.stackexchange</a></p>
+<blockquote>
+<p>Foundations of mathematics can mean a lot of things to a lot of
+people. Proof assistants present a sort of practical foundations of
+mathematics, where one actually comes up with a usable set of rules
+and axioms for doing mathematics formally in practice. Mizar and
+Metamath (set.mm) use a set theory foundation which is more similar
+to how foundations is taught in a typical university logic
+course. HOL-Light, HOL4, and Isabelle/HOL use higher order logic,
+which is a simpler type theory. And as we already mentioned Lean,
+Coq, and Agda use dependent type theory.</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Dependent_type">Dependent type theorem</a></p>
+<h2 id="resources">resources</h2>
+<p>Xena project blog</p>
+<p>https://xenaproject.wordpress.com/what-is-the-xena-project/</p>
+<p>mathlib
+https://github.com/leanprover-community/mathlib4</p>
+<h2 id="success-of-proof-assistants">Success of proof assistants</h2>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Four_color_theorem">Four-color Theorem</a></p>
+<p>(from Wikipedia:)</p>
+<blockquote>
+<p>“Kenneth Appel and Wolfgang Haken at the University of Illinois
+announced, on June 21, 1976,[16] that they had proved the theorem.”</p>
+</blockquote>
+<p>Subsequently, there were some errors discovered and then corrected
+in this algorithmic proof.</p>
+<blockquote>
+<p>“In 2005, Benjamin Werner and Georges Gonthier formalized a proof
+of the theorem inside the Coq proof assistant. This removed the
+need to trust the various computer programs used to verify
+particular cases; it is only necessary to trust the Coq
+kernel.”</p>
+</blockquote>
+<p><a href="https://www.cl.cam.ac.uk/~lp15/Pages/4colproof.pdf">Gonthier et al report</a><br />
+<a href="https://www.ams.org/notices/200811/tx081101382p.pdf">Formal Proof—The Four- Color Theorem - Gonthier</a></p>
+<p>Quoting from the introduction to Gonthier’s article in the <em>Notices</em>:</p>
+<blockquote>
+<p>“Even Appel and Haken’s 1976 triumph [2] had a hint of defeat:
+they’d had a computer do the proof for them! Perhaps the
+mathematical controversy around the proof died down with their
+book [3] and with the elegant 1995 revision [13] by Robertson,
+Saunders, Seymour, and Thomas. However something was still amiss:
+both proofs combined a textual argument, which could reasonably be
+checked by inspection, with computer code that could not. Worse,
+the empirical evidence provided by running code several times with
+the same input is weak, as it is blind to the most common cause of
+“computer” error: programmer error.”</p>
+</blockquote>
+<blockquote>
+<p>…</p>
+</blockquote>
+<blockquote>
+<p>“For some thirty years, computer science has been working out a
+solution to this problem: formal program proofs. The idea is to
+write code that describes not only what the machine should do, but
+also why it should be doing it—a formal proof of correctness. The
+validity of the proof is an objective mathematical fact that can
+be checked by a different program, whose own validity can be
+ascertained empirically because it does run on many inputs.</p>
+</blockquote></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Feit%E2%80%93Thompson_theorem">Feit-Thompson’s odd-order Theorem</a>
+odd-order theorem</p>
+<p>Wikipedia summary:</p>
+<blockquote>
+“William Burnside (1911, p. 503 note M) conjectured that every
+nonabelian finite simple group has even order. Richard Brauer
+<ol start="1957" type="1">
+<li>suggested using the centralizers of involutions of simple
+groups as the basis for the classification of finite simple
+groups, as the Brauer–Fowler theorem shows that there are only a
+finite number of finite simple groups with given centralizer of an
+involution. A group of odd order has no involutions, so to carry
+out Brauer’s program it is first necessary to show that non-cyclic
+finite simple groups never have odd order. This is equivalent to
+showing that odd order groups are solvable, which is what Feit and
+Thompson proved.”</li>
+</ol>
+</blockquote>
+<p>https://www.cs.unibo.it/~asperti/PAPERS/odd_order.pdf</p></li>
+<li><p>Kepler conjecture</p>
+<p><a href="https://en.wikipedia.org/wiki/Kepler_conjecture">Wikipedia summary</a>
+&gt; In 1998, Thomas Hales, following an approach suggested by Fejes
+&gt; Tóth (1953), announced that he had a proof of the Kepler
+&gt; conjecture. Hales’ proof is a proof by exhaustion involving the
+&gt; checking of many individual cases using complex computer
+&gt; calculations. Referees said that they were “99% certain” of the
+&gt; correctness of Hales’ proof, and the Kepler conjecture was
+&gt; accepted as a theorem. In 2014, the Flyspeck project team, headed
+&gt; by Hales, announced the completion of a formal proof of the Kepler
+&gt; conjecture using a combination of the Isabelle and HOL Light proof
+&gt; assistants. In 2017, the formal proof was accepted by the journal
+&gt; Forum of Mathematics, Pi.[1]</p>
+<p><a href="https://doi.org/10.1017%2Ffmp.2017.1">publication</a></p></li>
+<li><p>schemes
+https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/computing/public/1819-ug-projects/Fernandez-I-MirR-Schemes-in-Lean.pdf</p></li>
+<li><p>perfectoid spaces
+https://xenaproject.wordpress.com/2019/05/11/perfectoid-spaces/<br />
+https://leanprover-community.github.io/lean-perfectoid-spaces/</p></li>
+<li><p>Terence Tao [2023-10-23]
+<a href="https://mathstodon.xyz/@tao/111287749336059662">LEAN helped catch a error in some recent work</a></p>
+<iframe src="https://mathstodon.xyz/@tao/111287749336059662/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen">
+</iframe>
+<script src="https://mathstodon.xyz/embed.js" async="async"></script></li>
+<li><p>going forward: Fermat’s Last Theorem</p>
+<ul>
+<li><p>Kevin Buzzard <a href="https://xenaproject.wordpress.com/2024/01/20/lean-in-2024/">reports
+here</a>
+that he has been awarded a grant by the EPSRC to formalize (parts of?) the proof
+of Fermat’s Last Theorem in Lean.</p></li>
+<li><p>(an earlier talk of Buzzard described <a href="https://www.ma.imperial.ac.uk/~buzzard/xena/pdfs/AITP_2022_FLT_talk.pdf">some of the requirements of
+this
+task</a></p></li>
+</ul></li>
+<li><p>Buzzard’s <a href="https://www.youtube.com/watch?v=SEID4XYFN7o">talk at 2022 ICM</a></p></li>
+</ul>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>
