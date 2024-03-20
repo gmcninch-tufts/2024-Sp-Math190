@@ -438,61 +438,114 @@ decoded correctly? True
 
 ```
 
-# Algebraic Geometry Codes
+# Algebraic Geometry Codes {.agcodes}
 
-Considering *algebraic curves* defined over finite fields provides
-a vast generalization of the Reed-Solomon codes. We are going to *sketch* a few details of  this construction.
-Note that our treatment is very rapid is mainly intended to communicate some hints about these codes. See 
-e.g. [@ballCourseAlgebraicErrorCorrecting2020] for some more details.
+Considering *algebraic curves* defined over finite fields provides a
+vast generalization of the Reed-Solomon codes. We are going to
+*sketch* a few details of this construction.  Note that our treatment
+is very rapid is mainly intended to communicate some hints about these
+codes. See e.g. [@ballCourseAlgebraicErrorCorrecting2020] for some
+more details in the context of *codes*. Further references with
+relatively minimal dependencies include
+[@goldschmidtAlgebraicFunctionsProjective2003] and
+[@rosenNumberTheoryFunction2002]. Also see [@serreRationalPointsCurves2020].
 
 Let $A = \F_q[X,Y,Z]/\langle \psi \rangle$
 where $\psi$ is a homogeneous polynomial which is *absolutely irreducible*.
 
 We consider the *field*
-$$K = \{\dfrac{g}{h} \mid g,h \in A \quad \text{homogeneous of the same degree}\}.$$
+$$K = \left\{\dfrac{g}{h} \mid g,h \in A \quad \text{homogeneous of the same degree}\right\}.$$
 
 **Examples**
-:   1. $A = \F_q[X,Y] \F_q[X,Y,Z]/\langle Z \rangle.$ In this case $K
-       = \F_q\left(\dfrac{X}{Y}\right) \simeq \F_q(t)$ is the field of
-       rational functions in a single variable $t$.
+:   - $A = \F_q[X,Y] \simeq \F_q[X,Y,Z]/\langle Z \rangle.$ In this case $K
+      = \F_q\left(\dfrac{X}{Y}\right) \simeq \F_q(t)$ is the field of
+      rational functions in a single variable $t$.
 
-    2. $A = \F_q[X,Y,Z]/\langle Y^2 Z - X(X-Z)(X+Z)\rangle.$ Then
-	   $K = \F_q\left(\dfrac{X}{Z},\dfrac{Y}{Z}\right)$. Write
-	   $x = \dfrac{X}{Z}$ and $y = \dfrac{Y}{Z}$. Then
-	   $K = \F_q(x)(y)$ where $y^2 = x(x-1)(x+1)$.
-
-
-Let $\overline{F_q}$ be an algebraic closure of $\F_q$ and let
-$$X = \{(x:y:z) \in \PP^3_{\overline{F_q}} \mid \psi(x,y,z) = 0\}.$$
-Then $X$ is an *algebraic plane curve* and $A$ is an $\F_q$-form of its homogeneous coordinate ring,
-and $K = \F_q(X)$ is the field of $F_q$-defined rational functions on $X$.
+    - Suppose that $p \ne 2$ and let $A = \F_q[X,Y,Z]/\langle Y^2
+      Z - X(X-Z)(X+Z)\rangle.$ Then $K =
+  	  \F_q\left(\dfrac{X}{Z},\dfrac{Y}{Z}\right)$. Write $x =
+  	  \dfrac{X}{Z}$ and $y = \dfrac{Y}{Z}$. Then $K = \F_q(x)(y)$
+      where $y^2 = x(x-1)(x+1)$. This is an *ellpitic curve* over
+      $\F_q$.
+  
+  
+  
+  
+Let $\overline{F_q}$ be an algebraic closure of $\F_q$ and let $$X =
+\{(x:y:z) \in \PP^3_{\overline{F_q}} \mid \psi(x,y,z) = 0\}.$$ Then
+$X$ is an *algebraic plane curve*, $A$ is an $\F_q$-form of its
+homogeneous coordinate ring, and $K = \F_q(X)$ is the field of
+$\F_q$-defined rational functions on $X$.
 
 ## Divisors and rational functions
 
 By a *divisor* we mean a $\Z$-linear combination of points of $X$:
-$$D = \sum_{p \in X} n_p [p] \quad \text{with $n_p \in \Z$ and almost all $n_p = 0$}.$$
+$$D = \sum_{x \in X} n_p [x] \quad \text{with $n_x \in \Z$ and
+almost all $n_x = 0$}.$$
 
-One source of divisors is the divisor $\divisor(f)$ of a rational function $f \in K = \F_q(X)$:  we have
-$$\divisor(f) = \sum_{x \in C} \ord_x(f) [x]$$
-where $\ord_x(f)$ denotes the *order of vanishing* of $f$ at $x \in X$. Note that $\ord_x(f) < 0$ precisely
+One source of divisors is the divisor $\divisor(f)$ of a rational
+function $f \in K = \F_q(X)$: we have $$\divisor(f) = \sum_{x \in
+C} \ord_x(f) [x]$$ where $\ord_x(f)$ denotes the *order of
+vanishing* of $f$ at $x \in X$. Note that $\ord_x(f) < 0$ precisely
 when $f$ has *a pole* at $x$.
 
-The *degree* of a divisor $D = \sum_{p \in X} n_p$ is the integer $\deg(D) = \sum_{p \in X} n_p$.
+The *degree* of a divisor $D = \sum_{p \in X} n_p$ is the integer
+$\deg(D) = \sum_{p \in X} n_p$.
 
-An important result states that for any $f \in \F_q(X) = K$, we have
-$$\deg(\divisor(f)) = 0.$$
+An important result states that for any $f \in \F_q(X) = K$, we
+have $$\deg(\divisor(f)) = 0.$$
 
-Finally, a divisor $D$ is non-negative - written $D \ge 0$ - provided that $n_p \ge 0$ for each $p \in X$.
+Finally, a divisor $D$ is non-negative - written $D \ge 0$ -
+provided that $n_p \ge 0$ for each $p \in X$.
 
-## Riemann-Roch spaces
+## Riemann-Roch spaces and the Riemann-Roch Theorem
 
 For a divisor $D$ we consider
 $$L(D) = \{f \in K \mid \divisor(f) + D \ge 0\}.$$
 This is an $\F_q$-vector space, and it turns out to always be finite dimensional.
 
-According to 
+Observe that $L(D)$ consists of rational functions on $X$ whose
+poles are constrained by the divisor $D$.
+
+The *genus* of an algebraic curve is a certain natural number $g$;
+it satisfies $$g = \dim L(C), \quad \text{and} \quad 2g -2 = \deg
+(C)$$ where $C$ is a so-called *canonical divisor*. This means that
+$C$ is a divisor of the form $C = \divisor(\omega)$ where $\omega
+\in \Omega_{K/\F_q}$ is a non-zero *differential form* on $X$.
+   
+If we worked over the complex numbers rather than over $\F_q$, then
+if the equation $\phi$ is *non-singular*, topologically, the curve
+$X$ is an *orientable surface* and hence is homeomorphic to either
+the sphere (case $g=0$) or the connected sum of $g$ tori (case $g
+\ge 1$). So the genus $g$ "counts holes in the surface".
+
+The important result here is:
+   
+**Theorem** (Riemann-Roch)
+:   If $\deg(D) \ge 2g - 1$ then 
+    $$\dim L(D) = \deg D - g + 1.$$
+
+    More generally, for any divisor $D$, we have
+    $$\dim L(D) = \deg D + 1 - g + \dim L(C-D).$$
+
+## Codes from data on curves
+
+Let $X$ be an algebraic curve over $\F_q$ as before.
+
+By an $\F_q$-rational point of $X$ we mean a point $w = (x:y:z) \in X \subset
+\PP^3_{\overline{\F_q}}$ with $x,y,z \in \F_q$.
+
+Let us fix a divisor $D = \sum_{x \in C} n_x [x]$ on $X$ with the
+property that $n_x \ne 0$ implies that $x$ is $\F_q$-rational.  Also,
+choose $n$ distinct $\F_q$-rational points $P_1,P_2,\cdots,P_n \in X$
+for which $n_{P_i} = 0$ for $1 \le i \le n$.
+
+**Theorem** 
+:  Suppose that $n > \deg D > 2g -1$. Then
+   $$C(D) = \{(f(P_1),\cdots,f(P_n)) \mid f \in L(D)\}$$
+   is a $[n,\deg D - g + 1, \ge n - \deg D]_q$-code.
 
 # Bibliography
 
-::: {.refs}
+::: {.refs} 
 :::

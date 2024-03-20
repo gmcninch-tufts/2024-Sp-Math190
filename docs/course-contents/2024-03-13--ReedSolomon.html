@@ -405,48 +405,91 @@ method on the vector
 <span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>decoded correctly? <span class="va">True</span></span>
 <span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="op">-----</span></span>
 <span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
-<h1 id="algebraic-geometry-codes">Algebraic Geometry Codes</h1>
-<p>Considering <em>algebraic curves</em> defined over finite fields provides
-a vast generalization of the Reed-Solomon codes. We are going to <em>sketch</em> a few details of this construction.
-Note that our treatment is very rapid is mainly intended to communicate some hints about these codes. See
-e.g. <span class="citation" data-cites="ballCourseAlgebraicErrorCorrecting2020">(Ball 2020)</span> for some more details.</p>
+<h1 class="agcodes" id="algebraic-geometry-codes">Algebraic Geometry Codes</h1>
+<p>Considering <em>algebraic curves</em> defined over finite fields provides a
+vast generalization of the Reed-Solomon codes. We are going to
+<em>sketch</em> a few details of this construction. Note that our treatment
+is very rapid is mainly intended to communicate some hints about these
+codes. See e.g. <span class="citation" data-cites="ballCourseAlgebraicErrorCorrecting2020">(Ball 2020)</span> for some
+more details in the context of <em>codes</em>. Further references with
+relatively minimal dependencies include
+<span class="citation" data-cites="goldschmidtAlgebraicFunctionsProjective2003">(Goldschmidt 2003)</span> and
+<span class="citation" data-cites="rosenNumberTheoryFunction2002">(Rosen 2002)</span>. Also see <span class="citation" data-cites="serreRationalPointsCurves2020">(Serre 2020)</span>.</p>
 <p>Let <span class="math inline">\(A = \mathbb{F}_q[X,Y,Z]/\langle \psi \rangle\)</span>
 where <span class="math inline">\(\psi\)</span> is a homogeneous polynomial which is <em>absolutely irreducible</em>.</p>
 <p>We consider the <em>field</em>
-<span class="math display">\[K = \{\dfrac{g}{h} \mid g,h \in A \quad \text{homogeneous of the same degree}\}.\]</span></p>
+<span class="math display">\[K = \left\{\dfrac{g}{h} \mid g,h \in A \quad \text{homogeneous of the same degree}\right\}.\]</span></p>
 <dl>
 <dt><strong>Examples</strong></dt>
 <dd>
-<ol type="1">
-<li><p><span class="math inline">\(A = \mathbb{F}_q[X,Y] \mathbb{F}_q[X,Y,Z]/\langle Z \rangle.\)</span> In this case <span class="math inline">\(K = \mathbb{F}_q\left(\dfrac{X}{Y}\right) \simeq \mathbb{F}_q(t)\)</span> is the field of
+<ul>
+<li><p><span class="math inline">\(A = \mathbb{F}_q[X,Y] \simeq \mathbb{F}_q[X,Y,Z]/\langle Z \rangle.\)</span> In this case <span class="math inline">\(K = \mathbb{F}_q\left(\dfrac{X}{Y}\right) \simeq \mathbb{F}_q(t)\)</span> is the field of
 rational functions in a single variable <span class="math inline">\(t\)</span>.</p></li>
-<li><p><span class="math inline">\(A = \mathbb{F}_q[X,Y,Z]/\langle Y^2 Z - X(X-Z)(X+Z)\rangle.\)</span> Then
-<span class="math inline">\(K = \mathbb{F}_q\left(\dfrac{X}{Z},\dfrac{Y}{Z}\right)\)</span>. Write
-<span class="math inline">\(x = \dfrac{X}{Z}\)</span> and <span class="math inline">\(y = \dfrac{Y}{Z}\)</span>. Then
-<span class="math inline">\(K = \mathbb{F}_q(x)(y)\)</span> where <span class="math inline">\(y^2 = x(x-1)(x+1)\)</span>.</p></li>
-</ol>
+<li><p>Suppose that <span class="math inline">\(p \ne 2\)</span> and let <span class="math inline">\(A = \mathbb{F}_q[X,Y,Z]/\langle Y^2 Z - X(X-Z)(X+Z)\rangle.\)</span> Then <span class="math inline">\(K =  \mathbb{F}_q\left(\dfrac{X}{Z},\dfrac{Y}{Z}\right)\)</span>. Write <span class="math inline">\(x =  \dfrac{X}{Z}\)</span> and <span class="math inline">\(y = \dfrac{Y}{Z}\)</span>. Then <span class="math inline">\(K = \mathbb{F}_q(x)(y)\)</span>
+where <span class="math inline">\(y^2 = x(x-1)(x+1)\)</span>. This is an <em>ellpitic curve</em> over
+<span class="math inline">\(\mathbb{F}_q\)</span>.</p></li>
+</ul>
 </dd>
 </dl>
-<p>Let <span class="math inline">\(\overline{F_q}\)</span> be an algebraic closure of <span class="math inline">\(\mathbb{F}_q\)</span> and let
-<span class="math display">\[X = \{(x:y:z) \in \mathbb{P}^3_{\overline{F_q}} \mid \psi(x,y,z) = 0\}.\]</span>
-Then <span class="math inline">\(X\)</span> is an <em>algebraic plane curve</em> and <span class="math inline">\(A\)</span> is an <span class="math inline">\(\mathbb{F}_q\)</span>-form of its homogeneous coordinate ring,
-and <span class="math inline">\(K = \mathbb{F}_q(X)\)</span> is the field of <span class="math inline">\(F_q\)</span>-defined rational functions on <span class="math inline">\(X\)</span>.</p>
+<p>Let <span class="math inline">\(\overline{F_q}\)</span> be an algebraic closure of <span class="math inline">\(\mathbb{F}_q\)</span> and let <span class="math display">\[X =
+\{(x:y:z) \in \mathbb{P}^3_{\overline{F_q}} \mid \psi(x,y,z) = 0\}.\]</span> Then
+<span class="math inline">\(X\)</span> is an <em>algebraic plane curve</em>, <span class="math inline">\(A\)</span> is an <span class="math inline">\(\mathbb{F}_q\)</span>-form of its
+homogeneous coordinate ring, and <span class="math inline">\(K = \mathbb{F}_q(X)\)</span> is the field of
+<span class="math inline">\(\mathbb{F}_q\)</span>-defined rational functions on <span class="math inline">\(X\)</span>.</p>
 <h2 id="divisors-and-rational-functions">Divisors and rational functions</h2>
 <p>By a <em>divisor</em> we mean a <span class="math inline">\(\mathbb{Z}\)</span>-linear combination of points of <span class="math inline">\(X\)</span>:
-<span class="math display">\[D = \sum_{p \in X} n_p [p] \quad \text{with $n_p \in \mathbb{Z}$ and almost all $n_p = 0$}.\]</span></p>
-<p>One source of divisors is the divisor <span class="math inline">\(\operatorname{div}(f)\)</span> of a rational function <span class="math inline">\(f \in K = \mathbb{F}_q(X)\)</span>: we have
-<span class="math display">\[\operatorname{div}(f) = \sum_{x \in C} \operatorname{ord}_x(f) [x]\]</span>
-where <span class="math inline">\(\operatorname{ord}_x(f)\)</span> denotes the <em>order of vanishing</em> of <span class="math inline">\(f\)</span> at <span class="math inline">\(x \in X\)</span>. Note that <span class="math inline">\(\operatorname{ord}_x(f) &lt; 0\)</span> precisely
+<span class="math display">\[D = \sum_{x \in X} n_p [x] \quad \text{with $n_x \in \mathbb{Z}$ and
+almost all $n_x = 0$}.\]</span></p>
+<p>One source of divisors is the divisor <span class="math inline">\(\operatorname{div}(f)\)</span> of a rational
+function <span class="math inline">\(f \in K = \mathbb{F}_q(X)\)</span>: we have <span class="math display">\[\operatorname{div}(f) = \sum_{x \in
+C} \operatorname{ord}_x(f) [x]\]</span> where <span class="math inline">\(\operatorname{ord}_x(f)\)</span> denotes the <em>order of
+vanishing</em> of <span class="math inline">\(f\)</span> at <span class="math inline">\(x \in X\)</span>. Note that <span class="math inline">\(\operatorname{ord}_x(f) &lt; 0\)</span> precisely
 when <span class="math inline">\(f\)</span> has <em>a pole</em> at <span class="math inline">\(x\)</span>.</p>
-<p>The <em>degree</em> of a divisor <span class="math inline">\(D = \sum_{p \in X} n_p\)</span> is the integer <span class="math inline">\(\deg(D) = \sum_{p \in X} n_p\)</span>.</p>
-<p>An important result states that for any <span class="math inline">\(f \in \mathbb{F}_q(X) = K\)</span>, we have
-<span class="math display">\[\deg(\operatorname{div}(f)) = 0.\]</span></p>
-<p>Finally, a divisor <span class="math inline">\(D\)</span> is non-negative - written <span class="math inline">\(D \ge 0\)</span> - provided that <span class="math inline">\(n_p \ge 0\)</span> for each <span class="math inline">\(p \in X\)</span>.</p>
-<h2 id="riemann-roch-spaces">Riemann-Roch spaces</h2>
+<p>The <em>degree</em> of a divisor <span class="math inline">\(D = \sum_{p \in X} n_p\)</span> is the integer
+<span class="math inline">\(\deg(D) = \sum_{p \in X} n_p\)</span>.</p>
+<p>An important result states that for any <span class="math inline">\(f \in \mathbb{F}_q(X) = K\)</span>, we
+have <span class="math display">\[\deg(\operatorname{div}(f)) = 0.\]</span></p>
+<p>Finally, a divisor <span class="math inline">\(D\)</span> is non-negative - written <span class="math inline">\(D \ge 0\)</span> -
+provided that <span class="math inline">\(n_p \ge 0\)</span> for each <span class="math inline">\(p \in X\)</span>.</p>
+<h2 id="riemann-roch-spaces-and-the-riemann-roch-theorem">Riemann-Roch spaces and the Riemann-Roch Theorem</h2>
 <p>For a divisor <span class="math inline">\(D\)</span> we consider
 <span class="math display">\[L(D) = \{f \in K \mid \operatorname{div}(f) + D \ge 0\}.\]</span>
 This is an <span class="math inline">\(\mathbb{F}_q\)</span>-vector space, and it turns out to always be finite dimensional.</p>
-<p>According to</p>
+<p>Observe that <span class="math inline">\(L(D)\)</span> consists of rational functions on <span class="math inline">\(X\)</span> whose
+poles are constrained by the divisor <span class="math inline">\(D\)</span>.</p>
+<p>The <em>genus</em> of an algebraic curve is a certain natural number <span class="math inline">\(g\)</span>;
+it satisfies <span class="math display">\[g = \dim L(C), \quad \text{and} \quad 2g -2 = \deg
+(C)\]</span> where <span class="math inline">\(C\)</span> is a so-called <em>canonical divisor</em>. This means that
+<span class="math inline">\(C\)</span> is a divisor of the form <span class="math inline">\(C = \operatorname{div}(\omega)\)</span> where <span class="math inline">\(\omega \in \Omega_{K/\mathbb{F}_q}\)</span> is a non-zero <em>differential form</em> on <span class="math inline">\(X\)</span>.</p>
+<p>If we worked over the complex numbers rather than over <span class="math inline">\(\mathbb{F}_q\)</span>, then
+if the equation <span class="math inline">\(\phi\)</span> is <em>non-singular</em>, topologically, the curve
+<span class="math inline">\(X\)</span> is an <em>orientable surface</em> and hence is homeomorphic to either
+the sphere (case <span class="math inline">\(g=0\)</span>) or the connected sum of <span class="math inline">\(g\)</span> tori (case <span class="math inline">\(g \ge 1\)</span>). So the genus <span class="math inline">\(g\)</span> “counts holes in the surface”.</p>
+<p>The important result here is:</p>
+<dl>
+<dt><strong>Theorem</strong> (Riemann-Roch)</dt>
+<dd>
+<p>If <span class="math inline">\(\deg(D) \ge 2g - 1\)</span> then
+<span class="math display">\[\dim L(D) = \deg D - g + 1.\]</span></p>
+<p>More generally, for any divisor <span class="math inline">\(D\)</span>, we have
+<span class="math display">\[\dim L(D) = \deg D + 1 - g + \dim L(C-D).\]</span></p>
+</dd>
+</dl>
+<h2 id="codes-from-data-on-curves">Codes from data on curves</h2>
+<p>Let <span class="math inline">\(X\)</span> be an algebraic curve over <span class="math inline">\(\mathbb{F}_q\)</span> as before.</p>
+<p>By an <span class="math inline">\(\mathbb{F}_q\)</span>-rational point of <span class="math inline">\(X\)</span> we mean a point <span class="math inline">\(w = (x:y:z) \in X \subset \mathbb{P}^3_{\overline{\mathbb{F}_q}}\)</span> with <span class="math inline">\(x,y,z \in \mathbb{F}_q\)</span>.</p>
+<p>Let us fix a divisor <span class="math inline">\(D = \sum_{x \in C} n_x [x]\)</span> on <span class="math inline">\(X\)</span> with the
+property that <span class="math inline">\(n_x \ne 0\)</span> implies that <span class="math inline">\(x\)</span> is <span class="math inline">\(\mathbb{F}_q\)</span>-rational. Also,
+choose <span class="math inline">\(n\)</span> distinct <span class="math inline">\(\mathbb{F}_q\)</span>-rational points <span class="math inline">\(P_1,P_2,\cdots,P_n \in X\)</span>
+for which <span class="math inline">\(n_{P_i} = 0\)</span> for <span class="math inline">\(1 \le i \le n\)</span>.</p>
+<dl>
+<dt><strong>Theorem</strong></dt>
+<dd>
+Suppose that <span class="math inline">\(n &gt; \deg D &gt; 2g -1\)</span>. Then
+<span class="math display">\[C(D) = \{(f(P_1),\cdots,f(P_n)) \mid f \in L(D)\}\]</span>
+is a <span class="math inline">\([n,\deg D - g + 1, \ge n - \deg D]_q\)</span>-code.
+</dd>
+</dl>
 <h1 id="bibliography">Bibliography</h1>
 <div class="refs">
 
@@ -454,6 +497,15 @@ This is an <span class="math inline">\(\mathbb{F}_q\)</span>-vector space, and i
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-ballCourseAlgebraicErrorCorrecting2020" class="csl-entry" role="listitem">
 Ball, Simeon. 2020. <em>A <span>Course</span> in <span>Algebraic Error-Correcting Codes</span></em>. Compact <span>Textbooks</span> in <span>Mathematics</span>. <span>Cham</span>: <span>Springer International Publishing</span>. <a href="https://doi.org/10.1007/978-3-030-41153-4">https://doi.org/10.1007/978-3-030-41153-4</a>.
+</div>
+<div id="ref-goldschmidtAlgebraicFunctionsProjective2003" class="csl-entry" role="listitem">
+Goldschmidt, David M. 2003. <em>Algebraic Functions and Projective Curves</em>. Vol. 215. Graduate <span>Texts</span> in <span>Mathematics</span>. <span>Springer-Verlag, New York</span>. <a href="https://doi.org/10.1007/b97844">https://doi.org/10.1007/b97844</a>.
+</div>
+<div id="ref-rosenNumberTheoryFunction2002" class="csl-entry" role="listitem">
+Rosen, Michael. 2002. <em>Number Theory in Function Fields</em>. Vol. 210. Graduate <span>Texts</span> in <span>Mathematics</span>. <span>Springer-Verlag, New York</span>. <a href="https://doi.org/10.1007/978-1-4757-6046-0">https://doi.org/10.1007/978-1-4757-6046-0</a>.
+</div>
+<div id="ref-serreRationalPointsCurves2020" class="csl-entry" role="listitem">
+Serre, Jean-Pierre. 2020. <em>Rational Points on Curves over Finite Fields</em>. Edited by Alp Bassa, Elisa Lorenzo García, Christophe Ritzenthaler, and René Schoof. Vol. 18. Documents <span class="nocase">Math<span class="nocase">é</span>matiques</span> (<span>Paris</span>) [<span>Mathematical Documents</span> (<span>Paris</span>)]. <span>Soci<span>é</span>t<span>é</span> Math<span>é</span>matique de France, Paris</span>.
 </div>
 </div>
     </section>

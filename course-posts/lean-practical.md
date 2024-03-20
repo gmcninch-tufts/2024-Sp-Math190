@@ -12,6 +12,9 @@ date: 2024-03-16
   and [Theorem Proving in
   Lean](https://leanprover.github.io/theorem_proving_in_lean4/).
 
+  There is also
+  [Functional programming in Lean](https://lean-lang.org/functional_programming_in_lean/title.html)
+  which might be useful as well.
 
 
 # Course repository
