@@ -17,16 +17,17 @@ As is your *proposal* for a final project:
 
 # Notes
 
+
+
 Overview of "what is a proof assistant good for?":
 - [Notes 2024-03-05](/course-contents/notes-formal-01.html)
 
 # Lean via GitPod
 
+See [this post](./lean-practical.md) for practical information about Lean.
+
 I've created a second github repository to facilitate interaction with
-Lean code.
-
-See [this discussion](./lean-practical.html)
-
+Lean code (as [discussed here](./lean-practical.html)).
 
 - code accompanying intro discussion of Lean 
 
