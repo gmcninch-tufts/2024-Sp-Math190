@@ -22,7 +22,7 @@ date: 2024-03-16
  I've made (another) `github` repository for the course,  to contain the
  Lean materials.
  
- [https://github.com/gmcninch-tufts/math190-formalize](https://github.com/gmcninch-tufts/math190-formalize)
+ [https://github.com/gmcninch-tufts/math190formalize](https://github.com/gmcninch-tufts/math190formalize)
   
  If you click that link, you'll see instructions for using `Gitpod` to
  interact with course materials.
