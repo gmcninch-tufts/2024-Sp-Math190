@@ -64,7 +64,8 @@ date: 2024-03-13
   [[pdf]](/course-contents/2024-03-04-p0--projective.pdf)
 - [[Cyclic codes - 2024-03-06]](/course-contents/2024-03-06--cyclic.html)
   [[pdf]](/course-contents/2024-03-06--cyclic.pdf)
-
+- [[Reed-Solomon codes - 2024-03-13]](/course-contents/2024-03-13--ReedSolomon.html)
+  [[pdf]](/course-contents/2024-03-13--ReedSolomon.pdf)
 
 ## `sage-math` notebooks
 
