@@ -38,7 +38,7 @@ date: 2024-03-13
   [[problem set 02]](/course-assignments/PS02--rep-theory.html) 
   [[pdf]](/course-assignments/PS02--rep-theory.pdf) 
   [[solutions]](/course-assignments/PS02--rep-theory--solutions.html) 
-  [[solutions pdf]](/course-assignments/PS02--rep-theory--solutions.pdf) \
+  [[solutions pdf]](/course-assignments/PS02--rep-theory--solutions.pdf)
 - due 2024-02-16
   [[problem set 03]](/course-assignments/PS03--rep-theory.html) 
   [[pdf]](/course-assignments/PS03--rep-theory.pdf) 

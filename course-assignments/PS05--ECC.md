@@ -90,12 +90,12 @@ date: due 2024-03-29
    and write $\mathcal{P} = \{a_1,\cdots,a_n\}$.
 
    Let $1 \le k \le n$ and write $\F_q[T]_{< k}$ for the space of
-   polynomial of degree $\le k$, and let
+   polynomial of degree $< k$, and let
    
    $C \subset \F_q^n$ be given by
    $$C = \{ (p(a_1),\cdots,p(a_n)) \mid p \in \F_q[T]_{<k}.$$
    
-   a. Prove that $C$ is a $[n,k,n-k]_q$-code.
+   a. Prove that $C$ is a $[n,k+1,n-k]_q$-code.
    
    b. If $P = \F_q^\times$, prove that $C$ is a *cyclic code*. 
 
