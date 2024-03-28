@@ -95,7 +95,7 @@ date: due 2024-03-29
    $C \subset \F_q^n$ be given by
    $$C = \{ (p(a_1),\cdots,p(a_n)) \mid p \in \F_q[T]_{<k}.$$
    
-   a. Prove that $C$ is a $[n,k+1,n-k]_q$-code.
+   a. If $n \ge k$, prove that $C$ is a $[n,k,n-k+1]_q$-code.
    
    b. If $P = \F_q^\times$, prove that $C$ is a *cyclic code*. 
 
