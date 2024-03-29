@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - PS07 - sage issues
+</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>PS07 - sage issues
+</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-03-29
+        
+            by George McNinch
+        
+    </section>
+    <section>
+        <p>So there was a somewhat sticky <code>Sage-math</code> situation related to the
+second problem.</p>
+<p>We want to construct the irreducible factors of <span class="math inline">\(f = T^{11} - 1\)</span> over
+<span class="math inline">\(\mathbb{F}_4\)</span>.</p>
+<p>We can try to proceed as we’ve done in the past:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> GF(<span class="dv">4</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>R.<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> PolynomialRing(k)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> T<span class="op">^</span><span class="dv">11</span> <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>l.<span class="op">&lt;</span>w<span class="op">&gt;</span>  <span class="op">=</span> GF(<span class="dv">4</span><span class="op">^</span><span class="dv">5</span>)  <span class="co"># w is a generator for the multiplcative group of GF(4^5)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">int</span>((<span class="dv">4</span><span class="op">^</span><span class="dv">5</span><span class="op">-</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">11</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>z<span class="op">=</span> w<span class="op">^</span>n           <span class="co"># z is an element of order 11, as we now check...</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>multiplicative_order(z)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span> <span class="dv">11</span></span></code></pre></div>
+<p>But now we can’t define the minimal polynomial, because “<code>w</code> and a generator for
+<code>GF(4)</code> don’t play nice with each other”.</p>
+<p>Indeed, we get an error when trying to write down the minimal polynomial of <code>z</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>product([ T <span class="op">-</span> z<span class="op">^</span>{<span class="dv">4</span><span class="op">^</span>i} <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>) ])</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>[... elided...]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="pp">TypeError</span>: unsupported operand parent(s) <span class="cf">for</span> <span class="op">-</span>: <span class="st">'Univariate Polynomial Ring in T over Finite Field in z2 of size 2^2'</span> <span class="kw">and</span> <span class="st">'Finite Field in w of size 2^10'</span></span></code></pre></div>
+<p>I expect that there is a natural way to proceed to fix this issue, but
+I don’t know it at the moment.</p>
+<p>So here is a work-around.</p>
+<p>We can just use <code>Sage</code> to factor the polynomial. (Here it is
+important that the coefficients field of the polynomial ring <code>R</code> is
+<code>GF(4)</code>, rather than <code>GF(2)</code>).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>f.factor()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>(T <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> (T<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> z2<span class="op">*</span>T<span class="op">^</span><span class="dv">4</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> (z2 <span class="op">+</span> <span class="dv">1</span>)<span class="op">*</span>T <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> (T<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> (z2 <span class="op">+</span> <span class="dv">1</span>)<span class="op">*</span>T<span class="op">^</span><span class="dv">4</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> z2<span class="op">*</span>T <span class="op">+</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>Note that <code>f.factor()</code> actually returns what <code>Sage</code> calls a <code>factorization</code> object. In particular,
+the factorization can be accessed as a <code>list</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> <span class="bu">list</span>(f.factor())</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fs</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>[(T <span class="op">+</span> <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a> (T<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> z2<span class="op">*</span>T<span class="op">^</span><span class="dv">4</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> (z2 <span class="op">+</span> <span class="dv">1</span>)<span class="op">*</span>T <span class="op">+</span> <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a> (T<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> (z2 <span class="op">+</span> <span class="dv">1</span>)<span class="op">*</span>T<span class="op">^</span><span class="dv">4</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> z2<span class="op">*</span>T <span class="op">+</span> <span class="dv">1</span>, <span class="dv">1</span>)]</span></code></pre></div>
+<p>Let’s name the degree 5 factors:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(g,_) <span class="op">=</span> fs[<span class="dv">1</span>]    <span class="co"># we extract the pairs at indices 1,2 of `fs`</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>(h,_) <span class="op">=</span> fs[<span class="dv">2</span>]    <span class="co"># and we ignore the multiplicities (which are anyhow 1)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>(g,h)            <span class="co"># now g and h are  the degree 5 irreducible factors</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>(T<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> z2<span class="op">*</span>T<span class="op">^</span><span class="dv">4</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> (z2 <span class="op">+</span> <span class="dv">1</span>)<span class="op">*</span>T <span class="op">+</span> <span class="dv">1</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a> T<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> (z2 <span class="op">+</span> <span class="dv">1</span>)<span class="op">*</span>T<span class="op">^</span><span class="dv">4</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> z2<span class="op">*</span>T <span class="op">+</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>Since <code>z</code> is a root of <code>T^11 - 1</code>, we know that <code>z</code> is a root of
+exactly one of <code>g,h.</code> And e.g. if it is a root of <code>g</code> then <code>g</code> is the
+minimal polynomial of <code>z</code> over <code>GF(4)</code>.</p>
+<p>But trying to check that <code>z</code> is a root of <code>g</code> returns us to the earlier problem:
+to evaluate <code>g</code> at <code>z</code> requires <code>Sage</code> to reconcile the generator <code>z2</code>
+of <code>GF(4)</code> with the generator <code>w</code> of <code>GF(2^10)</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>g(z)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>[ ... some of the error message elided ...]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="pp">TypeError</span>: no common canonical parent <span class="cf">for</span> objects <span class="cf">with</span> parents: <span class="st">'Finite Field in z2 of size 2^2'</span> <span class="kw">and</span> <span class="st">'Finite Field in w of size 2^10'</span></span></code></pre></div>
+<p>Now, on the other hand we can try to construct the minimal polynomial
+of <code>z</code> using the fact that the Galois group of <code>GF(4^5)/GF(4)</code> acts on
+the roots of the minimal polynomial.</p>
+<p>Thus, e.g. the minimal polynomial of <code>z</code> has roots
+<code>[ z^(4^i) for i in range(5)]</code>.</p>
+<p>So let’s construct the minimal polynomial of <code>z</code> and of <code>z^2</code> in the
+polynomial ring over the larger field <code>l</code>. In fact, I’m going to use a
+different variable name in this larger polynomial ring.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>S.<span class="op">&lt;</span>X<span class="op">&gt;</span>  <span class="op">=</span> PolynomialRing(l)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>gg<span class="op">=</span>product([ X<span class="op">-</span>z<span class="op">^</span>(<span class="dv">4</span><span class="op">^</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>) ])</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>hh <span class="op">=</span> product([X<span class="op">-</span> z<span class="op">^</span>(<span class="dv">2</span><span class="op">*</span><span class="dv">4</span><span class="op">^</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>(gg,hh)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>(X<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> (w<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> w<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> w)<span class="op">*</span>X<span class="op">^</span><span class="dv">4</span> <span class="op">+</span> X<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> X<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> (w<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> w<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> w <span class="op">+</span> <span class="dv">1</span>)<span class="op">*</span>X <span class="op">+</span> <span class="dv">1</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a> X<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> (w<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> w<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> w <span class="op">+</span> <span class="dv">1</span>)<span class="op">*</span>X<span class="op">^</span><span class="dv">4</span> <span class="op">+</span> X<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> X<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> (w<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> w<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> w)<span class="op">*</span>X <span class="op">+</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>Now, we know that the list of polynomials <code>g,h</code> is “<em>the same as</em>” the list of polynomials
+<code>gg,hh</code>. But we don’t really know which is which.</p>
+<p>We note that the coefficient of <code>X^4</code> in <code>gg</code> is <code>w^5 + w^3 + w</code>, and
+that the coefficient of <code>T^4</code> in <code>g</code> is <code>z2</code>.</p>
+<p>Now, the minimal polynomial of an element of <code>GF(4)</code> which is not in <code>GF(2)</code> is
+<code>X^2 + X + 1</code>, and we can check that <code>w^5 + w^3 + w</code> is a root of this polynomial:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> X<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> X <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>h(w<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> w<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> w)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span></span></code></pre></div>
+<p>But this doesn’t really help! If <code>z2</code> is a root of <code>X^2 + X + 1</code> the
+other root of <code>X^2 + X + 1</code> is <code>z2 + 1</code>, which is the coefficient of
+<code>T^4</code> in <code>h</code>. The point is that there is some choice in roots, and we
+need to make a consistent choice.</p>
+<p>Here finally is how to think about it.</p>
+<p>By construction, the minimal polynomial of <code>z</code> is <code>gg</code>.</p>
+<p>Setting <code>z2 = w^5 + w^3 + w</code> we have a root of <code>X^2 + X + 1</code>, so that
+<code>z2</code> generates the subfield <code>GF(4)</code> of <code>GF(4^5)</code>. And then we see that
+– <em>with this choice</em> –</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> T<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> z2<span class="op">*</span>T<span class="op">^</span><span class="dv">4</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> (z2 <span class="op">+</span> <span class="dv">1</span>)<span class="op">*</span>T <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<p>is the minimal polynomial of our chosen element <code>z</code> of order 11.</p>
+<p>Now we can use <code>g</code> to compute the minimal distance of the cyclic code
+(as was done for the ternary Golay code in the class notes) in order to compute the minimal distance
+of the code <span class="math inline">\(\langle g \rangle\)</span>, as needed to answer part (e) of PS07 problem 2.</p>
+<p>(In fact, you’ll see that if <code>C1</code> is the code determined by <code>g</code> and if
+<code>C2</code> is the code determined by <code>h</code>, then both <code>C1</code> and <code>C2</code> have the
+same minimal distance, which is 5).</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>
