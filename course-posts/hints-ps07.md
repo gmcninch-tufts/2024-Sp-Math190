@@ -2,6 +2,7 @@
 title: |
   PS07 - sage issues
 author: George McNinch 
+
 date: 2024-03-29
 ---
 
@@ -37,7 +38,7 @@ But now we can't define the minimal polynomial, because "`w` and a generator for
 Indeed, we get an error when trying to write down the minimal polynomial of `z`:
 
 ``` python
-product([ T - z^{4^i} for i in range(5) ])
+product([ T - z^(4^i) for i in range(5) ])
 =>
 [... elided...]
 
