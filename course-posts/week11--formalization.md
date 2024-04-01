@@ -12,13 +12,6 @@ I hope to have you work on problems during the lecture. I'll show some
 examples, have you work for a bit (hopefully giving some feedback) and
 then I'll show some more examples.
 
-# Lean via GitPod
-
-See [this post](./lean-practical.md) for practical information about Lean.
-
-I've created a second github repository to facilitate interaction with
-Lean code (as [discussed here](./lean-practical.html)).
-
 - lean code this week
 
   - [[02--some-tactics-and-logic]](https://gitpod.io/#https://github.com/gmcninch-tufts/math190-formalize/02--some-tactics-and-logic.lean) https://github.com/gmcninch-tufts/math190-formalize/02--some-tactics-and-logic.lean
