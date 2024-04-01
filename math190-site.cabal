@@ -13,6 +13,7 @@ author:         George McNinch
 maintainer:     george.mcninch@tufts.edu
 copyright:      2024 George McNinch
 license:        BSD3
+license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
