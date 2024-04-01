@@ -14,9 +14,9 @@ then I'll show some more examples.
 
 - lean code this week
 
-  - [[02--some-tactics-and-logic (via gitpod)]](https://gitpod.io/#https://github.com/gmcninch-tufts/math190formalize/Math190formalize/02--some-tactics-and-logic.lean)  
+  - [[02--some-tactics-and-logic (via gitpod)]](https://gitpod.io/#https://github.com/gmcninch-tufts/math190formalize/)  
     [[github -- 02--some-tactics-and-logic.lean]](https://github.com/gmcninch-tufts/math190formalize/tree/main/Math190formalize/02--some-tactics-and-logic.lean)
-  - [[03--more-logic (via gitpod)]](https://gitpod.io/#https://github.com/gmcninch-tufts/math190formalize/Math190formalize/03--more-logic.lean)   
+  - [[03--more-logic (via gitpod)]](https://gitpod.io/#https://github.com/gmcninch-tufts/math190formalize/)   
     [[github -- 03--more-logic.lean]](https://github.com/gmcninch-tufts/math190formalize/Math190formalize/Math190formalize/03--more-logic.lean)
 
 There are exercises in those files (that is what I hope we'll work on
