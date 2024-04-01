@@ -62,7 +62,7 @@ second problem.</p>
 <p>But now we can’t define the minimal polynomial, because “<code>w</code> and a generator for
 <code>GF(4)</code> don’t play nice with each other”.</p>
 <p>Indeed, we get an error when trying to write down the minimal polynomial of <code>z</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>product([ T <span class="op">-</span> z<span class="op">^</span>{<span class="dv">4</span><span class="op">^</span>i} <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>) ])</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>product([ T <span class="op">-</span> z<span class="op">^</span>(<span class="dv">4</span><span class="op">^</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>) ])</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>[... elided...]</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
