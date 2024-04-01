@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "deploying math87-site"
+echo "deploying math190-site"
 cd /home/george/Classes/2024-Sp-Math190/
 git add .
 read -p "Commit message: " msg
