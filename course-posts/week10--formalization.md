@@ -31,4 +31,4 @@ Lean code (as [discussed here](./lean-practical.html)).
 
 - code accompanying intro discussion of Lean 
 
-  - [[01--overview]](https://gitpod.io/#https://github.com/gmcninch-tufts/math190-formalize/01--overview.lean) https://github.com/gmcninch-tufts/math190-formalize/01--overview.lean
+  - [[01--overview]](https://gitpod.io/#https://github.com/gmcninch-tufts/math190formalize/01--overview.lean) https://github.com/gmcninch-tufts/math190formalize/01--overview.lean
