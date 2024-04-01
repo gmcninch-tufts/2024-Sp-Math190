@@ -17,11 +17,11 @@ then I'll show some more examples.
   - [[02--some-tactics-and-logic (via gitpod)]](https://gitpod.io/#https://github.com/gmcninch-tufts/math190formalize/)  
     [[github -- 02--some-tactics-and-logic.lean]](https://github.com/gmcninch-tufts/math190formalize/tree/main/Math190formalize/02--some-tactics-and-logic.lean)
   - [[03--more-logic (via gitpod)]](https://gitpod.io/#https://github.com/gmcninch-tufts/math190formalize/)   
-    [[github -- 03--more-logic.lean]](https://github.com/gmcninch-tufts/math190formalize/Math190formalize/Math190formalize/03--more-logic.lean)
+    [[github -- 03--more-logic.lean]](https://github.com/gmcninch-tufts/math190formalize/tree/main/Math190formalize/03--more-logic.lean)
 
 There are exercises in those files (that is what I hope we'll work on
 during the lecture); I've put solutions to them in the sub-directory:
 
-  - [[github -- solutions]](https://github.com/gmcninch-tufts/math190formalize/Math190formalize/Math190formalize/solutions/)
+  - [[github -- solutions]](https://github.com/gmcninch-tufts/math190formalize/tree/main/Math190formalize/solutions/)
   
 But you should try the problems before peeking at solution(s)!
