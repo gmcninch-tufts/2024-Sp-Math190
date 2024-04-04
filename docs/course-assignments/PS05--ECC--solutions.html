@@ -61,19 +61,88 @@ if and only if <span class="math inline">\(4 \mid q-1\)</span>.</p>
 element of <span class="math inline">\(\mathbb{F}_q^\times\)</span> of order <span class="math inline">\(2\)</span>.</p>
 <p>Now, we have <span class="math inline">\(X^2 + Y^2 = (X + iY) (X - iY)\)</span>.</p>
 <p>Thus
-<span class="math display">\[F_a = X^2 + Y^2 + Z^2 - aW^2 = (X + iY) (X- iY) + Z^2 - a W^2
-= X'Y' + Z^2 - a W^2.\]</span></p>
+<span class="math display">\[X^2 + Y^2 + Z^2 - aW^2 = (X + iY) (X- iY) + Z^2 - a W^2
+= X'Y' + Z^2 - a W^2 = F_a(X',Y',Z,W).\]</span></p>
+<p>Thus using the linear change of variables <span class="math inline">\(X' = X + iY\)</span> and <span class="math inline">\(Y'= X - iY\)</span>,
+we find a bijection between the sets
+<span class="math inline">\(V(F_a)\)</span> and <span class="math inline">\(V(X'^2 + Y'^2 - ZW) = V(X^2 + Y^2 - ZW).\)</span></p>
+<p>In particular, we thus have
+<span class="math display">\[|V(F_a)| = |V(X^2 + Y^2 - ZW)|.\]</span></p>
 </div></li>
 <li><p>If <span class="math inline">\(a = 1\)</span>, show that <span class="math inline">\(|V(F_1)| = q^2 + 2q + 1\)</span>.</p>
 <p><strong>Hint:</strong> Making a linear change of variables, first show that
 <span class="math inline">\(|V(F_1)| = |V(G)|\)</span> where <span class="math inline">\(G = XY + ZW\)</span>.</p>
 <p>To count the points <span class="math inline">\((x:y:z:w)\)</span> in <span class="math inline">\(V(G)\)</span>, first count the points
-with <span class="math inline">\(xy = 0\)</span> (and hence also <span class="math inline">\(zw = 0\)</span>), and then the points with <span class="math inline">\(xy \ne 0\)</span>.</p></li>
+with <span class="math inline">\(xy = 0\)</span> (and hence also <span class="math inline">\(zw = 0\)</span>), and then the points with <span class="math inline">\(xy \ne 0\)</span>.</p>
+<div class="solution">
+<p>Arguing as in (a), we see that after a linear change of
+variables, we may replace <span class="math inline">\(F_1 = XY + Z^2 - W^2\)</span> by <span class="math inline">\(XY + ZW\)</span>;
+in particular, there is a bijection between <span class="math inline">\(V(XY + Z^2 - W^2)\)</span>
+and <span class="math inline">\(V(XY + ZW)\)</span>.</p>
+<p>We now compute <span class="math inline">\(|V|\)</span> where <span class="math inline">\(V = V(XY + ZW)\)</span>.</p>
+<p>A point <span class="math inline">\((x:y:z:w) \in \mathbb{P}^3\)</span> is in <span class="math inline">\(V\)</span> if and only if <span class="math inline">\(xy = -zw\)</span>.</p>
+<ul>
+<li><p>We first count the points with <span class="math inline">\(xy = 0 = zw\)</span>.</p>
+<p>One possibility is that exactly one of <span class="math inline">\(\{x,y,z,w\}\)</span> is
+non-zero. There are 4 such points, namely:</p>
+<p><span class="math display">\[(1:0:0:0), (0:1:0:0), (0:0:1:0), (0:0:0:1).\]</span></p>
+<p>If more than one of <span class="math inline">\(\{x,y,z,w\}\)</span> is non-zero, then at exactly
+one of <span class="math inline">\(\{x,y\}\)</span> is zero, and since we work in projective
+space we may consider points where exactly one of <span class="math inline">\(\{x,y\}\)</span> is
+equal to 1.</p>
+<p>There are exactly <span class="math inline">\(q-1\)</span> points of the form <span class="math inline">\((1:0:a:0)\)</span> for <span class="math inline">\(a \in \mathbb{F}_q\)</span>;
+more generally, it is easy to see that there are <span class="math inline">\(4(q-1)\)</span> points with
+<span class="math inline">\(xy = 0 = zw\)</span> for which exactly one of <span class="math inline">\(\{x,y\}\)</span> is zero.</p>
+<p>In particular, we now see that there are <span class="math inline">\(4(q-1)+4 = 4q\)</span> points
+<span class="math inline">\((x:y:z:w)\)</span> in <span class="math inline">\(V\)</span> with <span class="math inline">\(xy = 0\)</span>.</p></li>
+<li><p>Now we count the points in <span class="math inline">\(V\)</span> with <span class="math inline">\(xy \ne 0\)</span>. After
+observing that <span class="math inline">\((x:y:z:w)\)</span> by <span class="math inline">\((1:x/y:z/x:w/x),\)</span> we see that
+we need to count the number of points <span class="math inline">\((1:y:z:w)\)</span> with <span class="math inline">\(zw = -y\)</span> and <span class="math inline">\(y \ne 0\)</span>.</p>
+<p>There are <span class="math inline">\(q-1\)</span> possibilities for <span class="math inline">\(y \in \mathbb{F}_q^\times\)</span>, and for
+each such <span class="math inline">\(y\)</span>, there are <span class="math inline">\(q-1\)</span> pairs <span class="math inline">\((z,w) \in \mathbb{F}_q^2\)</span> for
+which <span class="math inline">\(zw = -y\)</span>.</p>
+<p>Thus there are <span class="math inline">\((q-1)^2\)</span> points <span class="math inline">\((x:y:z:w) \in V\)</span> with <span class="math inline">\(xy \ne 0\)</span>.</p></li>
+</ul>
+<p>We now see that the total number of points in <span class="math inline">\(V\)</span> is given by
+<span class="math display">\[|V| = 4q + (q-1)^2 = q^2 + 2q + 1 = (q+1)^2.\]</span></p>
+<p><strong>Remark</strong> In fact, one can show that <span class="math inline">\(V \simeq \mathbb{P}^1 \times \mathbb{P}^1\)</span>, which
+explains that <span class="math inline">\(|V| = |\mathbb{P}^1|^2 = (q+1)^2\)</span>.</p>
+</div></li>
 </ol>
 <p>Let <span class="math inline">\(S = \{ a^2 \mid a \in k\}\)</span>.</p>
 <ol start="3" type="a">
-<li><p>Show that <span class="math inline">\(|S| = \dfrac{q+1}{2}\)</span>. Conclude that there are <span class="math inline">\(q - \dfrac{q+1}{2} = \dfrac{q-1}{2}\)</span> <em>non-squares</em> in <span class="math inline">\(k\)</span>.</p></li>
-<li><p>If <span class="math inline">\(a \in S\)</span>, show that <span class="math inline">\(|V(F_a)| = |V(F_1)| = q^2 + 2q + 1\)</span>.</p></li>
+<li><p>Show that <span class="math inline">\(|S| = \dfrac{q+1}{2}\)</span>. Conclude that there are <span class="math inline">\(q - \dfrac{q+1}{2} = \dfrac{q-1}{2}\)</span> <em>non-squares</em> in <span class="math inline">\(k\)</span>.</p>
+<div class="solution">
+<p>Consider the group homomorphism <span class="math inline">\(\phi:\mathbb{F}_q^{\times} \to \mathbb{F}_q^{\times}\)</span>
+given by <span class="math inline">\(\phi(x) = x^2\)</span>.</p>
+<p>The kernel of <span class="math inline">\(\phi\)</span> is the set of elements of <span class="math inline">\(\mathbb{F}_q^\times\)</span>
+whose order divides 2; since <span class="math inline">\(\mathbb{F}_q^\times\)</span> is <em>cyclic</em> and since
+<span class="math inline">\(p\)</span> is odd, <span class="math inline">\(\ker \phi\)</span> has order 2 (in fact,
+<span class="math inline">\(\ker \phi = \{\pm 1\}\)</span>).</p>
+<p>By the first isomorphism theorem, we see that the <em>image</em> of
+<span class="math inline">\(\phi\)</span> has order <span class="math display">\[|\operatorname{image}(\phi)| =
+|\mathbb{F}_q^\times|/|\ker \phi| = (q-1)/2\]</span>.</p>
+<p>Thus there are <span class="math inline">\((q-1)/2\)</span> non-zero squares in <span class="math inline">\(\mathbb{F}_q\)</span>; since <span class="math inline">\(0\)</span>
+is also a square, we see that <span class="math display">\[|S| = (q-1)/2 + 1 = (q+1)/2.\]</span></p>
+<p>In particular, there are <span class="math inline">\(q - |S| = q - (q+1)/2 = (q-1)/2\)</span>
+non-squares in <span class="math inline">\(\mathbb{F}_q\)</span>.</p>
+</div></li>
+<li><p>If <span class="math inline">\(a \in S\)</span>, show that <span class="math inline">\(|V(F_a)| = |V(F_1)| = q^2 + 2q + 1\)</span>.</p>
+<p><strong>I should have stipulated that the assumption <span class="math inline">\(q \equiv 1 \pmod 4\)</span> is still in effect</strong></p>
+<div class="solution">
+<p>For <span class="math inline">\(a \in S\)</span>, we know that <span class="math inline">\(F_1\)</span> is obtained by a linear
+change-of-variables from <span class="math inline">\(F_a\)</span>. Indeed, writing <span class="math inline">\(a = t^2\)</span> we
+see that <span class="math display">\[F_a = XY + Z^2 - a W^2 = XY + (Z - tW)(Z + tW) = XY +
+Z'W'\]</span> where <span class="math inline">\(Z' = Z - tW\)</span> and <span class="math inline">\(W' = Z + tW\)</span>.</p>
+<p>In other words, we can obtain <span class="math inline">\(XY + ZW\)</span> from <span class="math inline">\(F_a\)</span> through a
+linear change of variables.</p>
+<p>Since <span class="math inline">\(q \equiv 1 \pmod 4\)</span>, we’ve already seen (above) that <span class="math inline">\(XY + Z^2 + W^2 = F_1\)</span>
+can be obtained by a linear change of variables from <span class="math inline">\(XY + ZW\)</span>.</p>
+<p>Thus, <span class="math inline">\(F_1\)</span> can be obtained by a linear change of variables from <span class="math inline">\(F_a\)</span>.</p>
+<p>Now, this linear change-of-variables defines a bijection between
+<span class="math inline">\(V(F_a)\)</span> and <span class="math inline">\(V(F_1)\)</span>. In particular, we have
+<span class="math display">\[|V(F_a)| = |V(F_1)| = (q+1)^2.\]</span></p>
+</div></li>
 <li><p>If <span class="math inline">\(a \in k\)</span>, <span class="math inline">\(a \not \in S\)</span>, show for any <span class="math inline">\(\alpha \in k^\times\)</span>
 that there are exactly <span class="math inline">\(q+1\)</span> pairs <span class="math inline">\((c,d) \in k \times k\)</span> with <span class="math inline">\(c^2 - ad^2 = \alpha\)</span>.</p>
 <p><strong>Hint:</strong> We may identify <span class="math inline">\(\ell = \mathbb{F}_{q^2} = \mathbb{F}_q[\sqrt{a}]\)</span>. Under this identification, the norm
@@ -81,24 +150,159 @@ homomorphism <span class="math inline">\(N=N_{\ell/k}: \ell^\times \to k^\times\
 by the formula <span class="math display">\[N(c + d\sqrt{a}) = (c+d\sqrt{a})(c-d\sqrt{a}) =
 c^2 - ad^2.\]</span> On the other hand, by Galois Theory, we have
 <span class="math inline">\(N(x) = x \cdot x^q = x^{1+q}\)</span> for any <span class="math inline">\(x \in \ell\)</span>. Thus
-<span class="math inline">\(N(\ell^\times) = k^\times\)</span> and <span class="math inline">\(|\ker N| = q+1\)</span>.</p></li>
+<span class="math inline">\(N(\ell^\times) = k^\times\)</span> and <span class="math inline">\(|\ker N| = q+1\)</span>.</p>
+<div class="solution">
+<p>On the one hand, the image of the norm homomorphism <span class="math inline">\(\ell^\times \to k^\times\)</span>
+is given by <span class="math display">\[\{c^2 - a d^2 \mid (0,0) \ne (c,d) \in k^2\}.\]</span></p>
+<p>On the other hand, <span class="math inline">\(\ell^\times\)</span> is cyclic of order <span class="math inline">\(q^2 -1\)</span> and
+<span class="math inline">\(k^\times\)</span> is cyclic of order <span class="math inline">\(q-1\)</span>. The norm mapping is given
+by <span class="math inline">\(x \mapsto x^{1+q}\)</span>. Thus the norm mapping is <em>onto</em> and
+<span class="math inline">\(\ker N\)</span> is cyclic of order <span class="math inline">\(q+1\)</span>.</p>
+<p>In particular, it follows that the norm mapping <span class="math inline">\(N:\ell^\times \to k^\times\)</span> is <em>onto</em>, and for each <span class="math inline">\(\alpha \in K^\times\)</span>
+there are exactly <span class="math inline">\(q+1\)</span> elements <span class="math inline">\(y = c + d\sqrt{a} \in \ell\)</span>
+for which <span class="math inline">\(\alpha = N(y) = c^2 - ad^2\)</span>.</p>
+</div></li>
 <li><p>If <span class="math inline">\(a \in k\)</span>, <span class="math inline">\(a \not \in S\)</span> show that <span class="math inline">\(|V(F_a)| = q^2 + 1\)</span></p>
 <p><strong>Hint:</strong> Notice that the equation <span class="math inline">\(Z^2 - aW^2 = 0\)</span> has <em>no solutions</em>
-<span class="math inline">\((z:w) \in \mathbb{P}^1_k\)</span>, and use (e) to help count.</p></li>
+<span class="math inline">\((z:w) \in \mathbb{P}^1_k\)</span>, and use (e) to help count.</p>
+<div class="solution">
+<p>We count the number of points <span class="math inline">\((x:y:z:w) \in \mathbb{P}^3\)</span>
+for which <span class="math inline">\(xy - az^2 + w^2\)</span>.</p>
+<p>Note that if <span class="math inline">\(xy = 0\)</span> there are <em>exactly two solutions</em>. Indeed,
+since <span class="math inline">\(a\)</span> is not a square, we have <span class="math display">\[-az^2 + w^2 = N(w +
+z\sqrt{a}) = 0 \quad \text{if and only if} \quad w + z\sqrt{a} =
+0 \quad \text{ in $\ell$}\]</span> so the only solutions in this case
+are <span class="math display">\[(1:0:0:0), (0:1:0:0).\]</span></p>
+<p>Now suppose that <span class="math inline">\(xy \ne 0\)</span>. After division by <span class="math inline">\(x\)</span>, we must
+count all points <span class="math inline">\((1:y:z:w)\)</span> for which <span class="math inline">\(-y = N(w + z\sqrt{a})\)</span>.
+There are <span class="math inline">\(q-1\)</span> possibilities for <span class="math inline">\(y\)</span> and – according to the
+preceding part e. – for each <span class="math inline">\(y\)</span> there are exactly <span class="math inline">\(q+1\)</span>
+possibilities for <span class="math inline">\((z,w)\)</span>. Thus there are <span class="math inline">\((q-1)(q+1)\)</span>
+solutions with <span class="math inline">\(xy \ne 0\)</span>.</p>
+<p>Finally, we see that the total number of solutions is given by
+<span class="math display">\[2 + (q-1)(q+1) = 2 + q^2 -1 = q^2 + 1.\]</span></p>
+</div></li>
 </ol></li>
 <li><p>Let <span class="math inline">\(f = T^{11} - 1 \in \mathbb{F}_4[T]\)</span>.</p>
 <ol type="a">
-<li><p>Show that <span class="math inline">\(T^{11} -1\)</span> has a root in <span class="math inline">\(\mathbb{F}_{4^5}\)</span>.</p></li>
+<li><p>Show that <span class="math inline">\(T^{11} -1\)</span> has a root in <span class="math inline">\(\mathbb{F}_{4^5}\)</span>.</p>
+<div class="solution">
+<p>Note that <span class="math display">\[4^5 = 4 \cdot 16^2 \equiv 4 \cdot 5^2 \equiv 4 \cdot
+3 \equiv 1 \pmod {11}.\]</span></p>
+<p>Since <span class="math inline">\(\mathbb{F}_{4^5}^\times\)</span> is a cyclic group whose order <span class="math inline">\(4^5 -1\)</span>
+is divisible by 11, it follows that <span class="math inline">\(\mathbb{F}_{4^5}^\times\)</span> has an
+element <span class="math inline">\(a\)</span> of order <span class="math inline">\(11\)</span>. This element <span class="math inline">\(a \in \mathbb{F}_{4^5}\)</span> is then a root of <span class="math inline">\(T^{11} - 1\)</span>.</p>
+</div></li>
 <li><p>If <span class="math inline">\(\alpha \in F_{4^5}\)</span> is a primitive element – i.e. an
-element of order <span class="math inline">\(4^5 -1\)</span>, find an element <span class="math inline">\(a = \alpha^i \in \mathbb{F}_{4^5}\)</span> of order <span class="math inline">\(11\)</span>, for a suitable <span class="math inline">\(i\)</span>.</p></li>
+element of order <span class="math inline">\(4^5 -1\)</span>, find an element <span class="math inline">\(a = \alpha^i \in \mathbb{F}_{4^5}\)</span> of order <span class="math inline">\(11\)</span>, for a suitable <span class="math inline">\(i\)</span>.</p>
+<div class="solution">
+<p>If <span class="math inline">\(\mathbb{F}_{4^5}^\times = \langle \beta \rangle\)</span> then <span class="math inline">\(\beta\)</span> has
+order <span class="math inline">\(4^5 -1\)</span>, so that <span class="math inline">\(a = \beta^{(4^5-1)/11}\)</span> is an element of
+order 11.</p>
+</div></li>
 <li><p>Show that the minimal polynomial <span class="math inline">\(g\)</span> of <span class="math inline">\(a\)</span> over <span class="math inline">\(\mathbb{F}_4\)</span> has
 degree 5, and that the roots of <span class="math inline">\(g\)</span> are powers of <span class="math inline">\(a\)</span>. Which
-powers?</p></li>
+powers?</p>
+<div class="solution">
+<p>We know that the Galois group of the extension <span class="math inline">\(\mathbb{F}_4 \subset \mathbb{F}_{4^5}\)</span> is cyclic of order 5, and is generated by the
+Frobenius automorphism <span class="math inline">\(\sigma:x \mapsto x^4\)</span>.</p>
+<p>Since <span class="math inline">\(\mathbb{F}_4 \subset \mathbb{F}_{4^5}\)</span> is a <em>Galois</em> extension (all
+extensions of finite fields are galois!) we know for <span class="math inline">\(y \in \mathbb{F}_{4^5}\)</span> that <span class="math inline">\(y \in \mathbb{F}_4\)</span> if and only if <span class="math inline">\(\sigma(y) = y\)</span>
+i.e. if and only if <span class="math inline">\(y = y^4\)</span>.</p>
+<p>Similarly, we know that a polynomial <span class="math inline">\(g \in \mathbb{F}_{4^5}[T]\)</span>
+satisfies <span class="math inline">\(g \in \mathbb{F}_4[T]\)</span> if and only if <span class="math inline">\(g = \sigma(g)\)</span>
+<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Now, define a polynomial <span class="math inline">\(g \in \mathbb{F}_{4^5}[T]\)</span> by the rule
+<span class="math display">\[g = \prod_{i = 0}^4 (T - a^{4^i}).\]</span></p>
+<p>Note that <span class="math inline">\(a\)</span> is a root of <span class="math inline">\(g\)</span>, and that
+<span class="math display">\[\sigma(g)  = \prod_{i=0}^4 (T - \sigma(a^{4^i}))
+= \prod_{i=0}^4 (T - a^{4^{i+1}}) = g\]</span>
+since <span class="math inline">\(a^{4^5} = a\)</span>.</p>
+<p>It follows that <span class="math inline">\(g \in \mathbb{F}_4[T]\)</span>. Since the Galois group acts
+transitively on the roots of <span class="math inline">\(g\)</span>, it follows that <span class="math inline">\(g\)</span> is
+<em>irreducible</em> over <span class="math inline">\(\mathbb{F}_4\)</span>; <span class="math inline">\(g\)</span> is thus the <em>minimal polynomial</em>
+of <span class="math inline">\(a\)</span> over <span class="math inline">\(\mathbb{F}_4\)</span>.</p>
+<p>It is clear that <span class="math inline">\(g\)</span> has degree 5; moreover its roots are
+<span class="math inline">\(a^i\)</span> for <span class="math inline">\(i\)</span> in the list <code>[1,4,4^2,4^3,4^4]</code>; since
+<span class="math inline">\(a\)</span> has order 11, these roots are the elements <span class="math inline">\(a^i\)</span> for <span class="math inline">\(i\)</span> in the list
+<code>[1,4,5,9,3]</code> obtained by reducing the power <span class="math inline">\(4^j\)</span> modulo 11.</p>
+</div></li>
 <li><p>Show that <span class="math inline">\(f = g\cdot h \cdot (T-1)\)</span> for another irreducible
 polynomial <span class="math inline">\(h \in \mathbb{F}_4[T]\)</span> of degree 5. The roots of <span class="math inline">\(h\)</span> are
-again powers of <span class="math inline">\(a\)</span>. Which powers?</p></li>
+again powers of <span class="math inline">\(a\)</span>. Which powers?</p>
+<div class="solution">
+<p>We define <span class="math inline">\(h \in \mathbb{F}_{4^5}[T]\)</span> by the rule <span class="math display">\[h = \prod_{i=0}^4
+(T - a^{2 \cdot 4^i}).\]</span> Then once again <span class="math inline">\(\sigma(h) = h\)</span> so that
+<span class="math inline">\(h \in \mathbb{F}_4[T]\)</span>, and again <span class="math inline">\(h\)</span> is irreducible over degree 5. Moreover,
+<span class="math inline">\(g\)</span> is the minimal polynomial of <span class="math inline">\(a^2\)</span> over <span class="math inline">\(\mathbb{F}_4\)</span>.</p>
+<p>Since 1, <span class="math inline">\(a\)</span> and <span class="math inline">\(a^2\)</span> are roots of <span class="math inline">\(f=T^{11}-1\)</span>, it follows
+that the minimal polynomials of these three elements divide <span class="math inline">\(f\)</span>.
+These minimal polynomials are <span class="math inline">\(T-1,g,h\)</span> respectively. Since these three
+polynomials are relatively prime, we find that their productd
+<span class="math inline">\((T-1)\cdot g\cdot h\)</span> divides <span class="math inline">\(f\)</span>, and then for degree reasons we see that
+<span class="math display">\[f = (T-1) \cdot g \cdot h\]</span> (note that <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span>, <span class="math inline">\(h\)</span> are all monic!)</p>
+</div></li>
 <li><p>Show that <span class="math inline">\(\langle f \rangle\)</span> is a
-<span class="math inline">\([11,6,d]_4\)</span> code for which <span class="math inline">\(d \ge 4\)</span>.</p></li>
+<span class="math inline">\([11,6,d]_4\)</span> code for which <span class="math inline">\(d \ge 4\)</span>.</p>
+<p><strong>Typo</strong>: that should have been <span class="math inline">\(\langle g \rangle\)</span> rather than
+<span class="math inline">\(\langle f \rangle.\)</span></p>
+<div class="solution">
+<p>We need to compute the <code>minimal degree</code> of the code , so we use <code>SageMath</code>.</p>
+<p>We first get the degree 5 irreducible factors of <code>f = T^11 - 1</code> over <code>GF(4)</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> GF(<span class="dv">4</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>R.<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> PolynomialRing(k)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> T<span class="op">^</span><span class="dv">11</span> <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ff <span class="op">=</span> f.factor()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>g,_ <span class="op">=</span> ff[<span class="dv">1</span>]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>h,_ <span class="op">=</span> ff[<span class="dv">2</span>]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>(g,h)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>(T<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> z2<span class="op">*</span>T<span class="op">^</span><span class="dv">4</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> (z2 <span class="op">+</span> <span class="dv">1</span>)<span class="op">*</span>T <span class="op">+</span> <span class="dv">1</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>T<span class="op">^</span><span class="dv">5</span> <span class="op">+</span> (z2 <span class="op">+</span> <span class="dv">1</span>)<span class="op">*</span>T<span class="op">^</span><span class="dv">4</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">3</span> <span class="op">+</span> T<span class="op">^</span><span class="dv">2</span> <span class="op">+</span> z2<span class="op">*</span>T <span class="op">+</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>Now we include the (previously used) code for computing minimal
+distance of a cyclic code:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> VectorSpace(k,<span class="dv">11</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pad(ll,n):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># pad the list ll with 0's to make it have length n</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="bu">len</span>(ll)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> n:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ll <span class="op">+</span> (n<span class="op">-</span>x)<span class="op">*</span>[<span class="dv">0</span>]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ll[<span class="dv">0</span>:n]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vectorize(p,n):</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># make a vector of length n out of a polynomial</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    coeffs <span class="op">=</span> p.coefficients(sparse<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> V(pad(coeffs,n))</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mkCode(p):</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># vectorize the polynomial T^i * p and use the  vectors as a basis for the code C</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># I'm assuming deg p = 5...</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> V.subspace([ vectorize( T<span class="op">^</span>i <span class="op">*</span> p, <span class="dv">11</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>) ])</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>C1 <span class="op">=</span> mkCode(g)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>C2 <span class="op">=</span> mkCode(h)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> weight(v):</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> v <span class="cf">if</span> x <span class="op">!=</span> <span class="dv">0</span>]</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(r)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> min_distance(D):</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># brute-force computation of minimal distance of D</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">min</span>([ weight(v) <span class="cf">for</span> v <span class="kw">in</span> D <span class="cf">if</span> v <span class="op">!=</span> <span class="dv">0</span>])</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>[ min_distance(c) <span class="cf">for</span> c <span class="kw">in</span> [C1,C2]]</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="op">=&gt;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>, <span class="dv">5</span>]</span></code></pre></div>
+<p>This shows that the minimal distance of the code <span class="math inline">\(\langle g \rangle\)</span> (and of the
+code <span class="math inline">\(\langle h \rangle\)</span>) is 5.</p>
+</div></li>
 </ol></li>
 <li><p>Consider the following variant of a Reed-Solomon code: let
 <span class="math inline">\(\mathcal{P} \subset \mathbb{F}_q\)</span> be a subset with <span class="math inline">\(n = |\mathcal{P}|\)</span>
@@ -113,6 +317,15 @@ polynomial of degree <span class="math inline">\(&lt; k\)</span>, and let</p>
 <li><p>If <span class="math inline">\(q = p\)</span> is <em>prime</em> and if <span class="math inline">\(P = \mathbb{F}_p\)</span>, prove that <span class="math inline">\(C\)</span> is a <em>cyclic code</em>.</p></li>
 </ol></li>
 </ol>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>For a polynomial <span class="math inline">\(g \in \mathbb{F}_{4^5}[T]\)</span>, the application
+<span class="math inline">\(\sigma(f)\)</span> applies <span class="math inline">\(\sigma\)</span> to the <em>coefficients</em> of <span class="math inline">\(g\)</span>,
+and <span class="math inline">\(\sigma(T) = T\)</span>. If <span class="math inline">\(g = \sum_{i=0}^N a_i T^i\)</span> then
+<span class="math inline">\(\sigma(g) = \sum_{i=0}^N \sigma(a_i) T^i\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
     </section>
 </article>
 
