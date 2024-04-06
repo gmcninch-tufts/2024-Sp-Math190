@@ -312,9 +312,61 @@ polynomial of degree <span class="math inline">\(&lt; k\)</span>, and let</p>
 <p><span class="math inline">\(C \subset \mathbb{F}_q^n\)</span> be given by
 <span class="math display">\[C = \{ (p(a_1),\cdots,p(a_n)) \mid p \in \mathbb{F}_q[T]_{&lt;k}.\]</span></p>
 <ol type="a">
-<li><p>If <span class="math inline">\(n \ge k\)</span>, prove that <span class="math inline">\(C\)</span> is a <span class="math inline">\([n,k,n-k+1]_q\)</span>-code.</p></li>
-<li><p>If <span class="math inline">\(P = \mathbb{F}_q^\times\)</span>, prove that <span class="math inline">\(C\)</span> is a <em>cyclic code</em>.</p></li>
-<li><p>If <span class="math inline">\(q = p\)</span> is <em>prime</em> and if <span class="math inline">\(P = \mathbb{F}_p\)</span>, prove that <span class="math inline">\(C\)</span> is a <em>cyclic code</em>.</p></li>
+<li><p>If <span class="math inline">\(n \ge k\)</span>, prove that <span class="math inline">\(C\)</span> is a <span class="math inline">\([n,k,n-k+1]_q\)</span>-code.</p>
+<div class="solution">
+<p>It is clear from the construction that <span class="math inline">\(C \subset \mathbb{F}_q^n\)</span>.
+Moreover, <span class="math inline">\(\dim C = k\)</span> since that mapping
+<span class="math display">\[\phi:\mathbb{F}_q[T]_{&lt;k} \to C \quad \text{via} \quad \phi(f) =(f(a_1),\cdots,f(a_n))\]</span>
+is injective and <span class="math inline">\(\dim \mathbb{F}_q[T]_{&lt;k} = k\)</span>.</p>
+<p>Finally, the minimal distance <span class="math inline">\(d\)</span> of the (linear) code <span class="math inline">\(C\)</span> is the minimal
+weight of a non-zero vector in <span class="math inline">\(C.\)</span> If <span class="math inline">\(x = \phi(f) \in C\)</span>, we have
+<span class="math inline">\(n + \operatorname{weight}(x) = \#\{\)</span> roots of <span class="math inline">\(f\)</span> <span class="math inline">\(\}\)</span>. Since <span class="math inline">\(f\)</span> has degree <span class="math inline">\(&lt;k\)</span>, <span class="math inline">\(f\)</span> has no more than
+<span class="math inline">\(k-1\)</span> roots; this shows that <span class="math inline">\(\operatorname{weight}(x) \ge n - k + 1\)</span>. This shows that <span class="math inline">\(d \ge n - k + 1\)</span>.</p>
+<p>To see that <span class="math inline">\(d = n-k+1\)</span>, note that <span class="math inline">\(k \le n \le |\mathbb{F}_q|\)</span> so that
+we may find <span class="math inline">\(k\)</span> distinct elements <span class="math inline">\(\alpha_1,\cdots,\alpha_{k-1}\)</span>
+of <span class="math inline">\(\mathcal{P}\)</span>. Now let <span class="math inline">\(f\)</span> be a monic polynomial of degree
+<span class="math inline">\(k-1\)</span> with these <span class="math inline">\(k-1\)</span> roots; thus <span class="math display">\[f(T) = \prod_{i=1}^n
+(T - \alpha_i).\]</span></p>
+<p>Then <span class="math inline">\(\operatorname{weight}(f) = n - k + 1\)</span>, so indeed <span class="math inline">\(d = n-k+1\)</span>.</p>
+<p>We have now shown that <span class="math inline">\(C\)</span> is a <span class="math inline">\([n,k,n-k+1]_q\)</span>-code.</p>
+</div></li>
+<li><p>If <span class="math inline">\(P = \mathbb{F}_q^\times\)</span>, prove that <span class="math inline">\(C\)</span> is a <em>cyclic code</em>.</p>
+<div class="solution">
+<p>We show that <em>for a suitable ordering of <span class="math inline">\(\mathcal{P}\)</span>, the code <span class="math inline">\(C\)</span> is </em>cyclic<em>.</em></p>
+<p>We fix a <em>generator</em> <span class="math inline">\(\alpha\)</span> for the (cyclic) multiplicative group <span class="math inline">\(\mathbb{F}_q^\times\)</span>.
+Thus <span class="math display">\[\mathcal{P} = \langle \alpha \rangle = \{1,\alpha,\alpha^2,\cdots,\alpha^{q-2}\}.\]</span>
+Now, for <span class="math inline">\(f \in \mathbb{F}_q[T]_{&lt;k}\)</span>, the corresponding code-word is
+<span class="math display">\[(f(1),f(\alpha),f(\alpha^2),\cdots,f(\alpha^{q-2})) \in C.\]</span></p>
+<p>To see that <span class="math inline">\(C\)</span> is cyclic, we must argue that
+<span class="math display">\[(\heartsuit) \quad (f(\alpha^{q-2}),f(1),f(\alpha),\cdots,f(\alpha^{q-3})) \in C.\]</span></p>
+<p>Well, let <span class="math inline">\(g(T) = f(\alpha^{-1} T) \in \mathbb{F}_q[T]\)</span>. Then <span class="math inline">\(\deg g = \deg f &lt; k\)</span> so that
+<span class="math inline">\(g \in \mathbb{F}_q[T]_{&lt;k}\)</span>. Thus
+<span class="math inline">\(x = \phi(g) \in C\)</span>. We now note that</p>
+<p><span class="math display">\[\begin{align*}
+x=(g(1),g(\alpha),g(\alpha^2),\cdots,g(\alpha^{q-2})) &amp;=
+(f(\alpha^{-1}),f(\alpha^{-1}\alpha),f(\alpha^{-1}\alpha^2),\cdots,f(\alpha^{-1}\alpha^{q-2})) \\
+&amp;= (f(\alpha^{-1}),f(1),f(\alpha),\cdots,f(\alpha^{q-3}))
+\end{align*}\]</span>
+so indeed <span class="math inline">\((\heartsuit)\)</span> holds. This proves that <span class="math inline">\(\mathcal{P}\)</span> is cyclic.</p>
+</div></li>
+<li><p>If <span class="math inline">\(q = p\)</span> is <em>prime</em> and if <span class="math inline">\(P = \mathbb{F}_p\)</span>, prove that <span class="math inline">\(C\)</span> is a <em>cyclic code</em>.</p>
+<div class="solution">
+<p>Again, we show <em>for a suitable ordering of <span class="math inline">\(\mathcal{P}\)</span> that <span class="math inline">\(C\)</span> is </em>cyclic*.</p>
+<p>Note that <span class="math inline">\(\mathcal{P} = \mathbb{F}_p\)</span> may be written
+<span class="math display">\[\mathcal{P} = \{0,1,2,\cdots,p-1\}.\]</span></p>
+<p>For an arbitrary <span class="math inline">\(f \in \mathbb{F}_q[T]_{&lt;k}\)</span>, the corresponding codeword <span class="math inline">\(\phi(f)\)</span> is given by
+<span class="math display">\[(f(0),f(1),f(2),\cdots,f(p-1)).\]</span></p>
+<p>To see that <span class="math inline">\(C\)</span> is cyclic, we must argue that
+<span class="math display">\[(\diamondsuit) \quad (f(p-1),f(0),f(1),\cdots,f(p-2)) \in C.\]</span></p>
+<p>We set <span class="math inline">\(g(T) = f(T-1) \in \mathbb{F}_[T]\)</span>, and we note that <span class="math inline">\(\deg g = \deg f\)</span> so that <span class="math inline">\(g \in \mathbb{F}_q[T]_{&lt;k}\)</span>.
+Thus <span class="math inline">\(x = \phi(g) \in C\)</span>.</p>
+<p>Now we calculcate
+<span class="math display">\[\begin{align*}
+x = (g(0),g(1),g(2),\cdots,g(p-1)) &amp;= (f(0-1),f(1-1),f(2-1),\cdots,f(p-1-1)) \\
+&amp;= (f(p-1),f(0),f(1),\cdots,f(p-2))
+\end{align*}\]</span>
+so indeed <span class="math inline">\((\diamondsuit)\)</span> holds. This proves that <span class="math inline">\(\mathcal{P}\)</span> is cyclic.</p>
+</div></li>
 </ol></li>
 </ol>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">

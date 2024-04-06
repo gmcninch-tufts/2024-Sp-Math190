@@ -13,6 +13,7 @@ date: due 2024-03-29
 \newcommand{\PP}{\mathbb{P}}
 
 \newcommand{\tr}{\operatorname{tr}}
+\newcommand{\weight}{\operatorname{weight}}
 
 
 1. Let $q$ be a power of a prime $p > 3$ and let $k = \F_q$.
@@ -402,7 +403,77 @@ date: due 2024-03-29
    $$C = \{ (p(a_1),\cdots,p(a_n)) \mid p \in \F_q[T]_{<k}.$$
    
    a. If $n \ge k$, prove that $C$ is a $[n,k,n-k+1]_q$-code.
-   
+
+      ::: {.solution}
+	  It is clear from the construction that $C \subset \F_q^n$.
+	  Moreover, $\dim C = k$ since that mapping
+	  $$\phi:\F_q[T]_{<k} \to C \quad \text{via} \quad \phi(f) =(f(a_1),\cdots,f(a_n))$$
+	  is injective and $\dim \F_q[T]_{<k} = k$.
+	  
+	  Finally, the minimal distance $d$ of the (linear) code $C$ is the minimal
+	  weight of a non-zero vector in $C.$ If $x = \phi(f) \in C$, we have
+	  $n + \weight(x) = \#\{$ roots of $f$ $\}$. Since $f$ has degree $<k$, $f$ has no more than
+	  $k-1$ roots; this shows that $\weight(x) \ge n - k + 1$. This shows that $d \ge n - k + 1$.
+	  
+	  To see that $d = n-k+1$, note that $k \le n \le |\F_q|$ so that
+	  we may find $k$ distinct elements $\alpha_1,\cdots,\alpha_{k-1}$
+	  of $\mathcal{P}$. Now let $f$ be a monic polynomial of degree
+	  $k-1$ with these $k-1$ roots; thus $$f(T) = \prod_{i=1}^n
+	  (T - \alpha_i).$$
+	  
+	  Then $\weight(f) = n - k + 1$, so indeed $d = n-k+1$.
+	  
+	  We have now shown that $C$ is a $[n,k,n-k+1]_q$-code.
+	  :::
+
    b. If $P = \F_q^\times$, prove that $C$ is a *cyclic code*. 
 
+      ::: {.solution}
+	  We show that *for a suitable ordering of $\mathcal{P}$, the code $C$ is *cyclic*.*
+	  
+	  We fix a *generator* $\alpha$ for the (cyclic) multiplicative group $\F_q^\times$.
+	  Thus $$\mathcal{P} = \langle \alpha \rangle = \{1,\alpha,\alpha^2,\cdots,\alpha^{q-2}\}.$$
+	  Now, for $f \in \F_q[T]_{<k}$, the corresponding code-word is
+	  $$(f(1),f(\alpha),f(\alpha^2),\cdots,f(\alpha^{q-2})) \in C.$$
+	  
+	  To see that $C$ is cyclic, we must argue that
+	  $$(\heartsuit) \quad (f(\alpha^{q-2}),f(1),f(\alpha),\cdots,f(\alpha^{q-3})) \in C.$$
+		  
+		  
+	  Well, let $g(T) = f(\alpha^{-1} T) \in \F_q[T]$. Then $\deg g = \deg f < k$ so that
+	  $g \in \F_q[T]_{<k}$. Thus
+	  $x = \phi(g) \in C$. We now note that
+	  
+	  \begin{align*}
+	  x=(g(1),g(\alpha),g(\alpha^2),\cdots,g(\alpha^{q-2})) &=
+	  (f(\alpha^{-1}),f(\alpha^{-1}\alpha),f(\alpha^{-1}\alpha^2),\cdots,f(\alpha^{-1}\alpha^{q-2})) \\
+	  &= (f(\alpha^{-1}),f(1),f(\alpha),\cdots,f(\alpha^{q-3}))
+	  \end{align*}
+	  so indeed $(\heartsuit)$ holds. This proves that $\mathcal{P}$ is cyclic.
+	  :::
+
    c. If $q = p$ is *prime* and if $P = \F_p$, prove that $C$ is a *cyclic code*.
+
+      ::: {.solution}
+	  Again, we show *for a suitable ordering of $\mathcal{P}$ that $C$ is *cyclic*.
+	  
+	  Note that $\mathcal{P} = \F_p$ may be written
+	  $$\mathcal{P} = \{0,1,2,\cdots,p-1\}.$$
+	  
+	  For an arbitrary $f \in \F_q[T]_{<k}$, the corresponding codeword $\phi(f)$ is given by
+	  $$(f(0),f(1),f(2),\cdots,f(p-1)).$$
+	  
+	  To see that $C$ is cyclic, we must argue that
+	  $$(\diamondsuit) \quad (f(p-1),f(0),f(1),\cdots,f(p-2)) \in C.$$
+	  
+	  We set $g(T) = f(T-1) \in \F_[T]$, and we note that $\deg g =
+      \deg f$ so that $g \in \F_q[T]_{<k}$.
+	  Thus $x = \phi(g) \in C$.
+	  
+	  Now we calculcate
+	  \begin{align*}
+	  x = (g(0),g(1),g(2),\cdots,g(p-1)) &= (f(0-1),f(1-1),f(2-1),\cdots,f(p-1-1)) \\
+	  &= (f(p-1),f(0),f(1),\cdots,f(p-2))
+	  \end{align*}
+	  so indeed $(\diamondsuit)$ holds. This proves that $\mathcal{P}$ is cyclic.	  
+	  :::
