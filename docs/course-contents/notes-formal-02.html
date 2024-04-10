@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Math190-Tufts University - Overview on Formalization - Type Theory
+</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>	
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/haddock.css" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css" rel="stylesheet" media="screen" />
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" type="text/css" rel="stylesheet" media="screen" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />			
+    </head>
+    <body>
+        <header>
+          <div class="logo">
+            <a href="../">
+	      Math190 - Spring 2024 - Tufts Univ</a>
+          </div>
+          <nav>
+            <a href="../about.html">About</a>
+	    <a href="../course-pages/Math190--course-info.html">Info</a>	    
+            <a href="../archive.html">Archive</a>
+          </nav>
+        </header>
+
+        <main role="main">
+            <h1>Overview on Formalization - Type Theory
+</h1>
+            <article>
+    <section class="header">
+        Posted on 2024-04-08
+        
+    </section>
+    <section>
+        <p>Parallel to the course <a href="https://github.com/gmcninch-tufts/math190formalize/">discussions of Lean
+usage</a>, I want to
+give at least a bit of a description of the underlying <em>dependent type
+theory</em>.</p>
+<p>I’m going to follow the first chapter of Egbert Rijke’s new text
+<strong>Homotopy Type Theory</strong> <a href="https://arxiv.org/abs/2212.11082">[arXiv: Homotopy Type
+Theory]</a> – (though for now I ignore
+the potential homotopy in the type theory.)</p>
+<p>The second section of <a href="https://leanprover.github.io/theorem_proving_in_lean4/">Theorem Proving in
+Lean</a>
+vi<span class="citation" data-cites="avigadTheoremProvingLean">(Avigad et al. 2024)</span>
+is also
+good - and <code>Lean</code> specific! - but still comes across (to me) as more
+of a guide to using Lean than an introduction to type theory (this is
+not a criticism, of course!)</p>
+<p>All of this really does bump up against an important pedagogical
+question: how much type theory does one really need to know in order
+to <em>use</em> <code>Lean</code> to formalize mathematics?</p>
+<p>I’m sure I don’t know the answer! In the limited time in this
+third-of-a-course, I’m hoping to say a little about “using Lean” as
+well as a little about the type theory than enables it.</p>
+<h1 id="martin-löfs-type-theory">Martin-Löf’s Type Theory</h1>
+<p>I’m mostly viewing these notes as a quick exposition of the first
+chapter of <a href="https://arxiv.org/abs/2212.11082">Rijke’s text</a>
+<span class="citation" data-cites="rijkeIntroductionHomotopyType">(Rijke 2024)</span>; probably
+you should just read the text! But maybe these notes will encourage
+you to do so…
+At any rate, quotes below are taken from <span class="citation" data-cites="rijkeIntroductionHomotopyType">(Rijke 2024)</span>.</p>
+<p>To the newcomer, one of the main questions one probably faces in this
+subject is: “what are the differences between type theory and the
+usual description of math via set theory?”
+The introduction to Rijke’s chapter tells us that in type theory:</p>
+<ul>
+<li>every element comes equipped with its type</li>
+<li>set theory is axiomatized in the formal system of first-order logic,
+while type theory is its own formal system.</li>
+</ul>
+<blockquote>
+<p>“the expression <span class="math inline">\(a:A\)</span> is not considered a <em>proposition</em> -
+i.e. something which one can assert about an arbitrary element and
+an arbitrary type – but is considered to be a judgment … that is
+part of the construction of the element <span class="math inline">\(a:A\)</span>.”</p>
+</blockquote>
+<ul>
+<li><p>there is a greater emphasis in type theory on equality of elements
+than in set theory.</p>
+<p>Unlike in set theory, where equality is a decidable proposition of
+first-order logic, the type <span class="math inline">\(x=y\)</span> of identifications of two elements
+<span class="math inline">\(x, y:A\)</span> is itself a type.</p></li>
+</ul>
+<p>By way of a general description, we have:</p>
+<blockquote>
+<p>Dependent type theory is a system of inference rules that can be
+combined to make <em>derivations</em> … the goal is often to construct an
+element of a certain type.</p>
+</blockquote>
+<h2 id="judgments-and-contexts-in-type-theory">Judgments and contexts in type theory</h2>
+<p>In type theory, an <em>inference rule</em> is represented symbolically as
+follows: <span class="math display">\[\dfrac{\mathscr{H}_1 \ \mathscr{H}_2 \ \cdots \
+\mathscr{H}_n}{C}.\]</span> Above the horizontal line is a finite list of
+<em>judgments</em> <span class="math inline">\(\mathscr{H}_i\)</span> for the <em>premises</em>, and below the
+horizontal line is a single judgment <span class="math inline">\(C\)</span> for the conclusion.</p>
+<p>When we later introduce <em>function types</em>, we’ll see the following inference rule appear:</p>
+<p><span class="math display">\[\dfrac{\Gamma \vdash a:A \quad \Gamma \vdash f:A \to B} {\Gamma
+        \vdash f(a):B}.\]</span></p>
+<p>This means: “in a context <span class="math inline">\(\Gamma\)</span> (more on the notion of context
+below!) given an element <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math inline">\(a\)</span> of type <span class="math inline">\(A\)</span> and a function <span class="math inline">\(f:A \to B\)</span>, we obtain an element <span class="math inline">\(f(a)\)</span> of type <span class="math inline">\(B\)</span>.”</p>
+<p>Here the <em>judgments</em> include <span class="math inline">\(\Gamma \vdash a:A\)</span> and <span class="math inline">\(\Gamma \vdash f:A \to B\)</span>.</p>
+<p>In fact, there are just four sorts of judgments in Martin-Löf’s
+dependent type theory:</p>
+<ul>
+<li><p>judgment that <span class="math inline">\(A\)</span> is a well-formed type in context <span class="math inline">\(Γ\)</span>:
+<span class="math display">\[Γ ⊢ A \ \text{type}\]</span></p></li>
+<li><p>judgment that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>judgmentally equal</em> (or
+<em>definitionally equal</em>) in context <span class="math inline">\(\Gamma\)</span>: <span class="math display">\[Γ ⊢ A \doteq B  \
+\text{type}\]</span></p></li>
+<li><p>judgment that <span class="math inline">\(a\)</span> is an element of type <span class="math inline">\(A\)</span> in context <span class="math inline">\(\Gamma\)</span>:
+<span class="math display">\[\Gamma \vdash a:A\]</span></p></li>
+<li><p>judgment that <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are <em>judgmentally equal</em> elements of type <span class="math inline">\(A\)</span>
+<span class="math display">\[\Gamma \vdash a \doteq b : A.\]</span></p></li>
+</ul>
+<p>Notice that any judgment has the form <span class="math inline">\(\Gamma \vdash \mathscr{J}\)</span>
+where <span class="math inline">\(\Gamma\)</span> is the <em>context</em> and <span class="math inline">\(\mathscr{J}\)</span> is the <em>judgment
+thesis</em>. It remains to explain the <em>context</em> <span class="math inline">\(\Gamma\)</span>.</p>
+<p>The role of the context is to declare what <em>hypothetical elements</em>
+(variables) are assumed.</p>
+<h1 id="bibliography">Bibliography</h1>
+<div class="refs">
+
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-avigadTheoremProvingLean" class="csl-entry" role="listitem">
+Avigad, Jeremy, Leondardo de Moura, Soonho Kong, and Sebastian Ullrich. 2024. <span>“Theorem <span>Proving</span> in <span>Lean</span> 4.”</span> https://leanprover.github.io/theorem_proving_in_lean4/.
+</div>
+<div id="ref-rijkeIntroductionHomotopyType" class="csl-entry" role="listitem">
+Rijke, Egbert. 2024. <span>“Introduction to <span>Homotopy Type Theory</span>.”</span> https://arxiv.org/abs/2212.11082.
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Rijke reads “<span class="math inline">\(a:A\)</span>” as “<span class="math inline">\(a\)</span> is an element of type <span class="math inline">\(A\)</span>”. Some
+others read this as “<span class="math inline">\(a\)</span> is a term of type <span class="math inline">\(A\)</span>”.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+	  <nav>
+	    <a href="http://www.tufts.edu">
+	      <i class="fas fa-chalkboard"></i>
+	      Tufts
+	    </a>	    
+	    <a href="http://math.tufts.edu">
+	      <i class="fas fa-chalkboard-teacher"></i>
+	      Tufts Math
+	    </a>
+	    <a href="https://gmcninch-tufts.github.io/math">
+	      <i class="fas fa-coffee"></i>
+	      G McNinch
+	    </a>
+	    <a href="https://github.com/gmcninch-tufts">
+	      <i class="fab fa-github"></i>
+	      GitHub
+	    </a>	    
+	  </nav>
+        </footer>
+    </body>
+</html>
