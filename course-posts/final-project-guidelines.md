@@ -15,8 +15,8 @@ proofs of some substantial part of the results you describe.
 You must submit the following *deliverables*:
 
 1. a *proposal* by [2024-03-29 Friday]
-2. written report by [2024-04-26 Friday]
-3. video presentation to accompany the report, also by [2024-04-26 Friday]
+2. written report by ~~[2024-04-26 Friday]~~ [2024-05-03 Friday]
+3. video presentation to accompany the report, also by ~~[2024-04-26 Friday]~~ [2024-05-03 Friday]
 4. you will watch two of the presentations submitted by your class-mates, 
    write some *brief* comments, and submit them (to me) by [2024-05-06 Monday].
 
@@ -46,10 +46,10 @@ paper- and font- sizes), with a second page for references if necessary.
 
 # Report
 
-*due [2024-04-26 Friday]*
+*due ~~[2024-04-26 Friday]~~ [2024-05-03 Friday]*
 
 Your report should be submitted as a *PDF* on *gradescope*. It should
-be 3-53 pages (not including references or code).
+be 3-5 pages (not including references or code).
 
 This research is *not expected to be original or novel*. The main goal
 is to get you to investigate and explain some interested mathematics.
@@ -69,7 +69,7 @@ Your report should include the following:
 
 # Video Presentation
 
-*due [2024-04-26 Friday]*
+*due ~~[2024-04-26 Friday]~~ [2024-05-03 Friday]*
 
 > Your video presentation will be uploaded to a folder
 > *tufts.box.com*, but I haven't yet set up the necessary folder. I'll
