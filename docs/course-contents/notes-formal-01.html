@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Math190-Tufts University - Overview on Formalization</title>
+        <title>Math190-Tufts University - Overview on Formalization - Type Theory part 1
+</title>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 	</script>	
         <link rel="stylesheet" href="../css/default.css" />
@@ -30,233 +31,280 @@
         </header>
 
         <main role="main">
-            <h1>Overview on Formalization</h1>
+            <h1>Overview on Formalization - Type Theory part 1
+</h1>
             <article>
     <section class="header">
-        Posted on 2024-03-25
+        Posted on 2024-04-08
         
     </section>
     <section>
-        <h1 id="proof-assistants">Proof assistants</h1>
-<h2 id="foundations-of-mathematics-in-proof-assistants">Foundations of mathematics in proof assistants</h2>
-<p>Quoting from an answer by <a href="https://proofassistants.stackexchange.com/questions/866/which-proof-assistant-would-you-advise-me-to-learn-in-2022-considering-my-inte/884#884">Jason Rute on the proofassistants.stackexchange</a></p>
-<blockquote>
-<p>Foundations of mathematics can mean a lot of things to a lot of
-people. Proof assistants present a sort of practical foundations of
-mathematics, where one actually comes up with a usable set of rules
-and axioms for doing mathematics formally in practice. Mizar and
-Metamath (set.mm) use a set theory foundation which is more similar
-to how foundations is taught in a typical university logic
-course. HOL-Light, HOL4, and Isabelle/HOL use higher order logic,
-which is a simpler type theory. And as we already mentioned Lean,
-Coq, and Agda use dependent type theory.</p>
-</blockquote>
-<p>Here <em>type theory</em> is a system of logic that can be used as the <em>foundations of mathematics</em>.
-The objects discussed are <em>terms</em>, and every term has a <em>type</em>.</p>
-<p>A <strong>dependent type</strong> is a <em>type</em> whose definition depends on a value;
-see e.g. the wikipedia discussion of <a href="https://en.wikipedia.org/wiki/Dependent_type">dependent type
-theory</a>.</p>
-<p>In simple type theory, for example, there is a type <code>Nat</code>, or
-<span class="math inline">\(\mathbb{N}\)</span>, of natural numbers. And there are <em>parametrized types</em>;
-e.g. <code>List Nat</code> is the type of <em>lists</em> of natural numbers.</p>
-<p>So e.g. the notation</p>
-<pre><code>[1, 3, 5, 7] : List Nat</code></pre>
-<p>means that the indicated list <code>[1,3,5,7]</code> is a term of type <code>List Nat</code>.</p>
-<p>Now we can give perhaps the most basic example of a <em>dependent type</em>:
-the type of vectors of a given fixed length; e.g. <code>Vect m Nat</code> is the type
-of vectors of natural numbers of length <code>m : Nat</code></p>
-<p>So for example</p>
-<pre><code>[1,3,5] : Vect 3 Nat</code></pre>
-<p>Observe that the type <code>Vect m Nat</code> <em>depends</em> on the term <code>m : Nat</code>.</p>
-<p>Another example of a <em>dependent type</em> is the type of <em>equality</em>
-between natural numbers. For <code>n m : Nat</code>, there is a type <code>n = m</code>. This type has <em>no</em> terms if <code>n</code> and <code>m</code> are not the same natural
-number, and it has a unique term <code>rfl : n = m</code> (here <code>rfl</code> represents
-the “reflexive property”).</p>
-<p>This is an extremely quick summary; the point is that dependent types
-give one an ability to express mathematical statements and proofs,
-more-or-less as we already think about such expressions and proofs.</p>
-<p>Resources:</p>
+        <p>Parallel to the course <a href="https://github.com/gmcninch-tufts/math190formalize/">discussions of Lean
+usage</a>, I want to
+give at least a bit of a description of the underlying <em>dependent type
+theory</em>.</p>
+<p>I’m going to follow the first chapter of Egbert Rijke’s new text
+<strong>Homotopy Type Theory</strong> <a href="https://arxiv.org/abs/2212.11082">[arXiv: Homotopy Type
+Theory]</a> – (though for now I ignore
+the potential homotopy in the type theory.)</p>
+<p>The second section of <a href="https://leanprover.github.io/theorem_proving_in_lean4/">Theorem Proving in
+Lean</a>
+vi<span class="citation" data-cites="avigadTheoremProvingLean">(Avigad et al. 2024)</span>
+is also
+good - and <code>Lean</code> specific! - but still comes across (to me) as more
+of a guide to using Lean than an introduction to type theory (this is
+not a criticism, of course!)</p>
+<p>All of this really does bump up against an important pedagogical
+question: how much type theory does one really need to know in order
+to <em>use</em> <code>Lean</code> to formalize mathematics?</p>
+<p>I’m sure I don’t know the answer! In the limited time in this
+third-of-a-course, I’m hoping to say a little about “using Lean” as
+well as a little about the type theory than enables it.</p>
+<h1 id="martin-löfs-type-theory">Martin-Löf’s Type Theory</h1>
+<p>I’m mostly viewing these notes as a quick exposition of the first
+chapter of <a href="https://arxiv.org/abs/2212.11082">Rijke’s text</a>
+<span class="citation" data-cites="rijkeIntroductionHomotopyType">(Rijke 2024)</span>; probably
+you should just read the text! But maybe these notes will encourage
+you to do so…
+At any rate, quotes below are taken from <span class="citation" data-cites="rijkeIntroductionHomotopyType">(Rijke 2024)</span>.</p>
+<p>To the newcomer, one of the main questions one probably faces in this
+subject is: “what are the differences between type theory and the
+usual description of math via set theory?”
+The introduction to Rijke’s chapter tells us that in type theory:</p>
 <ul>
-<li><p><a href="https://proofassistants.stackexchange.com/">‘stack exchange’ for proof assistants</a></p></li>
-<li><p><a href="https://proofassistants.stackexchange.com/questions/43/proof-assistants-for-beginners-a-comparison">e.g. this post comparing proof assistants</a></p></li>
+<li>every element comes equipped with its type</li>
+<li>set theory is axiomatized in the formal system of first-order logic,
+while type theory is its own formal system.</li>
 </ul>
-<h2 id="list-of-proof-assistants">List of Proof Assistants</h2>
+<blockquote>
+<p>“the expression <span class="math inline">\(a:A\)</span> is not considered a <em>proposition</em> -
+i.e. something which one can assert about an arbitrary element and
+an arbitrary type – but is considered to be a judgment … that is
+part of the construction of the element <span class="math inline">\(a:A\)</span>.”</p>
+</blockquote>
 <ul>
-<li><p><a href="https://coq.inria.fr/">The Coq Proof Assistant</a></p></li>
-<li><p><a href="https://wiki.portal.chalmers.se/agda/Main/HomePage">Agda</a></p></li>
-<li><p><a href="https://leanprover-community.github.io/">LEAN-prover community</a></p></li>
-<li><p><a href="https://isabelle.in.tum.de/">Isabelle/HOL</a></p></li>
+<li><p>there is a greater emphasis in type theory on equality of elements
+than in set theory.</p>
+<p>Unlike in set theory, where equality is a decidable proposition of
+first-order logic, the type <span class="math inline">\(x=y\)</span> of identifications of two elements
+<span class="math inline">\(x, y:A\)</span> is itself a type.</p></li>
 </ul>
-<h2 id="audience">“audience”</h2>
-<p>There are a variety of users of proof assistants, mainly (I think) in
-two categories (the boundary between which can be blurry):</p>
+<p>By way of a general description, we have:</p>
+<blockquote>
+<p>Dependent type theory is a system of inference rules that can be
+combined to make <em>derivations</em> … the goal is often to construct an
+element of a certain type.</p>
+</blockquote>
+<h2 id="judgments-and-contexts-in-type-theory">Judgments and contexts in type theory</h2>
+<p>In type theory, an <em>inference rule</em> is represented symbolically as
+follows: <span class="math display">\[\dfrac{\mathscr{H}_1 \ \mathscr{H}_2 \ \cdots \
+\mathscr{H}_n}{C}.\]</span> Above the horizontal line is a finite list of
+<em>judgments</em> <span class="math inline">\(\mathscr{H}_i\)</span> for the <em>premises</em>, and below the
+horizontal line is a single judgment <span class="math inline">\(C\)</span> for the conclusion.</p>
+<p>When we later introduce <em>function types</em>, we’ll see the following inference rule appear:</p>
+<p><span class="math display">\[\dfrac{\Gamma \vdash a:A \quad \Gamma \vdash f:A \to B} {\Gamma
+        \vdash f(a):B}.\]</span></p>
+<p>This means: “in a context <span class="math inline">\(\Gamma\)</span> (more on the notion of context
+below!) given an element <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math inline">\(a\)</span> of type <span class="math inline">\(A\)</span> and a function <span class="math inline">\(f:A \to B\)</span>, we obtain an element <span class="math inline">\(f(a)\)</span> of type <span class="math inline">\(B\)</span>.”</p>
+<p>Here the <em>judgments</em> include <span class="math inline">\(\Gamma \vdash a:A\)</span> and <span class="math inline">\(\Gamma \vdash f:A \to B\)</span>.</p>
+<p>In fact, there are just four sorts of judgments in Martin-Löf’s
+dependent type theory:</p>
 <ul>
-<li><p>theoretical computer science</p></li>
-<li><p>mathematics</p></li>
+<li><p>judgment that <span class="math inline">\(A\)</span> is a well-formed type in context <span class="math inline">\(Γ\)</span>:
+<span class="math display">\[Γ ⊢ A \ \text{type}\]</span></p></li>
+<li><p>judgment that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>judgmentally equal</em> (or
+<em>definitionally equal</em>) in context <span class="math inline">\(\Gamma\)</span>: <span class="math display">\[Γ ⊢ A \doteq B  \
+\text{type}\]</span></p></li>
+<li><p>judgment that <span class="math inline">\(a\)</span> is an element of type <span class="math inline">\(A\)</span> in context <span class="math inline">\(\Gamma\)</span>:
+<span class="math display">\[\Gamma \vdash a:A\]</span></p></li>
+<li><p>judgment that <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are <em>judgmentally equal</em> elements of type <span class="math inline">\(A\)</span>
+<span class="math display">\[\Gamma \vdash a \doteq b : A.\]</span></p></li>
 </ul>
-<p>The pure mathematical point of view I’d like to discuss is that taken
-by the <a href="https://xenaproject.wordpress.com/what-is-the-xena-project/">Xena project</a>.</p>
-<p>There has been a good bit of energy aimed at formalizing the sort of
-mathematics that “pure mathematicians in mathematics departments” are
-familiar witth.</p>
-<p>A substantial output from this activity is a library of formalized mathematics in Lean:
-<a href="https://github.com/leanprover-community/mathlib4">mathlib</a></p>
-<h2 id="some-successes-of-proof-assistants">Some successes of proof assistants</h2>
+<p>Notice that any judgment has the form <span class="math inline">\(\Gamma \vdash \mathscr{J}\)</span>
+where <span class="math inline">\(\Gamma\)</span> is the <em>context</em> and <span class="math inline">\(\mathscr{J}\)</span> is the <em>judgment
+thesis</em>. It remains to explain the <em>context</em> <span class="math inline">\(\Gamma\)</span>.</p>
+<p>The role of the context is to declare what <em>hypothetical elements</em>
+(variables) are assumed.</p>
+<dl>
+<dt><strong>Definition</strong></dt>
+<dd>
+A <em>context</em> is a finite list of variable declarations <span class="math display">\[x_1:A_1,
+x:2:A_2(x_1), \cdots , x_n:A_n(x_1,\cdots,x_{n-1})\]</span> such that for
+<span class="math inline">\(1 \le k \le n\)</span> we can derive the judgment <span class="math display">\[(\clubsuit) \quad
+x_1:A_1, x_2:A_2(x_1), \cdots, x_{k-1}:A_{k-1}(x_1,\cdots,x_{k-2})
+\vdash A_k(x_1,\cdots,x_{k-1}) \ \text{type}\]</span> using inference rules of type theory.
+</dd>
+</dl>
+<p>Of course, in a context we may use other variable names than <span class="math inline">\(x_i\)</span>, so
+long as no variable is declared more than once.</p>
+<dl>
+<dt><strong>Examples</strong></dt>
+<dd>
 <ul>
-<li><p><a href="https://en.wikipedia.org/wiki/Four_color_theorem">Four-color Theorem</a></p>
-<p>The four color theorem states that no more than four colors are
-required to color regions of a map so that two adjacent
-regions never have the same color.</p>
-<p>(from Wikipedia:)</p>
-<blockquote>
-<p>“Kenneth Appel and Wolfgang Haken at the University of Illinois
-announced, on June 21, 1976,[16] that they had proved the theorem.”</p>
-</blockquote>
-<p>Subsequently, there were some errors discovered and then corrected
-in this algorithmic proof.</p>
-<blockquote>
-<p>“In 2005, Benjamin Werner and Georges Gonthier formalized a proof
-of the theorem inside the Coq proof assistant. This removed the
-need to trust the various computer programs used to verify
-particular cases; it is only necessary to trust the Coq
-kernel.”</p>
-</blockquote>
-<p><a href="https://www.cl.cam.ac.uk/~lp15/Pages/4colproof.pdf">Gonthier et al report</a><br />
-<a href="https://www.ams.org/notices/200811/tx081101382p.pdf">Formal Proof—The Four- Color Theorem - Gonthier</a></p>
-<p>Quoting from the introduction to Gonthier’s article in the <em>Notices</em>:</p>
-<blockquote>
-<p>“Even Appel and Haken’s 1976 triumph [2] had a hint of defeat:
-they’d had a computer do the proof for them! Perhaps the
-mathematical controversy around the proof died down with their
-book [3] and with the elegant 1995 revision [13] by Robertson,
-Saunders, Seymour, and Thomas. However something was still amiss:
-both proofs combined a textual argument, which could reasonably be
-checked by inspection, with computer code that could not. Worse,
-the empirical evidence provided by running code several times with
-the same input is weak, as it is blind to the most common cause of
-“computer” error: programmer error.”</p>
-</blockquote>
-<blockquote>
-<p>…</p>
-</blockquote>
-<blockquote>
-<p>“For some thirty years, computer science has been working out a
-solution to this problem: formal program proofs. The idea is to
-write code that describes not only what the machine should do, but
-also why it should be doing it—a formal proof of correctness. The
-validity of the proof is an objective mathematical fact that can
-be checked by a different program, whose own validity can be
-ascertained empirically because it does run on many inputs.</p>
-</blockquote></li>
-<li><p><a href="https://en.wikipedia.org/wiki/Feit%E2%80%93Thompson_theorem">Feit-Thompson’s odd-order Theorem</a>
-odd-order theorem</p>
-<p>Wikipedia summary:</p>
-<blockquote>
-<p>“William Burnside (1911, p. 503 note M) conjectured that every
-nonabelian finite simple group has even order. Richard Brauer (1957)
-suggested using the centralizers of involutions of simple
-groups as the basis for the classification of finite simple
-groups, as the Brauer–Fowler theorem shows that there are only a
-finite number of finite simple groups with given centralizer of an
-involution. A group of odd order has no involutions, so to carry
-out Brauer’s program it is first necessary to show that non-cyclic
-finite simple groups never have odd order. This is equivalent to
-showing that odd order groups are solvable, which is what Feit and
-Thompson proved.”</p>
-</blockquote>
-<p>A group of authors – Georges Gonthier, Andrea Asperti, Jeremy
-Avigad, Yves Bertot, Cyril Cohen, François Garillot, Stéphane Le
-Roux, Assia Mahboubi, Russell O’Connor, Sidi Ould Biha, Ioana Pasca,
-Laurence Rideau, Alexey Solovyev, Enrico Tassi and Laurent Théry –
-formalized this proof in the Coq proof assistant – see <a href="https://www.cs.unibo.it/~asperti/PAPERS/odd_order.pdf">A
-Machine-Checked Proof of the Odd Order
-Theorem</a>.</p></li>
-<li><p>Kepler conjecture</p>
-<p>From the <a href="https://en.wikipedia.org/wiki/Kepler_conjecture">Wikipedia summary</a>:</p>
-<blockquote>
-<p>The Kepler conjecture, named after the 17th-century mathematician
-and astronomer Johannes Kepler, is a mathematical theorem about
-sphere packing in three-dimensional Euclidean space. It states
-that no arrangement of equally sized spheres filling space has a
-greater average density than that of the cubic close packing
-(face-centered cubic) and hexagonal close packing
-arrangements. The density of these arrangements is around 74.05%.</p>
-</blockquote>
-<p>Proof by T. Hales:</p>
-<blockquote>
-<p>In 1998, Thomas Hales, following an approach suggested by Fejes
-Tóth (1953), announced that he had a proof of the Kepler
-conjecture. Hales’ proof is a proof by exhaustion involving the
-checking of many individual cases using complex computer
-calculations. Referees said that they were “99% certain” of the
-correctness of Hales’ proof, and the Kepler conjecture was
-accepted as a theorem. In 2014, the Flyspeck project team, headed
-by Hales, announced the completion of a formal proof of the Kepler
-conjecture using a combination of the Isabelle and HOL Light proof
-assistants. In 2017, the formal proof was accepted by the journal
-Forum of Mathematics, Pi.[1]</p>
-</blockquote>
-<p><a href="https://doi.org/10.1017%2Ffmp.2017.1">publication</a></p></li>
-<li><p>some modern algebraic geometry</p>
-<p>some “early work” formalizing parts of the Stacks Project (of <a href="https://stacks.math.columbia.edu/">Johan
-de Jong</a> et al) can be found her</p>
-<p><a href="https://github.com/kbuzzard/lean-stacks-project">https://github.com/kbuzzard/lean-stacks-project</a>.</p>
-<p>The author of that project write (in the <code>README</code> in that repo):</p>
-<blockquote>
-<p>This project is deprecated. It was joint work by me (Kevin
-Buzzard), Kenny Lau and Chris Hughes. It was our first attempt to
-do MSc level mathematics in Lean (back in 2017/18) and we made
-some poor design decisions due to inexperience. Once I had
-understood better how to write this project, I supervised Ramon
-Fernandez Mir’s masters project which achieved everything this
-repo achieved and more too, and better. I would look there
-instead.</p>
-</blockquote>
-<p>Raymon Fernandez Mir - an undergraduate student of Kevin Buzzard
-formalized the notion - due to A. Grothendieck - of a <em>scheme</em> in
-algebraic geometry.</p>
-<p>From the introduction to his project:</p>
-<blockquote>
-<p>The starting point of this project is the work done by Kevin
-Buzzard, Chris Hughes and Kenny Lau on formally verifying parts of
-The Stacks Project [1].</p>
-</blockquote>
-<blockquote>
-<p>…</p>
-</blockquote>
-<blockquote>
-<p>the objective of this project is to,
-starting from scratch, define a scheme in Lean.</p>
-</blockquote>
-<p>A summary can be found in <a href="https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/computing/public/1819-ug-projects/Fernandez-I-MirR-Schemes-in-Lean.pdf">this project report</a></p>
-<p>The code can be found in <a href="https://github.com/ramonfmir/lean-scheme/">this repository</a></p>
-<p><strong>perfectoid spaces</strong></p>
-<p>Kevin Buzzard, Johan Commelin, and Patrick Massot formalized Peter
-Scholze’s definition of <strong>perfectoid spaces</strong> (see Scholze’s paper
-<a href="https://arxiv.org/abs/1709.07343">“Étale cohomology of diamonds”</a>)</p>
-<p>The code comprisingt he formalization is here:
-<a href="https://leanprover-community.github.io/lean-perfectoid-spaces/">https://leanprover-community.github.io/lean-perfectoid-spaces/</a></p>
-<p>See also the blog post at the xenaproject:
-<a href="https://xenaproject.wordpress.com/2019/05/11/perfectoid-spaces/">https://xenaproject.wordpress.com/2019/05/11/perfectoid-spaces/</a> and the page</p>
-<p>There is a useful “how to read this document” page here:
-<a href="https://leanprover-community.github.io/lean-perfectoid-spaces/how-to-read-lean.html">https://leanprover-community.github.io/lean-perfectoid-spaces/how-to-read-lean.html</a></p></li>
-<li><p>Terence Tao [2023-10-23]
-<a href="https://mathstodon.xyz/@tao/111287749336059662">LEAN helped catch a error in some recent work</a></p>
-<iframe src="https://mathstodon.xyz/@tao/111287749336059662/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen">
-</iframe>
-<script src="https://mathstodon.xyz/embed.js" async="async"></script></li>
-<li><p>going forward: Fermat’s Last Theorem</p>
-<ul>
-<li><p>Kevin Buzzard <a href="https://xenaproject.wordpress.com/2024/01/20/lean-in-2024/">reports
-here</a>
-that he has been awarded a grant by the EPSRC to formalize (parts of?) the proof
-of Fermat’s Last Theorem in Lean.</p></li>
-<li><p>(an earlier talk of Buzzard described <a href="https://www.ma.imperial.ac.uk/~buzzard/xena/pdfs/AITP_2022_FLT_talk.pdf">some of the requirements of
-this
-task</a></p></li>
-</ul></li>
-<li><p>Buzzard’s <a href="https://www.youtube.com/watch?v=SEID4XYFN7o">talk at 2022 ICM</a></p></li>
+<li><p>the empty context has length 0 and declares no
+variables. Examples of well-formed types in an empty context
+include the natural numbers ℕ.</p></li>
+<li><p>a context of length 1 has the form <span class="math inline">\(x_1:A_1\)</span> where <span class="math inline">\(A_1\)</span> is a
+well-formed type in the empty context.</p>
+<p>The type <code>Vec ℤ n</code> of <em>vectors of integers of length <code>n:ℕ</code></em> is a type in
+context <span class="math inline">\(n:ℕ\)</span>. e.g. we have
+<code>[8,22,-17] : Vec ℤ 3</code></p></li>
+<li><p>For any type <span class="math inline">\(A\)</span> in the empty context, and any term <span class="math inline">\(a:A\)</span>, the equality type
+<span class="math inline">\(x = a\)</span> is a type in context <span class="math inline">\(x:A\)</span>.</p>
+<p>(for a term <span class="math inline">\(x_0:A\)</span>, the type <span class="math inline">\(x_0 = a\)</span> has the term <code>refl:</code><span class="math inline">\(x_0 = a\)</span> if <span class="math inline">\(x_0\)</span> and <span class="math inline">\(a\)</span> are judgmentally equal; i.e. we have the
+judgment <span class="math display">\[∅ ⊢ x_0 ≐ a:A\]</span>
+)</p></li>
+<li><p>a context of length 2 has the form <span class="math inline">\(x_1:A_1, x_2:A_2(x_1)\)</span> and
+we will explain what is meant by the notation
+<span class="math inline">\(A_2(x_1)\)</span> in the next section on <em>type families</em>.</p></li>
 </ul>
+</dd>
+</dl>
+<h2 id="type-families">Type families</h2>
+<dl>
+<dt><strong>Definition</strong></dt>
+<dd>
+<p>Consider a type <span class="math inline">\(A\)</span> in context <span class="math inline">\(Γ\)</span>. A <em>family of types over <span class="math inline">\(A\)</span> in
+context <span class="math inline">\(Γ\)</span></em> is a type <span class="math inline">\(B(x)\)</span> in context <span class="math inline">\(Γ,x:A\)</span>.</p>
+<p>In other words, we have the judgment
+<span class="math display">\[Γ,x:A ⊢ B(x)\ \text{type}.\]</span></p>
+<p><strong>Terminology</strong>: we say that <span class="math inline">\(B\)</span> is a family of types over <span class="math inline">\(A\)</span> in
+context <span class="math inline">\(Γ\)</span>, or that <span class="math inline">\(B(x)\)</span> is a type <em>indexed</em> by <span class="math inline">\(x:A\)</span>.</p>
+</dd>
+</dl>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code>Vec ℤ n</code> is a type indexed by <span class="math inline">\(n:ℕ\)</span>.</p></li>
+<li><p>For <span class="math inline">\(a:A\)</span>, <code>x = a</code> is a typed indexed by <span class="math inline">\(x:A\)</span>. More precisely,
+we have the inference rule
+<span class="math display">\[\dfrac{\Gamma \vdash a:A}{\Gamma, x:A \vdash a = x \ \text{type}}.\]</span></p></li>
+</ul>
+<dl>
+<dt><strong>Definition</strong></dt>
+<dd>
+Consider a family of type <span class="math inline">\(B\)</span> over <span class="math inline">\(A\)</span> in context <span class="math inline">\(\Gamma\)</span>. A <em>section</em>
+of <span class="math inline">\(B\)</span> over <span class="math inline">\(A\)</span> in context <span class="math inline">\(\Gamma\)</span> is an element of type <span class="math inline">\(B(x)\)</span> in
+context <span class="math inline">\(\Gamma,x:A\)</span>; i.e. the judgment
+<span class="math display">\[\Gamma,x:A \vdash b(x):B(x).\]</span>
+</dd>
+</dl>
+<p>For example, consider the type <code>Vec ℤ n</code> indexed by <span class="math inline">\(n:ℕ\)</span>. An example of a section
+is the term <span class="math inline">\(b(n)\)</span> where
+<span class="math display">\[b(0) = []\]</span> and for <span class="math inline">\(n&gt;0\)</span>,
+<span class="math display">\[b(n) = [0,0,\cdots,0] = 0 :: b(n-1)\]</span></p>
+<h2 id="inference-rules">Inference Rules</h2>
+<p>Here are the inference rules “underlying” dependent type theory.</p>
+<ul>
+<li><p>Rules for formation of contexts, types and elements</p>
+<p>The following rules amount to “presuppositions”; for example, If
+we have the judgment that <span class="math inline">\(B(x)\)</span> is a well-formed type in context <span class="math inline">\(\Gamma,x:A\)</span>, then <span class="math inline">\(A\)</span> is
+already a well-formed type in context <span class="math inline">\(\Gamma\)</span>.</p>
+<p><span class="math display">\[\dfrac{\Gamma,x:A \vdash B(x)\ \text{type}}{\Gamma \vdash A \ \text{type}} \quad
+\dfrac{\Gamma \vdash A \doteq B\ \text{type}}{\Gamma \vdash A \ \text{type}} \quad
+\dfrac{\Gamma \vdash A \doteq B\ \text{type}}{\Gamma \vdash B \ \text{type}}\]</span></p>
+<p><span class="math display">\[\dfrac{\Gamma \vdash a:A\ \text{type}}{\Gamma \vdash A \ \text{type}} \quad
+\dfrac{\Gamma \vdash a \doteq b:A}{\Gamma \vdash a:A} \quad
+\dfrac{\Gamma \vdash a \doteq b:A}{\Gamma \vdash b:A \ \text{type}}\]</span></p></li>
+<li><p>Judgmental equality is an equivalence relation</p>
+<p>We have to require this for types:
+<span class="math display">\[\dfrac{\Gamma \vdash A \ \text{type}}{\Gamma\vdash A \doteq A \ \text{type}} \quad
+  \dfrac{\Gamma \vdash A \doteq B \ \text{type}}{\Gamma\vdash B \doteq A \ \text{type}} \quad
+  \dfrac{\Gamma \vdash A ≐ B\ \text{type}\quad \Gamma \vdash B ≐ C \ \text{type}}{\Gamma\vdash A \doteq C \ \text{type}}\]</span></p>
+<p>and for terms:
+<span class="math display">\[\dfrac{\Gamma \vdash a:A}{\Gamma\vdash a \doteq a:A} \quad
+  \dfrac{\Gamma \vdash a \doteq b:A}{\Gamma\vdash b \doteq a:A} \quad
+  \dfrac{\Gamma \vdash a ≐ b:A \quad \Gamma \vdash b ≐ c:A}{\Gamma\vdash a \doteq c:A}\]</span></p></li>
+<li><p>variable conversion rules</p>
+<p>One example of such a rule is:</p>
+<p><span class="math display">\[(\diamondsuit) \quad \dfrac{\Gamma \vdash A \doteq A'\ \text{type}\quad
+        \Gamma,x:A,\Delta \vdash B(x)\ \text{type}} {\Gamma,x:A',\Delta
+        \vdash B(x) \ \text{type}}\]</span></p>
+<p>thus if <span class="math inline">\(x\)</span> is a variable of type <span class="math inline">\(A\)</span> and if <span class="math inline">\(A \doteq A'\)</span> (in the
+given context), then we can replace <span class="math inline">\(x:A\)</span> by <span class="math inline">\(x:A'\)</span> when describing
+families of types.</p>
+<p>Note that writing <span class="math inline">\(B(x)\)</span> just emphasizes the dependence on <span class="math inline">\(x:A\)</span>; of
+course, <span class="math inline">\(B\)</span> depends on the whole context <span class="math inline">\(\Gamma,x:A,\Delta\)</span>.</p>
+<p>We must give rules like <span class="math inline">\((\diamondsuit)\)</span> not only for judgments of
+well-formed types, but of judgments for type-equality, for elements,
+and for element-equality. We write <span class="math inline">\(\mathscr{J}\)</span> for a generic
+<em>judgment thesis</em>; the general form of the variable conversion rule
+is then</p>
+<p><span class="math display">\[(\diamondsuit') \quad \dfrac{\Gamma \vdash A \doteq A' \quad
+        \Gamma,x:A,\Delta \vdash \mathscr{J}} {\Gamma,x:A',\Delta
+        \vdash \mathscr{J}}\]</span></p></li>
+<li><p>substitution</p>
+<p>Consider a section <span class="math inline">\(f(x): B(x)\)</span> indexed by <span class="math inline">\(x:A\)</span> in context <span class="math inline">\(\Gamma\)</span>
+and suppose give <span class="math inline">\(a:A\)</span>.</p>
+<p>We can simultaneously substitute <span class="math inline">\(a\)</span> for all occurrences of <span class="math inline">\(x\)</span> in
+<span class="math inline">\(f(x)\)</span> and <span class="math inline">\(B(x)\)</span> to obtain a new element <span class="math inline">\(f[a/x]:B[a/x]\)</span>.</p>
+<p>Somewhat more precisely, consider the following. Given the judgment</p>
+<p><span class="math display">\[(*) \quad \Gamma,x:A,y_1:B_a,\cdots,y_n:B_n \vdash C \ \text{type}\]</span>
+and a term <span class="math inline">\(a:A\)</span>, we can substitute to obtain the judgment
+<span class="math display">\[\Gamma,y_1:B_1[a/x],\cdots,y_n:B_n[a/x] \vdash C[a/x] \ \text{type}\]</span></p>
+<p>Note that in this latter judgment, the <em>variables</em> <span class="math inline">\(y_1,\cdots,y_n\)</span>
+are assigned new types after substitution.</p>
+<p>Similarly, given <span class="math inline">\(C\)</span> as in <span class="math inline">\((*)\)</span>, from a term <span class="math inline">\(c:C\)</span>, we obtain a new term
+<span class="math inline">\(c[a/x]:C[a/x]\)</span>.</p>
+<p>For a generic judgment <span class="math inline">\(\mathscr{J}\)</span>, we have the substitution rule
+<span class="math display">\[\dfrac{\Gamma \vdash a:A \quad \Gamma,x:A,\Delta \vdash \mathscr{J}}
+  {\Gamma,\Delta[a/x] \vdash \mathscr{J}[a/x]}S\]</span></p>
+<dl>
+<dt><strong>Definition</strong></dt>
+<dd>
+<p>When <span class="math inline">\(B\)</span> is a family of types over <span class="math inline">\(A\)</span> in context <span class="math inline">\(\Gamma\)</span> and
+when <span class="math inline">\(a:A\)</span>, we refer to the type <span class="math inline">\(B[a/x]\)</span> as the <em>fiber</em> of <span class="math inline">\(B\)</span>
+at <span class="math inline">\(a\)</span>. It is often written <span class="math inline">\(B(a)\)</span>.</p>
+<p>Similarly, given a section <span class="math inline">\(b\)</span> of <span class="math inline">\(B\)</span>, we write <span class="math inline">\(b(a)\)</span> for <span class="math inline">\(b[a/x]\)</span>.</p>
+</dd>
+</dl></li>
+<li><p>weakening</p>
+<p>Given a type <span class="math inline">\(A\)</span> in context <span class="math inline">\(\Gamma\)</span>, any judgment made in a longer
+context <span class="math inline">\(\Gamma,\Delta\)</span> can be made in the context
+<span class="math inline">\(\Gamma,x:A,\Delta\)</span> for a new variable <span class="math inline">\(x\)</span>. The weakening rule says
+that well-formed-ness and judgmental equality of types and elements
+are preserved by this operation: for a generic judgement
+<span class="math inline">\(\mathscr{J}\)</span> we have</p>
+<p><span class="math display">\[\dfrac{\Gamma \vdash A \ \text{type}\quad \Gamma,\Delta \vdash \mathscr{J}}
+  {\Gamma,x:A,\Delta\vdash \mathscr{J}}W,\]</span></p>
+<p>The process of expanding the context by <span class="math inline">\(x:A\)</span> is called <em>weakening</em>
+(by <span class="math inline">\(A\)</span>).</p>
+<dl>
+<dt><strong>Example</strong></dt>
+<dd>
+If we have two types <span class="math inline">\(A,B\)</span> in context <span class="math inline">\(\Gamma\)</span>, then we can
+weaken <span class="math inline">\(B\)</span> by <span class="math inline">\(A\)</span> to obtain <span class="math display">\[\dfrac{\Gamma \vdash A \ \text{type}\quad
+\Gamma \vdash B \ \text{type}}{\Gamma,x:A \vdash B \ \text{type}}W\]</span> The type <span class="math inline">\(B\)</span>
+in context <span class="math inline">\(\Gamma,x:A\)</span> is called the <em>constant</em> (or <em>trivial</em>)
+family <span class="math inline">\(B\)</span>.
+</dd>
+</dl></li>
+<li><p>the generic element</p>
+<p>The last general inference rule concerns the so-called <em>generic
+element</em> of a type family. Given a type <span class="math inline">\(A\)</span> in context <span class="math inline">\(\Gamma\)</span>, we
+can weaken <span class="math inline">\(A\)</span> by itself to obtain that <span class="math inline">\(A\)</span> is a type in context
+<span class="math inline">\(\Gamma,x:A\)</span>. The rule then stipulates that the variable <span class="math inline">\(x\)</span> may be
+viewed as an element of <span class="math inline">\(x:A\)</span> in this context; i.e.
+<span class="math display">\[\dfrac{\Gamma:A \ \text{type}}{\Gamma,x:A \vdash x:A}\delta\]</span></p></li>
+</ul>
+<h1 id="bibliography">Bibliography</h1>
+<div class="refs">
+
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-avigadTheoremProvingLean" class="csl-entry" role="listitem">
+Avigad, Jeremy, Leondardo de Moura, Soonho Kong, and Sebastian Ullrich. 2024. <span>“Theorem <span>Proving</span> in <span>Lean</span> 4.”</span> https://leanprover.github.io/theorem_proving_in_lean4/.
+</div>
+<div id="ref-rijkeIntroductionHomotopyType" class="csl-entry" role="listitem">
+Rijke, Egbert. 2024. <span>“Introduction to <span>Homotopy Type Theory</span>.”</span> https://arxiv.org/abs/2212.11082.
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Rijke reads “<span class="math inline">\(a:A\)</span>” as “<span class="math inline">\(a\)</span> is an element of type <span class="math inline">\(A\)</span>”. Some
+other authors read this as “<span class="math inline">\(a\)</span> is a term of type <span class="math inline">\(A\)</span>.”<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
     </section>
 </article>
 

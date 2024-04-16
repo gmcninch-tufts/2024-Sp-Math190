@@ -20,7 +20,7 @@ As is your *proposal* for a final project:
 
 
 Overview of "what is a proof assistant good for?":
-- [Notes 2024-03-05](/course-contents/notes-formal-01.html)
+- [Notes 2024-03-05](/course-contents/notes-formal-00.html)
 
 # Lean via GitPod
 
