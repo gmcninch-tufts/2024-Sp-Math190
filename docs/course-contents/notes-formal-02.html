@@ -6,8 +6,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Math190-Tufts University - Overview on Formalization - Type Theory part 2
 </title>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
-	</script>	
+	<script>
+	  window.MathJax = {
+	    options: {
+	      ignoreHtmlClass: 'tex2jax_ignore',
+	      processHtmlClass: 'tex2jax_process'
+	    },
+	    tex: {
+	      autoload: {
+		color: [],
+		colorv2: ['color']
+	      },
+	      packages: {'[+]': ['noerrors']}
+	    },
+	    loader: {
+	      load: ['input/asciimath', '[tex]/noerrors']
+	    }
+	  };
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
         <link rel="stylesheet" href="../css/default.css" />
 	<link rel="stylesheet" href="../css/haddock.css" />
 	
@@ -39,7 +56,114 @@
         
     </section>
     <section>
-        <h1 id="bibliography">Bibliography</h1>
+        <h1 id="a-derivation-about-renaming-variables">A derivation about renaming variables</h1>
+<p>We are going to derive the inference rule</p>
+<p><span class="math display">\[\dfrac{\Gamma, x:A,\Delta \vdash \mathscr{J}}
+  {\Gamma,x':A,\Delta[x'/x] \vdash \mathscr{J}[x'/x]}x'/x\]</span>
+which essentially says “we an replace variable <span class="math inline">\(x:A\)</span> by variable <span class="math inline">\(x':A\)</span>”.</p>
+<p>The derivation uses <em>substitution</em>, <em>weakening</em> and the <em>generic element</em>:</p>
+<p><span class="math display">\[\dfrac{
+  \dfrac{\Gamma \vdash A \ \text{type}}{\Gamma,x':A \vdash x':A}\delta
+  \quad
+  \dfrac{\Gamma \vdash A \ \text{type}\quad \Gamma, x:A, \Delta \vdash \mathscr{J}}
+   {\Gamma,x':A,x:A,\Delta \vdash \mathscr{J}}W
+  }
+  {\Gamma,x':A,\Delta[x'/x]\vdash \mathscr{J}[x'/x]}S\]</span></p>
+<h1 id="dependent-function-types">Dependent function types</h1>
+<p>Let <span class="math inline">\(b\)</span> be a section of a family <span class="math inline">\(B\)</span> over <span class="math inline">\(A\)</span> in context <span class="math inline">\(\Gamma\)</span>. Thus
+<span class="math display">\[\Gamma,x:A \vdash b(x): B(x).\]</span></p>
+<p>Two points of view here:</p>
+<ul>
+<li><p>can think of <span class="math inline">\(b\)</span> as a <em>“program”</em> <span class="math inline">\(x \mapsto b(x)\)</span> that takes as
+input <span class="math inline">\(x:A\)</span> and produces a term <span class="math inline">\(b(x):B(x)\)</span>.</p></li>
+<li><p>or, can view <span class="math inline">\(b(x)\)</span> as just a “choice of element” in each <span class="math inline">\(B(x)\)</span> for <span class="math inline">\(x:A\)</span>.
+i.e. <span class="math inline">\(x \mapsto b(x)\)</span> is a <em>dependent function</em></p></li>
+</ul>
+<p>The <em>type</em> of all such dependent functions is called the <em>dependent
+function type</em>, written: <span class="math display">\[\Pi_{(x:A)} B(x)\]</span></p>
+<p>Part of what we must formulate in our type theory are inference rules
+guaranteeing that these types are well-formed. For this we need
+various sorts of <em>rules</em>:</p>
+<ul>
+<li><em>formation rule</em> specifying how we may form dependent function types</li>
+<li><em>introduction rule</em> specifying how to introduce new <em>terms</em> of
+dependent function types</li>
+<li><em>elimination rule</em> specifying how to <em>use</em> arbitrary terms of
+dependent function types</li>
+<li><em>computation rules</em> specifying how introduction rules and
+elimination rules interact</li>
+</ul>
+<p>For the first three of these rules, we also need rules asserting that
+the constructions play nice with judgmental equality.</p>
+<h2 id="pi-formation-rule"><span class="math inline">\(\Pi\)</span>-formation rule</h2>
+<p>Any type family gives rise to a dependent function type:
+<span class="math display">\[\dfrac{\Gamma,x:A \vdash B(x)\ \text{type}}{\Gamma \vdash \Pi_{(x:A)} B(x)\ \text{type}}\Pi\]</span></p>
+<p>Also need the <em>congruence rule</em>:</p>
+<p><span class="math display">\[\dfrac{\Gamma \vdash A \doteq A' \quad \Gamma, x:A \vdash B(x) \doteq B'(x) \ \text{type}}
+   {\Gamma \vdash \Pi_{(x:A)} B(x) \doteq \Pi_{(x:A')} B'(x)}\Pi\text{-eq}\]</span></p>
+<h2 id="pi-introduction-rule"><span class="math inline">\(\Pi\)</span>-introduction rule</h2>
+<p>This rule specifies that we may “construct” dependent functions provided that we
+have constructed a section:</p>
+<p><span class="math display">\[\dfrac{\Gamma,x:A \vdash b(x):B(x)}
+  {\Gamma \vdash \lambda x.b(x) : \Pi_{(x:A)}B(x)}\lambda\]</span></p>
+<p>We use the notation <span class="math inline">\(\lambda x.b(x)\)</span> for the “dependent function”.
+This introduction rule is also called the <em><span class="math inline">\(\lambda\)</span>-abstraction rule</em>.</p>
+<p>Again, we need to know that <span class="math inline">\(\lambda\)</span>-abstraction respects judgmental equality:</p>
+<p><span class="math display">\[\dfrac{\Gamma, x:A \vdash b(x) \doteq b'(x):B(x)}
+  {\vdash \lambda x.b(x) \doteq \lambda x.b'(x):\Pi_{(x:A)}B(x)}\lambda\text{-eq}\]</span></p>
+<h2 id="pi-elimination-rule"><span class="math inline">\(\Pi\)</span>-elimination rule</h2>
+<p>The way to use a dependent function is to evaluate it at any an
+element of the domain type. The <span class="math inline">\(\Pi\)</span>-elimination rule is thus sometimes
+called the <em>evaluation rule</em>.</p>
+<p><span class="math display">\[\dfrac{\Gamma \vdash f:\Pi_{(x:A)} B(x)}
+  {\Gamma,x:A \vdash f(x): B(x)}\text{ev}\]</span></p>
+<p>(Note that in practice – e.g. in <code>Lean</code>, <code>Haskell</code>, <code>ML</code>, … –
+we write “<span class="math inline">\(f\ x\)</span>” for “<span class="math inline">\(f(x)\)</span>”).</p>
+<p><span class="math display">\[\dfrac{\Gamma \vdash f \doteq f' : \Pi_{(x:A)} B(x)}
+  {\Gamma, x:A \vdash f(x) \doteq f'(x) : B(x)}\text{ev}\]</span></p>
+<h2 id="pi-computation-rule"><span class="math inline">\(\Pi\)</span>-computation rule</h2>
+<p>We need to postulate rules controlling our functions.</p>
+<p>The <span class="math inline">\(\beta\)</span>-<em>rule</em> stipulates that <span class="math inline">\(\lambda x. b(x)\)</span> behaves in the
+way that we understand the function <span class="math inline">\(x \mapsto b(x)\)</span>.</p>
+<p><span class="math display">\[\dfrac{\Gamma,x:A \vdash b(x):B(x)}
+  {\Gamma,x:A \vdash (\lambda y.b(y))(x) \doteq b(x) : B(x)}\beta\]</span></p>
+<p>The second rule – known as the <span class="math inline">\(\eta\)</span>-<em>rule</em> – postulates that the
+<em>only</em> elements of <span class="math inline">\(\Pi_{(x:A)}B(x)\)</span> are dependent functions.</p>
+<p><span class="math display">\[\dfrac{\Gamma \vdash f:\Pi_{(x:A)}B(x)}
+  {\Gamma \vdash \lambda x.f(x) \doteq f : \Pi_{(x:A)}B(x)}\eta\]</span></p>
+<h1 id="ordinary-function-types">Ordinary function types</h1>
+<p>We obtain ordinary functions as a special case of dependent functions.
+Let’s describe the setting.</p>
+<p>Suppose that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are types in context <span class="math inline">\(\Gamma\)</span>. We can
+view <span class="math inline">\(B\)</span> as the “constant family” <span class="math inline">\(B(x) = B\)</span> over <span class="math inline">\(a:A\)</span>.
+From this point of view, we obtain the type of functions as
+<span class="math display">\[A \to B := \Pi_{(x:A)} B(x)\]</span>
+i.e.
+<span class="math display">\[A \to B := \Pi_{(x:A)}B\]</span></p>
+<p>Here is the formal derivation:
+<span class="math display">\[\dfrac{\dfrac{\Gamma \vdash A\ \text{type}\quad \Gamma \vdash B \ \text{type}}
+         {\Gamma,x:A \vdash B\ \text{type}}W}
+  {\Gamma \vdash \Pi_{(x:A)} B \ \text{type}}\Pi\]</span></p>
+<p>And here is the formal declaration of the “new notation”:</p>
+<p><span class="math display">\[\dfrac{\dfrac{\dfrac{\Gamma \vdash A\ \text{type}\quad \Gamma \vdash B \ \text{type}}
+         {\Gamma,x:A \vdash B\ \text{type}}W}
+         {\Gamma \vdash \Pi_{(x:A)} B \ \text{type}}\Pi}
+  {\Gamma \vdash A \to B := \Pi_{(x:A)} B \ \text{type}}\]</span></p>
+<h2 id="construction-of-the-identity-function">Construction of the <em>identity function</em></h2>
+<p>Given a type <span class="math inline">\(A\)</span> in context <span class="math inline">\(\Gamma\)</span>, let’s construct the identity function
+<span class="math inline">\(\operatorname{id}:A \to A\)</span> using the <em>generic term</em>:</p>
+<p><span class="math display">\[\dfrac{
+  \dfrac{}
+   {}
+  }
+  {}\]</span></p>
+<span class="math display">\[\begin{prooftree}
+\AxiomC{$\Gamma,x:A\vdash B(y)~\ \text{type}$}
+\RightLabel{$\Pi$.}
+\UnaryInfC{$\Gamma\vdash \Pi_{x:A}B(x)~\ \text{type}$}
+\end{prooftree}\]</span>
+<p>foobar</p>
+<h1 id="bibliography">Bibliography</h1>
 <div class="refs">
 
 </div>
