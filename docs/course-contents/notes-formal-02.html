@@ -96,41 +96,67 @@ elimination rules interact</li>
 <p>For the first three of these rules, we also need rules asserting that
 the constructions play nice with judgmental equality.</p>
 <h2 id="pi-formation-rule"><span class="math inline">\(\Pi\)</span>-formation rule</h2>
-<p>Any type family gives rise to a dependent function type:
-<span class="math display">\[\dfrac{\Gamma,x:A \vdash B(x)\ \text{type}}{\Gamma \vdash \Pi_{(x:A)} B(x)\ \text{type}}\Pi\]</span></p>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma,x:A \vdash B(x)\ \text{type}$}
+  \RightLabel{$\Pi$}
+  \UnaryInfC{$\Gamma \vdash \Pi_{(x:A)} B(x)\ \text{type}$}
+\end{prooftree}\]</span>
 <p>Also need the <em>congruence rule</em>:</p>
-<p><span class="math display">\[\dfrac{\Gamma \vdash A \doteq A' \quad \Gamma, x:A \vdash B(x) \doteq B'(x) \ \text{type}}
-   {\Gamma \vdash \Pi_{(x:A)} B(x) \doteq \Pi_{(x:A')} B'(x)}\Pi\text{-eq}\]</span></p>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma \vdash A \doteq A'$}
+  \AxiomC{$\Gamma, x:A \vdash B(x) \doteq B'(x) \ \text{type}$}
+  \RightLabel{$\Pi$-eq}
+  \BinaryInfC{$\Gamma \vdash \Pi_{(x:A)} B(x) \doteq \Pi_{(x:A')} B'(x)$}
+\end{prooftree}\]</span>
 <h2 id="pi-introduction-rule"><span class="math inline">\(\Pi\)</span>-introduction rule</h2>
 <p>This rule specifies that we may “construct” dependent functions provided that we
 have constructed a section:</p>
-<p><span class="math display">\[\dfrac{\Gamma,x:A \vdash b(x):B(x)}
-  {\Gamma \vdash \lambda x.b(x) : \Pi_{(x:A)}B(x)}\lambda\]</span></p>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma,x:A \vdash b(x):B(x)$}
+  \RightLabel{$\lambda$}
+  \UnaryInfC{$\Gamma \vdash \lambda x.b(x) : \Pi_{(x:A)}B(x)$}
+\end{prooftree}\]</span>
 <p>We use the notation <span class="math inline">\(\lambda x.b(x)\)</span> for the “dependent function”.
 This introduction rule is also called the <em><span class="math inline">\(\lambda\)</span>-abstraction rule</em>.</p>
 <p>Again, we need to know that <span class="math inline">\(\lambda\)</span>-abstraction respects judgmental equality:</p>
-<p><span class="math display">\[\dfrac{\Gamma, x:A \vdash b(x) \doteq b'(x):B(x)}
-  {\vdash \lambda x.b(x) \doteq \lambda x.b'(x):\Pi_{(x:A)}B(x)}\lambda\text{-eq}\]</span></p>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma, x:A \vdash b(x) \doteq b'(x):B(x)$}
+  \RightLabel{$\lambda$-eq}
+  \UnaryInfC{$\Gamma \vdash \lambda x.b(x) \doteq \lambda x.b'(x):\Pi_{(x:A)}B(x)$}
+\end{prooftree}\]</span>
 <h2 id="pi-elimination-rule"><span class="math inline">\(\Pi\)</span>-elimination rule</h2>
 <p>The way to use a dependent function is to evaluate it at any an
 element of the domain type. The <span class="math inline">\(\Pi\)</span>-elimination rule is thus sometimes
 called the <em>evaluation rule</em>.</p>
-<p><span class="math display">\[\dfrac{\Gamma \vdash f:\Pi_{(x:A)} B(x)}
-  {\Gamma,x:A \vdash f(x): B(x)}\text{ev}\]</span></p>
-<p>(Note that in practice – e.g. in <code>Lean</code>, <code>Haskell</code>, <code>ML</code>, … –
-we write “<span class="math inline">\(f\ x\)</span>” for “<span class="math inline">\(f(x)\)</span>”).</p>
-<p><span class="math display">\[\dfrac{\Gamma \vdash f \doteq f' : \Pi_{(x:A)} B(x)}
-  {\Gamma, x:A \vdash f(x) \doteq f'(x) : B(x)}\text{ev}\]</span></p>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma \vdash f:\Pi_{(x:A)} B(x)$}
+  \RightLabel{ev}
+  \UnaryInfC{$\Gamma,x:A \vdash f(x): B(x)$}
+\end{prooftree}\]</span>
+<p>(Note that in practice – e.g. in type-theory based programming
+languages <code>Lean</code>, <code>Haskell</code>, <code>ML</code>, … – we write “<span class="math inline">\(f\ x\)</span>” for
+“<span class="math inline">\(f(x)\)</span>”).</p>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma \vdash f \doteq f' : \Pi_{(x:A)} B(x)$}
+  \RightLabel{ev-eq}
+  \UnaryInfC{$\Gamma, x:A \vdash f(x) \doteq f'(x) : B(x)$}
+\end{prooftree}\]</span>
 <h2 id="pi-computation-rule"><span class="math inline">\(\Pi\)</span>-computation rule</h2>
 <p>We need to postulate rules controlling our functions.</p>
 <p>The <span class="math inline">\(\beta\)</span>-<em>rule</em> stipulates that <span class="math inline">\(\lambda x. b(x)\)</span> behaves in the
 way that we understand the function <span class="math inline">\(x \mapsto b(x)\)</span>.</p>
-<p><span class="math display">\[\dfrac{\Gamma,x:A \vdash b(x):B(x)}
-  {\Gamma,x:A \vdash (\lambda y.b(y))(x) \doteq b(x) : B(x)}\beta\]</span></p>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma,x:A \vdash b(x):B(x)$}
+  \RightLabel{$\beta$}
+  \UnaryInfC{$\Gamma,x:A \vdash (\lambda y.b(y))(x) \doteq b(x) : B(x)$}
+\end{prooftree}\]</span>
 <p>The second rule – known as the <span class="math inline">\(\eta\)</span>-<em>rule</em> – postulates that the
 <em>only</em> elements of <span class="math inline">\(\Pi_{(x:A)}B(x)\)</span> are dependent functions.</p>
-<p><span class="math display">\[\dfrac{\Gamma \vdash f:\Pi_{(x:A)}B(x)}
-  {\Gamma \vdash \lambda x.f(x) \doteq f : \Pi_{(x:A)}B(x)}\eta\]</span></p>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma \vdash f:\Pi_{(x:A)}B(x)$}
+  \RightLabel{$\eta$}
+  \UnaryInfC{$\Gamma \vdash \lambda x.f(x) \doteq f : \Pi_{(x:A)}B(x)$}
+\end{prooftree}\]</span>
 <h1 id="ordinary-function-types">Ordinary function types</h1>
 <p>We obtain ordinary functions as a special case of dependent functions.
 Let’s describe the setting.</p>
@@ -140,29 +166,115 @@ From this point of view, we obtain the type of functions as
 <span class="math display">\[A \to B := \Pi_{(x:A)} B(x)\]</span>
 i.e.
 <span class="math display">\[A \to B := \Pi_{(x:A)}B\]</span></p>
-<p>Here is the formal derivation:
-<span class="math display">\[\dfrac{\dfrac{\Gamma \vdash A\ \text{type}\quad \Gamma \vdash B \ \text{type}}
-         {\Gamma,x:A \vdash B\ \text{type}}W}
-  {\Gamma \vdash \Pi_{(x:A)} B \ \text{type}}\Pi\]</span></p>
+<p>Here is the formal derivation:</p>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma \vdash A \ \text{type}$} 
+  \AxiomC{$\Gamma \vdash B \ \text{type}$}
+  \RightLabel{$W$}
+  \BinaryInfC{$\Gamma,x:A \vdash B\ \text{type}$}
+  \RightLabel{$\Pi$}
+  \UnaryInfC{$\Gamma \vdash \Pi_{(x:A)} B \ \text{type}$}
+\end{prooftree}\]</span>
 <p>And here is the formal declaration of the “new notation”:</p>
-<p><span class="math display">\[\dfrac{\dfrac{\dfrac{\Gamma \vdash A\ \text{type}\quad \Gamma \vdash B \ \text{type}}
-         {\Gamma,x:A \vdash B\ \text{type}}W}
-         {\Gamma \vdash \Pi_{(x:A)} B \ \text{type}}\Pi}
-  {\Gamma \vdash A \to B := \Pi_{(x:A)} B \ \text{type}}\]</span></p>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma \vdash A \ \text{type}$} 
+  \AxiomC{$\Gamma \vdash B \ \text{type}$}
+  \RightLabel{$W$}
+  \BinaryInfC{$\Gamma,x:A \vdash B\ \text{type}$}
+  \RightLabel{$\Pi$}
+  \UnaryInfC{$\Gamma \vdash \Pi_{(x:A)} B \ \text{type}$}
+  \RightLabel{defn}  
+  \UnaryInfC{$\Gamma \vdash A \to B := \Pi_{(x:A)}B$}
+\end{prooftree}\]</span>
 <h2 id="construction-of-the-identity-function">Construction of the <em>identity function</em></h2>
 <p>Given a type <span class="math inline">\(A\)</span> in context <span class="math inline">\(\Gamma\)</span>, let’s construct the identity function
-<span class="math inline">\(\operatorname{id}:A \to A\)</span> using the <em>generic term</em>:</p>
-<p><span class="math display">\[\dfrac{
-  \dfrac{}
-   {}
-  }
-  {}\]</span></p>
+<span class="math inline">\(\operatorname{id}= \operatorname{id}_A:A \to A\)</span> using the <em>generic term</em>:</p>
 <span class="math display">\[\begin{prooftree}
-\AxiomC{$\Gamma,x:A\vdash B(y)~\ \text{type}$}
-\RightLabel{$\Pi$.}
-\UnaryInfC{$\Gamma\vdash \Pi_{x:A}B(x)~\ \text{type}$}
+\AxiomC{$\Gamma \vdash A \ \text{type}$}
+\RightLabel{$\delta$}
+\UnaryInfC{$\Gamma, x:A \vdash x:A$}
+\RightLabel{$\lambda$-intro}
+\UnaryInfC{$\Gamma \vdash \lambda x.x:A \to A$}
+\RightLabel{defn}
+\UnaryInfC{$\Gamma \vdash \operatorname{id}_A :=\lambda x.x:A \to A$}
 \end{prooftree}\]</span>
-<p>foobar</p>
+<h2 id="construction-of-the-composition-of-two-functions">Construction of the composition of two functions</h2>
+<p>Given types <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> and terms <span class="math inline">\(f:A \to B\)</span>, <span class="math inline">\(g:B \to C\)</span>, we
+can form <span class="math inline">\(g \circ f:A \to C\)</span>.</p>
+<p>In fact, write <span class="math inline">\(\operatorname{comp}(g,f)\)</span> for <span class="math inline">\(g \circ f\)</span>. Then <span class="math inline">\(\operatorname{comp}\)</span> is in some
+sense a function of two arguments <span class="math inline">\(g\)</span> and <span class="math inline">\(f\)</span>. Let’s pause to discuss functions of
+multiple arguments.</p>
+<p>Consider a function
+<span class="math display">\[f : A \to (B \to C)\]</span>
+For an argument <span class="math inline">\(a:A\)</span>, <span class="math inline">\(f(a):B \to C\)</span> so <span class="math inline">\(f(a)\)</span> is again a function.
+For <span class="math inline">\(b :B\)</span>, we can write
+<span class="math display">\[f(a)(b) \quad \text{or} \quad f(a,b) \quad \text{or} \quad f\ a \ b\]</span>
+for the value of <span class="math inline">\(f(a)\)</span> at <span class="math inline">\(b:B\)</span>.</p>
+<p>Now we see that the type of the function <span class="math inline">\(\operatorname{comp}\)</span> is
+<span class="math display">\[(B \to C) \to ((A \to B) \to (A \to C))\]</span>
+Thus for <span class="math inline">\(g:B \to C\)</span>, we have <span class="math inline">\(\operatorname{comp}(g):(A \to B) \to (A \to C).\)</span></p>
+<p>We are going to define <span class="math inline">\(\operatorname{comp}\)</span> by the rule
+<span class="math display">\[\operatorname{comp}= \lambda g.\lambda f. \lambda x.g(f(x))\]</span>.</p>
+<p>Before we give the derivation, we need a preliminary result using the <em>generic element</em></p>
+<p><span class="math display">\[\begin{equation*}
+  (\clubsuit)
+  \begin{prooftree}
+  \AxiomC{$\Gamma \vdash A \ \text{type}$}
+  \AxiomC{$\Gamma \vdash B \ \text{type}$}
+  \RightLabel{$\Pi$-formation}
+  \BinaryInfC{$\Gamma \vdash A \to B \ \text{type}$}
+  \RightLabel{$\delta$}
+  \UnaryInfC{$\Gamma, f:A \to B \vdash f:A \to B$}
+  \RightLabel{$\Pi$-elimination}
+  \UnaryInfC{$\Gamma, f:A \to B, x : A \vdash f(x):B$}
+\end{prooftree}
+\end{equation*}\]</span></p>
+<p>Now here is the full derivation:</p>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma \vdash A \ \text{type}$}
+  \AxiomC{$\Gamma \vdash B \ \text{type}$}
+  \RightLabel{$\clubsuit$}
+  \BinaryInfC{$\Gamma, f:A \to B, x : A \vdash f(x):B$}
+  \RightLabel{W}
+  \UnaryInfC{$\Gamma, g:B \to C, f:A \to B, x:A \vdash f(x):B$}
+
+  \AxiomC{$\Gamma \vdash B \ \text{type}$}
+  \AxiomC{$\Gamma \vdash C \ \text{type}$}
+  \RightLabel{$\clubsuit$}  
+  \BinaryInfC{$\Gamma, g:B \to C, y : B \vdash g(y):C$}
+  \RightLabel{W}
+  \UnaryInfC{$\Gamma, g:B \to C, f:A \to B,  y : B \vdash g(y):C$}
+  \RightLabel{W}
+  \UnaryInfC{$\Gamma, g:B \to C, f:A \to B,  x : A, y : B \vdash g(y):C$}
+  
+  \RightLabel{subst}
+  \BinaryInfC{$\Gamma, g:B \to C, f:A \to B, x:A \vdash g(f(x)) : C$}
+  \RightLabel{$\lambda$-intro}
+  \UnaryInfC{$\Gamma, g:B \to C, f:A \to B \vdash \lambda x.g(f(x)) : A \to C$}
+  \RightLabel{$\lambda$-intro}
+  \UnaryInfC{$\Gamma, g:B \to C \vdash \lambda f.\lambda x.g(f(x)) : (A \to B) \to (A \to C)$}
+  \RightLabel{$\lambda$-intro}
+  \UnaryInfC{$\Gamma \vdash \lambda g.\lambda f.\lambda x.g(f(x)) : (C \to B) \to ((A \to B) \to (A \to C))$}
+\end{prooftree}\]</span>
+<p>One can now derive a number of properties of function composition:</p>
+<ul>
+<li>associativity, i.e.
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma \vdash f:A \to B$}
+  \AxiomC{$\Gamma \vdash g:B \to C$}
+  \AxiomC{$\Gamma \vdash h:C \to D$}
+  \TrinaryInfC{$\Gamma \vdash (h \circ g) \circ f \doteq h \circ (g \circ f):A \to D$}
+\end{prooftree}\]</span></li>
+<li>left and right unit laws
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma \vdash f : A \to B$}
+  \UnaryInfC{$\Gamma \vdash \operatorname{id}_B \circ f \doteq f : A \to B$}
+\end{prooftree}\]</span>
+<span class="math display">\[\begin{prooftree}
+  \AxiomC{$\Gamma \vdash f : A \to B$}
+  \UnaryInfC{$\Gamma \vdash f \circ \operatorname{id}_A \doteq f : A \to B$}
+\end{prooftree}\]</span></li>
+</ul>
 <h1 id="bibliography">Bibliography</h1>
 <div class="refs">
 
