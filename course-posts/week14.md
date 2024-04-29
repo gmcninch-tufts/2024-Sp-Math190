@@ -24,6 +24,10 @@ date: 2024-04-22
    - [06--structures-classes.lean](https://github.com/gmcninch-tufts/math190formalize/blob/main/Math190formalize/06--structures-classes.lean)
    - [06--structures-classes--exercises.lean](https://github.com/gmcninch-tufts/math190formalize/blob/main/Math190formalize/06--structures-classes--exercises.lean)
 
+   - [07--algebra.lean](https://github.com/gmcninch-tufts/math190formalize/blob/main/Math190formalize/07--algebra.lean)
+
+
+
 # type-theory content
 
 - [01 - type families & inference rules](/course-contents/notes-formal-01.html)
