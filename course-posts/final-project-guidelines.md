@@ -85,7 +85,7 @@ least one of the results described in your report.
 I'm including some *suggestions* in the [*final project
 recommendations*](final-project-recommendations.html).
 
-# Viewing Video Presentations
+# Summaries of Video Presentations
 
 As indicated above, I'll create a folder at *tufts.box.com* for the
 class Videos; the class will have *read-access* to this folder.  You

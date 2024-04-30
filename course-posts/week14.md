@@ -34,7 +34,7 @@ date: 2024-04-22
 - [02 - Π-types](/course-contents/notes-formal-02.html)
 
 
-# final project submission
+# final project submission 
 
   You should submit the report component of your project via gradescope.
 
@@ -63,3 +63,7 @@ date: 2024-04-22
 	```
 	Jane-Smith-project-abstract.pdf
 	```
+
+# summaries
+ 
+  - [2024-05-08] [[submit brief summaries of two projects]](/course-assignments/FinReportSummaries.html)

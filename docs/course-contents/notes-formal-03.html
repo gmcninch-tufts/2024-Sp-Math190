@@ -77,15 +77,15 @@ ordinary) functions.</p>
 <ul>
 <li><em>introduction rules</em> (constructors)</li>
 </ul>
-<p><span class="math display">\[\begin{prooftree}
+<span class="math display">\[\begin{prooftree}
  \AxiomC{}
  \UnaryInfC{$ \vdash 0_ℕ : ℕ$}
 \end{prooftree}
 \quad \quad \quad
 \begin{prooftree}
  \AxiomC{}
- \UnaryInfC{$ \vdash \operatorname{succ}:ℕ → ℕ$}
-\end{prooftree}\]</span> </p>
+ \UnaryInfC{$ \vdash \succ:ℕ → ℕ$}
+\end{prooftree}\]</span>
 <ul>
 <li>induction principle</li>
 </ul>
@@ -94,7 +94,7 @@ ordinary) functions.</p>
   \noLine
   \UnaryInfC{$\Gamma \vdash p_0:P(0_\mathbf{N})$}
   \noLine
-  \UnaryInfC{$\Gamma \vdash p_S:\Pi_{(n:\mathbf{N})}(P(n) \to P(\operatorname{succ}n))$}
+  \UnaryInfC{$\Gamma \vdash p_S:\Pi_{(n:\mathbf{N})}(P(n) \to P(\succ n))$}
   \RightLabel{$\mathbf{N}$-ind}
   \UnaryInfC{$\Gamma \vdash \operatorname{ind_\mathbf{N}}(p_0,p_S):\Pi_{(n:\mathbf{N})}P(n)$}
 \end{prooftree}\]</span>
@@ -133,11 +133,11 @@ of <span class="math inline">\(f\)</span> at the constructors of <span class="ma
 <span class="math display">\[\begin{prooftree}
   \AxiomC{$\Gamma,l:\operatorname{List}(L) \vdash P(l) \ \text{type}$}
   \noLine
-  \UnaryInfC{$\Gamma \vdash p_\operatorname{nil}:P(\operatorname{nil})$}
+  \UnaryInfC{$\Gamma \vdash p_{\operatorname{nil}}:P(\operatorname{nil})$}
   \noLine
-  \UnaryInfC{$\Gamma \vdash p_\operatorname{cons}:\Pi_{(l:\operatorname{List}A)}(A \to P(x) \to P(\operatorname{succ}n))$}
+  \UnaryInfC{$\Gamma \vdash p \operatorname{cons}:\Pi_{(l:\operatorname{List}A)}(A \to P(x) \to P(\succ n))$}
   \RightLabel{$\mathbf{N}$-ind}
-  \UnaryInfC{$\Gamma \vdash \operatorname{ind_\mathbf{N}}(p_0,p_S):\Pi_{(n:\mathbf{N})}P(n)$}
+  \UnaryInfC{$\Gamma \vdash \operatorname{ind \mathbf{N}}(p_0 , p_S):\Pi_{(n:\mathbf{N})}P(n)$}
 \end{prooftree}\]</span>
 <ol start="3" type="i">
 <li>The computation rules assert that the inductively defined section agrees

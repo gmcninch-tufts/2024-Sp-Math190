@@ -15,6 +15,7 @@ CSS_DEFAULT="build-assets/default.css"
 
 content=$(wildcard course-contents/*.md)
 content_pdf=$(content:.md=.pdf)
+content_tex=$(content:.md=.tex)
 
 problems=$(wildcard course-assignments/*.md)
 problems_pdf=$(problems:.md=.pdf)
@@ -25,7 +26,8 @@ pages_pdf=$(pages:.md=.pdf)
 
 all: problems content pages
 
-content: $(content_pdf)
+content: $(content_pdf) 
+
 problems: $(problems_pdf)
 pages: $(pages_pdf)
 
@@ -34,6 +36,9 @@ pages: $(pages_pdf)
 
 
 %.pdf: %.md
+	$(PD) $(META) $< build-assets/biblio.md --pdf-engine=xelatex $(PFP) $(PFC) --resource-path=$(RP) --highlight-style=zenburn -o  $@
+
+%.tex: %.md
 	$(PD) $(META) $< build-assets/biblio.md --pdf-engine=xelatex $(PFP) $(PFC) --resource-path=$(RP) --highlight-style=zenburn -t latex -o $@
 
 .PHONY: echoes

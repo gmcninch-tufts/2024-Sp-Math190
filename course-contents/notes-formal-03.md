@@ -10,9 +10,9 @@ date: 2024-04-08
 \newcommand{\prd}[1]{\Pi_{(#1)}}
 \newcommand{\comp}{\operatorname{comp}}
 \newcommand{\List}{\operatorname{List}}
-\newcommand{\nil}{\operatorname{nil}}
+\newcommand{\nnil}{\operatorname{nil}}
 \newcommand{\cons}{\operatorname{cons}}
-\newcommand{\succ}{\operatorname{succ}}
+
 
 # Inductive Types
 
@@ -39,7 +39,7 @@ Inductive types are specified by:
 
 - *introduction rules* (constructors)
 
-$$\begin{prooftree}
+\begin{prooftree}
  \AxiomC{}
  \UnaryInfC{$ \vdash 0_ℕ : ℕ$}
 \end{prooftree}
@@ -47,7 +47,7 @@ $$\begin{prooftree}
 \begin{prooftree}
  \AxiomC{}
  \UnaryInfC{$ \vdash \succ:ℕ → ℕ$}
-\end{prooftree}$$ 
+\end{prooftree}
 
 - induction principle
 
@@ -81,7 +81,7 @@ let's describe the type whose elements are *lists* of elements of $A$.
   
   \begin{prooftree}
    \AxiomC{$\Gamma\vdash A \type$}
-   \UnaryInfC{$\Gamma \vdash \nil: \List A$}
+   \UnaryInfC{$\Gamma \vdash \nnil: \List A$}
   \end{prooftree}
   
   The second one constructs ("`cons`") a list from a term of type $A$ and an existing $\List A$.
@@ -105,11 +105,11 @@ let's describe the type whose elements are *lists* of elements of $A$.
 \begin{prooftree}
   \AxiomC{$\Gamma,l:\List(L) \vdash P(l) \type$}
   \noLine
-  \UnaryInfC{$\Gamma \vdash p_\nil:P(\nil)$}
+  \UnaryInfC{$\Gamma \vdash p_{\nnil}:P(\nnil)$}
   \noLine
-  \UnaryInfC{$\Gamma \vdash p_\cons:\prd{l:\List A}(A \to P(x) \to P(\succ n))$}
+  \UnaryInfC{$\Gamma \vdash p \cons:\prd{l:\List A}(A \to P(x) \to P(\succ n))$}
   \RightLabel{$\mathbf{N}$-ind}
-  \UnaryInfC{$\Gamma \vdash \operatorname{ind_\mathbf{N}}(p_0,p_S):\prd{n:\mathbf{N}}P(n)$}
+  \UnaryInfC{$\Gamma \vdash \operatorname{ind \mathbf{N}}(p_0 , p_S):\prd{n:\mathbf{N}}P(n)$}
 \end{prooftree}
 
 

@@ -224,12 +224,9 @@ Thus for $g:B \to C$, we have $\comp(g):(A \to B) \to (A \to C).$
 We are going to define $\comp$ by the rule
 $$\comp = \lambda g.\lambda f. \lambda x.g(f(x))$$.
 
-Before we give the derivation, we need a preliminary result using the *generic element*
+Before we give the derivation, we need a preliminary result using the *generic element*; we'll refer to this as $(\clubsuit)$ below:
 
-
-\begin{equation*}
-  (\clubsuit)
-  \begin{prooftree}
+\begin{prooftree}
   \AxiomC{$\Gamma \vdash A \type$}
   \AxiomC{$\Gamma \vdash B \type$}
   \RightLabel{$\Pi$-formation}
@@ -238,8 +235,8 @@ Before we give the derivation, we need a preliminary result using the *generic e
   \UnaryInfC{$\Gamma, f:A \to B \vdash f:A \to B$}
   \RightLabel{$\Pi$-elimination}
   \UnaryInfC{$\Gamma, f:A \to B, x : A \vdash f(x):B$}
-\end{prooftree}
-\end{equation*}
+\end{prooftree} 
+
 
 Now here is the full derivation:
 
@@ -250,7 +247,7 @@ Now here is the full derivation:
   \BinaryInfC{$\Gamma, f:A \to B, x : A \vdash f(x):B$}
   \RightLabel{W}
   \UnaryInfC{$\Gamma, g:B \to C, f:A \to B, x:A \vdash f(x):B$}
-
+  %
   \AxiomC{$\Gamma \vdash B \type$}
   \AxiomC{$\Gamma \vdash C \type$}
   \RightLabel{$\clubsuit$}  
@@ -259,7 +256,7 @@ Now here is the full derivation:
   \UnaryInfC{$\Gamma, g:B \to C, f:A \to B,  y : B \vdash g(y):C$}
   \RightLabel{W}
   \UnaryInfC{$\Gamma, g:B \to C, f:A \to B,  x : A, y : B \vdash g(y):C$}
-  
+  %  
   \RightLabel{subst}
   \BinaryInfC{$\Gamma, g:B \to C, f:A \to B, x:A \vdash g(f(x)) : C$}
   \RightLabel{$\lambda$-intro}

@@ -14,6 +14,7 @@ header-includes: |
   \usepackage{amscd}
   \usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
   \usepackage{color}
+  \usepackage{bussproofs}
 theoremnos-names:
 - id: thm
   name: Theorem

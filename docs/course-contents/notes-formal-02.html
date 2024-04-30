@@ -215,10 +215,8 @@ for the value of <span class="math inline">\(f(a)\)</span> at <span class="math 
 Thus for <span class="math inline">\(g:B \to C\)</span>, we have <span class="math inline">\(\operatorname{comp}(g):(A \to B) \to (A \to C).\)</span></p>
 <p>We are going to define <span class="math inline">\(\operatorname{comp}\)</span> by the rule
 <span class="math display">\[\operatorname{comp}= \lambda g.\lambda f. \lambda x.g(f(x))\]</span>.</p>
-<p>Before we give the derivation, we need a preliminary result using the <em>generic element</em></p>
-<p><span class="math display">\[\begin{equation*}
-  (\clubsuit)
-  \begin{prooftree}
+<p>Before we give the derivation, we need a preliminary result using the <em>generic element</em>; we’ll refer to this as <span class="math inline">\((\clubsuit)\)</span> below:</p>
+<span class="math display">\[\begin{prooftree}
   \AxiomC{$\Gamma \vdash A \ \text{type}$}
   \AxiomC{$\Gamma \vdash B \ \text{type}$}
   \RightLabel{$\Pi$-formation}
@@ -227,8 +225,7 @@ Thus for <span class="math inline">\(g:B \to C\)</span>, we have <span class="ma
   \UnaryInfC{$\Gamma, f:A \to B \vdash f:A \to B$}
   \RightLabel{$\Pi$-elimination}
   \UnaryInfC{$\Gamma, f:A \to B, x : A \vdash f(x):B$}
-\end{prooftree}
-\end{equation*}\]</span></p>
+\end{prooftree}\]</span>
 <p>Now here is the full derivation:</p>
 <span class="math display">\[\begin{prooftree}
   \AxiomC{$\Gamma \vdash A \ \text{type}$}
@@ -237,7 +234,7 @@ Thus for <span class="math inline">\(g:B \to C\)</span>, we have <span class="ma
   \BinaryInfC{$\Gamma, f:A \to B, x : A \vdash f(x):B$}
   \RightLabel{W}
   \UnaryInfC{$\Gamma, g:B \to C, f:A \to B, x:A \vdash f(x):B$}
-
+  %
   \AxiomC{$\Gamma \vdash B \ \text{type}$}
   \AxiomC{$\Gamma \vdash C \ \text{type}$}
   \RightLabel{$\clubsuit$}  
@@ -246,7 +243,7 @@ Thus for <span class="math inline">\(g:B \to C\)</span>, we have <span class="ma
   \UnaryInfC{$\Gamma, g:B \to C, f:A \to B,  y : B \vdash g(y):C$}
   \RightLabel{W}
   \UnaryInfC{$\Gamma, g:B \to C, f:A \to B,  x : A, y : B \vdash g(y):C$}
-  
+  %  
   \RightLabel{subst}
   \BinaryInfC{$\Gamma, g:B \to C, f:A \to B, x:A \vdash g(f(x)) : C$}
   \RightLabel{$\lambda$-intro}
