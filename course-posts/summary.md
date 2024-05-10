@@ -104,8 +104,8 @@ date: 2024-03-13
   [[solutions pdf]](/course-assignments/PS04--ECC--solutions.pdf)  
 - due 2024-03-29 [[problem set 05]](/course-assignments/PS05--ECC.html) 
   [[pdf]](/course-assignments/PS05--ECC.html) 
+  [[solutions]](/course-assignments/PS05--ECC--solutions.html)
+  [[solutions pdf]](/course-assignments/PS05--ECC--solutions.pdf)    
 - due 2024-03-29 [[final project proposal]](/course-assignments/FinReport-Proposal.html) 
   [[pdf]](/course-assignments/FinReport-Proposal.pdf) 
-  [[solutions]](/course-assignments/PS05--ECC--solutions.html)
-  [[solutions pdf]](/course-assignments/PS05--ECC--solutions.pdf)  
 
