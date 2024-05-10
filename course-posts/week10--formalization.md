@@ -10,6 +10,9 @@ date: 2024-03-25
 The final homework on error-correcting codes is due Friday:
 
 - [[PS05]](/course-assignments/PS05--ECC.html) due [2024-03-29 Fri]
+  [[pdf]](/course-assignments/FinReport-Proposal.pdf) 
+  [[solutions]](/course-assignments/PS05--ECC--solutions.html)
+  [[solutions pdf]](/course-assignments/PS05--ECC--solutions.pdf)  
 
 As is your *proposal* for a final project:
 

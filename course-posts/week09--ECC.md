@@ -9,6 +9,9 @@ date: 2024-03-11
 - due [2024-03-29 Fri] 
   [[PS05]](/course-assignments/PS05--ECC.html) 
   [[pdf]](/course-assignments/PS05--ECC.pdf) 
+  [[solutions]](/course-assignments/PS05--ECC--solutions.html)
+  [[solutions pdf]](/course-assignments/PS05--ECC--solutions.pdf)  
+
 
 - [[final project proposal]](/course-assignments/FinReport-Proposal.html) due [2024-03-29 Friday]
 
